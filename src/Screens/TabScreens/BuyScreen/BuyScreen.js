@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {AsyncStorage, View, Text,FlatList, TouchableOpacity, ActivityIndicator, InteractionManager} from 'react-native';
 
 import styles from './style';
+import * as commonStyle from "../../../Constants/commonStyle";
 
 const mapStateToProps = state => {
     return {
@@ -10,6 +11,8 @@ const mapStateToProps = state => {
 };
 
 class BuyScreen extends Component {
+    static navigatorStyle = commonStyle.NavigationStyle;
+
     constructor(props) {
         super(props);
         this.state = {};

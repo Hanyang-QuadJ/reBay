@@ -1,36 +1,42 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import {AsyncStorage, View, Image,Text,FlatList, TouchableOpacity, ActivityIndicator, InteractionManager} from 'react-native';
-import {Container,  Content, Button, Footer } from 'native-base';
+import {connect} from 'react-redux';
+import {
+    AsyncStorage,
+    View,
+    Image,
+    Text,
+    FlatList,
+    TouchableOpacity,
+    ActivityIndicator,
+    InteractionManager
+} from 'react-native';
+import {Container, Content, Button, Footer} from 'native-base';
 import FooterButtonComponent from '../../../Components/FooterButtonComponent/FooterButtonComponent';
 import ImagePicker from 'react-native-image-picker';
+import * as commonStyle from '../../../Constants/commonStyle';
 
 
 import styles from './style';
 
 const mapStateToProps = state => {
-    return {
-    };
+    return {};
 };
 
 class PictureScreen extends Component {
     static navigatorButtons = {
-        leftButtons:[
+        leftButtons: [
             {
-                title:'Back',
-                id:'back'
+                title: 'Back',
+                id: 'back'
+
             }
         ]
 
-
     };
 
 
-    static navigatorStyle = {
-        tabBarHidden:true,
+    static navigatorStyle = commonStyle.NavigationStyle;
 
-
-    };
     constructor(props) {
         super(props);
         this.state = {
@@ -52,14 +58,14 @@ class PictureScreen extends Component {
             base7: null,
             base8: null,
             base9: null,
-            base64:[],
+            base64: [],
         };
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
 
     onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
         if (event.type === 'NavBarButtonPress') { // this is the event type for button presses
-            if(event.id === 'back'){
+            if (event.id === 'back') {
                 this.props.navigator.dismissModal({
                     animationType: 'slide-down' // 'none' / 'slide-down' , dismiss animation for the modal (optional, default 'slide-down')
                 });
@@ -70,12 +76,12 @@ class PictureScreen extends Component {
         }
     };
 
-    imagePicker (imageNumber) {
+    imagePicker(imageNumber) {
         let options = {
             title: '사진 선택',
-            cancelButtonTitle:"취소",
-            takePhotoButtonTitle:"사진촬영",
-            chooseFromLibraryButtonTitle:"앨범에서 선택",
+            cancelButtonTitle: "취소",
+            takePhotoButtonTitle: "사진촬영",
+            chooseFromLibraryButtonTitle: "앨범에서 선택",
             storageOptions: {
                 skipBackup: true,
                 path: 'images'
@@ -120,36 +126,39 @@ class PictureScreen extends Component {
                 }
 
 
-
             }
         });
 
     }
-    parseBase () {
+
+    parseBase() {
 
         let {base1, base2, base3, base4, base5, base6, base7, base8, base9} = this.state;
-        let baseArray = [base1,base2,base3,base4, base5, base6, base7, base8, base9];
+        let baseArray = [base1, base2, base3, base4, base5, base6, base7, base8, base9];
 
         function filter_array(arr) {
             arr = arr.filter(isEligible);
             return arr;
         }
+
         function isEligible(value) {
-            if(value !== false || value !== null || value !== 0 || value !== "") {
+            if (value !== false || value !== null || value !== 0 || value !== "") {
                 return value;
             }
         }
+
         return filter_array(baseArray);
 
     };
-    async goToBrand () {
+
+    async goToBrand() {
         const baseArray = await this.parseBase();
 
         this.props.navigator.push({
-            screen:'Brand',
-            title:'브랜드 선택',
-            passProps:{
-                base64:baseArray
+            screen: 'Brand',
+            title: '브랜드 선택',
+            passProps: {
+                base64: baseArray
             }
 
         });
@@ -182,57 +191,57 @@ class PictureScreen extends Component {
                     </View>
                     <View style={styles.rowContainer}>
                         <View style={styles.row}>
-                            <TouchableOpacity onPress={this.imagePicker.bind(this,1)}>
+                            <TouchableOpacity onPress={this.imagePicker.bind(this, 1)}>
                                 {image1 === null ?
                                     <Image style={styles.image} source={require('../../../Assets/pic1.jpg')}/> :
                                     image1 && <Image source={{uri: image1}} style={styles.image}/>}
                             </TouchableOpacity>
 
-                            <TouchableOpacity onPress={this.imagePicker.bind(this,2)}>
+                            <TouchableOpacity onPress={this.imagePicker.bind(this, 2)}>
                                 {image2 === null ?
                                     <Image style={styles.image} source={require('../../../Assets/pic1.jpg')}/> :
                                     image2 && <Image source={{uri: image2}} style={styles.image}/>}
                             </TouchableOpacity>
 
-                            <TouchableOpacity onPress={this.imagePicker.bind(this,3)}>
+                            <TouchableOpacity onPress={this.imagePicker.bind(this, 3)}>
                                 {image3 === null ?
                                     <Image style={styles.image} source={require('../../../Assets/pic1.jpg')}/> :
                                     image3 && <Image source={{uri: image3}} style={styles.image}/>}
                             </TouchableOpacity>
                         </View>
                         <View style={styles.row}>
-                            <TouchableOpacity onPress={this.imagePicker.bind(this,4)}>
+                            <TouchableOpacity onPress={this.imagePicker.bind(this, 4)}>
                                 {image4 === null ?
                                     <Image style={styles.image} source={require('../../../Assets/pic1.jpg')}/> :
                                     image4 && <Image source={{uri: image4}} style={styles.image}/>}
                             </TouchableOpacity>
 
-                            <TouchableOpacity onPress={this.imagePicker.bind(this,5)}>
+                            <TouchableOpacity onPress={this.imagePicker.bind(this, 5)}>
                                 {image5 === null ?
                                     <Image style={styles.image} source={require('../../../Assets/pic1.jpg')}/> :
                                     image5 && <Image source={{uri: image5}} style={styles.image}/>}
                             </TouchableOpacity>
 
-                            <TouchableOpacity onPress={this.imagePicker.bind(this,6)}>
+                            <TouchableOpacity onPress={this.imagePicker.bind(this, 6)}>
                                 {image6 === null ?
                                     <Image style={styles.image} source={require('../../../Assets/pic1.jpg')}/> :
                                     image6 && <Image source={{uri: image6}} style={styles.image}/>}
                             </TouchableOpacity>
                         </View>
                         <View style={styles.row}>
-                            <TouchableOpacity onPress={this.imagePicker.bind(this,7)}>
+                            <TouchableOpacity onPress={this.imagePicker.bind(this, 7)}>
                                 {image7 === null ?
                                     <Image style={styles.image} source={require('../../../Assets/pic1.jpg')}/> :
                                     image7 && <Image source={{uri: image7}} style={styles.image}/>}
                             </TouchableOpacity>
 
-                            <TouchableOpacity onPress={this.imagePicker.bind(this,8)}>
+                            <TouchableOpacity onPress={this.imagePicker.bind(this, 8)}>
                                 {image8 === null ?
                                     <Image style={styles.image} source={require('../../../Assets/pic1.jpg')}/> :
                                     image8 && <Image source={{uri: image8}} style={styles.image}/>}
                             </TouchableOpacity>
 
-                            <TouchableOpacity onPress={this.imagePicker.bind(this,9)}>
+                            <TouchableOpacity onPress={this.imagePicker.bind(this, 9)}>
                                 {image9 === null ?
                                     <Image style={styles.image} source={require('../../../Assets/pic1.jpg')}/> :
                                     image9 && <Image source={{uri: image9}} style={styles.image}/>}

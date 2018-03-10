@@ -27,6 +27,8 @@ const mapStateToProps = state => {
 
 
 class HomeScreen extends Component {
+    static navigatorStyle = commonStyle.NavigationStyle;
+
     static navigatorButtons = {
 
         rightButtons: [

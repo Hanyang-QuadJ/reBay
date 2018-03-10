@@ -81,7 +81,7 @@ class PictureScreen extends Component {
                 path: 'images'
             }
         };
-        ImagePicker.showImagePicker(options, async (response) => {
+        ImagePicker.showImagePicker(options, (response) => {
             if (response.didCancel) {
                 console.log('User cancelled image picker');
             }
@@ -118,10 +118,7 @@ class PictureScreen extends Component {
                 else if (imageNumber === 9) {
                     this.setState({image9: response.uri, base9: response.data});
                 }
-                const baseArray = await this.parseBase();
-                this.setState({
-                    base64:baseArray
-                })
+
 
 
             }
@@ -145,13 +142,14 @@ class PictureScreen extends Component {
         return filter_array(baseArray);
 
     };
-    goToBrand () {
+    async goToBrand () {
+        const baseArray = await this.parseBase();
 
         this.props.navigator.push({
             screen:'Brand',
             title:'브랜드 선택',
             passProps:{
-                base64:this.state.base64
+                base64:baseArray
             }
 
         });

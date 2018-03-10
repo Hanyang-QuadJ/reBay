@@ -7,9 +7,14 @@ import BuyScreen from './src/Screens/TabScreens/BuyScreen/BuyScreen';
 import SignInScreen from './src/Screens/AuthScreens/SignInScreen/SignInScreen';
 import store from './src/Store';
 import {Provider} from 'react-redux';
-import PictureScreen from './src/Screens/TabScreens/PictureScreen/PictureScreen';
+import PictureScreen from './src/Screens/SellScreens/PictureScreen/PictureScreen';
 import SellScreen from './src/Screens/TabScreens/SellScreen/SellScreen';
-import BrandScreen from './src/Screens/TabScreens/BrandScreen/BrandScreen';
+import BrandScreen from './src/Screens/BrandScreen/BrandScreen';
+import SellFilterScreen from './src/Screens/SellScreens/SellFilterScreen/SellFilterScreen';
+import SellFilterScreen2 from './src/Screens/SellScreens/SellFilterScreen2/SellFilterScreen2';
+import SellFilterScreen3 from './src/Screens/SellScreens/SellFilterScreen3/SellFilterScreen3';
+
+
 
 export default function registerScreens(){
     Navigation.registerComponent('Init', () => InitScreen,
@@ -39,6 +44,15 @@ export default function registerScreens(){
         store,
         Provider);
     Navigation.registerComponent('Brand', () => BrandScreen,
+        store,
+        Provider);
+    Navigation.registerComponent('SellFilter', () => SellFilterScreen,
+        store,
+        Provider);
+    Navigation.registerComponent('SellFilter2', () => SellFilterScreen2,
+        store,
+        Provider);
+    Navigation.registerComponent('SellFilter3', () => SellFilterScreen3,
         store,
         Provider);
 }

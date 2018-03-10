@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {Button} from 'native-base';
 import { GoToHome} from "../index";
 import { Navigation } from 'react-native-navigation';
-import * as DefaultAction from '../../Actions/DefaultAction';
+import * as BrandtAction from '../../Actions/BrandAction';
 import  styles from './style';
 
 const mapStateToProps = state => {
@@ -39,7 +39,8 @@ class InitScreen extends Component {
     }
 
 
-    goToTab = () => {
+    goToTab = async () => {
+        await this.props.dispatch(BrandtAction.getBrand());
         GoToHome();
     };
 

@@ -1,0 +1,519 @@
+{
+  "category": [
+    {
+      "name": "남성의류",
+      "detailCategory": [
+        {
+          "name": "티셔츠/민소매",
+          "clicked": true
+        },
+        {
+          "name": "니트/맨투맨",
+          "clicked": false
+        },
+        {
+          "name": "셔츠",
+          "clicked": false
+        },
+        {
+          "name": "가디건",
+          "clicked": false
+        },
+        {
+          "name": "코트",
+          "clicked": false
+        },
+        {
+          "name": "자켓",
+          "clicked": false
+        },
+        {
+          "name": "바지",
+          "clicked": false
+        },
+        {
+          "name": "반바지",
+          "clicked": false
+        },
+        {
+          "name": "청바지",
+          "clicked": false
+        },
+        {
+          "name": "정장",
+          "clicked": false
+        },
+        {
+          "name": "수영복",
+          "clicked": false
+        },
+        {
+          "name": "속옷",
+          "clicked": false
+        },
+        {
+          "name": "기타",
+          "clicked": false
+        }
+      ]
+    },
+    {
+      "name": "여성의류",
+      "detailCategory": [
+        {
+          "name": "티셔츠/민소매",
+          "clicked": true
+        },
+        {
+          "name": "스웨터/맨투맨",
+          "clicked": false
+        },
+        {
+          "name": "셔츠",
+          "clicked": false
+        },
+        {
+          "name": "가디건",
+          "clicked": false
+        },
+        {
+          "name": "코트",
+          "clicked": false
+        },
+        {
+          "name": "자켓",
+          "clicked": false
+        },
+        {
+          "name": "바지",
+          "clicked": false
+        },
+        {
+          "name": "반바지",
+          "clicked": false
+        },
+        {
+          "name": "청바지",
+          "clicked": false
+        },
+        {
+          "name": "스커트",
+          "clicked": false
+        },
+        {
+          "name": "원피스",
+          "clicked": false
+        },
+        {
+          "name": "투피스",
+          "clicked": false
+        },
+        {
+          "name": "쓰리피스",
+          "clicked": false
+        },
+        {
+          "name": "수영복",
+          "clicked": false
+        },
+        {
+          "name": "속옷",
+          "clicked": false
+        },
+        {
+          "name": "기타",
+          "clicked": false
+        }
+      ],
+      "clicked": false
+    },
+    {
+      "name": "남성슈즈",
+      "detailCategory": [
+        {
+          "name": "구두",
+          "clicked": true
+        },
+        {
+          "name": "스니커즈",
+          "clicked": true
+        },
+        {
+          "name": "샌들",
+          "clicked": true
+        },
+        {
+          "name": "부츠",
+          "clicked": true
+        },
+        {
+          "name": "기타",
+          "clicked": true
+        }
+      ],
+      "clicked": false
+    },
+    {
+      "name": "여성슈즈",
+      "detailCategory": [
+        {
+          "name": "구두",
+          "clicked": true
+        },
+        {
+          "name": "스니커즈",
+          "clicked": true
+        },
+        {
+          "name": "샌들",
+          "clicked": true
+        },
+        {
+          "name": "부츠",
+          "clicked": true
+        },
+        {
+          "name": "기타",
+          "clicked": true
+        }
+      ],
+      "clicked": false
+    },
+    {
+      "name": "가방",
+      "detailCategory": [
+        {
+          "name": "크로스백",
+          "clicked": true
+        },
+        {
+          "name": "토드백",
+          "clicked": false
+        },
+        {
+          "name": "숄더백",
+          "clicked": false
+        },
+        {
+          "name": "백팩",
+          "clicked": false
+        },
+        {
+          "name": "클러치백",
+          "clicked": false
+        },
+        {
+          "name": "서류가방",
+          "clicked": false
+        },
+        {
+          "name": "힙색",
+          "clicked": false
+        },
+        {
+          "name": "남성용크로스백",
+          "clicked": false
+        },
+        {
+          "name": "남성용토드백",
+          "clicked": false
+        },
+        {
+          "name": "남성용숄더백",
+          "clicked": false
+        },
+        {
+          "name": "남성용백팩",
+          "clicked": false
+        },
+        {
+          "name": "기타",
+          "clicked": false
+        }
+      ],
+      "clicked": false
+    },
+    {
+      "name": "패션잡화",
+      "detailCategory": [
+        {
+          "name": "머플러/스카프",
+          "clicked": true
+        },
+        {
+          "name": "모자",
+          "clicked": false
+        },
+        {
+          "name": "장갑",
+          "clicked": false
+        },
+        {
+          "name": "헤어악세사리",
+          "clicked": false
+        },
+        {
+          "name": "넥타이",
+          "clicked": false
+        },
+        {
+          "name": "스타킹/레깅스",
+          "clicked": false
+        },
+        {
+          "name": "우산",
+          "clicked": false
+        },
+        {
+          "name": "손수건",
+          "clicked": false
+        },
+        {
+          "name": "양말",
+          "clicked": false
+        },
+        {
+          "name": "기타",
+          "clicked": false
+        }
+      ],
+      "clicked": false
+    },
+    {
+      "name": "지갑/벨트",
+      "detailCategory": [
+        {
+          "name": "여성용벨트",
+          "clicked": true
+        },
+        {
+          "name": "남성용벨트",
+          "clicked": false
+        },
+        {
+          "name": "여성용지갑",
+          "clicked": false
+        },
+        {
+          "name": "여성용장지갑",
+          "clicked": false
+        },
+        {
+          "name": "여성용중지갑",
+          "clicked": false
+        },
+        {
+          "name": "남성용지갑",
+          "clicked": false
+        },
+        {
+          "name": "명함지갑",
+          "clicked": false
+        },
+        {
+          "name": "키지갑",
+          "clicked": false
+        },
+        {
+          "name": "다이어리",
+          "clicked": false
+        },
+        {
+          "name": "기타",
+          "clicked": false
+        }
+      ],
+      "clicked": false
+    },
+    {
+      "name": "악세서리",
+      "detailCategory": [
+        {
+          "name": "반지",
+          "clicked": true
+        },
+        {
+          "name": "목걸이",
+          "clicked": false
+        },
+        {
+          "name": "귀걸이",
+          "clicked": false
+        },
+        {
+          "name": "팔찌/발찌",
+          "clicked": false
+        },
+        {
+          "name": "키링",
+          "clicked": false
+        }
+      ],
+      "clicked": false
+    },
+    {
+      "name": "화장품/향수",
+      "detailCategory": [
+        {
+          "name": "여성용화장품",
+          "clicked": true
+        },
+        {
+          "name": "남성용화장품",
+          "clicked": false
+        },
+        {
+          "name": "향수",
+          "clicked": false
+        },
+        {
+          "name": "기타",
+          "clicked": false
+        }
+      ],
+      "clicked": false
+    },
+    {
+      "name": "선글라스/안경",
+      "detailCategory": [
+        {
+          "name": "선글라스",
+          "clicked": true
+        },
+        {
+          "name": "안경",
+          "clicked": false
+        },
+        {
+          "name": "기타",
+          "clicked": false
+        }
+      ],
+      "clicked": false
+    },
+    {
+      "name": "시계",
+      "detailCategory": [
+        {
+          "name": "여성용시계",
+          "clicked": true
+        },
+        {
+          "name": "남성용시계",
+          "clicked": false
+        },
+        {
+          "name": "기타",
+          "clicked": false
+        }
+      ],
+      "clicked": false
+    }
+  ],
+  "item_status": [
+    {
+      "index": 1,
+      "name": "새상품",
+      "clicked": true
+    },
+    {
+      "index": 1,
+      "name": "중고상품",
+      "clicked": false
+    }
+  ],
+  "year": [
+    {
+      "name": "2018",
+      "clicked": true
+    },
+    {
+      "name": "2017",
+      "clicked": false
+    },
+    {
+      "name": "2016",
+      "clicked": false
+    },
+    {
+      "name": "2015",
+      "clicked": false
+    },
+    {
+      "name": "2014",
+      "clicked": false
+    },
+    {
+      "name": "2013",
+      "clicked": false
+    },
+    {
+      "name": "2012 이전",
+      "clicked": false
+    }
+  ],
+  "season": [
+    {
+      "name": "S/S",
+      "clicked": true
+    },
+    {
+      "name": "F/W",
+      "clicked": false
+    }
+  ],
+  "fullBox": [
+    {
+      "index": 0,
+      "name": "있음",
+      "clicked": true
+    },
+    {
+      "index": 1,
+      "name": "없음",
+      "clicked": false
+    }
+  ],
+  "warantee": [
+    {
+      "index": 0,
+      "name": "있음",
+      "clicked": true
+    },
+    {
+      "index": 1,
+      "name": "없음",
+      "clicked": false
+    }
+  ],
+  "domestic": [
+    {
+      "index": 0,
+      "name": "국내",
+      "clicked": true
+    },
+    {
+      "index": 1,
+      "name": "해외",
+      "clicked": false
+    }
+  ],
+  "refund": [
+    {
+      "index": 0,
+      "name": "불가능",
+      "clicked": true
+    },
+    {
+      "index": 1,
+      "name": "수령후 3일",
+      "clicked": false
+    },
+    {
+      "index": 2,
+      "name": "수령후 7일",
+      "clicked": false
+    }
+  ]
+}
+

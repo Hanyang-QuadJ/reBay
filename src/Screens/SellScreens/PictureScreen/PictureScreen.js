@@ -8,7 +8,8 @@ import {
     FlatList,
     TouchableOpacity,
     ActivityIndicator,
-    InteractionManager
+    InteractionManager,
+    Platform
 } from 'react-native';
 import {Container, Content, Button, Footer} from 'native-base';
 import FooterButtonComponent from '../../../Components/FooterButtonComponent/FooterButtonComponent';
@@ -35,7 +36,7 @@ class PictureScreen extends Component {
     };
 
 
-    static navigatorStyle = commonStyle.NavigationStyle;
+    static navigatorStyle = commonStyle.TabBarHidden;
 
     constructor(props) {
         super(props);
@@ -63,16 +64,31 @@ class PictureScreen extends Component {
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
 
+
     onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
+
+        if(event.id === 'modalTabSelected'){
+            this.props.navigator.showModal({
+                screen: 'Picture',
+                title:'사진선택'
+            });
+        }
         if (event.type === 'NavBarButtonPress') { // this is the event type for button presses
+
             if (event.id === 'back') {
-                this.props.navigator.dismissModal({
-                    animationType: 'slide-down' // 'none' / 'slide-down' , dismiss animation for the modal (optional, default 'slide-down')
-                });
+                if(Platform.OS === 'ios'){
+                    this.props.navigator.dismissModal({
+                        animationType: 'slide-down' // 'none' / 'slide-down' , dismiss animation for the modal (optional, default 'slide-down')
+                    });
+                }
+                else{
+                    this.props.navigator.switchToTab({
+                        tabIndex: 1 // (optional) if missing, this screen's tab will become selected
+                    });
+
+                }
 
             }
-
-
         }
     };
 

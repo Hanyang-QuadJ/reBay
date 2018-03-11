@@ -8,6 +8,13 @@ export const NavigationStyle = {
     navBarBackgroundColor: SECONDARY_COLOR,
     navBarButtonColor: PRIMARY_COLOR,
 };
+
+export const TabBarHidden = {
+    navBarTextColor: PRIMARY_COLOR,
+    navBarBackgroundColor: SECONDARY_COLOR,
+    navBarButtonColor: PRIMARY_COLOR,
+    tabBarHidden:true
+};
 export const NavigationStyleReverse = {
     navBarTextColor: SECONDARY_COLOR,
     navBarBackgroundColor: PRIMARY_COLOR,

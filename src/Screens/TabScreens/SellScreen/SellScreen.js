@@ -9,13 +9,16 @@ const mapStateToProps = state => {
 };
 
 class SellScreen extends Component {
+    static navigatorStyle = {
+        tabBarHidden:true
+    };
     constructor(props) {
         super(props);
         this.state = {};
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
 
-    onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
+    onNavigatorEvent(event) { // IOS
         if(event.id === 'modalTabSelected'){
             this.props.navigator.showModal({
                 screen: 'Picture',

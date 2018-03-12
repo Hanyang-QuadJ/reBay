@@ -3,6 +3,7 @@ import {StatusBar, View, TouchableHighlight, StyleSheet, TouchableOpacity, Async
 import {Button, Container, Content } from 'native-base';
 import Swiper from 'react-native-swiper';
 import {connect} from "react-redux";
+import GoToHome from '../../../../App';
 
 const mapStateToProps = state => {
     return {
@@ -25,6 +26,9 @@ class TutorialScreen extends Component {
         this.props.navigator.push({
             screen: 'SignIn',
         });
+    };
+    goToHome = () => {
+        GoToHome();
     };
 
     render() {
@@ -50,7 +54,7 @@ class TutorialScreen extends Component {
                     </View>
                 </Swiper>
                 <View style={styles.staticJump}>
-                    <TouchableOpacity onPress={() => console.log('^^')}>
+                    <TouchableOpacity onPress={this.goToHome}>
                         <Text style={styles.staticJumpText}>건너뛰기</Text>
                     </TouchableOpacity>
                 </View>

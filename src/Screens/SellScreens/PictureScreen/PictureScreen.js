@@ -36,7 +36,7 @@ class PictureScreen extends Component {
     };
 
 
-    static navigatorStyle = commonStyle.TabBarHidden;
+    // static navigatorStyle = commonStyle.TabBarHidden;
 
     constructor(props) {
         super(props);
@@ -73,7 +73,7 @@ class PictureScreen extends Component {
                 title:'사진선택'
             });
         }
-        if (event.type === 'NavBarButtonPress') { // this is the event type for button presses
+        else if (event.type === 'NavBarButtonPress') { // this is the event type for button presses
 
             if (event.id === 'back') {
                 if(Platform.OS === 'ios'){
@@ -81,12 +81,7 @@ class PictureScreen extends Component {
                         animationType: 'slide-down' // 'none' / 'slide-down' , dismiss animation for the modal (optional, default 'slide-down')
                     });
                 }
-                else{
-                    this.props.navigator.switchToTab({
-                        tabIndex: 1 // (optional) if missing, this screen's tab will become selected
-                    });
 
-                }
 
             }
         }

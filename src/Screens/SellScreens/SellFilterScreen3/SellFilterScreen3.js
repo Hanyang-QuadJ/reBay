@@ -11,12 +11,15 @@ import {
 import jsonData from '../../../Constants/data'
 import FooterButton from '../../../Components/FooterButtonComponent/FooterButtonComponent'
 import styles from './style';
+import * as commonStyle from "../../../Constants/commonStyle";
 
 const mapStateToProps = state => {
     return {};
 };
 
 class SellFilterScreen3 extends Component {
+    static navigatorStyle = commonStyle.TabBarHidden;
+
     constructor(props) {
         super(props);
         this.state = {
@@ -45,23 +48,26 @@ class SellFilterScreen3 extends Component {
         let warantee = this.state.warantee[this.state.selectedWarantee].index;
         let domestic = this.state.domestic[this.state.selectedDomestic].index;
         let refund = this.state.refund[this.state.selectedRefund].index;
-        console.log(pic_list);
-        console.log(price);
-        console.log(brand_id);
-        console.log(item_name);
-        console.log(size);
-        console.log(season);
-        console.log(category_1);
-        console.log(category_2);
-        console.log(item_status);
-        console.log(fullbox);
-        console.log(warantee);
-        console.log(domestic);
-        console.log(refund);
-        // this.props.navigator.push({
-        //     screen:'SellFilter3',
-        //     title:'상세정보'
-        // })
+
+        this.props.navigator.push({
+            screen:'Detail',
+            title:'상세정보',
+            passProps:{
+                pic_list:pic_list,
+                item_name:item_name,
+                brand_id:brand_id,
+                price:price,
+                size:size,
+                season:season,
+                category_1:category_1,
+                category_2:category_2,
+                item_status:item_status,
+                fullbox:fullbox,
+                warantee:warantee,
+                domestic:domestic,
+                refund:refund,
+            }
+        })
 
     };
 

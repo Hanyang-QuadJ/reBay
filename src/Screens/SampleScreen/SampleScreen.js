@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import {AsyncStorage, View, Text, FlatList, TouchableOpacity, ActivityIndicator, InteractionManager} from 'react-native';
 import { Container, Content, Icon } from 'native-base';
 import styles from './style';
+import * as commonStyle from '../../Constants/commonStyle';
+import GoToHome from '../../../App';
 
 const mapStateToProps = state => {
     return {

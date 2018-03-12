@@ -33,6 +33,13 @@ export function GoToHome() {
                 icon: require('../Assets/dress.png'),
 
                 modal:true
+            },
+            {
+                label:'내 소식',
+                screen:'Item',
+                title:'알림',
+                icon: require('../Assets/dress.png'),
+
             }
         ]
     });

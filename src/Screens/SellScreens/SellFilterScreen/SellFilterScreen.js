@@ -12,12 +12,15 @@ import {
 import InputComponent from '../../../Components/InputComponent/InputComponent'
 import FooterButton from '../../../Components/FooterButtonComponent/FooterButtonComponent'
 import styles from './style';
+import * as commonStyle from "../../../Constants/commonStyle";
 
 const mapStateToProps = state => {
     return {};
 };
 
 class SellFilterScreen extends Component {
+    static navigatorStyle = commonStyle.TabBarHidden;
+
     constructor(props) {
         super(props);
         this.state = {

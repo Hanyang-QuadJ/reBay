@@ -13,6 +13,8 @@ import BrandScreen from './src/Screens/BrandScreen/BrandScreen';
 import SellFilterScreen from './src/Screens/SellScreens/SellFilterScreen/SellFilterScreen';
 import SellFilterScreen2 from './src/Screens/SellScreens/SellFilterScreen2/SellFilterScreen2';
 import SellFilterScreen3 from './src/Screens/SellScreens/SellFilterScreen3/SellFilterScreen3';
+import DetailScreen from './src/Screens/SellScreens/DetailScreen/DetailScreen';
+import ItemScreen from './src/Screens/ItemScreen/ItemScreen';
 
 
 
@@ -53,6 +55,12 @@ export default function registerScreens(){
         store,
         Provider);
     Navigation.registerComponent('SellFilter3', () => SellFilterScreen3,
+        store,
+        Provider);
+    Navigation.registerComponent('Detail', () => DetailScreen,
+        store,
+        Provider);
+    Navigation.registerComponent('Item', () => ItemScreen,
         store,
         Provider);
 }

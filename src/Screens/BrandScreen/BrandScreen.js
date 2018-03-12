@@ -13,6 +13,7 @@ import FooterButtonComponent from '../../Components/FooterButtonComponent/Footer
 
 
 import styles from './style';
+import * as commonStyle from "../../Constants/commonStyle";
 
 const mapStateToProps = state => {
     return {
@@ -21,6 +22,8 @@ const mapStateToProps = state => {
 };
 
 class BrandScreen extends Component {
+    // static navigatorStyle = commonStyle.TabBarHidden;
+
     constructor(props) {
         super(props);
         this.state = {

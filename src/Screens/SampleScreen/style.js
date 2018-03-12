@@ -4,5 +4,6 @@ import commonStyle from '../index';
 const style = StyleSheet.create({
 
 
+
 });
 export default style

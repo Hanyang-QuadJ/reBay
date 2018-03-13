@@ -33,7 +33,7 @@ export const  defaultFetch = () => {
                         'Content-Type': 'application/json',
                     },
                 }
-            ).then((response) => {dispatch({type: SUCCEED_TO_FETCH, payload: response, loading:false});
+            ).then((response) => {dispatch({type: SUCCEED_TO_FETCH, payload: response.data, loading:false});
 
                 }
 

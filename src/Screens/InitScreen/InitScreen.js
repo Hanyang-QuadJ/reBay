@@ -5,8 +5,10 @@ import {Button} from 'native-base';
 import { GoToHome } from "../index";
 import { Navigation } from 'react-native-navigation';
 import * as BrandtAction from '../../Actions/BrandAction';
+import * as DefaultAction from '../../Actions/DefaultAction';
 import FastImage from 'react-native-fast-image';
 import  styles from './style';
+import * as DefaultActionCreator from "../../Actions/DefaultAction";
 
 const mapStateToProps = state => {
     return {
@@ -28,8 +30,6 @@ class InitScreen extends Component {
     componentDidMount(){
         AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
 
-
-
             if(value === null || value === undefined || value === ""){
                 this.props.navigator.push({
                     screen: 'Tutorial',
@@ -45,6 +45,7 @@ class InitScreen extends Component {
 
     goToTab = async () => {
         await this.props.dispatch(BrandtAction.getBrand());
+        this.props.dispatch(DefaultAction.defaultFetch());
         GoToHome();
     };
 

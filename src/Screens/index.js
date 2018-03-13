@@ -41,7 +41,10 @@ export function GoToHome() {
                 icon: require('../Assets/dress.png'),
 
             }
-        ]
+        ],
+        tabsStyle:{
+            tabBarSelectedButtonColor: commonStyle.PRIMARY_COLOR,
+        }
     });
 }
 

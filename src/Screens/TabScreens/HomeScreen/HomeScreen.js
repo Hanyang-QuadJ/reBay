@@ -5,6 +5,7 @@ import { Icon, Button, Text } from 'native-base';
 
 import {connect} from 'react-redux';
 import {TabViewAnimated, TabBar} from 'react-native-tab-view';
+import HomeTabScreen from '../HomeTabScreen/HomeTabScreen';
 
 
 import styles from './style';
@@ -94,9 +95,7 @@ class HomeScreen extends Component {
     _renderScene = ({route}) => {
         switch (route.key) {
             case 'first':
-                return <View>
-
-                </View>;
+                return <HomeTabScreen/>;
             case 'second':
                 return <View style={{backgroundColor: '#673ab7', flex: 1}}/>;
             default:

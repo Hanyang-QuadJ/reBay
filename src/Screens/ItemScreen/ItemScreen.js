@@ -43,11 +43,13 @@ class ItemScreen extends Component {
     onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
         if(event.id="willAppear"){
             AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
-                this.props.dispatch(ItemAction.getItem(value, 552))
+                this.props.dispatch(ItemAction.getItem(value, this.props.item_id))
                     .then(value2 => {
-                            this.props.dispatch(ItemAction.getItemPicture(value, 552)).then(value3 => {
-                                // console.log("picture array");
-                                // console.log(value3)
+                            this.props.dispatch(ItemAction.getItemPicture(value, this.props.item_id)).then(value3 => {
+                                while(value3.length === 0){
+                                    
+                                }
+
                             })
                         }
                     )

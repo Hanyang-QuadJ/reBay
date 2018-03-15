@@ -18,6 +18,7 @@ import FooterButtonComponent from '../../Components/FooterButtonComponent/Footer
 import * as commonStyle from '../../Constants/commonStyle';
 import FastImage from 'react-native-fast-image';
 import GoToHome from '../../../App';
+import { DotIndicator } from 'react-native-indicators';
 
 const mapStateToProps = state => {
     return {
@@ -29,6 +30,14 @@ const mapStateToProps = state => {
 
 class ItemScreen extends Component {
     static navigatorStyle = commonStyle.TabBarHidden;
+    static navigatorButtons = {
+        leftButtons: [{
+            title: "홈으로",
+            id: "goToHome",
+            buttonColor: commonStyle.PRIMARY_COLOR
+        }]
+    };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -39,21 +48,22 @@ class ItemScreen extends Component {
     }
 
 
-
     onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
-        if(event.id="willAppear"){
+        if (event.id = "willAppear") {
             AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
                 this.props.dispatch(ItemAction.getItem(value, this.props.item_id))
                     .then(value2 => {
                             this.props.dispatch(ItemAction.getItemPicture(value, this.props.item_id)).then(value3 => {
-                                while(value3.length === 0){
-                                    
-                                }
+                                if (value3.length === 0) {
 
+                                }
                             })
                         }
                     )
             });
+
+        }
+        else if (event.id = "goToHome") {
 
         }
 
@@ -65,11 +75,13 @@ class ItemScreen extends Component {
         const emptyStars = [];
         const starLength = 5;
         const userLength = 3;
-        for(let i = 0; i<userLength; i++){
-            stars.push(<View key={i}><Icon name="ios-star" style={{fontSize:12, color:commonStyle.PRIMARY_COLOR}}/></View>);
+        for (let i = 0; i < userLength; i++) {
+            stars.push(<View key={i}><Icon name="ios-star"
+                                           style={{fontSize: 12, color: commonStyle.PRIMARY_COLOR}}/></View>);
         }
-        for(let i = 0; i<starLength-userLength; i++){
-            emptyStars.push(<View key={i}><Icon name="ios-star-outline" style={{fontSize:12, color:commonStyle.PRIMARY_COLOR}}/></View>);
+        for (let i = 0; i < starLength - userLength; i++) {
+            emptyStars.push(<View key={i}><Icon name="ios-star-outline"
+                                                style={{fontSize: 12, color: commonStyle.PRIMARY_COLOR}}/></View>);
         }
         // console.log(picture);
         if (item != null && picture != null) {
@@ -86,7 +98,7 @@ class ItemScreen extends Component {
                                     <Text style={styles.userInfoText}>
                                         {item.username}
                                     </Text>
-                                    <View style={{flexDirection:'row'}}>
+                                    <View style={{flexDirection: 'row'}}>
                                         {stars}
                                         {emptyStars}
                                     </View>
@@ -99,7 +111,7 @@ class ItemScreen extends Component {
                                     return (
                                         <View key={picture.id} style={styles.slide1}>
                                             <FastImage style={styles.image}
-                                                   source={{uri:picture.image_url}}
+                                                       source={{uri: picture.image_url}}
                                             />
                                         </View>
                                     )
@@ -120,7 +132,9 @@ class ItemScreen extends Component {
         }
         else {
             return (
-                <Spinner/>
+                <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+                    <DotIndicator color={commonStyle.PRIMARY_COLOR} />
+                </View>
             )
         }
 

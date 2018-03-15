@@ -6,7 +6,6 @@ import { GoToHome } from "../index";
 import { Navigation } from 'react-native-navigation';
 import * as BrandtAction from '../../Actions/BrandAction';
 import * as DefaultAction from '../../Actions/DefaultAction';
-import FastImage from 'react-native-fast-image';
 import  styles from './style';
 import * as DefaultActionCreator from "../../Actions/DefaultAction";
 

@@ -3,10 +3,12 @@ import {Container, Header, Left, Body, Right, Button, Icon, Title, ListItem} fro
 import styles from './style';
 import {connect} from "react-redux";
 import Swiper from 'react-native-swiper';
-import json  from '../../../Constants/data';
+import json from '../../../Constants/data';
+import photo from '../../../Constants/photo';
+import FastImage from 'react-native-fast-image';
 
 
-import {TabViewAnimated, TabBar} from 'react-native-tab-view';
+import {TabViewAnimated, TabBar, TabViewPagerScroll, TabViewPagerPan} from 'react-native-tab-view';
 import {
     Animated,
     Dimensions,
@@ -42,16 +44,14 @@ const initialLayout = {
 
 class HomeTabScreen extends Component {
 
-
-
     constructor(props) {
         super(props);
         this.state = {
             index: 0,
-            sample:json.category,
+            sample: json.category,
             refreshing: false,
-            scroll: new Animated.Value(-170, {useNativeDriver: true}),
-            scroll2: new Animated.Value(170, {useNativeDriver: true}),
+            scroll: new Animated.Value(-170),
+            scroll2: new Animated.Value(170),
             top: false,
 
             routes: [
@@ -63,11 +63,30 @@ class HomeTabScreen extends Component {
                 {key: 'sixth', title: '팔찌'},
                 {key: 'seventh', title: '발찌'},
             ],
+        };
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+
+    }
+
+    _renderPager = (props) => {
+        return (Platform.OS === 'ios') ? <TabViewPagerScroll {...props} /> : <TabViewPagerPan {...props} />
+    };
+
+    scrollToTop = () => {
+    };
+
+    onNavigatorEvent(event) { // IOS
+        console.log(event);
+
+        if (event.id === "bottomTabReselected") {
+            this.scrollView.getNode().scrollTo({animated: true, y: -170});
+
         }
+
+
     }
 
     componentDidMount() {
-        this.props.dispatch(DefaultActionCreator.defaultFetch());
 
         if (Platform.OS === 'ios') {
             this.scrollView.getNode().scrollTo({animated: false, y: -170});
@@ -75,15 +94,7 @@ class HomeTabScreen extends Component {
 
     }
 
-    renderItem = ({item}) => {
-        return (
-            <ListItem style={{marginLeft: 0}}>
-                <Body>
-                <Text>{item.time}</Text>
-                </Body>
-            </ListItem>
-        )
-    };
+
     _renderIcon = ({route}) => (
         <Image style={{width: 20, height: 20,}}
                source={require('../../../Assets/dress.png')}
@@ -165,7 +176,7 @@ class HomeTabScreen extends Component {
         });
         switch (route.key) {
             case 'first':
-                return <View style={{flex:1}}>
+                return <View style={{flex: 1}}>
                     <Animated.View style={{
 
                         transform: [{translateY}]
@@ -196,27 +207,38 @@ class HomeTabScreen extends Component {
                                         )}
 
                     >
-                        {this.state.sample.map((data, index) => {
-                                return (
-                                    <View key={data.name}>
-                                        <Text> {data.name} </Text>
-                                    </View>
-                                )
+                        <View style={styles.itemList}>
+                            {photo.data.map((data, index)=>{
+                                if((index+1) % 2 !== 0){
+                                    return(
+                                        <View style={styles.itemLeft} key={index}>
+                                            <FastImage style={styles.itemImage}
+                                                       resizeMode={FastImage.resizeMode.cover}
+                                                       source={{uri: data.image_url}}/>
+                                            <Text style={styles.item_status}>새상품</Text>
+                                            <Text style={styles.item_brand}>PRADA</Text>
+                                            <Text style={styles.item_name}>프라다 가방</Text>
+                                            <Text style={styles.item_price}>￦20000</Text>
+                                        </View>
+                                    )
+                                }
+                                else{
+                                    return(
+                                        <View style={styles.itemRight} key={index}>
+                                            <FastImage style={styles.itemImage}
+                                                       resizeMode={FastImage.resizeMode.cover}
+                                                       source={{uri:  data.image_url}}/>
+                                            <Text style={styles.item_status}>새상품</Text>
+                                            <Text style={styles.item_brand}>PRADA</Text>
+                                            <Text style={styles.item_name}>프라다 가방</Text>
+                                            <Text style={styles.item_price}>￦20000</Text>
+                                        </View>
+                                    )
+                                }
                             })}
-                        {this.state.sample[0].detailCategory.map((data, index) => {
-                            return (
-                                <View key={data.name}>
-                                    <Text> {data.name} </Text>
-                                </View>
-                            )
-                        })}
-                        {this.state.sample[1].detailCategory.map((data, index) => {
-                            return (
-                                <View key={data.name}>
-                                    <Text> {data.name} </Text>
-                                </View>
-                            )
-                        })}
+                        </View>
+
+
                     </AnimatedScrollView>
 
 
@@ -244,11 +266,12 @@ class HomeTabScreen extends Component {
     };
 
     render() {
-        console.log(this.state.sample);
+        console.log(this.props);
 
         return (
             <TabViewAnimated
                 style={styles.container}
+                renderPager={this._renderPager}
                 navigationState={this.state}
                 renderScene={this._renderScene}
                 renderHeader={this._renderHeader}

@@ -15,6 +15,7 @@ import SellFilterScreen2 from './src/Screens/SellScreens/SellFilterScreen2/SellF
 import SellFilterScreen3 from './src/Screens/SellScreens/SellFilterScreen3/SellFilterScreen3';
 import DetailScreen from './src/Screens/SellScreens/DetailScreen/DetailScreen';
 import ItemScreen from './src/Screens/ItemScreen/ItemScreen';
+import NoticeScreen from "./src/Screens/TabScreens/NoticeScreen/NoticeScreen";
 
 
 
@@ -37,6 +38,9 @@ export default function registerScreens(){
         store,
         Provider);
     Navigation.registerComponent('Sell', () => SellScreen,
+        store,
+        Provider);
+    Navigation.registerComponent('Notice', ()=> NoticeScreen,
         store,
         Provider);
 

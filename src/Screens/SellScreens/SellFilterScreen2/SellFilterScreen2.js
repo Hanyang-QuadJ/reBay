@@ -34,8 +34,6 @@ class SellFilterScreen2 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
-            selectedBrand: [],
             selectedCategory: 0,
             selectedDetailCategory: 0,
             category: jsonData.category,

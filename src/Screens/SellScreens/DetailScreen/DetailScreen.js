@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
-import {TextInput, AsyncStorage} from 'react-native';
+import {TextInput, AsyncStorage, View} from 'react-native';
 import {connect} from 'react-redux';
 import {Container, Text, Content, Button} from 'native-base';
 import FooterButton from '../../../Components/FooterButtonComponent/FooterButtonComponent';
 import styles from './style';
 import * as ItemAction from '../../../Actions/ItemAction'
+import { DotIndicator } from 'react-native-indicators';
+import * as commonStyle from '../../../Constants/commonStyle';
+
 
 const mapStateToProps = state => {
     return {
@@ -18,7 +21,8 @@ class DetailScreen extends Component {
         this.state = {
             content: "",
             sub_content: "pending",
-            tag: ""
+            tag: "",
+            posting:false,
         }
 
     }
@@ -42,6 +46,7 @@ class DetailScreen extends Component {
 
 
      postItem = async ()  => {
+         this.setState({posting:true});
         let token = await AsyncStorage.getItem("ACCESS_TOKEN");
         let pic_list = this.props.pic_list;
         let price = this.props.price;
@@ -58,23 +63,8 @@ class DetailScreen extends Component {
         let refund = this.props.refund;
         let content = this.state.content;
         let sub_content = this.state.sub_content;
+
         let tags = await this.parseTag();
-        console.log(pic_list);
-        console.log(price);
-        console.log(brand_id);
-        console.log(size);
-        console.log(season);
-        console.log(category_1);
-        console.log(category_2);
-        console.log(item_status);
-        console.log(fullbox);
-        console.log(warantee);
-        console.log(domestic);
-        console.log(refund);
-        console.log(content);
-        console.log(sub_content);
-        console.log(tags);
-        console.log(token);
         await this.props.dispatch(ItemAction.postItem(token,
             pic_list,
             item_name,
@@ -91,7 +81,9 @@ class DetailScreen extends Component {
             refund,
             content,
             sub_content,
-            tags));
+            tags)).then(value => {
+                this.setState({posting:false})
+        });
         await this.props.navigator.push({
             screen:"Item",
             title:item_name
@@ -105,29 +97,43 @@ class DetailScreen extends Component {
     }
 
     render() {
-        return (
-            <Container style={{backgroundColor: 'white'}}>
-                <Content>
-                    <TextInput
-                        multiline={true}
-                        numberOfLines={10}
-                        placeholder="제품상세설명"
-                        onChangeText={(content) => this.setState({content})}
-                        style={styles.textArea}
-                    />
+        if(this.state.posting === true){
+            return(
+                <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+                    <DotIndicator color={commonStyle.PRIMARY_COLOR} />
+                </View>
 
-                    <TextInput
-                        autoCorrect={false}
-                        multiline={true}
-                        numberOfLines={5}
-                        onChangeText={(tag) => this.setState({tag})}
-                        placeholder="태그"
-                        style={styles.textArea}
-                    />
-                </Content>
-                <FooterButton leftText="임시저장" rightText="다음으로" onPress={this.postItem}/>
-            </Container>
-        )
+            )
+
+        }
+        else{
+            return (
+                <Container style={{backgroundColor: 'white'}}>
+                    <Content contentContainerStyle={{flex:1}}>
+
+                        <TextInput
+                            multiline={true}
+                            numberOfLines={10}
+                            placeholder="제품상세설명"
+                            onChangeText={(content) => this.setState({content})}
+                            style={styles.textArea}
+                        />
+
+                        <TextInput
+                            autoCorrect={false}
+                            multiline={true}
+                            numberOfLines={5}
+                            onChangeText={(tag) => this.setState({tag})}
+                            placeholder="태그"
+                            style={styles.textArea}
+                        />
+                    </Content>
+                    <FooterButton leftText="임시저장" rightText="다음으로" onPress={this.postItem}/>
+                </Container>
+            )
+
+        }
+
 
     }
 

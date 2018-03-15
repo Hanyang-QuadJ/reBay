@@ -15,20 +15,20 @@ export function GoToHome() {
             {
                 label: '홈',
                 screen: 'Home', // this is a registered name for a screen
-                icon: icons,
+                icon: require('../Assets/dress.png'),
                 // selectedIcon: require('../img/one_selected.png'), // iOS only
                 title: 'reBay'
             },
             {
                 label: '구매하기',
                 screen: 'Buy',
-                icon: icons,
+                icon: require('../Assets/dress.png'),
                 // selectedIcon: require('../img/two_selected.png'), // iOS only
                 title: '구매하기'
             },
             {
                 label:'판매하기',
-                screen:'Picture',
+                screen:'Sell',
                 title:'판매하기',
                 icon: require('../Assets/dress.png'),
 
@@ -36,7 +36,7 @@ export function GoToHome() {
             },
             {
                 label:'내 소식',
-                screen:'Item',
+                screen:'Notice',
                 title:'알림',
                 icon: require('../Assets/dress.png'),
 
@@ -44,6 +44,10 @@ export function GoToHome() {
         ],
         tabsStyle:{
             tabBarSelectedButtonColor: commonStyle.PRIMARY_COLOR,
+        },
+        appStyle:{
+            tabBarSelectedButtonColor: commonStyle.PRIMARY_COLOR,
+            forceTitlesDisplay: true,
         }
     });
 }

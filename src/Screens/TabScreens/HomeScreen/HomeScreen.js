@@ -1,10 +1,12 @@
-
 import React, {Component} from 'react';
-import {FlatList, View, AsyncStorage, Image, Dimensions, ScrollView, Animated, RefreshControl} from 'react-native'
-import { Icon, Button, Text } from 'native-base';
+import {
+    FlatList, View, AsyncStorage, Image, Dimensions, ScrollView, Animated, RefreshControl,
+    Platform
+} from 'react-native'
+import {Icon, Button, Text} from 'native-base';
 
 import {connect} from 'react-redux';
-import {TabViewAnimated, TabBar} from 'react-native-tab-view';
+import {TabViewAnimated, TabBar, TabViewPagerPan, TabViewPagerScroll} from 'react-native-tab-view';
 import HomeTabScreen from '../HomeTabScreen/HomeTabScreen';
 
 
@@ -15,8 +17,6 @@ const initialLayout = {
     height: 0,
     width: Dimensions.get('window').width,
 };
-
-
 
 
 const mapStateToProps = state => {
@@ -52,7 +52,6 @@ class HomeScreen extends Component {
     };
 
 
-
     constructor(props) {
         super(props);
 
@@ -65,12 +64,26 @@ class HomeScreen extends Component {
                 {key: 'first', title: '카테고리 추천'},
                 {key: 'second', title: '신규 상품'},
             ],
-        }
+
+        };
+        this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+
+
+    }
+
+    _renderPager = (props) => {
+        return (Platform.OS === 'ios') ? <TabViewPagerScroll {...props} /> : <TabViewPagerPan swipeEnabled={false}
+                                                                                              {...props} />
+    };
+
+    onNavigatorEvent(event) { // IOS
+
 
     }
 
 
-    componentDidUpdate(){
+
+    componentDidUpdate() {
 
     }
 
@@ -79,14 +92,14 @@ class HomeScreen extends Component {
         return (
             <View>
                 <TabBar {...props} indicatorStyle={{backgroundColor: commonStyle.PRIMARY_COLOR}}
-                        labelStyle={{color: commonStyle.PRIMARY_COLOR, fontSize:13, marginVertical:1}}
+                        labelStyle={{color: commonStyle.PRIMARY_COLOR, fontSize: 13, marginVertical: 1}}
                         style={{backgroundColor: "white",}}/>
             </View>
         )
     };
     goItem = () => {
         this.props.navigator.showModal({
-            screen:'Picture',
+            screen: 'Picture',
             animationType: 'slide-up'
         })
 
@@ -95,7 +108,7 @@ class HomeScreen extends Component {
     _renderScene = ({route}) => {
         switch (route.key) {
             case 'first':
-                return <HomeTabScreen/>;
+                return <HomeTabScreen navigator={this.props.navigator}/>;
             case 'second':
                 return <View style={{backgroundColor: '#673ab7', flex: 1}}/>;
             default:
@@ -107,16 +120,16 @@ class HomeScreen extends Component {
     render() {
 
 
-
         return (
-                <TabViewAnimated
-                    style={styles.container}
-                    navigationState={this.state}
-                    renderScene={this._renderScene}
-                    renderHeader={this._renderHeader}
-                    onIndexChange={this._handleIndexChange}
-                    initialLayout={initialLayout}
-                />
+            <TabViewAnimated
+                style={styles.container}
+                navigationState={this.state}
+                renderScene={this._renderScene}
+                renderHeader={this._renderHeader}
+                onIndexChange={this._handleIndexChange}
+                initialLayout={initialLayout}
+                renderPager={this._renderPager}
+            />
         )
     }
 

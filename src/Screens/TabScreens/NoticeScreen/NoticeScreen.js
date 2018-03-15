@@ -8,7 +8,7 @@ const mapStateToProps = state => {
     };
 };
 
-class SellScreen extends Component {
+class NoticeScreen extends Component {
 
     constructor(props) {
         super(props);
@@ -17,28 +17,14 @@ class SellScreen extends Component {
     }
 
     onNavigatorEvent(event) { // IOS
-        if(event.id === 'modalTabSelected'){
-            this.props.navigator.showModal({
-                screen: 'Picture',
-                title:'사진선택'
-            });
-        }
+
     }
 
-    goToPicture = () => {
-        this.props.navigator.showModal({
-            screen: 'Picture',
-            title:'사진선택'
-        });
-
-    };
     render() {
 
         return (
             <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                <TouchableOpacity onPress={this.goToPicture}>
-                    <Text>상품을 판매하세요!</Text>
-                </TouchableOpacity>
+                    <Text>알림</Text>
 
             </View>
 
@@ -47,4 +33,4 @@ class SellScreen extends Component {
     }
 }
 
-export default (SellScreen = connect(mapStateToProps)(SellScreen));
+export default (NoticeScreen = connect(mapStateToProps)(NoticeScreen));

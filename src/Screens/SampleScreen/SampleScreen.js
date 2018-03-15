@@ -1,14 +1,21 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import {AsyncStorage, View, Text, FlatList, TouchableOpacity, ActivityIndicator, InteractionManager} from 'react-native';
-import { Container, Content, Icon } from 'native-base';
+import {connect} from 'react-redux';
+import {
+    AsyncStorage,
+    View,
+    Text,
+    FlatList,
+    TouchableOpacity,
+    ActivityIndicator,
+    InteractionManager
+} from 'react-native';
+import {Container, Content, Icon} from 'native-base';
 import styles from './style';
 import * as commonStyle from '../../Constants/commonStyle';
-import GoToHome from '../../../App';
+import {GoToHome} from "../index";
 
 const mapStateToProps = state => {
-    return {
-    };
+    return {};
 };
 
 class SampleScreen extends Component {
@@ -21,6 +28,7 @@ class SampleScreen extends Component {
     onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
 
     }
+
     render() {
         console.log("rendered!");
 

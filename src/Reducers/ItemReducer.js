@@ -17,6 +17,7 @@ import {
 const initialState = {
     item_id:0,
     item:null,
+    brand_name:null,
     picture:null,
     items:null,
 };
@@ -26,7 +27,8 @@ const ItemReducer  = (state = initialState, action) => {
         case START_TO_GET_ITEM:
         case SUCCEED_TO_GET_ITEM:
             return Object.assign({}, state, {
-                item:action.payload
+                item:action.payload,
+                brand_name:action.brand_name
             });
         case FAILED_TO_GET_ITEM:
 

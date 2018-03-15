@@ -22,6 +22,8 @@ const mapStateToProps = state => {
 };
 
 class BrandScreen extends Component {
+    static navigatorStyle = commonStyle.NavigationStyle;
+
     // static navigatorStyle = commonStyle.TabBarHidden;
 
     constructor(props) {

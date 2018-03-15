@@ -40,7 +40,8 @@ export const getItem = (token, id) => {
                 }
             );
             let responseJson = await response.json();
-            dispatch({type: SUCCEED_TO_GET_ITEM, payload: responseJson.item});
+            console.log(responseJson);
+            dispatch({type: SUCCEED_TO_GET_ITEM, payload: responseJson.item, brand_name:responseJson.brand_name});
             return responseJson;
         } catch (error) {
             dispatch({type: FAILED_TO_GET_ITEM, payload: {data: "NETWORK_ERROR"}});

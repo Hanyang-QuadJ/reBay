@@ -34,6 +34,7 @@ const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
 const mapStateToProps = state => {
     return {
         data: state.DefaultReducer.data,
+        recommend: state.RecommendReducer.recommend,
     };
 };
 

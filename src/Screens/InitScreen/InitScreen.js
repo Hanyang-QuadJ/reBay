@@ -6,7 +6,9 @@ import { GoToHome } from "../index";
 import { Navigation } from 'react-native-navigation';
 import * as BrandtAction from '../../Actions/BrandAction';
 import * as DefaultAction from '../../Actions/DefaultAction';
+import * as RecommendAction from '../../Actions/RecommendAction';
 import  styles from './style';
+import * as commonStyle from '../../Constants/commonStyle';
 import * as DefaultActionCreator from "../../Actions/DefaultAction";
 
 const mapStateToProps = state => {
@@ -16,10 +18,7 @@ const mapStateToProps = state => {
 };
 
 class InitScreen extends Component {
-    static navigatorStyle = {
-        navBarHidden:true
-
-    };
+    static navigatorStyle = commonStyle.NavigationStyle;
 
     constructor(props){
         super(props)
@@ -44,21 +43,18 @@ class InitScreen extends Component {
 
     goToTab = async () => {
         await this.props.dispatch(BrandtAction.getBrand());
-        this.props.dispatch(DefaultAction.defaultFetch());
-        GoToHome();
+        await AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
+            this.props.dispatch(RecommendAction.getRecommend(value));
+        });
+        await GoToHome();
     };
 
     render() {
-        console.log(this.props);
         return (
-            <View style={{backgroundColor:'white'}}>
-                <View>
-                    <Text>Init Screen</Text>
-                    <Button onPress={this.test}><Text>test</Text></Button>
-                    <Button onPress={this.goToTab}><Text>test</Text></Button>
+            <View>
 
-                </View>
             </View>
+
         )
 
     }

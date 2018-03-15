@@ -1,11 +1,26 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import {AsyncStorage, View, Text,FlatList, TouchableOpacity, ActivityIndicator, InteractionManager} from 'react-native';
+import {connect} from 'react-redux';
+import {
+    AsyncStorage,
+    View,
+    FlatList,
+    TouchableOpacity,
+    ActivityIndicator,
+    InteractionManager,
+    Image,
+} from 'react-native';
+
+import {
+    Container,
+    Content,
+    Button,
+    Text
+} from 'native-base';
+import * as commonStyle from '../../../Constants/commonStyle';
 
 
 const mapStateToProps = state => {
-    return {
-    };
+    return {};
 };
 
 class SellScreen extends Component {
@@ -17,10 +32,10 @@ class SellScreen extends Component {
     }
 
     onNavigatorEvent(event) { // IOS
-        if(event.id === 'modalTabSelected'){
+        if (event.id === 'modalTabSelected') {
             this.props.navigator.showModal({
                 screen: 'Picture',
-                title:'사진선택'
+                title: '사진선택'
             });
         }
     }
@@ -28,21 +43,23 @@ class SellScreen extends Component {
     goToPicture = () => {
         this.props.navigator.showModal({
             screen: 'Picture',
-            title:'사진선택'
+            title: '사진선택'
         });
 
     };
+
     render() {
 
         return (
-            <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                <TouchableOpacity onPress={this.goToPicture}>
-                    <Text>상품을 판매하세요!</Text>
-                </TouchableOpacity>
-
-            </View>
-
-
+            <Container>
+                <View style={{flex: 1, alignItems: 'center', justifyContent:'center'}}>
+                    <Text style={{fontSize:18, marginBottom:25}}>회원님의 상품을 판매하세요!</Text>
+                    <Image style={{width:100, height:100}} source={require('../../../Assets/photos.png')}/>
+                    <Button onPress={this.goToPicture} bordered style={{alignSelf:'auto', marginTop:25, borderColor:commonStyle.PRIMARY_COLOR}}>
+                        <Text style={{color:commonStyle.PRIMARY_COLOR}}>판매하기</Text>
+                    </Button>
+                </View>
+            </Container>
         )
     }
 }

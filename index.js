@@ -7,7 +7,7 @@ registerScreens();
 Navigation.startSingleScreenApp({
     screen: {
         screen: 'Init',
-        title: 'Welcome'
+        title: 'reBay'
     },
 
 });

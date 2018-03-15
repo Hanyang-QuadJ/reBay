@@ -36,7 +36,7 @@ export function GoToHome() {
             },
             {
                 label:'내 소식',
-                screen:'Notice',
+                screen:'Item',
                 title:'알림',
                 icon: require('../Assets/dress.png'),
 

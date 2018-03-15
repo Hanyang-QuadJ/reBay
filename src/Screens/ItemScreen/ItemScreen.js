@@ -17,11 +17,12 @@ import Swiper from 'react-native-swiper';
 import FooterButtonComponent from '../../Components/FooterButtonComponent/FooterButtonComponent';
 import * as commonStyle from '../../Constants/commonStyle';
 import FastImage from 'react-native-fast-image';
-import GoToHome from '../../../App';
 import { DotIndicator } from 'react-native-indicators';
+import { GoToHome } from "../index";
 
 const mapStateToProps = state => {
     return {
+        brand: state.ItemReducer.brand_name,
         item: state.ItemReducer.item,
         item_id: state.ItemReducer.item_id,
         picture: state.ItemReducer.picture,
@@ -49,11 +50,12 @@ class ItemScreen extends Component {
 
 
     onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
-        if (event.id = "willAppear") {
+        console.log(event);
+        if (event.id === "willAppear") {
             AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
-                this.props.dispatch(ItemAction.getItem(value, this.props.item_id))
+                this.props.dispatch(ItemAction.getItem(value, 566))
                     .then(value2 => {
-                            this.props.dispatch(ItemAction.getItemPicture(value, this.props.item_id)).then(value3 => {
+                            this.props.dispatch(ItemAction.getItemPicture(value, 566)).then(value3 => {
                                 if (value3.length === 0) {
 
                                 }
@@ -63,14 +65,15 @@ class ItemScreen extends Component {
             });
 
         }
-        else if (event.id = "goToHome") {
+        if (event.id === "goToHome") {
+            GoToHome();
 
         }
 
     }
 
     render() {
-        const {item, picture} = this.props;
+        const {item, picture, brand} = this.props;
         const stars = [];
         const emptyStars = [];
         const starLength = 5;
@@ -87,7 +90,7 @@ class ItemScreen extends Component {
         if (item != null && picture != null) {
             return (
                 <Container>
-                    <Content contentContainerStyle={{flex: 1}}>
+                    <View style={{flex: 1}}>
                         <View style={styles.userInfo}>
                             <View style={styles.userInfoContainer}>
                                 <View style={styles.thumbnailArea}>
@@ -120,13 +123,14 @@ class ItemScreen extends Component {
                         </View>
                         <View style={styles.itemInfo}>
                             <View style={styles.itemInfoContainer}>
+                                <Text style={styles.brand_name}>{brand.brand_name}</Text>
                                 <Text style={styles.item_name}>{item.item_name}</Text>
-                                <Text style={styles.item_price}>{item.price}원</Text>
+                                <Text style={styles.item_price}>￦{item.price}</Text>
                             </View>
 
                         </View>
                         <FooterButtonComponent leftText="삭제하기" rightText="수정하기"/>
-                    </Content>
+                    </View>
                 </Container>
             )
         }

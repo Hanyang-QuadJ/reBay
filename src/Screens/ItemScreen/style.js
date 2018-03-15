@@ -58,7 +58,14 @@ const style = StyleSheet.create({
         flex:1,
 
     },
+    brand_name:{
+        fontSize:18,
+        fontWeight:"800",
+        color:commonStyle.PRIMARY_COLOR
+
+    },
     item_name:{
+        marginTop:3,
         fontSize:16,
         color:commonStyle.PRIMARY_COLOR
 

@@ -44,10 +44,11 @@ class HomeScreen extends Component {
                 // buttonFontSize: 14, // Set font size for the button (can also be used in setButtons function to set different button style programatically)
                 // buttonFontWeight: '600', // Set font weight for the button (can also be used in setButtons function to set different button style programatically)
             },
-            // {
-            //     icon: <Icon name="ios-cart" size={26}/>,// for icon button, provide the local image asset name
-            //     id: 'cart'
-            // }
+            {
+                title:'Search',
+                id:'search'
+            }
+
         ]
     };
 

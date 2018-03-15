@@ -32,9 +32,9 @@ class SellFilterScreen extends Component {
     }
 
     goToCategory = () => {
+        let brand_id = this.props.brandID;
         let pic_list = this.props.pic_list;
         let item_name = this.state.item_name;
-        let brand_id = this.props.brandID;
         let price = this.state.item_price;
         let size = this.state.item_size;
 

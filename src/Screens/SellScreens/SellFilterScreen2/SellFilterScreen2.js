@@ -9,15 +9,7 @@ import {
     Input,
     Form,
     Button,
-    Badge,
-    Header,
-    Footer,
-    Title,
-    Left,
-    Right,
-    List,
-    ListItem,
-    FooterTab
+
 } from 'native-base';
 import jsonData from '../../../Constants/data'
 import FooterButton from '../../../Components/FooterButtonComponent/FooterButtonComponent'
@@ -78,7 +70,6 @@ class SellFilterScreen2 extends Component {
     };
 
     render() {
-        console.log(this.props);
         return (
             <Container style={{backgroundColor: 'white'}}>
                 <Content contentContainerStyle={{flex:1}}>

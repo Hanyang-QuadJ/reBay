@@ -24,6 +24,7 @@ const mapStateToProps = state => {
 };
 
 class PictureScreen extends Component {
+    static navigatorStyle = commonStyle.NavigationStyle;
     static navigatorButtons = {
         leftButtons: [
             {

@@ -190,47 +190,47 @@ class HomeScreen extends Component {
                                         scrollEventThrottle={16}
                                         onScroll={(event) => {
                                             const position = event.nativeEvent.contentOffset.y;
-                                            if (position >= this.state.man && position <= this.state.man + 10) {
+                                            if (position >= this.state.man && position <= this.state.man + 50) {
                                                 this.handleRoute2(0)
                                             }
                                             else if (position >= this.state.woman &&
-                                                position <= this.state.woman + 10) {
+                                                position <= this.state.woman + 50) {
                                                 this.handleRoute2(1)
                                             }
                                             else if (position >= this.state.manShoe &&
-                                                position <= this.state.manShoe + 10) {
+                                                position <= this.state.manShoe + 50) {
                                                 this.handleRoute2(2)
                                             }
                                             else if (position >= this.state.womanShoe &&
-                                                position <= this.state.womanShoe + 10) {
+                                                position <= this.state.womanShoe + 50) {
                                                 this.handleRoute2(3)
                                             }
                                             else if (position >= this.state.bag &&
-                                                position <= this.state.bag + 10) {
+                                                position <= this.state.bag + 50) {
                                                 this.handleRoute2(4)
                                             }
                                             else if (position >= this.state.fashion &&
-                                                position <= this.state.fashion + 10) {
+                                                position <= this.state.fashion + 50) {
                                                 this.handleRoute2(5)
                                             }
                                             else if (position >= this.state.purse &&
-                                                position <= this.state.purse + 10) {
+                                                position <= this.state.purse + 50) {
                                                 this.handleRoute2(6)
                                             }
                                             else if (position >= this.state.ring &&
-                                                position <= this.state.ring + 10) {
+                                                position <= this.state.ring + 50) {
                                                 this.handleRoute2(7)
                                             }
                                             else if (position >= this.state.cosmetic &&
-                                                position <= this.state.cosmetic + 10) {
+                                                position <= this.state.cosmetic + 50) {
                                                 this.handleRoute2(8)
                                             }
                                             else if (position >= this.state.glasses &&
-                                                position <= this.state.glasses + 10) {
+                                                position <= this.state.glasses + 50) {
                                                 this.handleRoute2(9)
                                             }
                                             else if (position >= this.state.watch &&
-                                                position <= this.state.watch + 10) {
+                                                position <= this.state.watch + 50) {
                                                 this.handleRoute2(10)
                                             }
 

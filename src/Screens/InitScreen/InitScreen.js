@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import {Button} from 'native-base';
 import { GoToHome } from "../index";
 import { Navigation } from 'react-native-navigation';
-import * as BrandtAction from '../../Actions/BrandAction';
+import * as BrandAction from '../../Actions/BrandAction';
 import * as DefaultAction from '../../Actions/DefaultAction';
 import * as RecommendAction from '../../Actions/RecommendAction';
 import  styles from './style';
 import * as commonStyle from '../../Constants/commonStyle';
 import * as DefaultActionCreator from "../../Actions/DefaultAction";
+import FastImage from 'react-native-fast-image';
 
 const mapStateToProps = state => {
     return {
@@ -42,8 +43,8 @@ class InitScreen extends Component {
 
 
     goToTab = async () => {
-        await this.props.dispatch(BrandtAction.getBrand());
-        AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
+        await this.props.dispatch(BrandAction.getBrand());
+        await AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
             this.props.dispatch(RecommendAction.getRecommend(value)).then(value2 => {
                 GoToHome();
             });

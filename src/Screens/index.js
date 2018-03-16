@@ -1,6 +1,7 @@
-import { Navigation } from 'react-native-navigation';
-import { Platform } from 'react-native'
+import {Navigation} from 'react-native-navigation';
+import {Platform} from 'react-native'
 import * as commonStyle from '../Constants/commonStyle'
+
 export default commonStyle;
 
 const icons = Platform.select({
@@ -8,6 +9,59 @@ const icons = Platform.select({
     android: require('../Assets/dress.png')
 
 });
+
+export const Tab = {
+    route: [
+        {
+            name: "남성의류",
+            icon: require('../Assets/dress.png')
+        },
+        {
+            name: "여성의류",
+            icon: require('../Assets/dress.png')
+        },
+        {
+            name: "남성슈즈",
+            icon: require('../Assets/dress.png')
+        },
+        {
+            name: "여성슈즈",
+            icon: require('../Assets/dress.png')
+        },
+        {
+            name: "가방",
+            icon: require('../Assets/dress.png')
+        },
+        {
+            name: "패션잡화",
+            icon: require('../Assets/dress.png')
+        },
+        {
+            name: "지갑/벨트",
+            icon: require('../Assets/dress.png')
+        },
+        {
+            name: "악세사리",
+            icon: require('../Assets/dress.png')
+        },
+        {
+            name: "화장품/향수",
+            icon: require('../Assets/dress.png')
+        },
+        {
+            name: "선글라스/안경",
+            icon: require('../Assets/dress.png')
+        },
+        {
+            name: "시계",
+            icon: require('../Assets/dress.png')
+        }
+
+
+    ]
+
+};
+
 
 export function GoToHome() {
     Navigation.startTabBasedApp({
@@ -27,32 +81,32 @@ export function GoToHome() {
                 title: '구매하기'
             },
             {
-                label:'판매하기',
-                screen:'Sell',
-                title:'판매하기',
+                label: '판매하기',
+                screen: 'Sell',
+                title: '판매하기',
                 icon: require('../Assets/dress.png'),
 
-                modal:true
+                modal: true
             },
             {
-                label:'내 소식',
-                screen:'Notice',
-                title:'알림',
+                label: '내 소식',
+                screen: 'Notice',
+                title: '알림',
                 icon: require('../Assets/dress.png'),
 
             },
             {
-                label:'마이페이지',
-                screen:'Profile',
-                title:'마이페이지',
+                label: '마이페이지',
+                screen: 'Profile',
+                title: '마이페이지',
                 icon: require('../Assets/dress.png'),
 
             }
         ],
-        tabsStyle:{
+        tabsStyle: {
             tabBarSelectedButtonColor: commonStyle.PRIMARY_COLOR,
         },
-        appStyle:{
+        appStyle: {
             tabBarSelectedButtonColor: commonStyle.PRIMARY_COLOR,
             forceTitlesDisplay: true,
         }

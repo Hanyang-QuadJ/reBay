@@ -1,0 +1,88 @@
+{
+  "route": [
+    {
+      "name":"남성의류",
+      "index":0,
+      "scroll":0
+
+    },
+    {
+      "name":"여성의류",
+      "index":1,
+      "scroll":0
+
+
+
+    },
+    {
+      "name":"남성슈즈",
+      "index":2,
+      "scroll":0
+
+
+
+    },
+    {
+      "name":"여성슈즈",
+      "index":3,
+      "scroll":0
+
+
+
+    },
+    {
+      "name":"가방",
+      "index":4,
+      "scroll":0
+
+
+
+    },
+    {
+      "name":"패션잡화",
+      "index":5,
+      "scroll":0
+
+
+
+    },
+    {
+      "name":"지갑/벨트",
+      "index":6,
+      "scroll":0
+
+
+
+    },
+    {
+      "name":"악세사리",
+      "index":7,
+      "scroll":0
+
+
+
+    },
+    {
+      "name":"화장품/향수",
+      "index":8,
+      "scroll":0
+
+
+
+    },
+    {
+      "name":"선글라스/안경",
+      "index":9,
+      "scroll":0
+
+
+
+    },
+    {
+      "name":"시계",
+      "index":10,
+      "scroll":0
+
+    }
+  ]
+}

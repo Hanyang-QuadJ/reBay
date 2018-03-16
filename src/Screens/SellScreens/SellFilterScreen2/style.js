@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
         height:40
 
     },
+
     label:{
         marginLeft:7,
         color:commonStyle.PRIMARY_COLOR

@@ -1,34 +1,11 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import commonStyle from '../../index';
+const window = Dimensions.get('window');
 const style = StyleSheet.create({
     container:{
 
     },
-    wrapper:{
-        height:180,
-    },
-    slide1: {
-        flex:1,
-        backgroundColor: '#4c586f',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    slide2: {
-        flex:1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#97CAE5',
-    },
-    slide3: {
-        flex:1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#92BBD9',
-    },
-    image:{
-        resizeMode: 'contain',
-        width:375
-    },
+
     activeTabStyle: {
 
     },
@@ -42,6 +19,55 @@ const style = StyleSheet.create({
     tabUnderLine:{
         height:2,
         backgroundColor:commonStyle.PRIMARY_COLOR
+    },
+    tabBar:{
+        height:45,
+        paddingTop:5,
+        flexDirection:'row',
+        backgroundColor:'white',
+        paddingBottom:5,
+
+    },
+    tabBarContainer:{
+        flex:1,
+        flexWrap:'nowrap'
+    },
+    tab:{
+        width:58,
+        flexDirection:'column',
+        flex:1,
+        alignItems:'center',
+        justifyContent:'center',
+    },
+    tabBarImage:{
+        width:23,
+        height:23
+    },
+    tabBarImageO:{
+        width:23,
+        height:23,
+        tintColor:commonStyle.THIRD_COLOR
+    },
+    tabBarText:{
+        fontSize:10,
+        marginTop:2
+    },
+    tabBarTextO:{
+        fontSize:10,
+        marginTop:2,
+        color:commonStyle.THIRD_COLOR
+    },
+
+    tabContainer:{
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    itemLabel:{
+        fontSize:18,
+        fontWeight:"800",
+        marginTop:20,
+        marginLeft:30
     }
 
 });

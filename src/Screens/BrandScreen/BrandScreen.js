@@ -8,7 +8,7 @@ import {
     ActivityIndicator,
     InteractionManager
 } from 'react-native';
-import {Container, Text, Content, Button, Item, Input, ListItem} from 'native-base';
+import {Container, Text, Content, Button, Item, Input, ListItem, List} from 'native-base';
 import FooterButtonComponent from '../../Components/FooterButtonComponent/FooterButtonComponent';
 
 
@@ -85,11 +85,13 @@ class BrandScreen extends Component {
                     <View style={styles.searchBar}>
                         <Input style={styles.itemStyle} placeholder='브랜드를 검색하세요' onChangeText={(text) => this.filterBySearchBar(text)}/>
                     </View>
-                    <FlatList
-                        keyExtractor={this._keyExtractor}
-                        data={this.state.currentBrand}
-                        renderItem={this._renderItem}
-                    />
+                    <List>
+                        <FlatList
+                            keyExtractor={this._keyExtractor}
+                            data={this.state.currentBrand}
+                            renderItem={this._renderItem}
+                        />
+                    </List>
                 </Content>
                 <FooterButtonComponent leftText="임시저장" rightText="다음으로"/>
             </Container>

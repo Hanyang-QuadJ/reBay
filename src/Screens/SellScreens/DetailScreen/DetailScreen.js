@@ -81,13 +81,27 @@ class DetailScreen extends Component {
             refund,
             content,
             sub_content,
-            tags)).then(value => {
-                this.setState({posting:false})
+            tags)).then(item_id => {
+            AsyncStorage.getItem("ACCESS_TOKEN").then(token => {
+                this.props.dispatch(ItemAction.getItem(token, item_id))
+                    .then(item => {
+                            this.props.dispatch(ItemAction.getItemPicture(token, item_id)).then(picture => {
+                                this.setState({posting:false});
+                                this.props.navigator.push({
+                                    screen:"Item",
+                                    title:item_name,
+                                    passProps:{
+                                        item:item,
+                                        picture:picture
+
+                                    }
+                                })
+                            })
+                        }
+                    )
+            });
         });
-        await this.props.navigator.push({
-            screen:"Item",
-            title:item_name
-        })
+
 
 
     };

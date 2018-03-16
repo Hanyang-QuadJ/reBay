@@ -178,18 +178,6 @@ class HomeTabScreen extends Component {
         switch (route.key) {
             case 'first':
                 return <View style={{flex: 1}}>
-                    <Animated.View style={{
-
-                        transform: [{translateY}]
-                    }}>
-                        <View style={{
-                            zIndex: -3,
-                            backgroundColor: "green",
-                        }}>
-
-                        </View>
-                    </Animated.View>
-
                     <AnimatedScrollView scrollEventThrottle={1}
                                         contentContainerStyle={Platform.OS === 'ios' ? null : {paddingTop: 170}}
                                         contentInset={{top: 170}}
@@ -198,16 +186,13 @@ class HomeTabScreen extends Component {
                                                 refreshing={this.state.refreshing}
                                                 progressViewOffset={170}
                                                 onRefresh={() => this.pullToRefresh()}/>
-
                                         }
                                         ref={c => (this.scrollView = c)}
                                         automaticallyAdjustContentInsets={false}
                                         onScroll={Animated.event(
                                             [{nativeEvent: {contentOffset: {y: this.state.scroll}}}],
                                             {useNativeDriver: true}
-                                        )}
-
-                    >
+                                        )}>
                         <View style={styles.itemList}>
                             {photo.data.map((data, index)=>{
                                 if((index+1) % 2 !== 0){
@@ -238,11 +223,7 @@ class HomeTabScreen extends Component {
                                 }
                             })}
                         </View>
-
-
                     </AnimatedScrollView>
-
-
                 </View>;
             case 'second':
                 return <View style={{backgroundColor: '#673ab7', flex: 1}}/>;
@@ -267,8 +248,6 @@ class HomeTabScreen extends Component {
     };
 
     render() {
-        console.log(this.props);
-
         return (
             <TabViewAnimated
                 style={styles.container}

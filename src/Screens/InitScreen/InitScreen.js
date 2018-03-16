@@ -43,10 +43,11 @@ class InitScreen extends Component {
 
     goToTab = async () => {
         await this.props.dispatch(BrandtAction.getBrand());
-        await AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
-            this.props.dispatch(RecommendAction.getRecommend(value));
+        AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
+            this.props.dispatch(RecommendAction.getRecommend(value)).then(value2 => {
+                GoToHome();
+            });
         });
-        await GoToHome();
     };
 
     render() {

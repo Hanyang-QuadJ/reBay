@@ -22,7 +22,8 @@ const initialLayout = {
 const mapStateToProps = state => {
     return {
         data: state.DefaultReducer.data,
-        loading: state.DefaultReducer.loading
+        loading: state.DefaultReducer.loading,
+        recommend:state.RecommendReducer.recommend
     };
 };
 
@@ -109,7 +110,7 @@ class HomeScreen extends Component {
     _renderScene = ({route}) => {
         switch (route.key) {
             case 'first':
-                return <HomeTabScreen navigator={this.props.navigator}/>;
+                return <HomeTabScreen navigator={this.props.navigator} recommend={this.props.recommend}/>;
             case 'second':
                 return <View style={{backgroundColor: '#673ab7', flex: 1}}/>;
             default:

@@ -40,6 +40,13 @@ export function GoToHome() {
                 title:'알림',
                 icon: require('../Assets/dress.png'),
 
+            },
+            {
+                label:'마이페이지',
+                screen:'Profile',
+                title:'마이페이지',
+                icon: require('../Assets/dress.png'),
+
             }
         ],
         tabsStyle:{

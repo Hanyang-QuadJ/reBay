@@ -21,6 +21,7 @@ export const getRecommend = (token) => {
             let responseJson = await response.json();
             // console.log(responseJson);
             await dispatch({type: SUCCEED_TO_GET_RECOMMEND, payload: responseJson});
+            return responseJson;
 
         } catch (error) {
             dispatch({type: FAILED_TO_GET_RECOMMEND, payload: {data: "NETWORK_ERROR"}});

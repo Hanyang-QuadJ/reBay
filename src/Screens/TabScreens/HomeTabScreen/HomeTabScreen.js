@@ -34,7 +34,6 @@ const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
 const mapStateToProps = state => {
     return {
         data: state.DefaultReducer.data,
-        recommend: state.RecommendReducer.recommend,
     };
 };
 
@@ -88,6 +87,7 @@ class HomeTabScreen extends Component {
     }
 
     componentDidMount() {
+        console.log("스쿠롤");
 
         if (Platform.OS === 'ios') {
             this.scrollView.getNode().scrollTo({animated: false, y: -170});

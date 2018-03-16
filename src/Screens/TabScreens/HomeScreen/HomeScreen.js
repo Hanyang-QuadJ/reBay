@@ -139,21 +139,33 @@ class HomeScreen extends Component {
         }
         else if (index === 5) {
             this.scrollView.getNode().scrollTo({animated: true, y: this.state.fashion});
+            this.h_scrollView.scrollTo({animated: true, x: 0});
+
         }
         else if (index === 6) {
             this.scrollView.getNode().scrollTo({animated: true, y: this.state.purse});
+            this.h_scrollView.scrollTo({animated: true, x: 30});
+
         }
         else if (index === 7) {
             this.scrollView.getNode().scrollTo({animated: true, y: this.state.ring});
+            this.h_scrollView.scrollTo({animated: true, x: 90});
+
         }
         else if (index === 8) {
             this.scrollView.getNode().scrollTo({animated: true, y: this.state.cosmetic});
+            this.h_scrollView.scrollTo({animated: true, x: 150});
+
         }
         else if (index === 9) {
             this.scrollView.getNode().scrollTo({animated: true, y: this.state.glasses});
+            this.h_scrollView.scrollTo({animated: true, x: 210});
+
         }
         else if (index === 10) {
             this.scrollView.getNode().scrollTo({animated: true, y: this.state.watch});
+            this.h_scrollView.scrollTo({animated: true, x: 270});
+
         }
     };
 

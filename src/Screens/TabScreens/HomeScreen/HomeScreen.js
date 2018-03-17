@@ -17,7 +17,6 @@ import {Icon, Button, Text} from 'native-base';
 import photo from '../../../Constants/photo';
 import SwiperComponent from '../../../Components/SwiperComponent/SwiperComponent';
 import CategoryItem from '../../../Components/CategoryItem/CategoryItem';
-const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
 import {connect} from 'react-redux';
 import {TabViewAnimated, TabBar, TabViewPagerPan, TabViewPagerScroll} from 'react-native-tab-view';
 import HomeTabScreen from '../HomeTabScreen/HomeTabScreen';
@@ -95,8 +94,13 @@ class HomeScreen extends Component {
     onNavigatorEvent(event) { // IOS
 
     }
+    componentDidMount(){
+
+
+
+    }
     //TabView Functions
-    _handleIndexChange = async (index) => {
+    _handleIndexChange = (index) => {
         this.setState({index});
     };
     _renderPager = (props) => {
@@ -123,48 +127,50 @@ class HomeScreen extends Component {
     handleRoute = (index) => {
         this.setState({currentIndex: index});
         if (index === 0) {
-            this.scrollView.getNode().scrollTo({animated: true, y: this.state.man});
+            this.scrollView.scrollTo({animated: true, y: this.state.man});
         }
         else if (index === 1) {
-            this.scrollView.getNode().scrollTo({animated: true, y: this.state.woman});
+            this.scrollView.scrollTo({animated: true, y: this.state.woman});
         }
         else if (index === 2) {
-            this.scrollView.getNode().scrollTo({animated: true, y: this.state.manShoe});
+            this.scrollView.scrollTo({animated: true, y: this.state.manShoe});
         }
         else if (index === 3) {
-            this.scrollView.getNode().scrollTo({animated: true, y: this.state.womanShoe});
+            this.scrollView.scrollTo({animated: true, y: this.state.womanShoe});
         }
         else if (index === 4) {
-            this.scrollView.getNode().scrollTo({animated: true, y: this.state.bag});
-        }
-        else if (index === 5) {
-            this.scrollView.getNode().scrollTo({animated: true, y: this.state.fashion});
+            this.scrollView.scrollTo({animated: true, y: this.state.bag});
             this.h_scrollView.scrollTo({animated: true, x: 0});
 
         }
-        else if (index === 6) {
-            this.scrollView.getNode().scrollTo({animated: true, y: this.state.purse});
+        else if (index === 5) {
+            this.scrollView.scrollTo({animated: true, y: this.state.fashion});
             this.h_scrollView.scrollTo({animated: true, x: 30});
 
         }
-        else if (index === 7) {
-            this.scrollView.getNode().scrollTo({animated: true, y: this.state.ring});
+        else if (index === 6) {
+            this.scrollView.scrollTo({animated: true, y: this.state.purse});
             this.h_scrollView.scrollTo({animated: true, x: 90});
 
         }
-        else if (index === 8) {
-            this.scrollView.getNode().scrollTo({animated: true, y: this.state.cosmetic});
+        else if (index === 7) {
+            this.scrollView.scrollTo({animated: true, y: this.state.ring});
             this.h_scrollView.scrollTo({animated: true, x: 150});
 
         }
-        else if (index === 9) {
-            this.scrollView.getNode().scrollTo({animated: true, y: this.state.glasses});
+        else if (index === 8) {
+            this.scrollView.scrollTo({animated: true, y: this.state.cosmetic});
             this.h_scrollView.scrollTo({animated: true, x: 210});
 
         }
-        else if (index === 10) {
-            this.scrollView.getNode().scrollTo({animated: true, y: this.state.watch});
+        else if (index === 9) {
+            this.scrollView.scrollTo({animated: true, y: this.state.glasses});
             this.h_scrollView.scrollTo({animated: true, x: 270});
+
+        }
+        else if (index === 10) {
+            this.scrollView.scrollTo({animated: true, y: this.state.watch});
+            this.h_scrollView.scrollTo({animated: true, x: 330});
 
         }
     };
@@ -197,12 +203,12 @@ class HomeScreen extends Component {
         switch (route.key) {
             case 'first':
                 return (
-                    <AnimatedScrollView stickyHeaderIndices={[1]}
+                    <ScrollView stickyHeaderIndices={[1]}
                                         useNativeDriver={true}
                                         scrollEventThrottle={16}
                                         onScroll={(event) => {
                                             const position = event.nativeEvent.contentOffset.y;
-                                            if (position >= this.state.man && position <= this.state.man + 50) {
+                                            if (position >= 0 && position <= this.state.man + 50) {
                                                 this.handleRoute2(0)
                                             }
                                             else if (position >= this.state.woman &&
@@ -281,6 +287,7 @@ class HomeScreen extends Component {
                         <View ref={view => {
                             this.man = view;
                         }}
+                              collapsable={false}
                               onLayout={({nativeEvent}) => {
                                   this.man.measure((x, y, width, height, pageX, pageY) => {
                                       this.setState({man: y - 45})
@@ -293,6 +300,7 @@ class HomeScreen extends Component {
                         <View ref={view => {
                             this.woman = view;
                         }}
+                              collapsable={false}
                               onLayout={({nativeEvent}) => {
                                   this.woman.measure((x, y, width, height, pageX, pageY) => {
                                       this.setState({woman: y - 45})
@@ -369,7 +377,8 @@ class HomeScreen extends Component {
                                   this.ring.measure((x, y, width, height, pageX, pageY) => {
                                       this.setState({ring: y - 45})
                                   })
-                              }}>
+                              }}
+                              renderToHardwareTextureAndroid={true}>
                             <Text style={styles.itemLabel}>악세사리</Text>
                         </View>
                         <CategoryItem item={this.props.recommend}/>
@@ -409,7 +418,7 @@ class HomeScreen extends Component {
                             <Text style={styles.itemLabel}>시계</Text>
                         </View>
                         <CategoryItem item={this.props.recommend}/>
-                    </AnimatedScrollView>
+                    </ScrollView>
 
                 );
             case 'second':
@@ -421,6 +430,7 @@ class HomeScreen extends Component {
 
 
     render() {
+
 
         return (
             <TabViewAnimated

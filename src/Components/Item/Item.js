@@ -5,6 +5,7 @@ import styles from './style';
 import {connect} from "react-redux";
 import Swiper from 'react-native-swiper';
 import * as commonStyle from "../../Constants/commonStyle";
+import FastImage from 'react-native-fast-image';
 
 const mapStateToProps = state => {
     return {};

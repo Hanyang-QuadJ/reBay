@@ -94,6 +94,8 @@ class PictureScreen extends Component {
             cancelButtonTitle: "취소",
             takePhotoButtonTitle: "사진촬영",
             chooseFromLibraryButtonTitle: "앨범에서 선택",
+            quality:0.3,
+            allowsEditing:true
 
         };
         ImagePicker.showImagePicker(options, (response) => {

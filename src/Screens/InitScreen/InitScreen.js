@@ -45,8 +45,14 @@ class InitScreen extends Component {
     goToTab = async () => {
         await this.props.dispatch(BrandAction.getBrand());
         await AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
-            this.props.dispatch(RecommendAction.getRecommend(value)).then(value2 => {
-                GoToHome();
+            this.props.dispatch(RecommendAction.getRecommend(value)).then(
+                async value2 => {
+                let imageArray = [];
+                for(let i = 0; i<value2.length; i++){
+                    imageArray.push({uri:value2[i].image_url});
+                }
+                await FastImage.preload(imageArray);
+                await GoToHome();
             });
         });
     };

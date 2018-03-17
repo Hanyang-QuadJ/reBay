@@ -9,7 +9,7 @@ export const getRecommend = (token) => {
         try {
             dispatch({type: START_TO_GET_RECOMMEND});
             let response = await fetch(
-                ServerEndPoint2 + "api/item/recent", {
+                ServerEndPoint2 + "api/brand/recent", {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',

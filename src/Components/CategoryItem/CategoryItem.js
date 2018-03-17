@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, TouchableWithoutFeedback } from 'react-native';
 import { Container, Input, Left, Body, Right, Button, Icon, Title } from 'native-base';
 import  styles  from './style';
 import {connect} from "react-redux";

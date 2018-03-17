@@ -1,48 +1,78 @@
-import React, { Component } from 'react';
-import { View, TouchableWithoutFeedback } from 'react-native';
-import { Container, Input, Left, Body, Right, Button, Icon, Title } from 'native-base';
-import  styles  from './style';
+import React, {Component} from 'react';
+import {View, TouchableWithoutFeedback} from 'react-native';
+import {Container, Input, Left, Body, Right, Button, Icon, Title} from 'native-base';
+import styles from './style';
 import {connect} from "react-redux";
 import FastImage from "react-native-fast-image";
-import { Text } from 'native-base';
+import {Text} from 'native-base';
+
 const mapStateToProps = state => {
-    return {
-    };
+    return {};
 };
+
 class CategoryItem extends Component {
 
 
-    constructor(props){
+    constructor(props) {
         super(props);
     }
+
+    goToItem = (item_id, brand_name, item_name, price) => {
+        console.log(this.props);
+        this.props.navigator.push({
+            screen: this.props.screen,
+            passProps: {
+                item_id:item_id,
+                brand_name:brand_name,
+                item_name:item_name,
+                price:price
+            }
+        })
+
+    };
+
     render() {
         return (
             <View style={styles.itemList}>
                 {this.props.item.map((data, index) => {
                     if ((index + 1) % 2 !== 0) {
                         return (
-                            <View style={styles.itemLeft} key={index}>
-                                <FastImage style={styles.itemImage}
-                                           resizeMode={FastImage.resizeMode.cover}
-                                           source={{uri: data.image_url}}/>
-                                <Text style={styles.item_status}>{data.item_status}</Text>
-                                <Text style={styles.item_brand}>PRADA</Text>
-                                <Text style={styles.item_name}>{data.item_name}</Text>
-                                <Text style={styles.item_price}>￦{data.price}</Text>
-                            </View>
+                            <TouchableWithoutFeedback key={index} onPress={() => this.goToItem(
+                                data.item_id,
+                                data.brand_name,
+                                data.item_name,
+                                data.price
+                            )}>
+                                <View style={styles.itemLeft}>
+                                    <FastImage style={styles.itemImage}
+                                               resizeMode={FastImage.resizeMode.cover}
+                                               source={{uri: data.image_url}}/>
+                                    <Text style={styles.item_status}>{data.item_status}</Text>
+                                    <Text style={styles.item_brand}>{data.brand_name}</Text>
+                                    <Text style={styles.item_name}>{data.item_name}</Text>
+                                    <Text style={styles.item_price}>￦{data.price}</Text>
+                                </View>
+                            </TouchableWithoutFeedback>
                         )
                     }
                     else {
                         return (
-                            <View style={styles.itemRight} key={index}>
-                                <FastImage style={styles.itemImage}
-                                           resizeMode={FastImage.resizeMode.cover}
-                                           source={{uri: data.image_url}}/>
-                                <Text style={styles.item_status}>{data.item_status}</Text>
-                                <Text style={styles.item_brand}>PRADA</Text>
-                                <Text style={styles.item_name}>{data.item_name}</Text>
-                                <Text style={styles.item_price}>￦{data.price}</Text>
-                            </View>
+                            <TouchableWithoutFeedback key={index} onPress={() => this.goToItem(
+                                data.item_id,
+                                data.brand_name,
+                                data.item_name,
+                                data.price
+                            )}>
+                                <View style={styles.itemRight}>
+                                    <FastImage style={styles.itemImage}
+                                               resizeMode={FastImage.resizeMode.cover}
+                                               source={{uri: data.image_url}}/>
+                                    <Text style={styles.item_status}>{data.item_status}</Text>
+                                    <Text style={styles.item_brand}>{data.brand_name}</Text>
+                                    <Text style={styles.item_name}>{data.item_name}</Text>
+                                    <Text style={styles.item_price}>￦{data.price}</Text>
+                                </View>
+                            </TouchableWithoutFeedback>
                         )
                     }
                 })}

@@ -117,11 +117,12 @@ class HomeScreen extends Component {
         )
     };
 
-    goItem = () => {
-        this.props.navigator.showModal({
-            screen: 'Picture',
-            animationType: 'slide-up'
+    goToItem = () => {
+        this.props.navigator.push({
+            screen:'HomeItem',
+
         })
+
     };
     //Scrollable Tab Functions
     handleRoute = (index) => {
@@ -295,7 +296,7 @@ class HomeScreen extends Component {
                               }}>
                             <Text style={styles.itemLabel}>남성의류</Text>
                         </View>
-                        <CategoryItem item={this.props.recommend}/>
+                        <CategoryItem item={this.props.recommend} screen="HomeItem" navigator={this.props.navigator}/>
 
                         <View ref={view => {
                             this.woman = view;

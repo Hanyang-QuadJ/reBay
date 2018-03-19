@@ -49,9 +49,11 @@ class BuyScreen extends Component {
     _renderItem = ({item}) => (
         <ListItem button={true} onPress={() => {
             this.props.navigator.push({
-                    screen: 'SellFilter',
+                    screen: 'Buy2',
                     title: '상품정보',
-
+                    passProps: {
+                        selectedBrand:item.brand_name
+                    }
                 }
             )
         }}>

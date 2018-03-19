@@ -9,7 +9,8 @@ const style = StyleSheet.create({
     itemStyle:{
         marginHorizontal:15,
         height:35,
-    }
+    },
+
 
 
 });

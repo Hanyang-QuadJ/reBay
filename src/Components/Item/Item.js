@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import Swiper from 'react-native-swiper';
 import * as commonStyle from "../../Constants/commonStyle";
 import FastImage from 'react-native-fast-image';
+import {DotIndicator} from 'react-native-indicators';
 
 const mapStateToProps = state => {
     return {};
@@ -32,7 +33,7 @@ class Item extends Component {
                                                 style={{fontSize: 12, color: commonStyle.PRIMARY_COLOR}}/></View>);
         }
         return (
-            <View style={{flex:1}}>
+            <View style={{flex: 1}}>
                 <View style={styles.userInfo}>
                     <View style={styles.userInfoContainer}>
                         <View style={styles.thumbnailArea}>
@@ -40,7 +41,9 @@ class Item extends Component {
                         </View>
                         <View style={styles.userInfoArea}>
                             <Text style={styles.userInfoText}>
-                                {this.props.username}
+                                {this.props.username === null ? <Text>******</Text> :
+                                    this.props.username
+                                }
                             </Text>
                             <View style={{flexDirection: 'row'}}>
                                 {stars}
@@ -51,15 +54,20 @@ class Item extends Component {
                 </View>
                 <View style={styles.pictureArea}>
                     <Swiper style={styles.wrapper} showsButtons={false}>
-                        {this.props.picture.map((picture, index) => {
-                            return (
-                                <View key={picture.id} style={styles.slide1}>
-                                    <FastImage style={styles.image}
-                                               source={{uri: picture.image_url}}
-                                    />
-                                </View>
-                            )
-                        })}
+                        {this.props.picture === undefined || this.props.picture === null ?
+                            <View style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
+                                <DotIndicator color={commonStyle.PRIMARY_COLOR}/>
+                            </View> :
+                            this.props.picture.map((picture, index) => {
+                                return (
+                                    <View key={picture.id} style={styles.slide1}>
+                                        <FastImage style={styles.image}
+                                                   source={{uri: picture.image_url}}
+                                        />
+                                    </View>
+                                )
+                            })
+                        }
                     </Swiper>
                 </View>
                 <View style={styles.itemInfo}>

@@ -19,6 +19,7 @@ import DetailScreen from './src/Screens/SellScreens/DetailScreen/DetailScreen';
 import ItemScreen from './src/Screens/ItemScreen/ItemScreen';
 import NoticeScreen from "./src/Screens/TabScreens/NoticeScreen/NoticeScreen";
 import ProfileScreen from './src/Screens/TabScreens/ProfileScreen/ProfileScreen';
+import HomeItemScreen from './src/Screens/HomeItemScreen/HomeItemScreen';
 
 
 
@@ -73,11 +74,17 @@ export default function registerScreens(){
     Navigation.registerComponent('Item', () => ItemScreen,
         store,
         Provider);
+
     //BuyScreens
     Navigation.registerComponent('Buy2', () => BuyScreen2,
         store,
         Provider);
     Navigation.registerComponent('Buy3', () => BuyScreen3,
+        store,
+        Provider);
+
+    Navigation.registerComponent('HomeItem', () => HomeItemScreen,
+
         store,
         Provider);
 }

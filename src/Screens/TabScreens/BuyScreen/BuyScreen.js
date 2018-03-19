@@ -69,7 +69,6 @@ class BuyScreen extends Component {
                     <View style={styles.searchBar}>
                         <Input style={styles.itemStyle} placeholder='브랜드를 검색하세요' onChangeText={(text) => this.filterBySearchBar(text)}/>
                     </View>
-
                     <FlatList
                         keyExtractor={this._keyExtractor}
                         data={this.state.currentBrand}

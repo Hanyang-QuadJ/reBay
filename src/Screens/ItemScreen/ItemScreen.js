@@ -61,7 +61,7 @@ class ItemScreen extends Component {
     render() {
         const { brand, item, picture } = this.props;
             return (
-                <Container>
+                <Container style={{backgroundColor: 'white'}}>
                     <View style={{flex: 1}}>
                         <Item brand={brand.brand_name}
                               username={item.username}

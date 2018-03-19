@@ -1,17 +1,18 @@
 import { StyleSheet } from 'react-native';
 import  commonStyle from '../index'
 const styles = StyleSheet.create({
+
+
     searchBar:{
-        flex:0.1,
         flexDirection:"row",
         alignItems:"center",
         justifyContent:"center",
         marginHorizontal:15,
-
+        marginBottom:20,
     },
     title:{
-        flex:0.4,
-        marginVertical:30,
+
+        paddingVertical:30,
         justifyContent:'center',
 
     },
@@ -31,8 +32,12 @@ const styles = StyleSheet.create({
         marginHorizontal:10,
 
     },
+
     brandList:{
         borderColor:"transparent",
+    },
+    listArea:{
+
     }
 
 

@@ -4,12 +4,20 @@ import {
     AsyncStorage,
     View,
     FlatList,
+    Animated,
     TouchableOpacity,
     ActivityIndicator,
-    InteractionManager
+    InteractionManager,
+    KeyboardAvoidingView,
+    RefreshControl,
 } from 'react-native';
 import {Container, Text, Content, Button, Item, Input, ListItem, List, Icon} from 'native-base';
 import FooterButtonComponent from '../../Components/FooterButtonComponent/FooterButtonComponent';
+
+const HEADER_HEIGHT = 200;
+const COLLAPSED_HEIGHT = 20;
+const SCROLLABLE_HEIGHT = HEADER_HEIGHT - COLLAPSED_HEIGHT;
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
 
 import styles from './style';
@@ -29,8 +37,10 @@ class BrandScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentBrand: this.props.brand.brands,
-            inputStatus:false
+            currentBrand: [],
+            inputStatus: false,
+            refreshing:false,
+            scroll: new Animated.Value(0) ,
         };
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
@@ -42,11 +52,11 @@ class BrandScreen extends Component {
     filterBySearchBar(text) {
         console.log(text);
         const brands = [];
-        if(text.length > 0){
-            this.setState({inputStatus:true})
+        if (text.length > 0) {
+            this.setState({inputStatus: true})
         }
-        else{
-            this.setState({inputStatus:false})
+        else {
+            this.setState({inputStatus: false})
         }
 
         if (this.props.brand != null) {
@@ -68,13 +78,13 @@ class BrandScreen extends Component {
 
 
     };
-    _renderItem2= ({}) => {
+    _renderItem2 = ({}) => {
 
     };
 
     _renderItem = ({item}) => (
 
-        <ListItem  style={styles.brandList} button={true} onPress={() => {
+        <ListItem style={styles.brandList} button={true} onPress={() => {
             this.props.navigator.push({
                     screen: 'SellFilter',
                     title: '상품정보',
@@ -90,37 +100,53 @@ class BrandScreen extends Component {
         </ListItem>
     );
     _renderHeader = () => {
-        return (
-            <View style={{zIndex:200, backgroundColor:"white"}}>
-                <View style={styles.title}>
-                    <Text style={styles.title__text}>어떤</Text>
-                    <Text style={styles.title__text}>브랜드를</Text>
-                    <Text style={styles.title__text}>찾고 계신가요?</Text>
-                </View>
-                <View style={styles.searchBar}>
-                    <Icon name="ios-search" size={30} style={styles.searchBar__icon}/>
-                    <Input style={styles.itemStyle}
-                           onChangeText={(text) => this.filterBySearchBar(text)}/>
-                </View>
-            </View>
-        )
 
 
     };
 
     render() {
         console.log(this.state);
+        const translateY = this.state.scroll.interpolate({
+            inputRange: [0.001, SCROLLABLE_HEIGHT],
+            outputRange: [0.001, -SCROLLABLE_HEIGHT],
+            extrapolate: 'clamp',
+        });
+
+
         return (
             <Container style={{backgroundColor: 'white'}}>
-                <View style={{flex:1}}>
-                    <FlatList
-                        keyExtractor={this._keyExtractor}
-                        data={this.state.currentBrand}
-                        renderItem={this.state.inputStatus === false ? this._renderItem2 :this._renderItem}
-                        ListHeaderComponent={this._renderHeader}
-                        stickyHeaderIndices={[0]}
+                <View style={{flex: 1, flexDirection: 'column'}}>
+                    <Animated.View style={{
+
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        backgroundColor:"white",
+                        zIndex: 10,
+                        transform: [{translateY}]
+                    }}>
+                        <View style={styles.title}>
+                            <Text style={styles.title__text}>상품의</Text>
+                            <Text style={styles.title__text}>브랜드는</Text>
+                            <Text style={styles.title__text}>무엇인가요?</Text>
+                        </View>
+                        <View style={styles.searchBar}>
+                            <Icon name="ios-search" size={30} style={styles.searchBar__icon}/>
+                            <Input style={styles.itemStyle}
+                                   onChangeText={(text) => this.filterBySearchBar(text)}/>
+                        </View>
+                    </Animated.View>
+                    <AnimatedFlatList contentContainerStyle={{paddingTop:240}}
+                                      keyboardShouldPersistTaps={'handled'}
+                                      keyExtractor={this._keyExtractor}
+                                      data={this.state.currentBrand}
+                                      renderItem={this._renderItem}
+                                      onScroll={Animated.event(
+                                          [{nativeEvent: {contentOffset: {y: this.state.scroll}}}],
+                                          {useNativeDriver: true}
+                                      )}
                     />
-                    <FooterButtonComponent leftText="임시저장" rightText="다음으로"/>
                 </View>
             </Container>
         )

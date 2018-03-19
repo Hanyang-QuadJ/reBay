@@ -16,6 +16,17 @@ const styles = StyleSheet.create({
         marginHorizontal:5,
         height:40
     },
+    title:{
+        paddingVertical:30,
+        justifyContent:'center',
+    },
+    title__text:{
+        fontSize:26,
+        marginTop:10,
+        fontWeight:'800',
+        color:commonStyle.PRIMARY_COLOR,
+        marginHorizontal:15,
+    },
     notChecked:{
         backgroundColor:"white",
         borderWidth:1,

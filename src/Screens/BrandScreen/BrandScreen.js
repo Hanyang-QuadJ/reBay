@@ -38,8 +38,6 @@ class BrandScreen extends Component {
         super(props);
         this.state = {
             currentBrand: [],
-            inputStatus: false,
-            refreshing:false,
             scroll: new Animated.Value(0) ,
         };
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
@@ -52,16 +50,11 @@ class BrandScreen extends Component {
     filterBySearchBar(text) {
         console.log(text);
         const brands = [];
-        if (text.length > 0) {
-            this.setState({inputStatus: true})
-        }
-        else {
-            this.setState({inputStatus: false})
-        }
+
 
         if (this.props.brand != null) {
             this.props.brand.brands.forEach(function (val, index) {
-                if (val.brand_name.indexOf(text) !== -1) {
+                if (val.brand_name.indexOf(text) !== -1 || val.brand_name_kor.indexOf(text) !== -1) {
                     brands.push(val);
                 }
             })
@@ -117,7 +110,6 @@ class BrandScreen extends Component {
             <Container style={{backgroundColor: 'white'}}>
                 <View style={{flex: 1, flexDirection: 'column'}}>
                     <Animated.View style={{
-
                         position: 'absolute',
                         top: 0,
                         left: 0,
@@ -138,7 +130,8 @@ class BrandScreen extends Component {
                         </View>
                     </Animated.View>
                     <AnimatedFlatList contentContainerStyle={{paddingTop:240}}
-                                      keyboardShouldPersistTaps={'handled'}
+                                      keyboardShouldPersistTaps={'always'}
+                                      keyboardDismissMode="on-drag"
                                       keyExtractor={this._keyExtractor}
                                       data={this.state.currentBrand}
                                       renderItem={this._renderItem}

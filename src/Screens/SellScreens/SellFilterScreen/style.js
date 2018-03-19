@@ -21,6 +21,17 @@ const styles = StyleSheet.create({
     },
     inputArea:{
         flex:4
+    },
+    title:{
+        paddingVertical:30,
+        justifyContent:'center',
+    },
+    title__text:{
+        fontSize:26,
+        marginTop:10,
+        fontWeight:'800',
+        color:commonStyle.PRIMARY_COLOR,
+        marginHorizontal:15,
     }
 
 });

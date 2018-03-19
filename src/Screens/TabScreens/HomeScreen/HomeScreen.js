@@ -39,7 +39,7 @@ const mapStateToProps = state => {
 };
 
 class HomeScreen extends Component {
-    static navigatorStyle = commonStyle.NavigationStyle;
+    static navigatorStyle = commonStyle.NavigationStyleReverse;
 
     static navigatorButtons = {
         rightButtons: [

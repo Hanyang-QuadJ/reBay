@@ -56,11 +56,9 @@ class HomeItemScreen extends Component {
     }
 
     render() {
-        console.log("username check");
-        console.log(this.state.item);
         if(this.state.item == null || this.state.picture == null){
             return(
-                <Container>
+                <Container style={{backgroundColor: 'white'}}>
                     <View style={{flex: 1}}>
                         <Item brand={this.props.brand_name}
                               username={null}

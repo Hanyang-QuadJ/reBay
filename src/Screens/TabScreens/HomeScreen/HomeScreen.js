@@ -70,15 +70,15 @@ class HomeScreen extends Component {
             index: 0,
             man: 0,
             woman: 0,
-            manShoe:0,
-            womanShoe:0,
-            bag:0,
-            fashion:0,
-            purse:0,
-            ring:0,
-            cosmetic:0,
-            glasses:0,
-            watch:0,
+            manShoe: 0,
+            womanShoe: 0,
+            bag: 0,
+            fashion: 0,
+            purse: 0,
+            ring: 0,
+            cosmetic: 0,
+            glasses: 0,
+            watch: 0,
             routes: [
                 {key: 'first', title: '카테고리 추천'},
                 {key: 'second', title: '신규 상품'},
@@ -94,11 +94,13 @@ class HomeScreen extends Component {
     onNavigatorEvent(event) { // IOS
 
     }
-    componentDidMount(){
+
+    componentDidMount() {
 
 
 
     }
+
     //TabView Functions
     _handleIndexChange = (index) => {
         this.setState({index});
@@ -117,13 +119,6 @@ class HomeScreen extends Component {
         )
     };
 
-    goToItem = () => {
-        this.props.navigator.push({
-            screen:'HomeItem',
-
-        })
-
-    };
     //Scrollable Tab Functions
     handleRoute = (index) => {
         this.setState({currentIndex: index});
@@ -166,34 +161,34 @@ class HomeScreen extends Component {
         }
         else if (index === 9) {
             this.scrollView.scrollTo({animated: true, y: this.state.glasses});
-            this.h_scrollView.scrollTo({animated: true, x: 270});
+            this.h_scrollView.scrollTo({animated: true, x: 330});
 
         }
         else if (index === 10) {
             this.scrollView.scrollTo({animated: true, y: this.state.watch});
-            this.h_scrollView.scrollTo({animated: true, x: 330});
+            this.h_scrollView.scrollTo({animated: true, x: 390});
 
         }
     };
 
     handleRoute2 = (index) => {
         this.setState({currentIndex: index});
-        if(this.state.currentIndex === 5){
+        if (this.state.currentIndex === 5) {
             this.h_scrollView.scrollTo({animated: true, x: 0});
         }
-        else if(this.state.currentIndex === 6){
+        else if (this.state.currentIndex === 6) {
             this.h_scrollView.scrollTo({animated: true, x: 30});
         }
-        else if(this.state.currentIndex === 7){
+        else if (this.state.currentIndex === 7) {
             this.h_scrollView.scrollTo({animated: true, x: 90});
         }
-        else if(this.state.currentIndex === 8){
+        else if (this.state.currentIndex === 8) {
             this.h_scrollView.scrollTo({animated: true, x: 150});
         }
-        else if(this.state.currentIndex === 9){
+        else if (this.state.currentIndex === 9) {
             this.h_scrollView.scrollTo({animated: true, x: 210});
         }
-        else if(this.state.currentIndex === 10){
+        else if (this.state.currentIndex === 10) {
             this.h_scrollView.scrollTo({animated: true, x: 270});
         }
     };
@@ -205,56 +200,56 @@ class HomeScreen extends Component {
             case 'first':
                 return (
                     <ScrollView stickyHeaderIndices={[1]}
-                                        useNativeDriver={true}
-                                        scrollEventThrottle={16}
-                                        onScroll={(event) => {
-                                            const position = event.nativeEvent.contentOffset.y;
-                                            if (position >= 0 && position <= this.state.man + 50) {
-                                                this.handleRoute2(0)
-                                            }
-                                            else if (position >= this.state.woman &&
-                                                position <= this.state.woman + 50) {
-                                                this.handleRoute2(1)
-                                            }
-                                            else if (position >= this.state.manShoe &&
-                                                position <= this.state.manShoe + 50) {
-                                                this.handleRoute2(2)
-                                            }
-                                            else if (position >= this.state.womanShoe &&
-                                                position <= this.state.womanShoe + 50) {
-                                                this.handleRoute2(3)
-                                            }
-                                            else if (position >= this.state.bag &&
-                                                position <= this.state.bag + 50) {
-                                                this.handleRoute2(4)
-                                            }
-                                            else if (position >= this.state.fashion &&
-                                                position <= this.state.fashion + 50) {
-                                                this.handleRoute2(5)
-                                            }
-                                            else if (position >= this.state.purse &&
-                                                position <= this.state.purse + 50) {
-                                                this.handleRoute2(6)
-                                            }
-                                            else if (position >= this.state.ring &&
-                                                position <= this.state.ring + 50) {
-                                                this.handleRoute2(7)
-                                            }
-                                            else if (position >= this.state.cosmetic &&
-                                                position <= this.state.cosmetic + 50) {
-                                                this.handleRoute2(8)
-                                            }
-                                            else if (position >= this.state.glasses &&
-                                                position <= this.state.glasses + 50) {
-                                                this.handleRoute2(9)
-                                            }
-                                            else if (position >= this.state.watch &&
-                                                position <= this.state.watch + 50) {
-                                                this.handleRoute2(10)
-                                            }
+                                useNativeDriver={true}
+                                scrollEventThrottle={16}
+                                onScroll={(event) => {
+                                    const position = event.nativeEvent.contentOffset.y;
+                                    if (position >= 0 && position <= this.state.man + 50) {
+                                        this.handleRoute2(0)
+                                    }
+                                    else if (position >= this.state.woman &&
+                                        position <= this.state.woman + 50) {
+                                        this.handleRoute2(1)
+                                    }
+                                    else if (position >= this.state.manShoe &&
+                                        position <= this.state.manShoe + 50) {
+                                        this.handleRoute2(2)
+                                    }
+                                    else if (position >= this.state.womanShoe &&
+                                        position <= this.state.womanShoe + 50) {
+                                        this.handleRoute2(3)
+                                    }
+                                    else if (position >= this.state.bag &&
+                                        position <= this.state.bag + 50) {
+                                        this.handleRoute2(4)
+                                    }
+                                    else if (position >= this.state.fashion &&
+                                        position <= this.state.fashion + 50) {
+                                        this.handleRoute2(5)
+                                    }
+                                    else if (position >= this.state.purse &&
+                                        position <= this.state.purse + 50) {
+                                        this.handleRoute2(6)
+                                    }
+                                    else if (position >= this.state.ring &&
+                                        position <= this.state.ring + 50) {
+                                        this.handleRoute2(7)
+                                    }
+                                    else if (position >= this.state.cosmetic &&
+                                        position <= this.state.cosmetic + 50) {
+                                        this.handleRoute2(8)
+                                    }
+                                    else if (position >= this.state.glasses &&
+                                        position <= this.state.glasses + 50) {
+                                        this.handleRoute2(9)
+                                    }
+                                    else if (position >= this.state.watch &&
+                                        position <= this.state.watch + 50) {
+                                        this.handleRoute2(10)
+                                    }
 
-                                        }}
-                                        ref={c => (this.scrollView = c)}>
+                                }}
+                                ref={c => (this.scrollView = c)}>
                         <SwiperComponent/>
 
                         <ScrollView horizontal={true}
@@ -290,9 +285,8 @@ class HomeScreen extends Component {
                         }}
                               collapsable={false}
                               onLayout={({nativeEvent}) => {
-                                  this.man.measure((x, y, width, height, pageX, pageY) => {
-                                      this.setState({man: y - 45})
-                                  })
+                                  const position = nativeEvent.layout.y;
+                                  this.setState({man: position - 45})
                               }}>
                             <Text style={styles.itemLabel}>남성의류</Text>
                         </View>
@@ -303,9 +297,8 @@ class HomeScreen extends Component {
                         }}
                               collapsable={false}
                               onLayout={({nativeEvent}) => {
-                                  this.woman.measure((x, y, width, height, pageX, pageY) => {
-                                      this.setState({woman: y - 45})
-                                  })
+                                  const position = nativeEvent.layout.y;
+                                  this.setState({woman: position - 45})
                               }}>
                             <Text style={styles.itemLabel}>여성의류</Text>
                         </View>
@@ -315,9 +308,8 @@ class HomeScreen extends Component {
                             this.manShoe = view;
                         }}
                               onLayout={({nativeEvent}) => {
-                                  this.manShoe.measure((x, y, width, height, pageX, pageY) => {
-                                      this.setState({manShoe: y - 45})
-                                  })
+                                  const position = nativeEvent.layout.y;
+                                  this.setState({manShoe: position - 45})
                               }}>
                             <Text style={styles.itemLabel}>남성슈즈</Text>
                         </View>
@@ -327,9 +319,8 @@ class HomeScreen extends Component {
                             this.womanShoe = view;
                         }}
                               onLayout={({nativeEvent}) => {
-                                  this.womanShoe.measure((x, y, width, height, pageX, pageY) => {
-                                      this.setState({womanShoe: y - 45})
-                                  })
+                                  const position = nativeEvent.layout.y;
+                                  this.setState({womanShoe: position - 45})
                               }}>
                             <Text style={styles.itemLabel}>여성슈즈</Text>
                         </View>
@@ -339,9 +330,8 @@ class HomeScreen extends Component {
                             this.bag = view;
                         }}
                               onLayout={({nativeEvent}) => {
-                                  this.bag.measure((x, y, width, height, pageX, pageY) => {
-                                      this.setState({bag: y - 45})
-                                  })
+                                  const position = nativeEvent.layout.y;
+                                  this.setState({bag: position - 45})
                               }}>
                             <Text style={styles.itemLabel}>가방</Text>
                         </View>
@@ -351,9 +341,8 @@ class HomeScreen extends Component {
                             this.fashion = view;
                         }}
                               onLayout={({nativeEvent}) => {
-                                  this.fashion.measure((x, y, width, height, pageX, pageY) => {
-                                      this.setState({fashion: y - 45})
-                                  })
+                                  const position = nativeEvent.layout.y;
+                                  this.setState({fashion: position - 45})
                               }}>
                             <Text style={styles.itemLabel}>패션잡화</Text>
                         </View>
@@ -363,9 +352,8 @@ class HomeScreen extends Component {
                             this.purse = view;
                         }}
                               onLayout={({nativeEvent}) => {
-                                  this.purse.measure((x, y, width, height, pageX, pageY) => {
-                                      this.setState({purse: y - 45})
-                                  })
+                                  const position = nativeEvent.layout.y;
+                                  this.setState({purse: position - 45})
                               }}>
                             <Text style={styles.itemLabel}>지갑/벨트</Text>
                         </View>
@@ -375,11 +363,9 @@ class HomeScreen extends Component {
                             this.ring = view;
                         }}
                               onLayout={({nativeEvent}) => {
-                                  this.ring.measure((x, y, width, height, pageX, pageY) => {
-                                      this.setState({ring: y - 45})
-                                  })
-                              }}
-                              renderToHardwareTextureAndroid={true}>
+                                  const position = nativeEvent.layout.y;
+                                  this.setState({ring: position - 45})
+                              }}>
                             <Text style={styles.itemLabel}>악세사리</Text>
                         </View>
                         <CategoryItem item={this.props.recommend}/>
@@ -388,9 +374,8 @@ class HomeScreen extends Component {
                             this.cosmetic = view;
                         }}
                               onLayout={({nativeEvent}) => {
-                                  this.cosmetic.measure((x, y, width, height, pageX, pageY) => {
-                                      this.setState({cosmetic: y - 45})
-                                  })
+                                  const position = nativeEvent.layout.y;
+                                  this.setState({cosmetic: position - 45})
                               }}>
                             <Text style={styles.itemLabel}>화장품/향수</Text>
                         </View>
@@ -400,9 +385,8 @@ class HomeScreen extends Component {
                             this.glasses = view;
                         }}
                               onLayout={({nativeEvent}) => {
-                                  this.glasses.measure((x, y, width, height, pageX, pageY) => {
-                                      this.setState({glasses: y - 45})
-                                  })
+                                  const position = nativeEvent.layout.y;
+                                  this.setState({glasses: position - 45})
                               }}>
                             <Text style={styles.itemLabel}>선글라스/안경</Text>
                         </View>
@@ -412,9 +396,8 @@ class HomeScreen extends Component {
                             this.watch = view;
                         }}
                               onLayout={({nativeEvent}) => {
-                                  this.watch.measure((x, y, width, height, pageX, pageY) => {
-                                      this.setState({watch: y - 45})
-                                  })
+                                  const position = nativeEvent.layout.y;
+                                  this.setState({watch: position - 45})
                               }}>
                             <Text style={styles.itemLabel}>시계</Text>
                         </View>

@@ -21,6 +21,7 @@ class CategoryItem extends Component {
         console.log(this.props);
         this.props.navigator.push({
             screen: this.props.screen,
+            title:item_name,
             passProps: {
                 item_id:item_id,
                 brand_name:brand_name,

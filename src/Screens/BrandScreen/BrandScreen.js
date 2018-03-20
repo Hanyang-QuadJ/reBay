@@ -132,6 +132,7 @@ class BrandScreen extends Component {
                     <AnimatedFlatList contentContainerStyle={{paddingTop:240}}
                                       keyboardShouldPersistTaps={'always'}
                                       keyboardDismissMode="on-drag"
+                                      scrollEventThrottle={1}
                                       keyExtractor={this._keyExtractor}
                                       data={this.state.currentBrand}
                                       renderItem={this._renderItem}

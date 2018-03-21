@@ -32,7 +32,18 @@ class BuyScreen3 extends Component {
             });
         }
     }
+    gotoBuyScreen4(item) {
 
+        this.props.navigator.push({
+                screen: 'Buy4',
+                title: '상품정보',
+                passProps: {
+                    item:item
+                }
+            }
+        )
+
+    };
     componentWillMount(){
         console.log(this.props.category);
         console.log(this.props.detailCategory);
@@ -57,8 +68,8 @@ class BuyScreen3 extends Component {
     }
     _renderItem = ({item}) => (
         <TouchableOpacity
-            onPress={() => {
-
+            onPress={(item) => {
+                this.gotoBuyScreen4(item);
             }}>
             <Card>
                 <CardItem header>

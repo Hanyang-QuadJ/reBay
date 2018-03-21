@@ -6,6 +6,7 @@ import HomeScreen from './src/Screens/TabScreens/HomeScreen/HomeScreen';
 import BuyScreen from './src/Screens/TabScreens/BuyScreen/BuyScreen';
 import BuyScreen2 from './src/Screens/TabScreens/BuyScreen/BuyScreen2';
 import BuyScreen3 from './src/Screens/TabScreens/BuyScreen/BuyScreen3';
+import BuyScreen4 from './src/Screens/TabScreens/BuyScreen/BuyScreen4';
 import SignInScreen from './src/Screens/AuthScreens/SignInScreen/SignInScreen';
 import store from './src/Store';
 import {Provider} from 'react-redux';
@@ -80,6 +81,9 @@ export default function registerScreens(){
         store,
         Provider);
     Navigation.registerComponent('Buy3', () => BuyScreen3,
+        store,
+        Provider);
+    Navigation.registerComponent('Buy4', () => BuyScreen4,
         store,
         Provider);
 

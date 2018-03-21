@@ -50,14 +50,7 @@ class BuyScreen2 extends Component {
     }
 
     gotoBuyScreen3() {
-        // this.props.navigation.navigate('BuyScreen3',{
-        //     category:this.state.category[this.state.selectedCategory].name,
-        //     detailCategory:this.state.category[this.state.selectedCategory].detailCategory[this.state.selectedDetailCategory].name,
-        //     status:this.state.item_status[this.state.selectedItemStatus].name,
-        //     season:this.state.season[this.state.selectedSeason].name,
-        // });
-        // console.log(this.state.category[this.state.selectedCategory].name);
-        // console.log(this.state.category[this.state.selectedCategory].detailCategory[this.state.selectedDetailCategory].name)
+
         this.props.navigator.push({
                 screen: 'Buy3',
                 title: '상품정보',

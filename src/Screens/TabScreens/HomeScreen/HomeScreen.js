@@ -201,7 +201,6 @@ class HomeScreen extends Component {
                 return (
                     <ScrollView stickyHeaderIndices={[1]}
                                 useNativeDriver={true}
-                                scrollEventThrottle={16}
                                 onScroll={(event) => {
                                     const position = event.nativeEvent.contentOffset.y;
                                     if (position >= 0 && position <= this.state.man + 50) {

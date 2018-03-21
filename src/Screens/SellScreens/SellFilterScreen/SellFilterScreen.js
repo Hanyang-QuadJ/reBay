@@ -59,8 +59,8 @@ class SellFilterScreen extends Component {
                 <KeyboardAvoidingView style={{flex:1}} behavior="padding">
                     <Content scrollEnabled={false} contentContainerStyle={{flex: 1}}>
                         <View style={styles.title}>
-                            <Text style={styles.title__text}>상품 이름,</Text>
-                            <Text style={styles.title__text}>가격,</Text>
+                            <Text style={styles.title__text}>상품 이름</Text>
+                            <Text style={styles.title__text}>가격</Text>
                             <Text style={styles.title__text}>사이즈는 무엇인가요?</Text>
                         </View>
                         <View style={styles.inputArea}>

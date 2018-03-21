@@ -27,6 +27,12 @@ class TutorialScreen extends Component {
             screen: 'SignIn',
         });
     };
+    goToSignUp = () => {
+        this.props.navigator.push({
+            screen: 'SignUp',
+            backButtonTitle: "뒤로",
+        });
+    };
     goToHome = () => {
         GoToHome();
     };
@@ -70,7 +76,7 @@ class TutorialScreen extends Component {
                         <Text>로그인</Text>
                     </Button>
 
-                    <Button full rounded
+                    <Button full rounded onPress={this.goToSignUp}
                             style={{
                                 backgroundColor: "rgba(92, 99,216, 0.5)",
                                 height: 45,

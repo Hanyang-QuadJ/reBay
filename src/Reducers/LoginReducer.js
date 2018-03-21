@@ -1,27 +1,29 @@
 import {
-    FAILED_TO_LOGIN,
-    SUCCEED_TO_LOGIN
+    FAILED_TO_LOGIN, FAILED_TO_SIGN_UP,
+    SUCCEED_TO_LOGIN, SUCCEED_TO_SIGN_UP
 } from "../Actions/LoginAction";
 
 
 const initialState = {
-    loginStatus: false,
-    loginResponse: null,
     token: null,
 };
 
-const LoginReducer  = (state = initialState, action) => {
+const LoginReducer = (state = initialState, action) => {
     switch (action.type) {
         case SUCCEED_TO_LOGIN:
             return Object.assign({}, state, {
-                loginStatus: true,
-                loginResponse: action.payload.loginResponse,
-                token: action.payload.token
-
+                token: action.token
             });
         case FAILED_TO_LOGIN:
             return Object.assign({}, state, {
-                loginStatus:false,
+                token: null
+            });
+        case SUCCEED_TO_SIGN_UP:
+            return Object.assign({}, state, {
+                token: action.token
+            });
+        case FAILED_TO_SIGN_UP:
+            return Object.assign({}, state, {
                 token: null
             });
         default:

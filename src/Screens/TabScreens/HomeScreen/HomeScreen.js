@@ -23,6 +23,7 @@ import HomeTabScreen from '../HomeTabScreen/HomeTabScreen';
 import styles from './style';
 import * as commonStyle from "../../../Constants/commonStyle";
 import FastImage from "react-native-fast-image";
+import * as RecommendAction from '../../../Actions/RecommendAction'
 import {Tab} from '../../index'
 
 const initialLayout = {
@@ -34,7 +35,7 @@ const mapStateToProps = state => {
     return {
         data: state.DefaultReducer.data,
         loading: state.DefaultReducer.loading,
-        recommend: state.RecommendReducer.recommend.result
+        recommend: state.RecommendReducer.recommend
     };
 };
 
@@ -97,9 +98,14 @@ class HomeScreen extends Component {
 
     componentDidMount() {
 
-
-
     }
+    pullToRefresh = () => {
+        this.setState({refreshing:true});
+        this.props.dispatch(RecommendAction.refreshRecommend()).then( value => {
+            this.setState({refreshing:false});
+        }
+    );
+    };
 
     //TabView Functions
     _handleIndexChange = (index) => {
@@ -200,7 +206,14 @@ class HomeScreen extends Component {
             case 'first':
                 return (
                     <ScrollView stickyHeaderIndices={[1]}
+                                refreshControl={
+                                    <RefreshControl
+                                        refreshing={this.state.refreshing}
+                                        onRefresh={this.pullToRefresh}/>
+
+                                }
                                 useNativeDriver={true}
+                                scrollEventThrottle={1}
                                 onScroll={(event) => {
                                     const position = event.nativeEvent.contentOffset.y;
                                     if (position >= 0 && position <= this.state.man + 50) {

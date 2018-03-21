@@ -48,7 +48,7 @@ class CategoryItem extends Component {
                                     <FastImage style={styles.itemImage}
                                                resizeMode={FastImage.resizeMode.cover}
                                                source={{uri: data.image_url}}/>
-                                    <Text style={styles.item_status}>{data.item_status}</Text>
+                                    <Text style={data.item_status === "새상품" ? styles.item_status_new : styles.item_status_old}>{data.item_status}</Text>
                                     <Text style={styles.item_brand}>{data.brand_name}</Text>
                                     <Text style={styles.item_name}>{data.item_name}</Text>
                                     <Text style={styles.item_price}>￦{data.price}</Text>
@@ -68,7 +68,7 @@ class CategoryItem extends Component {
                                     <FastImage style={styles.itemImage}
                                                resizeMode={FastImage.resizeMode.cover}
                                                source={{uri: data.image_url}}/>
-                                    <Text style={styles.item_status}>{data.item_status}</Text>
+                                    <Text style={data.item_status === "새상품" ? styles.item_status_new : styles.item_status_old}>{data.item_status}</Text>
                                     <Text style={styles.item_brand}>{data.brand_name}</Text>
                                     <Text style={styles.item_name}>{data.item_name}</Text>
                                     <Text style={styles.item_price}>￦{data.price}</Text>

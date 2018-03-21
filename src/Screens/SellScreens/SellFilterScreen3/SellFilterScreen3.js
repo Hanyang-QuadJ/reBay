@@ -10,6 +10,7 @@ import {
 } from 'native-base';
 import jsonData from '../../../Constants/data'
 import FooterButton from '../../../Components/FooterButtonComponent/FooterButtonComponent'
+import StepHeader from '../../../Components/StepHeader/StepHeader';
 import styles from './style';
 import * as commonStyle from "../../../Constants/commonStyle";
 
@@ -74,7 +75,9 @@ class SellFilterScreen3 extends Component {
     render() {
         return (
             <Container style={{backgroundColor: 'white'}}>
-                <Content>
+                <Content scrollEnabled={false} contentContainerStyle={{flex:1}}>
+                    <StepHeader text1="상품의" text2="상세정보는" text3="어떻게 되나요?" color={commonStyle.PRIMARY_COLOR}
+                                paddingBottom={30} currentStep={5} finalStep={6}/>
                     <View style={styles.rowContainer}>
                         <Text style={styles.label}>구성상품</Text>
                         <View style={styles.row}>

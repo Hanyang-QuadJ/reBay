@@ -22,10 +22,13 @@ import {
     StyleProvider
 } from 'native-base';
 import styles from './styles';
+import * as RecommendAction from "../../../Actions/RecommendAction";
+import * as BrandAction from "../../../Actions/BrandAction";
+import FastImage from "react-native-fast-image";
 
 const mapStateToProps = state => {
     return {
-        loginStatus: state.LoginReducer.loginStatus
+        token: state.LoginReducer.token
     };
 };
 
@@ -40,13 +43,23 @@ class SignInScreen extends Component {
 
 
     sendToAction = () => {
-        this.props.dispatch(LoginAction.postLogin(this.state.email, this.state.password));
+        this.props.dispatch(LoginAction.postLogin(this.state.email, this.state.password)).then(async (value) =>  {
+             await this.props.dispatch(BrandAction.getBrand());
+             await this.props.dispatch(RecommendAction.getRecommend()).then(
+                async value2 => {
+                    let imageArray = [];
+                    for (let i = 0; i < value2.length; i++) {
+                        imageArray.push({uri: value2[i].image_url});
+                    }
+                    await FastImage.preload(imageArray);
+                    await GoToHome();
+                });
+
+        });
     };
 
     componentDidUpdate() {
-        if (this.props.loginStatus === true) {
-            GoToHome();
-        }
+
     }
 
     render() {

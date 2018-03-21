@@ -13,6 +13,8 @@ import {
 } from 'native-base';
 import jsonData from '../../../Constants/data'
 import FooterButton from '../../../Components/FooterButtonComponent/FooterButtonComponent'
+import StepHeader from '../../../Components/StepHeader/StepHeader';
+
 import styles from './style';
 import * as commonStyle from "../../../Constants/commonStyle";
 
@@ -72,10 +74,14 @@ class SellFilterScreen2 extends Component {
     render() {
         return (
             <Container style={{backgroundColor: 'white'}}>
-                <Content contentContainerStyle={{flex:1}}>
+                <Content scrollEnabled={false} contentContainerStyle={{flex:1}}>
+                    <StepHeader text1="상품의" text2="카테고리는" text3="어떻게 되나요?" color={commonStyle.PRIMARY_COLOR}
+                                paddingBottom={10} currentStep={4} finalStep={6}/>
                     <View style={styles.rowContainer}>
                         <Text style={styles.label}>상위 카테고리</Text>
-                        <ScrollView style={styles.row} horizontal={true}>
+                        <ScrollView style={styles.row} horizontal={true}
+                                    showsHorizontalScrollIndicator={false}
+                        >
                             {this.state.category.map((category, index) => (
                                 <Button
                                     style={(index === this.state.selectedCategory) ? styles.checked : styles.notChecked}
@@ -95,7 +101,9 @@ class SellFilterScreen2 extends Component {
                     </View>
                     <View style={styles.rowContainer}>
                         <Text style={styles.label}>하위 카테고리</Text>
-                        <ScrollView style={styles.row} horizontal={true}>
+                        <ScrollView style={styles.row} horizontal={true}
+                                    showsHorizontalScrollIndicator={false}
+                        >
                             {
                                 this.state.category[this.state.selectedCategory] === null ?
                                     (<Text>Empty</Text>)

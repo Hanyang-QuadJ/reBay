@@ -5,6 +5,10 @@ export const START_TO_LOGIN = "START_TO_LOGIN";
 export const FAILED_TO_LOGIN = "FAILED_TO_LOGIN";
 export const SUCCEED_TO_LOGIN = "SUCCEED_TO_LOGIN";
 
+export const START_TO_SIGN_UP = "START_TO_SIGN_UP";
+export const FAILED_TO_SIGN_UP = "FAILED_TO_SIGN_UP";
+export const SUCCEED_TO_SIGN_UP = "SUCCEED_TO_SIGN_UP";
+
 const ACCESS_TOKEN = "ACCESS_TOKEN";
 
 function storeToken(accessToken) {
@@ -19,41 +23,68 @@ function storeToken(accessToken) {
 }
 
 
+
 export const postLogin = (email, password) => {
+    return async (dispatch) => {
+        try {
+            await dispatch({type: START_TO_LOGIN});
+            let response = await fetch(
+                ServerEndPoint2 + 'api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
 
-    return (dispatch) => {
-        dispatch({type: START_TO_LOGIN});
-        fetch(ServerEndPoint2 + "api/auth/login", {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-            })
-        })
+                    })
+                }
+            );
+            let responseJson = await response.json();
+            // console.log(responseJson);
+            await dispatch({type: SUCCEED_TO_LOGIN, payload: responseJson, token:responseJson.token});
+            storeToken(responseJson.token);
+            return responseJson;
+        } catch (error) {
+            dispatch({type: FAILED_TO_LOGIN, payload: {data: "NETWORK_ERROR"}});
+            console.error(error);
+        }
 
-            .then((response) => {
-                if (response.status >= 200 && response.status <= 300) {
-                    return response.json()
-                        .then(responseData => {
-                                dispatch({type: SUCCEED_TO_LOGIN, payload: {loginResponse: responseData, token: responseData.token}});
-                                storeToken(responseData.token);
-                            }
-                        )
+    }
+
+};
+
+export const postSignUp = (username, email, phone, password) => {
+    return async (dispatch) => {
+        try {
+            dispatch({type: START_TO_SIGN_UP });
+            let response = await fetch(
+                ServerEndPoint2+'api/auth/register',{
+                    method:'POST',
+                    headers: {
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username:username,
+                        email: email,
+                        phone:phone,
+                        password: password,
+                    })
                 }
-                else {
-                    return response.json()
-                        .then(responseData => (
-                            dispatch({type: FAILED_TO_LOGIN, payload: {loginResponse: responseData}})
-                        ))
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            });
+            );
+            let responseJson = await response.json();
+            console.log(responseJson);
+            await dispatch({type: SUCCEED_TO_SIGN_UP, payload: responseJson, token:responseJson.token});
+            await storeToken(responseJson.token);
+            return responseJson;
+        } catch (error) {
+            dispatch({type: FAILED_TO_SIGN_UP, payload: {data: "NETWORK_ERROR"}});
+            console.error(error);
+        }
+
     }
 
 };

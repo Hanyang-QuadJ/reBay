@@ -4,14 +4,7 @@ const styles = StyleSheet.create({
     container:{
         flex:1
     },
-    progress:{
-        flex:0.6,
-    },
-    inform:{
-        flex:0.7,
-        alignItems:'center',
-        justifyContent:'center'
-    },
+
     informText:{
         fontSize:18,
         color:commonStyle.PRIMARY_COLOR
@@ -29,8 +22,8 @@ const styles = StyleSheet.create({
     },
     image:{
         marginHorizontal:2,
-        width:120,
-        height:120,
+        width:100,
+        height:100,
     },
     button1:{
         height: 55,
@@ -63,7 +56,44 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         justifyContent:"center",
         alignItems:"center"
-    }
+    },
+    header:{
+        flexDirection:"row",
+        justifyContent:"space-between"
+    },
+    status:{
+        flex:1,
+        justifyContent:"flex-end",
+        paddingBottom:10,
+        paddingRight:30,
+        alignItems:"flex-end"
+
+    },
+    statusText:{
+        fontSize:13,
+        fontWeight:'700',
+        color:commonStyle.PRIMARY_COLOR,
+
+    },
+    statusStrong:{
+        fontSize:30,
+        fontWeight:'800',
+        color:commonStyle.PRIMARY_COLOR,
+
+    },
+    title:{
+        flex:3,
+        paddingTop:20,
+        paddingLeft:30,
+        paddingBottom:10,
+        justifyContent:'center',
+    },
+    title__text:{
+        fontSize:26,
+        marginTop:10,
+        fontWeight:'800',
+        color:commonStyle.PRIMARY_COLOR,
+    },
 
 
 

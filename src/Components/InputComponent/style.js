@@ -4,8 +4,8 @@ import commonStyle from '../index'
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        marginLeft: 15,
-        marginRight: 15,
+        marginHorizontal:30,
+
     },
     icon: {
         paddingTop: 10,
@@ -22,10 +22,9 @@ const styles = StyleSheet.create({
     },
     input: {
         borderBottomWidth: 1,
-        borderBottomColor: commonStyle.BORDER_COLOR,
         flex: 10,
         justifyContent: 'center',
-        marginLeft: 10
+
     }
 
 

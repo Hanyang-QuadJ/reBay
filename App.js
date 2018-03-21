@@ -1,5 +1,7 @@
 import { Navigation } from 'react-native-navigation';
-import App from './App';
+import store from './src/Store';
+import {Provider} from 'react-redux';
+
 import InitScreen from './src/Screens/InitScreen/InitScreen';
 import TutorialScreen from './src/Screens/AuthScreens/TutorialScreen/TutorialScreen'
 import HomeScreen from './src/Screens/TabScreens/HomeScreen/HomeScreen';
@@ -8,8 +10,12 @@ import BuyScreen2 from './src/Screens/TabScreens/BuyScreen/BuyScreen2';
 import BuyScreen3 from './src/Screens/TabScreens/BuyScreen/BuyScreen3';
 import BuyScreen4 from './src/Screens/TabScreens/BuyScreen/BuyScreen4';
 import SignInScreen from './src/Screens/AuthScreens/SignInScreen/SignInScreen';
-import store from './src/Store';
-import {Provider} from 'react-redux';
+import SignUpScreen from './src/Screens/AuthScreens/SignUpScreen/SignUpScreen';
+import SignUpScreen2 from './src/Screens/AuthScreens/SignUpScreen2/SignUpScreen2';
+import SignUpScreen3 from './src/Screens/AuthScreens/SignUpScreen3/SignUpScreen3';
+import SignUpScreen4 from './src/Screens/AuthScreens/SignUpScreen4/SignUpScreen4';
+
+
 import PictureScreen from './src/Screens/SellScreens/PictureScreen/PictureScreen';
 import SellScreen from './src/Screens/TabScreens/SellScreen/SellScreen';
 import BrandScreen from './src/Screens/BrandScreen/BrandScreen';
@@ -22,9 +28,9 @@ import NoticeScreen from "./src/Screens/TabScreens/NoticeScreen/NoticeScreen";
 import ProfileScreen from './src/Screens/TabScreens/ProfileScreen/ProfileScreen';
 import HomeItemScreen from './src/Screens/HomeItemScreen/HomeItemScreen';
 
-
-
 export default function registerScreens(){
+
+    //AuthScreens
     Navigation.registerComponent('Init', () => InitScreen,
         store,
         Provider);
@@ -34,8 +40,20 @@ export default function registerScreens(){
     Navigation.registerComponent('SignIn', () => SignInScreen,
         store,
         Provider);
+    Navigation.registerComponent('SignUp', () => SignUpScreen,
+        store,
+        Provider);
+    Navigation.registerComponent('SignUp2', () => SignUpScreen2,
+        store,
+        Provider);
+    Navigation.registerComponent('SignUp3', () => SignUpScreen3,
+        store,
+        Provider);
+    Navigation.registerComponent('SignUp4', () => SignUpScreen4,
+        store,
+        Provider);
 
-//Tab
+    //Tab
     Navigation.registerComponent('Home', () => HomeScreen,
         store,
         Provider);
@@ -53,7 +71,7 @@ export default function registerScreens(){
         Provider);
 
 
-//SellScreens
+    //SellScreens
     Navigation.registerComponent('Picture', () => PictureScreen,
         store,
         Provider);
@@ -88,7 +106,6 @@ export default function registerScreens(){
         Provider);
 
     Navigation.registerComponent('HomeItem', () => HomeItemScreen,
-
         store,
         Provider);
 }

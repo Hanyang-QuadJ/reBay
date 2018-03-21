@@ -9,7 +9,6 @@ import * as DefaultAction from '../../Actions/DefaultAction';
 import * as RecommendAction from '../../Actions/RecommendAction';
 import styles from './style';
 import * as commonStyle from '../../Constants/commonStyle';
-import * as DefaultActionCreator from "../../Actions/DefaultAction";
 import FastImage from 'react-native-fast-image';
 
 const mapStateToProps = state => {

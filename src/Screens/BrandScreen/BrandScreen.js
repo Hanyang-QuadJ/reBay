@@ -12,7 +12,7 @@ import {
     RefreshControl,
 } from 'react-native';
 import {Container, Text, Content, Button, Item, Input, ListItem, List, Icon} from 'native-base';
-import FooterButtonComponent from '../../Components/FooterButtonComponent/FooterButtonComponent';
+import StepHeader from '../../Components/StepHeader/StepHeader';
 
 const HEADER_HEIGHT = 200;
 const COLLAPSED_HEIGHT = 20;
@@ -98,7 +98,6 @@ class BrandScreen extends Component {
     };
 
     render() {
-        console.log(this.state);
         const translateY = this.state.scroll.interpolate({
             inputRange: [0.001, SCROLLABLE_HEIGHT],
             outputRange: [0.001, -SCROLLABLE_HEIGHT],
@@ -109,6 +108,7 @@ class BrandScreen extends Component {
         return (
             <Container style={{backgroundColor: 'white'}}>
                 <View style={{flex: 1, flexDirection: 'column'}}>
+
                     <Animated.View style={{
                         position: 'absolute',
                         top: 0,
@@ -118,11 +118,9 @@ class BrandScreen extends Component {
                         zIndex: 10,
                         transform: [{translateY}]
                     }}>
-                        <View style={styles.title}>
-                            <Text style={styles.title__text}>상품의</Text>
-                            <Text style={styles.title__text}>브랜드는</Text>
-                            <Text style={styles.title__text}>무엇인가요?</Text>
-                        </View>
+                        <StepHeader text1="상품의" text2="브랜드는" text3="무엇인가요?" color={commonStyle.PRIMARY_COLOR}
+                        paddingBottom={30} currentStep={2} finalStep={6}/>
+
                         <View style={styles.searchBar}>
                             <Icon name="ios-search" size={30} style={styles.searchBar__icon}/>
                             <Input style={styles.itemStyle}

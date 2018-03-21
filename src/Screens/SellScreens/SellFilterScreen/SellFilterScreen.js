@@ -11,6 +11,8 @@ import {
 } from 'native-base';
 import InputComponent from '../../../Components/InputComponent/InputComponent'
 import FooterButton from '../../../Components/FooterButtonComponent/FooterButtonComponent'
+import StepHeader from '../../../Components/StepHeader/StepHeader';
+
 import styles from './style';
 import * as commonStyle from "../../../Constants/commonStyle";
 
@@ -58,10 +60,19 @@ class SellFilterScreen extends Component {
             <Container style={{backgroundColor: 'white'}}>
                 <KeyboardAvoidingView style={{flex:1}} behavior="padding">
                     <Content scrollEnabled={false} contentContainerStyle={{flex: 1}}>
-                        <View style={styles.title}>
-                            <Text style={styles.title__text}>상품 이름</Text>
-                            <Text style={styles.title__text}>가격</Text>
-                            <Text style={styles.title__text}>사이즈는 무엇인가요?</Text>
+
+                        <View style={styles.header}>
+                            <View style={styles.title}>
+                                <Text style={styles.title__text}>상품명</Text>
+                                <Text style={styles.title__text}>가격</Text>
+                                <Text style={styles.title__text}>사이즈는 무엇인가요?</Text>
+                            </View>
+                            <View style={styles.status}>
+                                <View style={{flexDirection:"row", justifyContent:"flex-end"}}>
+                                    <Text style={styles.statusStrong}>3</Text><Text style={[styles.statusText,{marginTop:14}]}>/6</Text>
+                                </View>
+                                <Text style={styles.statusText}>단계</Text>
+                            </View>
                         </View>
                         <View style={styles.inputArea}>
                             <InputComponent icon="ios-search"

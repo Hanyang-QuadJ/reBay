@@ -31,16 +31,25 @@ const styles = StyleSheet.create({
 
     item_brand:{
         marginTop:2,
+        color:commonStyle.TEXT_COLOR,
         fontSize:17,
         fontWeight:"700"
     },
     item_name:{
         fontSize:15,
+        color:commonStyle.TEXT_COLOR,
         fontWeight:"500"
     },
-    item_status:{
+    item_status_new:{
         marginTop:5,
-        fontSize:13
+        fontSize:13,
+        color:commonStyle.SUB_COLOR,
+
+    },
+    item_status_old:{
+        marginTop:5,
+        fontSize:13,
+        color:commonStyle.TEXT_COLOR,
 
     },
 

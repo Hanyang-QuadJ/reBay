@@ -44,14 +44,7 @@ class BuyScreen extends Component {
     onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
 
     }
-    componentWillMount(){
-        if(this.props.brand !== null){
-            console.log(this.props.brand.brands);
-            this.setState({
-                currentBrand:this.props.brand.brands,
-            });
-        }
-    }
+
     filterBySearchBar(text) {
         console.log(text);
         const brands = [];
@@ -129,7 +122,7 @@ class BuyScreen extends Component {
                         transform: [{translateY}]
                     }}>
                         <View style={styles.title}>
-                            <Text style={styles.title__text}>상품의</Text>
+                            <Text style={styles.title__text}>찾으시는</Text>
                             <Text style={styles.title__text}>브랜드는</Text>
                             <Text style={styles.title__text}>무엇인가요?</Text>
                         </View>
@@ -140,7 +133,9 @@ class BuyScreen extends Component {
                         </View>
                     </Animated.View>
                     <AnimatedFlatList contentContainerStyle={{paddingTop:240}}
-                                      keyboardShouldPersistTaps={'handled'}
+                                      keyboardShouldPersistTaps={'always'}
+                                      keyboardDismissMode="on-drag"
+                                      scrollEventThrottle={1}
                                       keyExtractor={this._keyExtractor}
                                       data={this.state.currentBrand}
                                       renderItem={this._renderItem}

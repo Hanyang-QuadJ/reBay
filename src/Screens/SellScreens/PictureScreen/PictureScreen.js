@@ -13,8 +13,10 @@ import {
 } from 'react-native';
 import {Container, Content, Button, Footer} from 'native-base';
 import FooterButtonComponent from '../../../Components/FooterButtonComponent/FooterButtonComponent';
+import StepHeader from '../../../Components/StepHeader/StepHeader';
 import ImagePicker from 'react-native-image-picker';
 import * as commonStyle from '../../../Constants/commonStyle';
+import * as Progress from 'react-native-progress';
 
 
 import styles from './style';
@@ -195,11 +197,9 @@ class PictureScreen extends Component {
         return (
             <Container style={{backgroundColor: 'white'}}>
                 <View style={styles.container}>
-                    <View style={styles.progress}>
-                    </View>
-                    <View style={styles.inform}>
-                        <Text style={styles.informText}>최소 3장 이상의 사진을 등록해주세요</Text>
-                    </View>
+                    <StepHeader text1="사진을" text2="3장 이상" text3="선택해주세요" color={commonStyle.PRIMARY_COLOR}
+                                paddingBottom={30} currentStep={1} finalStep={6}/>
+
                     <View style={styles.rowContainer}>
                         <View style={styles.row}>
                             <TouchableOpacity onPress={this.imagePicker.bind(this, 1)}>

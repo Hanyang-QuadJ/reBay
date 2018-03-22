@@ -52,7 +52,7 @@ class SignUpScreen3 extends Component {
             <View style={{flex:1, backgroundColor:commonStyle.PRIMARY_COLOR}}>
                 <View style={styles.header}>
                     <StepHeader text1="" text2="휴대폰번호를" text3="입력해주세요." color={commonStyle.SECONDARY_COLOR}
-                                paddingBottom={50} currentStep={3} finalStep={4}/>
+                                paddingBottom={50} currentStep={3} stepColor={commonStyle.SECONDARY_COLOR}  finalStep={4}/>
                 </View>
                 <View style={styles.body}>
 

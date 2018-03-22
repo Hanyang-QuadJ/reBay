@@ -33,6 +33,7 @@ class SignUpScreen4 extends Component {
         this.state = {
             password: "",
             passwordConfirm: "",
+            isSign:false
         };
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
@@ -41,20 +42,19 @@ class SignUpScreen4 extends Component {
 
     }
 
-    signIn = () => {
+    signUp = async () => {
         const { username, email, phone } = this.props;
-        this.props.dispatch(LoginAction.postSignUp(username, email, phone, this.state.password)).then(async (value) => {
-            await this.props.dispatch(BrandAction.getBrand());
-            await this.props.dispatch(RecommendAction.getRecommend()).then(
-                async value2 => {
-                    let imageArray = [];
-                    for (let i = 0; i < value2.length; i++) {
-                        imageArray.push({uri: value2[i].image_url});
-                    }
-                    await FastImage.preload(imageArray);
-                    await GoToHome();
-                });
-        })
+        await this.props.dispatch(LoginAction.postSignUp(username, email, phone, this.state.password));
+        await this.props.dispatch(BrandAction.getBrand());
+        await this.props.dispatch(RecommendAction.getRecommend()).then(
+            async value2 => {
+                let imageArray = [];
+                for (let i = 0; i < value2.length; i++) {
+                    imageArray.push({uri: value2[i].image_url});
+                }
+                await FastImage.preload(imageArray);
+                await GoToHome();
+            });
 
     };
 
@@ -65,7 +65,7 @@ class SignUpScreen4 extends Component {
             <View style={{flex: 1, backgroundColor: commonStyle.PRIMARY_COLOR}}>
                 <View style={styles.header}>
                     <StepHeader text1="" text2="비밀번호를" text3="입력해주세요." color={commonStyle.SECONDARY_COLOR}
-                                paddingBottom={50} currentStep={4} finalStep={4}/>
+                                paddingBottom={50} currentStep={4} stepColor={commonStyle.SECONDARY_COLOR}  finalStep={4}/>
                 </View>
                 <View style={styles.body}>
 
@@ -87,7 +87,7 @@ class SignUpScreen4 extends Component {
                 <View>
                     <RoundButton backgroundColor={commonStyle.SECONDARY_COLOR} text="회원가입"
                                  textColor={commonStyle.PRIMARY_COLOR}
-                                 onPress={this.signIn}/>
+                                 onPress={this.signUp}/>
                 </View>
 
             </View>

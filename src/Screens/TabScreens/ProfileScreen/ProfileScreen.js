@@ -18,6 +18,8 @@ const mapStateToProps = state => {
 };
 
 class ProfileScreen extends Component {
+    static navigatorStyle = commonStyle.NavigationStyleReverse;
+
     constructor(props) {
         super(props);
         this.state = {};
@@ -31,7 +33,7 @@ class ProfileScreen extends Component {
     signOut = () => {
         AsyncStorage.removeItem("ACCESS_TOKEN").then(value => {
                 this.props.navigator.resetTo({
-                    screen: 'Tutorial', // unique ID registered with Navigation.registerScreen
+                    screen: 'Init', // unique ID registered with Navigation.registerScreen
                     animated: false, // does the resetTo have transition animation or does it happen immediately (optional)
                     animationType: 'fade', // 'fade' (for both) / 'slide-horizontal' (for android) does the resetTo have different transition animation (optional)
                     navigatorStyle: {

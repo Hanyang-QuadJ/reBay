@@ -4,9 +4,9 @@ import {Container, Input, Left, Body, Right, Button, Icon, Title, Text} from 'na
 import styles from './style';
 import {connect} from "react-redux";
 import Swiper from 'react-native-swiper';
+import LoadingActivity from '../../Components/LoadingActivity/LoadingActivity';
 import * as commonStyle from "../../Constants/commonStyle";
 import FastImage from 'react-native-fast-image';
-import {DotIndicator} from 'react-native-indicators';
 
 const mapStateToProps = state => {
     return {};
@@ -55,9 +55,7 @@ class Item extends Component {
                 <View style={styles.pictureArea}>
                     <Swiper style={styles.wrapper} showsButtons={false}>
                         {this.props.picture === undefined || this.props.picture === null ?
-                            <View style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
-                                <DotIndicator color={commonStyle.PRIMARY_COLOR}/>
-                            </View> :
+                            <LoadingActivity/> :
                             this.props.picture.map((picture, index) => {
                                 return (
                                     <View key={picture.id} style={styles.slide1}>

@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         justifyContent:"space-between"
     },
     title:{
-        flex:2,
+        flex:5,
         paddingTop:30,
         justifyContent:'center',
     },

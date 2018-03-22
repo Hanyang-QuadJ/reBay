@@ -21,7 +21,7 @@ const mapStateToProps = state => {
 };
 
 class SellFilterScreen extends Component {
-    static navigatorStyle = commonStyle.TabBarHidden;
+    static navigatorStyle = commonStyle.NavigationStyleReverse;
 
     constructor(props) {
         super(props);
@@ -60,31 +60,29 @@ class SellFilterScreen extends Component {
             <Container style={{backgroundColor: 'white'}}>
                 <KeyboardAvoidingView style={{flex:1}} behavior="padding">
                     <Content scrollEnabled={false} contentContainerStyle={{flex: 1}}>
-
-                        <View style={styles.header}>
-                            <View style={styles.title}>
-                                <Text style={styles.title__text}>상품명</Text>
-                                <Text style={styles.title__text}>가격</Text>
-                                <Text style={styles.title__text}>사이즈는 무엇인가요?</Text>
-                            </View>
-                            <View style={styles.status}>
-                                <View style={{flexDirection:"row", justifyContent:"flex-end"}}>
-                                    <Text style={styles.statusStrong}>3</Text><Text style={[styles.statusText,{marginTop:14}]}>/6</Text>
-                                </View>
-                                <Text style={styles.statusText}>단계</Text>
-                            </View>
-                        </View>
+                        <StepHeader text1="상품명" text2="가격" text3="사이즈는 무엇인가요?"
+                                    color={commonStyle.PRIMARY_COLOR}
+                                    stepColor={commonStyle.TEXT_COLOR}
+                                    paddingBottom={30}
+                                    currentStep={3}
+                                    finalStep={6}/>
                         <View style={styles.inputArea}>
-                            <InputComponent icon="ios-search"
+                            <InputComponent image={require("../../../Assets/dress.png")}
                                             placeholder="상품명"
+                                            style={{borderColor:commonStyle.BORDER_COLOR}}
                                             onChangeText={(item_name) => this.setState({item_name})}
                             />
-                            <InputComponent icon="ios-pricetag-outline"
+
+                            <InputComponent image={require("../../../Assets/dress.png")}
                                             placeholder="가격"
+                                            marginTop={20}
+                                            style={{borderColor:commonStyle.BORDER_COLOR}}
                                             onChangeText={(item_price) => this.setState({item_price})}
                             />
-                            <InputComponent icon="ios-resize"
+                            <InputComponent image={require("../../../Assets/dress.png")}
                                             placeholder="사이즈"
+                                            marginTop={20}
+                                            style={{borderColor:commonStyle.BORDER_COLOR}}
                                             onChangeText={(item_size) => this.setState({item_size})}
                             />
                         </View>

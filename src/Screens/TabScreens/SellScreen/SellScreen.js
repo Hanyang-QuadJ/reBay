@@ -24,7 +24,7 @@ const mapStateToProps = state => {
 };
 
 class SellScreen extends Component {
-
+    static navigatorStyle = commonStyle.NavigationStyleReverse;
     constructor(props) {
         super(props);
         this.state = {};

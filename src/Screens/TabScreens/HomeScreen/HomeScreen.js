@@ -33,8 +33,6 @@ const initialLayout = {
 
 const mapStateToProps = state => {
     return {
-        data: state.DefaultReducer.data,
-        loading: state.DefaultReducer.loading,
         recommend: state.RecommendReducer.recommend
     };
 };
@@ -115,11 +113,28 @@ class HomeScreen extends Component {
         return (Platform.OS === 'ios') ? <TabViewPagerScroll {...props} /> : <TabViewPagerPan swipeEnabled={false}
                                                                                               {...props} />
     };
+    _renderLabel = props => ({ route, index }) => {
+        const inputRange = props.navigationState.routes.map((x, i) => i);
+        const outputRange = inputRange.map(
+            inputIndex => (inputIndex === index ? commonStyle.PRIMARY_COLOR : commonStyle.TEXT_COLOR),
+        );
+        const color = props.position.interpolate({
+            inputRange,
+            outputRange,
+        });
+
+        return (
+            <Animated.Text style={[styles.label, { color }]}>
+                {route.title}
+            </Animated.Text>
+        );
+    };
     _renderHeader = props => {
         return (
             <View>
                 <TabBar {...props} indicatorStyle={{backgroundColor: commonStyle.PRIMARY_COLOR}}
-                        labelStyle={{color: commonStyle.PRIMARY_COLOR, fontSize: 13, marginVertical: 1}}
+                        renderLabel={this._renderLabel(props)}
+                        labelStyle={{color: commonStyle.TEXT_COLOR, fontSize: 13, marginVertical: 1}}
                         style={{backgroundColor: "white",}}/>
             </View>
         )

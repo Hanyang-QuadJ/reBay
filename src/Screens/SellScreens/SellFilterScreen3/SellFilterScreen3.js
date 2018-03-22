@@ -19,7 +19,7 @@ const mapStateToProps = state => {
 };
 
 class SellFilterScreen3 extends Component {
-    static navigatorStyle = commonStyle.TabBarHidden;
+    static navigatorStyle = commonStyle.NavigationStyleReverse;
 
     constructor(props) {
         super(props);
@@ -76,8 +76,12 @@ class SellFilterScreen3 extends Component {
         return (
             <Container style={{backgroundColor: 'white'}}>
                 <Content scrollEnabled={false} contentContainerStyle={{flex:1}}>
-                    <StepHeader text1="상품의" text2="상세정보는" text3="어떻게 되나요?" color={commonStyle.PRIMARY_COLOR}
-                                paddingBottom={30} currentStep={5} finalStep={6}/>
+                    <StepHeader text1="상품의" text2="상세정보는" text3="어떻게 되나요?"
+                                color={commonStyle.PRIMARY_COLOR}
+                                paddingBottom={30}
+                                currentStep={5}
+                                stepColor={commonStyle.TEXT_COLOR}
+                                finalStep={6}/>
                     <View style={styles.rowContainer}>
                         <Text style={styles.label}>구성상품</Text>
                         <View style={styles.row}>

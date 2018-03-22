@@ -2,10 +2,12 @@ import React, {Component} from 'react';
 import {TextInput, AsyncStorage, View} from 'react-native';
 import {connect} from 'react-redux';
 import {Container, Text, Content, Button} from 'native-base';
+import LoadingActivity from '../../../Components/LoadingActivity/LoadingActivity';
+import StepHeader from '../../../Components/StepHeader/StepHeader';
 import FooterButton from '../../../Components/FooterButtonComponent/FooterButtonComponent';
+import InputComponent from '../../../Components/InputComponent/InputComponent';
 import styles from './style';
 import * as ItemAction from '../../../Actions/ItemAction'
-import { DotIndicator } from 'react-native-indicators';
 import * as commonStyle from '../../../Constants/commonStyle';
 
 
@@ -16,6 +18,7 @@ const mapStateToProps = state => {
 };
 
 class DetailScreen extends Component {
+    static navigatorStyle = commonStyle.NavigationStyleReverse;
     constructor(props) {
         super(props);
         this.state = {
@@ -112,10 +115,8 @@ class DetailScreen extends Component {
 
     render() {
         if(this.state.posting === true){
-            return(
-                <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-                    <DotIndicator color={commonStyle.PRIMARY_COLOR} />
-                </View>
+            return (
+                <LoadingActivity/>
 
             )
 
@@ -123,24 +124,28 @@ class DetailScreen extends Component {
         else{
             return (
                 <Container style={{backgroundColor: 'white'}}>
-                    <Content contentContainerStyle={{flex:1}}>
-
+                    <Content scrollEnabled={false} contentContainerStyle={{flex:1}}>
+                        <StepHeader text1="상품의" text2="추가사항" text3="태그를 입력해주세요"
+                                    color={commonStyle.PRIMARY_COLOR}
+                                    stepColor={commonStyle.TEXT_COLOR}
+                                    paddingBottom={10}
+                                    currentStep={6}
+                                    finalStep={6}/>
                         <TextInput
                             multiline={true}
-                            numberOfLines={10}
+                            numberOfLines={3}
                             placeholder="제품상세설명"
                             onChangeText={(content) => this.setState({content})}
                             style={styles.textArea}
                         />
-
-                        <TextInput
-                            autoCorrect={false}
-                            multiline={true}
-                            numberOfLines={5}
-                            onChangeText={(tag) => this.setState({tag})}
-                            placeholder="태그"
-                            style={styles.textArea}
+                        <InputComponent image={require("../../../Assets/dress.png")}
+                                        placeholder="태그"
+                                        onChangeText={(tag) => this.setState({tag})}
+                                        marginTop={20}
+                                        style={{borderColor:commonStyle.BORDER_COLOR}}
                         />
+
+
                     </Content>
                     <FooterButton leftText="임시저장" rightText="다음으로" onPress={this.postItem}/>
                 </Container>

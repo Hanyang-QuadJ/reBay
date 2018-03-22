@@ -30,7 +30,7 @@ const mapStateToProps = state => {
 };
 
 class BrandScreen extends Component {
-    static navigatorStyle = commonStyle.NavigationStyle;
+    static navigatorStyle = commonStyle.NavigationStyleReverse;
 
     // static navigatorStyle = commonStyle.TabBarHidden;
 
@@ -38,7 +38,7 @@ class BrandScreen extends Component {
         super(props);
         this.state = {
             currentBrand: [],
-            scroll: new Animated.Value(0) ,
+            scroll: new Animated.Value(0),
         };
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
@@ -48,10 +48,7 @@ class BrandScreen extends Component {
     }
 
     filterBySearchBar(text) {
-        console.log(text);
         const brands = [];
-
-
         if (this.props.brand != null) {
             this.props.brand.brands.forEach(function (val, index) {
                 if (val.brand_name.indexOf(text) !== -1 || val.brand_name_kor.indexOf(text) !== -1) {
@@ -114,12 +111,16 @@ class BrandScreen extends Component {
                         top: 0,
                         left: 0,
                         right: 0,
-                        backgroundColor:"white",
+                        backgroundColor: "white",
                         zIndex: 10,
                         transform: [{translateY}]
                     }}>
-                        <StepHeader text1="상품의" text2="브랜드는" text3="무엇인가요?" color={commonStyle.PRIMARY_COLOR}
-                        paddingBottom={30} currentStep={2} finalStep={6}/>
+                        <StepHeader text1="상품의" text2="브랜드는" text3="무엇인가요?"
+                                    color={commonStyle.PRIMARY_COLOR}
+                                    stepColor={commonStyle.TEXT_COLOR}
+                                    paddingBottom={30}
+                                    currentStep={2}
+                                    finalStep={6}/>
 
                         <View style={styles.searchBar}>
                             <Icon name="ios-search" size={30} style={styles.searchBar__icon}/>
@@ -127,7 +128,7 @@ class BrandScreen extends Component {
                                    onChangeText={(text) => this.filterBySearchBar(text)}/>
                         </View>
                     </Animated.View>
-                    <AnimatedFlatList contentContainerStyle={{paddingTop:240}}
+                    <AnimatedFlatList contentContainerStyle={{paddingTop: 240}}
                                       keyboardShouldPersistTaps={'always'}
                                       keyboardDismissMode="on-drag"
                                       scrollEventThrottle={1}

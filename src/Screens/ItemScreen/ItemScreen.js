@@ -15,8 +15,10 @@ import * as ItemAction from '../../Actions/ItemAction';
 import styles from './style';
 import Swiper from 'react-native-swiper';
 import FooterButtonComponent from '../../Components/FooterButtonComponent/FooterButtonComponent';
+import LoadingIndicator from '../../Components/LoadingActivity/LoadingActivity';
 import Item from '../../Components/Item/Item';
 import * as commonStyle from '../../Constants/commonStyle';
+import * as RecommendAction from '../../Actions/RecommendAction';
 import FastImage from 'react-native-fast-image';
 import { DotIndicator } from 'react-native-indicators';
 import { GoToHome } from "../index";
@@ -35,7 +37,6 @@ class ItemScreen extends Component {
         leftButtons: [{
             title: "홈으로",
             id: "goToHome",
-            buttonColor: commonStyle.PRIMARY_COLOR
         }]
     };
 
@@ -43,16 +44,19 @@ class ItemScreen extends Component {
         super(props);
         this.state = {
             item: [],
-            picture: []
+            picture: [],
+            homeLoading:false
         };
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }
 
 
-    onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
+    async onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
 
         if (event.id === "goToHome") {
-            GoToHome();
+            this.setState({homeLoading:true});
+            await this.props.dispatch(RecommendAction.getRecommend());
+            await GoToHome();
 
         }
 
@@ -60,20 +64,28 @@ class ItemScreen extends Component {
 
     render() {
         const { brand, item, picture } = this.props;
-            return (
-                <Container style={{backgroundColor: 'white'}}>
-                    <View style={{flex: 1}}>
-                        <Item brand={brand.brand_name}
-                              username={item.username}
-                              item_name={item.item_name}
-                              price={item.price}
-                              picture={picture}
-                              grade={3}
-                        />
-                        <FooterButtonComponent leftText="삭제하기" rightText="수정하기"/>
-                    </View>
-                </Container>
-            )
+        switch (this.state.homeLoading) {
+            case true:
+                return (
+                    <LoadingIndicator/>
+                );
+            default:
+                return (
+                    <Container style={{backgroundColor: 'white'}}>
+                        <View style={{flex: 1}}>
+                            <Item brand={brand.brand_name}
+                                  username={item.username}
+                                  item_name={item.item_name}
+                                  price={item.price}
+                                  picture={picture}
+                                  grade={3}
+                            />
+                            <FooterButtonComponent leftText="삭제하기" rightText="수정하기"/>
+                        </View>
+                    </Container>
+                )
+        }
+
 
 
     }

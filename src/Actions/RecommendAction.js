@@ -6,22 +6,20 @@ export const FAILED_TO_GET_RECOMMEND = "FAILED_TO_GET_RECOMMEND";
 
 
 
-export const getRecommend = (token) => {
+export const getRecommend = () => {
     return async (dispatch) => {
         try {
-            dispatch({type: START_TO_GET_RECOMMEND});
             let response = await fetch(
                 ServerEndPoint2 + "api/brand/recent", {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json',
-                        'x-access-token': token
                     },
                 }
             );
             let responseJson = await response.json();
-            // console.log(responseJson);
+
             await dispatch({type: SUCCEED_TO_GET_RECOMMEND, payload: responseJson.result});
             return responseJson.result;
 
@@ -34,7 +32,7 @@ export const getRecommend = (token) => {
 
 };
 
-export const refreshRecommend = (token) => {
+export const refreshRecommend = () => {
     return async (dispatch) => {
         try {
             let response = await fetch(
@@ -43,7 +41,6 @@ export const refreshRecommend = (token) => {
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json',
-                        'x-access-token': token
                     },
                 }
             );

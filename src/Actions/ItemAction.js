@@ -2,22 +2,18 @@ import {ServerEndPoint, ServerEndPoint2} from "../Constants/server";
 
 
 //아이템 하나 가져오기
-export const START_TO_GET_ITEM = "START_TO_GET_ITEM";
 export const FAILED_TO_GET_ITEM = "FAILED_TO_GET_ITEM";
 export const SUCCEED_TO_GET_ITEM = "SUCCEED_TO_GET_ITEM";
 
 //아이템 사진 가져오기
-export const START_TO_GET_ITEM_PICTURE = "START_TO_GET_ITEM_PICTURE";
 export const FAILED_TO_GET_ITEM_PICTURE = "FAILED_TO_GET_ITEM_PICTURE";
 export const SUCCEED_TO_GET_ITEM_PICTURE = "SUCCEED_TO_GET_ITEM_PICTURE";
 
 //아이템 등록하기
-export const START_TO_POST_ITEM = "START_TO_POST_ITEM";
 export const FAILED_TO_POST_ITEM = "FAILED_TO_POST_ITEM";
 export const SUCCEED_TO_POST_ITEM = "SUCCEED_TO_POST_ITEM";
 
 //아이템 걸러서 여러개 가져오기
-export const START_TO_POST_ITEMS = "START_TO_POST_ITEMS";
 export const FAILED_TO_POST_ITEMS = "FAILED_TO_POST_ITEMS";
 export const SUCCEED_TO_POST_ITEMS = "SUCCEED_TO_POST_ITEMS";
 
@@ -28,7 +24,6 @@ export const getItem = (token, id) => {
 
     return async (dispatch) => {
         try {
-            await dispatch({type: START_TO_GET_ITEM});
             let response = await fetch(
                 ServerEndPoint2 + "api/item/one/" + id, {
                     method: 'GET',
@@ -55,7 +50,6 @@ export const getItemPicture = (token, id) => {
 
     return async (dispatch) => {
         try {
-            await dispatch({type: START_TO_GET_ITEM_PICTURE});
             let response = await fetch(
                 ServerEndPoint2 + "api/item/pic/" + id, {
                     method: 'GET',
@@ -100,7 +94,6 @@ export const postItem = (token,
             // console.log("^^^^^");
             // console.log(token);
             // console.log(price);
-            await dispatch({type: START_TO_POST_ITEM});
             let response = await fetch(
                 ServerEndPoint2 + 'api/item/sell', {
                     method: 'POST',
@@ -146,7 +139,6 @@ export const postItems = (token, category_1, category_2, item_status, season, ma
 
     return async (dispatch) => {
         try {
-            await dispatch({type: START_TO_POST_ITEMS});
             let response = await fetch(
                 ServerEndPoint2 + "api/search", {
                     method: 'POST',

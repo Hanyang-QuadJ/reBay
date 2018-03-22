@@ -26,7 +26,7 @@ const mapStateToProps = state => {
 };
 
 class PictureScreen extends Component {
-    static navigatorStyle = commonStyle.NavigationStyle;
+    static navigatorStyle = commonStyle.NavigationStyleReverse;
     static navigatorButtons = {
         leftButtons: [
             {
@@ -198,6 +198,7 @@ class PictureScreen extends Component {
             <Container style={{backgroundColor: 'white'}}>
                 <View style={styles.container}>
                     <StepHeader text1="사진을" text2="3장 이상" text3="선택해주세요" color={commonStyle.PRIMARY_COLOR}
+                                stepColor={commonStyle.TEXT_COLOR}
                                 paddingBottom={30} currentStep={1} finalStep={6}/>
 
                     <View style={styles.rowContainer}>

@@ -23,7 +23,7 @@ const mapStateToProps = state => {
 };
 
 class SellFilterScreen2 extends Component {
-    static navigatorStyle = commonStyle.TabBarHidden;
+    static navigatorStyle = commonStyle.NavigationStyleReverse;
 
     constructor(props) {
         super(props);
@@ -47,25 +47,25 @@ class SellFilterScreen2 extends Component {
         let brand_id = this.props.brand_id;
         let price = this.props.price;
         let size = this.props.size;
-        let season = this.state.year[this.state.selectedYear].name +" "+this.state.season[this.state.selectedSeason].name;
+        let season = this.state.year[this.state.selectedYear].name + " " + this.state.season[this.state.selectedSeason].name;
         let category_1 = this.state.category[this.state.selectedCategory].name;
         let category_2 = this.state.category[this.state.selectedCategory].detailCategory[this.state.selectedDetailCategory].name;
         let item_status = this.state.item_status[this.state.selectedItemStatus].name;
 
         // console.log(pic_list, item_name, brand_id, price, size, season, category_1, category_2, item_status, fullbox, warantee, domestic, refund)
         this.props.navigator.push({
-            screen:'SellFilter3',
-            title:'상세정보',
-            passProps:{
-                pic_list:pic_list,
-                item_name:item_name,
-                brand_id:brand_id,
-                price:price,
-                size:size,
-                season:season,
-                category_1:category_1,
-                category_2:category_2,
-                item_status:item_status
+            screen: 'SellFilter3',
+            title: '상세정보',
+            passProps: {
+                pic_list: pic_list,
+                item_name: item_name,
+                brand_id: brand_id,
+                price: price,
+                size: size,
+                season: season,
+                category_1: category_1,
+                category_2: category_2,
+                item_status: item_status
             }
         })
 
@@ -74,9 +74,13 @@ class SellFilterScreen2 extends Component {
     render() {
         return (
             <Container style={{backgroundColor: 'white'}}>
-                <Content scrollEnabled={false} contentContainerStyle={{flex:1}}>
-                    <StepHeader text1="상품의" text2="카테고리는" text3="어떻게 되나요?" color={commonStyle.PRIMARY_COLOR}
-                                paddingBottom={10} currentStep={4} finalStep={6}/>
+                <Content scrollEnabled={false} contentContainerStyle={{flex: 1}}>
+                    <StepHeader text1="상품의" text2="카테고리는" text3="어떻게 되나요?"
+                                color={commonStyle.PRIMARY_COLOR}
+                                paddingBottom={8}
+                                stepColor={commonStyle.TEXT_COLOR}
+                                currentStep={4}
+                                finalStep={6}/>
                     <View style={styles.rowContainer}>
                         <Text style={styles.label}>상위 카테고리</Text>
                         <ScrollView style={styles.row} horizontal={true}
@@ -121,7 +125,7 @@ class SellFilterScreen2 extends Component {
                                             }}
                                         >
                                             <Text
-                                                style={(index === this.state.selectedDetailCategory) ? styles.text  : styles.notText}>{category.name}</Text>
+                                                style={(index === this.state.selectedDetailCategory) ? styles.text : styles.notText}>{category.name}</Text>
                                         </Button>
                                     )))
                             }
@@ -145,7 +149,7 @@ class SellFilterScreen2 extends Component {
                                     }}
                                 >
                                     <Text
-                                        style={(index === this.state.selectedItemStatus) ? styles.text  : styles.notText}>{item_status.name}</Text>
+                                        style={(index === this.state.selectedItemStatus) ? styles.text : styles.notText}>{item_status.name}</Text>
                                 </Button>
                             ))}
                         </View>
@@ -153,7 +157,8 @@ class SellFilterScreen2 extends Component {
 
                     <View style={styles.rowContainer}>
                         <Text style={styles.label}>시즌</Text>
-                        <ScrollView style={styles.row} horizontal={true}>
+                        <ScrollView style={styles.row} horizontal={true} showsHorizontalScrollIndicator={false}
+                        >
                             {this.state.year.map((year, index) => (
                                 <Button
                                     style={(index === this.state.selectedYear ? styles.checked : styles.notChecked)}
@@ -181,7 +186,7 @@ class SellFilterScreen2 extends Component {
                                     }}
                                 >
                                     <Text
-                                        style={(index === this.state.selectedSeason) ? styles.text  : styles.notText}>{season.name}</Text>
+                                        style={(index === this.state.selectedSeason) ? styles.text : styles.notText}>{season.name}</Text>
                                 </Button>
                             ))}
                         </View>

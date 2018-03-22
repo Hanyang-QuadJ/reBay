@@ -26,7 +26,7 @@ const mapStateToProps = state => {
 };
 
 class BuyScreen extends Component {
-    static navigatorStyle = commonStyle.NavigationStyle;
+    static navigatorStyle = commonStyle.NavigationStyleReverse;
 
     // static navigatorStyle = commonStyle.TabBarHidden;
 

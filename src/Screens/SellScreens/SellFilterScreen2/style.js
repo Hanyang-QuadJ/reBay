@@ -4,12 +4,12 @@ const styles = StyleSheet.create({
 
     rowContainer:{
         marginTop:15,
-        marginLeft:15,
+
     },
     row:{
         flexDirection:"row",
         marginTop:10,
-
+        paddingLeft:25,
     },
     checked:{
         backgroundColor:commonStyle.PRIMARY_COLOR,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     },
 
     label:{
-        marginLeft:7,
+        marginLeft:30,
         color:commonStyle.TEXT_COLOR
 
     },

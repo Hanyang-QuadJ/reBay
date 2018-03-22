@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {AsyncStorage, View, Text,FlatList, TouchableOpacity, ActivityIndicator, InteractionManager} from 'react-native';
+import * as commonStyle from "../../../Constants/commonStyle";
 
 
 const mapStateToProps = state => {
@@ -9,6 +10,8 @@ const mapStateToProps = state => {
 };
 
 class NoticeScreen extends Component {
+    static navigatorStyle = commonStyle.NavigationStyleReverse;
+
 
     constructor(props) {
         super(props);

@@ -23,9 +23,9 @@ class StepHeader extends Component {
                 </View>
                 <View style={[styles.status,{paddingBottom:this.props.paddingBottom}]}>
                     <View style={{flexDirection:"row", justifyContent:"flex-end"}}>
-                        <Text style={[styles.statusStrong,{color:this.props.color}]}>{this.props.currentStep}</Text><Text style={[styles.statusText,{marginTop:14,color:this.props.color}]}>/{this.props.finalStep}</Text>
+                        <Text style={[styles.statusStrong,{color:this.props.color}]}>{this.props.currentStep}</Text><Text style={[styles.statusText,{marginTop:14,color:this.props.stepColor}]}>/{this.props.finalStep}</Text>
                     </View>
-                    <Text style={[styles.statusText,{color:this.props.color}]}>단계</Text>
+                    <Text style={[styles.statusText,{color:this.props.stepColor}]}>단계</Text>
                 </View>
             </View>
 

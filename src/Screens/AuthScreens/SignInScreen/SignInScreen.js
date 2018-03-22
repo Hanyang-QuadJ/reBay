@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {View, TextInput, KeyboardAvoidingView} from 'react-native';
-import { GoToHome } from "../../index";
-import { Navigation } from 'react-native-navigation';
+import {GoToHome} from "../../index";
+import {Navigation} from 'react-native-navigation';
 import * as LoginAction from '../../../Actions/LoginAction';
 import commonStyle from '../../index'
 import InputComponent from '../../../Components/InputComponent/InputComponent'
@@ -24,11 +24,11 @@ import {
 import styles from './styles';
 import * as RecommendAction from "../../../Actions/RecommendAction";
 import * as BrandAction from "../../../Actions/BrandAction";
+import { DotIndicator } from "react-native-indicators";
 import FastImage from "react-native-fast-image";
 
 const mapStateToProps = state => {
     return {
-        token: state.LoginReducer.token
     };
 };
 
@@ -38,24 +38,25 @@ class SignInScreen extends Component {
         this.state = {
             email: "",
             password: "",
+            isSignIn: false,
         }
     }
 
 
-    sendToAction = () => {
-        this.props.dispatch(LoginAction.postLogin(this.state.email, this.state.password)).then(async (value) =>  {
-             await this.props.dispatch(BrandAction.getBrand());
-             await this.props.dispatch(RecommendAction.getRecommend()).then(
-                async value2 => {
-                    let imageArray = [];
-                    for (let i = 0; i < value2.length; i++) {
-                        imageArray.push({uri: value2[i].image_url});
-                    }
-                    await FastImage.preload(imageArray);
-                    await GoToHome();
-                });
-
-        });
+    sendToAction = async () => {
+        // await this.props.dispatch(BrandAction.getBrand());
+        this.setState({isSignIn:true});
+        await this.props.dispatch(LoginAction.postLogin(this.state.email, this.state.password));
+        await this.props.dispatch(BrandAction.getBrand());
+        await this.props.dispatch(RecommendAction.getRecommend()).then(
+            async value3 => {
+                let imageArray = [];
+                for (let i = 0; i < value3.length; i++) {
+                    imageArray.push({uri: value3[i].image_url});
+                }
+                await FastImage.preload(imageArray);
+                await GoToHome();
+            });
     };
 
     componentDidUpdate() {
@@ -101,18 +102,18 @@ class SignInScreen extends Component {
                         <View style={styles.buttonContainer}>
                             <Button full rounded onPress={this.sendToAction}
                                     style={{
-                                        backgroundColor: "rgba(92, 99,216, 0.5)",
+                                        backgroundColor: commonStyle.PRIMARY_COLOR,
                                         height: 45,
                                         marginTop: 20,
-                                        marginLeft: 30,
-                                        marginRight: 30,
+                                        marginLeft: 40,
+                                        marginRight: 40,
                                         borderColor: "transparent",
                                         borderWidth: 0,
-                                        borderRadius: 7,
+                                        borderRadius: 50,
                                     }}>
-                                <Text>로그인</Text>
+                                {this.state.isSignIn === false ? <Text>로그인</Text> : <DotIndicator size={10} count={3} color={commonStyle.SECONDARY_COLOR}/>  }
                             </Button>
-                            <Text style={{marginTop: 10}}>비밀번호를 잊어버리셨나요?</Text>
+                            <Text style={{marginTop: 10, color:commonStyle.SECONDARY_COLOR}}>비밀번호를 잊어버리셨나요?</Text>
                         </View>
                     </KeyboardAvoidingView>
 

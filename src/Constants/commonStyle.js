@@ -12,9 +12,9 @@ export const NavigationStyle = {
 };
 
 export const CannotGoBack = {
-    navBarTextColor: PRIMARY_COLOR,
-    navBarBackgroundColor: SECONDARY_COLOR,
-    navBarButtonColor: PRIMARY_COLOR,
+    navBarTextColor: SECONDARY_COLOR,
+    navBarBackgroundColor: PRIMARY_COLOR,
+    navBarButtonColor: SECONDARY_COLOR,
     disabledBackGesture: true,
 
 };
@@ -29,9 +29,9 @@ export const NavigationStyleReverse = {
 
 
 export const TabBarHidden = {
-    navBarTextColor: PRIMARY_COLOR,
-    navBarBackgroundColor: SECONDARY_COLOR,
-    navBarButtonColor: PRIMARY_COLOR,
+    navBarTextColor: SECONDARY_COLOR,
+    navBarBackgroundColor: PRIMARY_COLOR,
+    navBarButtonColor: SECONDARY_COLOR,
     tabBarHidden:true
 };
 

@@ -1,20 +1,21 @@
 import React, {Component} from 'react';
-import {StatusBar, View, TouchableHighlight, StyleSheet, TouchableOpacity, AsyncStorage, Text } from 'react-native';
-import {Button, Container, Content } from 'native-base';
+import {StatusBar, View, TouchableHighlight, StyleSheet, TouchableOpacity, AsyncStorage, Text} from 'react-native';
+import {Button, Container, Content} from 'native-base';
 import Swiper from 'react-native-swiper';
 import {connect} from "react-redux";
-import GoToHome from '../../../../App';
+import { GoToHome } from '../../index';
+import * as BrandAction from "../../../Actions/BrandAction";
+import FastImage from "react-native-fast-image";
+import * as RecommendAction from "../../../Actions/RecommendAction";
 
 const mapStateToProps = state => {
-    return {
-    };
+    return {};
 };
-
 
 
 class TutorialScreen extends Component {
     static navigatorStyle = {
-        navBarHidden:true
+        navBarHidden: true
 
     };
 
@@ -22,6 +23,7 @@ class TutorialScreen extends Component {
         super(props);
         // this.getToken();
     }
+
     goToSignIn = () => {
         this.props.navigator.push({
             screen: 'SignIn',
@@ -33,8 +35,17 @@ class TutorialScreen extends Component {
             backButtonTitle: "뒤로",
         });
     };
-    goToHome = () => {
-        GoToHome();
+    goToHome = async () => {
+        await this.props.dispatch(BrandAction.getBrand());
+        await this.props.dispatch(RecommendAction.getRecommend()).then(
+            async value2 => {
+                let imageArray = [];
+                for (let i = 0; i < value2.length; i++) {
+                    imageArray.push({uri: value2[i].image_url});
+                }
+                await FastImage.preload(imageArray);
+                await GoToHome();
+            });
     };
 
     render() {
@@ -80,8 +91,8 @@ class TutorialScreen extends Component {
                             style={{
                                 backgroundColor: "rgba(92, 99,216, 0.5)",
                                 height: 45,
-                                marginTop:10,
-                                marginBottom:5,
+                                marginTop: 10,
+                                marginBottom: 5,
                                 borderColor: "transparent",
                                 borderWidth: 0,
                                 borderRadius: 5,

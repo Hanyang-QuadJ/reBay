@@ -3,9 +3,9 @@ import commonStyle from '../../index';
 
 const style = StyleSheet.create({
     textArea:{
-        height:200,
+        height:70,
         paddingHorizontal:10,
-        marginHorizontal:20,
+        marginHorizontal:30,
         marginVertical:15,
         paddingVertical:15,
         borderWidth:1,

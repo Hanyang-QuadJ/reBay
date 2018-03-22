@@ -18,7 +18,7 @@ const mapStateToProps = state => {
 };
 
 class InitScreen extends Component {
-    static navigatorStyle = commonStyle.NavigationStyle;
+    static navigatorStyle = commonStyle.NavigationStyleReverse;
 
     constructor(props) {
         super(props)

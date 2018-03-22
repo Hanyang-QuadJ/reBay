@@ -17,7 +17,7 @@ class InputComponent extends Component {
 
     render() {
         return (
-                <View style={styles.container}>
+                <View style={[styles.container,{marginTop:this.props.marginTop}]}>
                     <View style={styles.icon}>
                         <Image source={this.props.image}/>
                     </View>

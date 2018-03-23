@@ -23,6 +23,7 @@ class BuyScreen3 extends Component {
             season: this.props.season,
             loading: false,
             nextIndex: 0,
+            reachEnd: 0,
 
         }
 
@@ -35,11 +36,17 @@ class BuyScreen3 extends Component {
             console.log("@@@@@@@@@");
             nextIndex = nextProps.items.nextIndex;
             items = this.state.items;
-            items.result.concat(nextProps.items.result);
+            items = items.result.concat(nextProps.items.result);
+            console.log("!!!!!!!!!!!!");
+            console.log(items.result);
+            console.log("!!!!!!!!!!!!");
             this.setState({
                 items: items,
                 nextIndex: nextIndex,
+            },()=>{
+
             });
+
         }
         if (nextProps.items !== null) {
             console.log("@@@@@@@@@");
@@ -90,23 +97,25 @@ class BuyScreen3 extends Component {
     }
 
     loadMoreItems = () => {
-        if (this.state.loading === false) {
+        if (this.state.reachEnd === 1) {
             console.log("end reach");
             this.setState({
-                loading: true
+                reachEnd:0
+            },()=>{
+                AsyncStorage.getItem("ACCESS_TOKEN").then(token => {
+                    this.props.dispatch(ItemActionCreator.postItems(
+                        token,
+                        this.props.category,
+                        this.props.detailCategory,
+                        this.props.status,
+                        this.props.year + " " + this.props.season,
+                        this.props.maxPrice,
+                        this.props.minPrice,
+                        this.state.nextIndex,
+                    ));
+                });
             })
-            AsyncStorage.getItem("ACCESS_TOKEN").then(token => {
-                this.props.dispatch(ItemActionCreator.postItems(
-                    token,
-                    this.props.category,
-                    this.props.detailCategory,
-                    this.props.status,
-                    this.props.year + " " + this.props.season,
-                    this.props.maxPrice,
-                    this.props.minPrice,
-                    this.state.nextIndex,
-                ));
-            });
+
         }
     }
     renderFooter = () => {
@@ -167,7 +176,19 @@ class BuyScreen3 extends Component {
                                     renderItem={this._renderItem}
                                     ListFooterComponent={this.renderFooter}
                                     onEndReached={() => {
-                                        this.loadMoreItems()
+                                        if (this.state.reachEnd === 0) {
+                                            console.log("Why11");
+                                            this.setState({
+                                                    reachEnd: 1
+                                                },
+                                                ()=>{
+                                                    this.loadMoreItems()
+                                                }
+                                            );
+                                        }
+
+
+
                                     }}
                                     onEndReachedThreshold={1}
                                 />

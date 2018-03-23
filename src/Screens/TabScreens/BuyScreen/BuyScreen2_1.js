@@ -20,10 +20,11 @@ import {
     FooterTab,
 
 } from 'native-base';
-import jsonData from '../../../Constants/data'
 import styles from './style2_1';
 import * as commonStyle from '../../../Constants/commonStyle';
 import FooterButtonComponent from '../../../Components/FooterButtonComponent/FooterButtonComponent';
+import StepHeader from '../../../Components/StepHeader/StepHeader';
+import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
 
 const mapStateToProps = state => {
@@ -35,9 +36,7 @@ class BuyScreen2_1 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedBrand: this.props.selectedBrand,
-            maxPrice: 100000,
-
+            multiSliderValue: [10000, 100000],
         };
     }
 
@@ -57,21 +56,48 @@ class BuyScreen2_1 extends Component {
 
     };
 
+    multiSliderValuesChange = (values) => {
+        this.setState({
+            multiSliderValue: values,
+        });
+    };
+
     render() {
+        console.log(this.state.multiSliderValue);
         return (
             <Container style={{backgroundColor: 'white'}}>
                 <Content contentContainerStyle={{flex: 1}}>
-                    <Text>{this.state.maxPrice / 10000} 만원</Text>
-                    <Slider step={100000} minimumValue={100000} maximumValue={1000000} onValueChange={(value) => {
-                        this.setState({
-                            maxPrice: value
-                        })
-                    }}/>
-                    <Slider step={100000} minimumValue={100000} maximumValue={1000000} onValueChange={(value) => {
-                        this.setState({
-                            minPrice: value
-                        })
-                    }}/>
+                    <StepHeader text1="찾으시는" text2="가격대는" text3="어떻게 되나요?"
+                                color={commonStyle.PRIMARY_COLOR}
+                                stepColor={commonStyle.TEXT_COLOR}
+                                paddingBottom={30}
+                                currentStep={3}
+                                finalStep={4}/>
+                    <View style={{justifyContent:'center', alignItems:'center', marginHorizontal:30, marginTop:30}}>
+                        <MultiSlider
+                            values={[this.state.multiSliderValue[0], this.state.multiSliderValue[1]]}
+                            sliderLength={280}
+                            selectedStyle={{backgroundColor:commonStyle.PRIMARY_COLOR}}
+                            onValuesChange={this.multiSliderValuesChange}
+                            min={0}
+                            max={1000000}
+                            step={1}
+                            allowOverlap
+                            snapped
+                        />
+                    </View>
+                    <View style={{justifyContent:'center', flexDirection:"row", alignItems:'center', marginHorizontal:30, marginTop:10}}>
+                        <View style={styles.start}>
+                            <Text style={styles.startText}>{Math.floor(this.state.multiSliderValue[0]/10000)}</Text>
+                            <Text style={styles.text}>만원</Text>
+                        </View>
+                        <View style={styles.end}>
+                            <Text style={styles.endText}>{Math.floor(this.state.multiSliderValue[1]/10000)}</Text>
+                            <Text style={styles.text}>만원</Text>
+                        </View>
+
+                    </View>
+
                 </Content>
 
 

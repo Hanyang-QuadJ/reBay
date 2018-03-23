@@ -1,44 +1,36 @@
 import { StyleSheet } from 'react-native';
 import  commonStyle from '../../index'
 const styles = StyleSheet.create({
-    rowContainer:{
-        marginTop:15,
-    },
-    row:{
-        flexDirection:"row",
-        marginTop:10,
-        paddingLeft:25,
+    start:{
+        flex:1,
+
+        justifyContent:"center",
+        alignItems:"center"
 
     },
-    checked:{
-        backgroundColor:commonStyle.PRIMARY_COLOR,
-        borderRadius:17,
-        marginHorizontal:5,
-        height:40
-    },
-    notChecked:{
-        backgroundColor:"white",
-        borderWidth:1,
-        borderColor:commonStyle.TEXT_COLOR,
-        borderRadius:17,
-        marginHorizontal:5,
-        height:40
+    startText:{
+        fontSize:24,
+        fontWeight:'800',
+        color:commonStyle.SUB_COLOR
 
     },
+    end:{
+        flex:1,
+        justifyContent:"center",
+        alignItems:"center",
 
-    label:{
-        marginLeft:30,
-        color:commonStyle.TEXT_COLOR
-
+    },
+    endText:{
+        fontSize:24,
+        fontWeight:'800',
+        color:commonStyle.SUB_COLOR
     },
     text:{
-        fontSize:15,
-
-    },
-    notText:{
+        fontSize:13,
         color:commonStyle.TEXT_COLOR,
-        fontSize:15,
-    },
+        fontWeight:"600"
+    }
+
 
 
 });

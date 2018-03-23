@@ -24,6 +24,7 @@ import jsonData from '../../../Constants/data'
 import styles from './style2';
 import * as commonStyle from '../../../Constants/commonStyle';
 import FooterButtonComponent from '../../../Components/FooterButtonComponent/FooterButtonComponent';
+import StepHeader from '../../../Components/StepHeader/StepHeader';
 
 
 const mapStateToProps = state => {
@@ -69,8 +70,13 @@ class BuyScreen2 extends Component {
             <Container style={{backgroundColor: 'white'}}>
 
                 <Content contentContainerStyle={{flex: 1}}>
+                    <StepHeader text1="찾으시는" text2="카테고리는" text3="무엇인가요?"
+                                color={commonStyle.PRIMARY_COLOR}
+                                stepColor={commonStyle.TEXT_COLOR}
+                                paddingBottom={10}
+                                currentStep={2}
+                                finalStep={4}/>
                     <View style={styles.rowContainer}>
-
                         <Text style={styles.label}>상위 카테고리</Text>
                         <ScrollView style={styles.row} horizontal={true} showsHorizontalScrollIndicator={false}>
 

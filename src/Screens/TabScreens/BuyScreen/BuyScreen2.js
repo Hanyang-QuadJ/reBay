@@ -23,6 +23,7 @@ import {
 import jsonData from '../../../Constants/data'
 import styles from './style2';
 import * as commonStyle from '../../../Constants/commonStyle';
+import FooterButtonComponent from '../../../Components/FooterButtonComponent/FooterButtonComponent';
 
 
 const mapStateToProps = state => {
@@ -47,14 +48,10 @@ class BuyScreen2 extends Component {
         };
     }
 
-    goBack() {
-        this.props.navigation.goBack(null)
-    }
-
-    goToBuyScreen3 = () => {
+    goToBuyScreen2_1 = () => {
 
         this.props.navigator.push({
-                screen: 'Buy3',
+                screen: 'Buy2_1',
                 title: '상품정보',
                 passProps: {
                     category:this.state.category[this.state.selectedCategory].name,
@@ -163,20 +160,8 @@ class BuyScreen2 extends Component {
                         </ScrollView>
                     </View>
                 </Content>
-                <Text>{this.state.maxPrice / 10000} 만원</Text>
-                <Slider step={100000} minimumValue={100000} maximumValue={1000000} onValueChange={(value) => {
-                    this.setState({
-                        maxPrice: value
-                    })
-                }}/>
-                <Slider step={100000} minimumValue={100000} maximumValue={1000000} onValueChange={(value) => {
-                    this.setState({
-                        minPrice: value
-                    })
-                }}/>
 
-
-                <Button onPress={this.goToBuyScreen3}><Text>확인</Text></Button>
+                <FooterButtonComponent leftText="임시저장" rightText="다음으로" onPress={this.goToBuyScreen2_1}/>
             </Container>
         )
 

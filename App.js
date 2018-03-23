@@ -7,6 +7,7 @@ import TutorialScreen from './src/Screens/AuthScreens/TutorialScreen/TutorialScr
 import HomeScreen from './src/Screens/TabScreens/HomeScreen/HomeScreen';
 import BuyScreen from './src/Screens/TabScreens/BuyScreen/BuyScreen';
 import BuyScreen2 from './src/Screens/TabScreens/BuyScreen/BuyScreen2';
+import BuyScreen2_1 from './src/Screens/TabScreens/BuyScreen/BuyScreen2_1';
 import BuyScreen3 from './src/Screens/TabScreens/BuyScreen/BuyScreen3';
 import BuyScreen4 from './src/Screens/TabScreens/BuyScreen/BuyScreen4';
 import SignInScreen from './src/Screens/AuthScreens/SignInScreen/SignInScreen';
@@ -96,6 +97,9 @@ export default function registerScreens(){
 
     //BuyScreens
     Navigation.registerComponent('Buy2', () => BuyScreen2,
+        store,
+        Provider);
+    Navigation.registerComponent('Buy2_1', () => BuyScreen2_1,
         store,
         Provider);
     Navigation.registerComponent('Buy3', () => BuyScreen3,

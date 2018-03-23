@@ -69,7 +69,7 @@ class BuyScreen3 extends Component {
     _renderItem = ({item}) => (
         <TouchableOpacity
             onPress={(item) => {
-                this.gotoBuyScreen4(item);
+                this.goToBuyScreen4(item);
             }}>
             <Card>
                 <CardItem header>

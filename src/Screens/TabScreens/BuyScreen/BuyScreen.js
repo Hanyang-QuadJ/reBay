@@ -15,6 +15,7 @@ const COLLAPSED_HEIGHT = 20;
 const SCROLLABLE_HEIGHT = HEADER_HEIGHT - COLLAPSED_HEIGHT;
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 import StepHeader from '../../../Components/StepHeader/StepHeader';
+import FooterButtonComponent from '../../../Components/FooterButtonComponent/FooterButtonComponent'
 
 
 import styles from './style';
@@ -146,6 +147,7 @@ class BuyScreen extends Component {
                                       )}
                     />
                 </View>
+
             </Container>
         )
     }

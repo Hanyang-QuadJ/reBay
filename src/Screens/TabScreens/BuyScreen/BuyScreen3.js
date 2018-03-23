@@ -99,22 +99,18 @@ class BuyScreen3 extends Component {
     loadMoreItems = () => {
         if (this.state.reachEnd === 1) {
             console.log("end reach");
-            this.setState({
-                reachEnd:0
-            },()=>{
-                AsyncStorage.getItem("ACCESS_TOKEN").then(token => {
-                    this.props.dispatch(ItemActionCreator.postItems(
-                        token,
-                        this.props.category,
-                        this.props.detailCategory,
-                        this.props.status,
-                        this.props.year + " " + this.props.season,
-                        this.props.maxPrice,
-                        this.props.minPrice,
-                        this.state.nextIndex,
-                    ));
-                });
-            })
+            AsyncStorage.getItem("ACCESS_TOKEN").then(token => {
+                this.props.dispatch(ItemActionCreator.postItems(
+                    token,
+                    this.props.category,
+                    this.props.detailCategory,
+                    this.props.status,
+                    this.props.year + " " + this.props.season,
+                    this.props.maxPrice,
+                    this.props.minPrice,
+                    this.state.nextIndex,
+                ));
+            });
 
         }
     }

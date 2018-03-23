@@ -85,7 +85,7 @@ class BuyScreen extends Component {
         <ListItem style={styles.brandList} button={true} onPress={() => {
             this.props.navigator.push({
                     screen: 'Buy2',
-                    title: '상품정보',
+                    title: '카테고리',
                     passProps: {
                         selectedBrand: item.brand_name,
 

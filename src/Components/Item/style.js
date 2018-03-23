@@ -3,15 +3,15 @@ import commonStyle from '../index';
 const window = Dimensions.get('window');
 const style = StyleSheet.create({
     userInfo:{
-        flex:0.6,
+        paddingVertical:10,
         justifyContent:'center',
+
 
     },
     userInfoContainer:{
         marginLeft:20,
         flex:1,
         flexDirection:'row',
-
         alignItems:'center'
 
     },
@@ -24,11 +24,16 @@ const style = StyleSheet.create({
         borderRadius:23
     },
     pictureArea:{
-        flex:3
+
+
+    },
+    wrapper:{
+        height:375
     },
     itemInfo:{
-        flex:1,
-        justifyContent:'center'
+        paddingVertical:20,
+        justifyContent:'center',
+
     },
 
     itemInfoContainer:{
@@ -40,42 +45,76 @@ const style = StyleSheet.create({
 
     },
     userInfoText:{
+        fontSize:16,
         fontWeight:'600',
-        color:commonStyle.PRIMARY_COLOR
+        color:commonStyle.TEXT_COLOR
     },
 
-    wrapper:{
-    },
     slide1: {
-        flex:1,
-        backgroundColor: '#4c586f',
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    slide2: {
+        height:375,
+        backgroundColor: 'white',
         justifyContent: 'center',
         alignItems: 'center',
     },
     image:{
         width:window.width,
-        flex:1,
-
+        height:375,
     },
     brand_name:{
         fontSize:18,
         fontWeight:"800",
-        color:commonStyle.PRIMARY_COLOR
+        color:commonStyle.TEXT_COLOR
 
     },
     item_name:{
         marginTop:3,
         fontSize:16,
-        color:commonStyle.PRIMARY_COLOR
+        color:commonStyle.TEXT_COLOR
 
     },
-
     item_price:{
         marginTop:3,
-        fontSize:19,
-        color:commonStyle.PRIMARY_COLOR,
-
+        fontSize:16,
+        fontWeight:"600",
+        color:commonStyle.TEXT_COLOR
     },
+    itemDetail:{
+        paddingVertical:10,
+        backgroundColor:"ghostwhite"
+    },
+    itemDetailContainer:{
+        backgroundColor:"white",
+        paddingLeft:20,
+        paddingTop:25,
+        paddingBottom:30,
+    },
+    row:{
+        marginTop:10,
+        flexDirection:"row"
+    },
+    label:{
+        flex:2
+    },
+    labelText:{
+        fontWeight:"700",
+        color:commonStyle.TEXT_COLOR,
+        fontSize:16,
+    },
+    content:{
+        flex:5
+    },
+    contentText:{
+        color:commonStyle.TEXT_COLOR,
+        fontSize:16,
+
+
+    }
+
 
 
 

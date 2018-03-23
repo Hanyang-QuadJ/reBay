@@ -19,7 +19,7 @@ class SwiperComponent extends Component {
         return (
             <View style={styles.wrapper}>
                 <Swiper showsButtons={false} activeDot={<View style={{backgroundColor: commonStyle.PRIMARY_COLOR ,
-                    width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}}/>}>
+                    width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3}}/>}>
                     <View style={styles.slide1}>
                         <Image style={styles.image}
                                resizeMode="contain"

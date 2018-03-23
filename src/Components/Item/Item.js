@@ -53,26 +53,86 @@ class Item extends Component {
                     </View>
                 </View>
                 <View style={styles.pictureArea}>
-                    <Swiper style={styles.wrapper} showsButtons={false}>
-                        {this.props.picture === undefined || this.props.picture === null ?
-                            <LoadingActivity/> :
-                            this.props.picture.map((picture, index) => {
+                    {this.props.picture === undefined || this.props.picture === null ? <View style={styles.slide2}><LoadingActivity/></View>:
+                        <Swiper style={styles.wrapper} showsButtons={false} activeDot={<View style={{backgroundColor: commonStyle.PRIMARY_COLOR ,
+                            width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}}/>}>
+                            {this.props.picture.map((picture,index)=> {
                                 return (
                                     <View key={picture.id} style={styles.slide1}>
                                         <FastImage style={styles.image}
                                                    source={{uri: picture.image_url}}
+                                                   resizeMode="contain"
                                         />
                                     </View>
                                 )
-                            })
-                        }
-                    </Swiper>
+
+                            })}
+                        </Swiper>
+                    }
                 </View>
                 <View style={styles.itemInfo}>
                     <View style={styles.itemInfoContainer}>
                         <Text style={styles.brand_name}>{this.props.brand}</Text>
                         <Text style={styles.item_name}>{this.props.item_name}</Text>
                         <Text style={styles.item_price}>￦{this.props.price}</Text>
+                    </View>
+                </View>
+
+                <View style={styles.itemDetail}>
+                    <View style={styles.itemDetailContainer}>
+                        <View style={styles.row}>
+                            <View style={styles.label}>
+                                <Text style={styles.labelText}>제품명</Text>
+                            </View>
+                            <View style={styles.content}>
+                                <Text style={styles.contentText}>{this.props.item_name}</Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.row}>
+                            <View style={styles.label}>
+                                <Text style={styles.labelText}>브랜드</Text>
+                            </View>
+                            <View style={styles.content}>
+                                <Text style={styles.contentText}>{this.props.brand}</Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.row}>
+                            <View style={styles.label}>
+                                <Text style={styles.labelText}>사이즈</Text>
+                            </View>
+                            <View style={styles.content}>
+                                <Text style={styles.contentText}>{this.props.size && this.props.size}</Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.row}>
+                            <View style={styles.label}>
+                                <Text style={styles.labelText}>발매 시즌</Text>
+                            </View>
+                            <View style={styles.content}>
+                                <Text style={styles.contentText}>{this.props.season && this.props.season}</Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.row}>
+                            <View style={styles.label}>
+                                <Text style={styles.labelText}>상세 설명</Text>
+                            </View>
+                            <View style={styles.content}>
+                                <Text style={styles.contentText}>{this.props.content && this.props.content}</Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.row}>
+                            <View style={styles.label}>
+                                <Text style={styles.labelText}>연관 태그</Text>
+                            </View>
+                            <View style={styles.content}>
+                                <Text style={styles.contentText}>캐쉬미어 가디건</Text>
+                            </View>
+                        </View>
                     </View>
                 </View>
             </View>

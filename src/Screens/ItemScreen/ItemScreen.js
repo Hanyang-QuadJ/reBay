@@ -72,16 +72,19 @@ class ItemScreen extends Component {
             default:
                 return (
                     <Container style={{backgroundColor: 'white'}}>
-                        <View style={{flex: 1}}>
+                        <Content>
                             <Item brand={brand.brand_name}
+                                  size={item.size}
+                                  season={item.season}
+                                  content={item.content}
                                   username={item.username}
                                   item_name={item.item_name}
                                   price={item.price}
                                   picture={picture}
                                   grade={3}
                             />
-                            <FooterButtonComponent leftText="삭제하기" rightText="수정하기"/>
-                        </View>
+                        </Content>
+                        <FooterButtonComponent leftText="삭제하기" rightText="수정하기"/>
                     </Container>
                 )
         }

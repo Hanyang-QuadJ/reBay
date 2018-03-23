@@ -66,14 +66,25 @@ class BuyScreen2_1 extends Component {
         console.log(this.state.multiSliderValue);
         return (
             <Container style={{backgroundColor: 'white'}}>
-                <Content contentContainerStyle={{flex: 1}}>
+                <Content scrollEnabled={false} contentContainerStyle={{flex: 1}}>
                     <StepHeader text1="찾으시는" text2="가격대는" text3="어떻게 되나요?"
                                 color={commonStyle.PRIMARY_COLOR}
                                 stepColor={commonStyle.TEXT_COLOR}
                                 paddingBottom={30}
                                 currentStep={3}
                                 finalStep={4}/>
-                    <View style={{justifyContent:'center', alignItems:'center', marginHorizontal:30, marginTop:30}}>
+                    <View style={{justifyContent:'center', flexDirection:"row", alignItems:'center', marginHorizontal:30,marginTop:60 }}>
+                        <View style={styles.start}>
+                            <Text style={styles.startText}>{Math.floor(this.state.multiSliderValue[0]/10000)}</Text>
+                            <Text style={styles.text}>만원</Text>
+                        </View>
+                        <View style={styles.end}>
+                            <Text style={styles.endText}>{Math.floor(this.state.multiSliderValue[1]/10000)}</Text>
+                            <Text style={styles.text}>만원</Text>
+                        </View>
+
+                    </View>
+                    <View style={{justifyContent:'center', alignItems:'center', marginHorizontal:30, marginTop:20 }}>
                         <MultiSlider
                             values={[this.state.multiSliderValue[0], this.state.multiSliderValue[1]]}
                             sliderLength={280}
@@ -86,17 +97,7 @@ class BuyScreen2_1 extends Component {
                             snapped
                         />
                     </View>
-                    <View style={{justifyContent:'center', flexDirection:"row", alignItems:'center', marginHorizontal:30, marginTop:10}}>
-                        <View style={styles.start}>
-                            <Text style={styles.startText}>{Math.floor(this.state.multiSliderValue[0]/10000)}</Text>
-                            <Text style={styles.text}>만원</Text>
-                        </View>
-                        <View style={styles.end}>
-                            <Text style={styles.endText}>{Math.floor(this.state.multiSliderValue[1]/10000)}</Text>
-                            <Text style={styles.text}>만원</Text>
-                        </View>
 
-                    </View>
 
                 </Content>
 

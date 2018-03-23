@@ -53,7 +53,7 @@ class BuyScreen2 extends Component {
 
         this.props.navigator.push({
                 screen: 'Buy2_1',
-                title: '상품정보',
+                title: '가격',
                 passProps: {
                     category:this.state.category[this.state.selectedCategory].name,
                     detailCategory:this.state.category[this.state.selectedCategory].detailCategory[this.state.selectedDetailCategory].name,

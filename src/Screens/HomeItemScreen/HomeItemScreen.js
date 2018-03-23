@@ -59,32 +59,40 @@ class HomeItemScreen extends Component {
         if(this.state.item == null || this.state.picture == null){
             return(
                 <Container style={{backgroundColor: 'white'}}>
-                    <View style={{flex: 1}}>
+                    <Content>
                         <Item brand={this.props.brand_name}
                               username={null}
+                              season={null}
+                              size={null}
+                              content={null}
                               item_name={this.props.item_name}
                               price={this.props.price}
                               picture={null}
                               grade={4}
                         />
-                        <FooterButtonComponent leftText="장바구니" rightText="구매하기"/>
-                    </View>
+                    </Content>
+                    <FooterButtonComponent leftText="장바구니" rightText="구매하기"/>
                 </Container>
             )
         }
         else{
+            console.log(this.state.item.item);
+
             return (
                 <Container>
-                    <View style={{flex: 1}}>
+                    <Content>
                         <Item brand={this.props.brand_name}
                               username={this.state.item.item.username}
                               item_name={this.props.item_name}
+                              size={this.state.item.item.size}
+                              content={this.state.item.item.content}
+                              season={this.state.item.item.season}
                               price={this.props.price}
                               picture={this.state.picture}
                               grade={4}
                         />
-                        <FooterButtonComponent leftText="장바구니" rightText="구매하기"/>
-                    </View>
+                    </Content>
+                    <FooterButtonComponent leftText="장바구니" rightText="구매하기"/>
                 </Container>
             )
         }

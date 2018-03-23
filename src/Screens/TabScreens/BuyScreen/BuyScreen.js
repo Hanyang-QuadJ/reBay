@@ -7,7 +7,7 @@ import {
     Animated,
 
 } from 'react-native';
-import {Container, Text, Content, Button, Item, Input, ListItem, List, Icon} from 'native-base';
+import {Container, Text, Content, Button, Item, Input, ListItem, List, Icon, Body,  Right} from 'native-base';
 
 
 const HEADER_HEIGHT = 200;
@@ -92,8 +92,25 @@ class BuyScreen extends Component {
                     }
                 }
             )
-        }}>
-            <Text>{item.brand_name}</Text>
+        }}><Body>
+
+        <Text style={styles.brand}>{item.brand_name}</Text>
+
+
+        </Body>
+            <Right>
+                <Button onPress={() => {
+                    this.props.navigator.push({
+                            screen: 'Buy2',
+                            title: '카테고리',
+                            passProps: {
+                                selectedBrand: item.brand_name,
+
+                            }
+                        }
+                    )
+                }} bordered style={styles.choice}><Text style={styles.choiceText}>선택</Text></Button>
+            </Right>
         </ListItem>
     );
     _renderHeader = () => {

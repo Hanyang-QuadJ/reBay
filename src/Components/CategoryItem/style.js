@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     },
     item_name:{
         marginTop:3,
-        fontSize:15,
+        fontSize:13,
         color:commonStyle.TEXT_COLOR,
         fontWeight:"500"
     },
@@ -55,9 +55,8 @@ const styles = StyleSheet.create({
     },
     item_price:{
         color:commonStyle.TEXT_COLOR,
-        fontSize:13,
+        fontSize:15,
         fontWeight:"600",
-
     }
 
 });

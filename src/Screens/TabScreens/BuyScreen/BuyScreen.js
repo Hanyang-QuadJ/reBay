@@ -127,7 +127,7 @@ class BuyScreen extends Component {
                                     stepColor={commonStyle.TEXT_COLOR}
                                     paddingBottom={30}
                                     currentStep={1}
-                                    finalStep={2}/>
+                                    finalStep={4}/>
                         <View style={styles.searchBar}>
                             <Icon name="ios-search" size={30} style={styles.searchBar__icon}/>
                             <Input style={styles.itemStyle}

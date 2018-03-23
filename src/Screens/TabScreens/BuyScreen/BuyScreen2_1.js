@@ -37,6 +37,8 @@ class BuyScreen2_1 extends Component {
         super(props);
         this.state = {
             multiSliderValue: [10000, 100000],
+            minPrice: 0,
+            maxPrice: 100000
         };
     }
 
@@ -49,7 +51,10 @@ class BuyScreen2_1 extends Component {
                     category:this.props.category,
                     detailCategory:this.props.detailCategory,
                     status:this.props.status,
-                    season:this.props.season
+                    season:this.props.season,
+                    year:this.props.year,
+                    minPrice:this.state.minPrice,
+                    maxPrice:this.state.maxPrice,
                 }
             }
         )
@@ -59,6 +64,8 @@ class BuyScreen2_1 extends Component {
     multiSliderValuesChange = (values) => {
         this.setState({
             multiSliderValue: values,
+            minPrice: values[0],
+            maxPrice: values[1]
         });
     };
 

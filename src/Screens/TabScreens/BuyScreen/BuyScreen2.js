@@ -44,7 +44,9 @@ class BuyScreen2 extends Component {
             item_status: jsonData.item_status,
             selectedSeason: 0,
             season: jsonData.season,
-            maxPrice: 100000,
+            year: jsonData.year,
+            selectedYear: 0,
+
 
         };
     }
@@ -58,7 +60,8 @@ class BuyScreen2 extends Component {
                     category:this.state.category[this.state.selectedCategory].name,
                     detailCategory:this.state.category[this.state.selectedCategory].detailCategory[this.state.selectedDetailCategory].name,
                     status:this.state.item_status[this.state.selectedItemStatus].name,
-                    season:this.state.season[this.state.selectedSeason].name
+                    season:this.state.season[this.state.selectedSeason].name,
+                    year:this.state.year[this.state.selectedYear].name,
                 }
             }
         )
@@ -148,6 +151,22 @@ class BuyScreen2 extends Component {
                     </View>
                     <View style={styles.rowContainer}>
                         <Text style={styles.label}>시즌</Text>
+                        <ScrollView style={styles.row} horizontal={true} showsHorizontalScrollIndicator={false}>
+                            {this.state.year.map((year, index) => (
+                                <Button
+                                    style={(index === this.state.selectedYear ? styles.checked : styles.notChecked)}
+                                    key={index}
+                                    onPress={() => {
+                                        this.setState({
+                                            selectedYear: index
+                                        })
+                                    }}
+                                >
+                                    <Text
+                                        style={(index === this.state.selectedYear) ? styles.text : styles.notText}>{year.name}</Text>
+                                </Button>
+                            ))}
+                        </ScrollView>
                         <ScrollView style={styles.row} horizontal={true} showsHorizontalScrollIndicator={false}>
                             {this.state.season.map((season, index) => (
                                 <Button

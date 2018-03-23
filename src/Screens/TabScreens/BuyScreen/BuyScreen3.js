@@ -32,7 +32,7 @@ class BuyScreen3 extends Component {
             });
         }
     }
-    gotoBuyScreen4(item) {
+    goToBuyScreen4(item) {
 
         this.props.navigator.push({
                 screen: 'Buy4',
@@ -49,6 +49,9 @@ class BuyScreen3 extends Component {
         console.log(this.props.detailCategory);
         console.log(this.props.status);
         console.log(this.props.season);
+        console.log(this.props.year);
+        console.log(this.props.minPrice);
+        console.log(this.props.maxPrice);
 
         AsyncStorage.getItem("ACCESS_TOKEN").then(token => {
             this.props.dispatch(ItemActionCreator.postItems(
@@ -56,9 +59,9 @@ class BuyScreen3 extends Component {
                 this.props.category,
                 this.props.detailCategory,
                 this.props.status,
-                "2015 "+this.props.season,
-                1000000,
-                0,
+                this.props.year+" "+this.props.season,
+                this.props.maxPrice,
+                this.props.minPrice,
                 1,
             ));
         });

@@ -6,7 +6,7 @@ const style = StyleSheet.create({
         flexDirection:"row",
         alignItems:"center",
         justifyContent:"center",
-        marginHorizontal:15,
+        marginHorizontal:30,
         marginBottom:20,
     },
     title:{

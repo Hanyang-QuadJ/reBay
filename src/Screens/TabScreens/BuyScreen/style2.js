@@ -3,11 +3,11 @@ import  commonStyle from '../../index'
 const styles = StyleSheet.create({
     rowContainer:{
         marginTop:15,
-        marginLeft:15,
     },
     row:{
         flexDirection:"row",
         marginTop:10,
+        paddingLeft:25,
 
     },
     checked:{
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     notChecked:{
         backgroundColor:"white",
         borderWidth:1,
-        borderColor:commonStyle.PRIMARY_COLOR,
+        borderColor:commonStyle.TEXT_COLOR,
         borderRadius:17,
         marginHorizontal:5,
         height:40
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     },
 
     label:{
-        marginLeft:7,
-        color:commonStyle.PRIMARY_COLOR
+        marginLeft:30,
+        color:commonStyle.TEXT_COLOR
 
     },
     text:{
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 
     },
     notText:{
-        color:commonStyle.PRIMARY_COLOR,
+        color:commonStyle.TEXT_COLOR,
         fontSize:15,
     },
 

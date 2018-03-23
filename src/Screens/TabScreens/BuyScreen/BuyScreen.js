@@ -14,6 +14,7 @@ const HEADER_HEIGHT = 200;
 const COLLAPSED_HEIGHT = 20;
 const SCROLLABLE_HEIGHT = HEADER_HEIGHT - COLLAPSED_HEIGHT;
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
+import StepHeader from '../../../Components/StepHeader/StepHeader';
 
 
 import styles from './style';
@@ -100,7 +101,6 @@ class BuyScreen extends Component {
     };
 
     render() {
-        console.log(this.state);
         const translateY = this.state.scroll.interpolate({
             inputRange: [0.001, SCROLLABLE_HEIGHT],
             outputRange: [0.001, -SCROLLABLE_HEIGHT],
@@ -121,11 +121,12 @@ class BuyScreen extends Component {
                         zIndex: 10,
                         transform: [{translateY}]
                     }}>
-                        <View style={styles.title}>
-                            <Text style={styles.title__text}>찾으시는</Text>
-                            <Text style={styles.title__text}>브랜드는</Text>
-                            <Text style={styles.title__text}>무엇인가요?</Text>
-                        </View>
+                        <StepHeader text1="찾으시는" text2="브랜드는" text3="무엇인가요?"
+                                    color={commonStyle.PRIMARY_COLOR}
+                                    stepColor={commonStyle.TEXT_COLOR}
+                                    paddingBottom={30}
+                                    currentStep={1}
+                                    finalStep={2}/>
                         <View style={styles.searchBar}>
                             <Icon name="ios-search" size={30} style={styles.searchBar__icon}/>
                             <Input style={styles.itemStyle}

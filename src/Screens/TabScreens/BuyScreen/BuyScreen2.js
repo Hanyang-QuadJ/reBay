@@ -22,6 +22,7 @@ import {
 } from 'native-base';
 import jsonData from '../../../Constants/data'
 import styles from './style2';
+import * as commonStyle from '../../../Constants/commonStyle';
 
 
 const mapStateToProps = state => {
@@ -29,6 +30,7 @@ const mapStateToProps = state => {
 };
 
 class BuyScreen2 extends Component {
+    static navigatorStyle = commonStyle.TabBarHidden;
     constructor(props) {
         super(props);
         this.state = {
@@ -49,7 +51,7 @@ class BuyScreen2 extends Component {
         this.props.navigation.goBack(null)
     }
 
-    gotoBuyScreen3() {
+    goToBuyScreen3 = () => {
 
         this.props.navigator.push({
                 screen: 'Buy3',
@@ -73,7 +75,7 @@ class BuyScreen2 extends Component {
                     <View style={styles.rowContainer}>
 
                         <Text style={styles.label}>상위 카테고리</Text>
-                        <ScrollView style={styles.row} horizontal={true}>
+                        <ScrollView style={styles.row} horizontal={true} showsHorizontalScrollIndicator={false}>
 
                             {this.state.category.map((category, index) => (
                                 <Button
@@ -94,7 +96,7 @@ class BuyScreen2 extends Component {
                     </View>
                     <View style={styles.rowContainer}>
                         <Text style={styles.label}>하위 카테고리</Text>
-                        <ScrollView style={styles.row} horizontal={true}>
+                        <ScrollView style={styles.row} horizontal={true} showsHorizontalScrollIndicator={false}>
                             {
                                 this.state.category[this.state.selectedCategory] === null ?
                                     (<Text>Empty</Text>)
@@ -143,7 +145,7 @@ class BuyScreen2 extends Component {
                     </View>
                     <View style={styles.rowContainer}>
                         <Text style={styles.label}>시즌</Text>
-                        <ScrollView style={styles.row} horizontal={true}>
+                        <ScrollView style={styles.row} horizontal={true} showsHorizontalScrollIndicator={false}>
                             {this.state.season.map((season, index) => (
                                 <Button
                                     style={(index === this.state.selectedSeason ? styles.checked : styles.notChecked)}
@@ -174,7 +176,7 @@ class BuyScreen2 extends Component {
                 }}/>
 
 
-                <Button onPress={this.gotoBuyScreen3.bind(this)}><Text>확인</Text></Button>
+                <Button onPress={this.goToBuyScreen3}><Text>확인</Text></Button>
             </Container>
         )
 

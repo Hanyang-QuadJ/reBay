@@ -69,7 +69,7 @@ export function GoToHome() {
             {
                 label: '홈',
                 screen: 'Home', // this is a registered name for a screen
-                icon: require('../Assets/dress.png'),
+                icon: require('../Assets/sample.png'),
                 // selectedIcon: require('../img/one_selected.png'), // iOS only
                 title: 'reBay'
             },

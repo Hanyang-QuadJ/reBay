@@ -3,10 +3,11 @@ import {connect} from 'react-redux';
 import {Container, Header, Content, Card, CardItem, Text, Body} from 'native-base';
 
 import styles from './style3';
-import {AsyncStorage, View, FlatList, TouchableOpacity, ActivityIndicator, InteractionManager} from 'react-native';
+import {AsyncStorage, View, FlatList, TouchableOpacity, ActivityIndicator, InteractionManager, TouchableWithoutFeedback} from 'react-native';
 import * as ItemActionCreator from "../../../Actions/ItemAction";
 import * as BrandActionCreator from "../../../Actions/BrandAction";
 import LoadingActivity from '../../../Components/LoadingActivity/LoadingActivity'
+import FastImage from "react-native-fast-image";
 
 const mapStateToProps = state => {
     return {
@@ -77,26 +78,18 @@ class BuyScreen3 extends Component {
         );
     };
     _renderItem = ({item}) => (
-        <TouchableOpacity
-            onPress={(item) => {
-                this.goToBuyScreen4(item);
-            }}>
-            <Card>
-                <CardItem header>
-                    <Text>{item.item_name}</Text>
-                </CardItem>
-                <CardItem>
-                    <Body>
-                    <Text>
-                        {item.image_url}
-                    </Text>
-                    </Body>
-                </CardItem>
-                <CardItem footer>
-                    <Text>{item.price}원</Text>
-                </CardItem>
-            </Card>
-        </TouchableOpacity>
+
+        <TouchableWithoutFeedback onPress={() => this.goToItem()}>
+            <View style={styles.items}>
+                <View style={styles.itemImage}>
+                    <Text>이미지</Text>
+                </View>
+                <Text style={item.item_status === "새상품" ? styles.item_status_new : styles.item_status_old}>{item.item_status}</Text>
+                <Text style={styles.item_name}>{item.item_name}</Text>
+                <Text style={styles.item_price}>￦{item.price}</Text>
+            </View>
+        </TouchableWithoutFeedback>
+
     );
     _keyExtractor = (item, index) => item.id.toString();
     _handleEnd = async () => {
@@ -133,6 +126,9 @@ class BuyScreen3 extends Component {
                         <LoadingActivity/>
                         :
                         <FlatList
+                            contentContainerStyle={styles.container}
+                            horizontal={false}
+                            numColumns={2}
                             keyExtractor={this._keyExtractor}
                             data={this.state.items}
                             renderItem={this._renderItem}

@@ -19,13 +19,14 @@ const mapStateToProps = state => {
 
 class DetailScreen extends Component {
     static navigatorStyle = commonStyle.NavigationStyleReverse;
+
     constructor(props) {
         super(props);
         this.state = {
             content: "",
             sub_content: "pending",
             tag: "",
-            posting:false,
+            posting: false,
         }
 
     }
@@ -47,9 +48,8 @@ class DetailScreen extends Component {
     };
 
 
-
-     postItem = async ()  => {
-         this.setState({posting:true});
+    postItem = async () => {
+        this.setState({posting: true});
         let token = await AsyncStorage.getItem("ACCESS_TOKEN");
         let pic_list = this.props.pic_list;
         let price = this.props.price;
@@ -85,26 +85,22 @@ class DetailScreen extends Component {
             content,
             sub_content,
             tags)).then(item_id => {
-            AsyncStorage.getItem("ACCESS_TOKEN").then(token => {
-                this.props.dispatch(ItemAction.getItem(token, item_id))
-                    .then(item => {
-                            this.props.dispatch(ItemAction.getItemPicture(token, item_id)).then(picture => {
-                                this.setState({posting:false});
-                                this.props.navigator.push({
-                                    screen:"Item",
-                                    title:item_name,
-                                    passProps:{
-                                        item:item,
-                                        picture:picture
-
-                                    }
-                                })
+            this.props.dispatch(ItemAction.getItem(item_id))
+                .then(item => {
+                        this.props.dispatch(ItemAction.getItemPicture(item_id)).then(picture => {
+                            this.setState({posting: false});
+                            this.props.navigator.push({
+                                screen: "Item",
+                                title: item_name,
+                                passProps: {
+                                    item: item,
+                                    picture: picture
+                                }
                             })
-                        }
-                    )
-            });
+                        })
+                    }
+                )
         });
-
 
 
     };
@@ -114,17 +110,17 @@ class DetailScreen extends Component {
     }
 
     render() {
-        if(this.state.posting === true){
+        if (this.state.posting === true) {
             return (
                 <LoadingActivity/>
 
             )
 
         }
-        else{
+        else {
             return (
                 <Container style={{backgroundColor: 'white'}}>
-                    <Content scrollEnabled={false} contentContainerStyle={{flex:1}}>
+                    <Content scrollEnabled={false} contentContainerStyle={{flex: 1}}>
                         <StepHeader text1="상품의" text2="추가사항" text3="태그를 입력해주세요"
                                     color={commonStyle.PRIMARY_COLOR}
                                     stepColor={commonStyle.TEXT_COLOR}
@@ -142,7 +138,7 @@ class DetailScreen extends Component {
                                         placeholder="태그"
                                         onChangeText={(tag) => this.setState({tag})}
                                         marginTop={20}
-                                        style={{borderColor:commonStyle.BORDER_COLOR}}
+                                        style={{borderColor: commonStyle.BORDER_COLOR}}
                                         textColor={commonStyle.TEXT_COLOR}
 
                         />

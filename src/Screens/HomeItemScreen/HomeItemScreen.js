@@ -20,9 +20,7 @@ import FooterButtonComponent from '../../Components/FooterButtonComponent/Footer
 import {DotIndicator} from 'react-native-indicators';
 
 const mapStateToProps = state => {
-    return {
-
-    };
+    return {};
 };
 
 class HomeItemScreen extends Component {
@@ -43,21 +41,18 @@ class HomeItemScreen extends Component {
     }
 
     componentDidMount() {
-        AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
-                this.props.dispatch(ItemAction.getItem(value, this.props.item_id)).then(item => {
-                    this.setState({item:item});
-                        this.props.dispatch(ItemAction.getItemPicture(value, this.props.item_id)).then(picture => {
-                            this.setState({picture:picture})
-                        });
-                    }
-                )
+        this.props.dispatch(ItemAction.getItem(this.props.item_id)).then(item => {
+                this.setState({item: item});
+                this.props.dispatch(ItemAction.getItemPicture(this.props.item_id)).then(picture => {
+                    this.setState({picture: picture})
+                });
             }
         )
     }
 
     render() {
-        if(this.state.item == null || this.state.picture == null){
-            return(
+        if (this.state.item == null || this.state.picture == null) {
+            return (
                 <Container style={{backgroundColor: 'white'}}>
                     <Content>
                         <Item brand={this.props.brand_name}
@@ -76,7 +71,7 @@ class HomeItemScreen extends Component {
                 </Container>
             )
         }
-        else{
+        else {
 
             return (
                 <Container>

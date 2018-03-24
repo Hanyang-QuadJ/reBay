@@ -20,17 +20,16 @@ export const SUCCEED_TO_POST_ITEMS = "SUCCEED_TO_POST_ITEMS";
 const ACCESS_TOKEN = "ACCESS_TOKEN";
 
 
-export const getItem = (token, id) => {
+export const getItem = (id) => {
 
     return async (dispatch) => {
         try {
             let response = await fetch(
-                ServerEndPoint2 + "api/item/one/" + id, {
+                ServerEndPoint2 + "api/notoken/one/" + id, {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json',
-                        'x-access-token': token
                     },
                 }
             );
@@ -45,17 +44,16 @@ export const getItem = (token, id) => {
     }
 };
 
-export const getItemPicture = (token, id) => {
+export const getItemPicture = (id) => {
 
     return async (dispatch) => {
         try {
             let response = await fetch(
-                ServerEndPoint2 + "api/item/pic/" + id, {
+                ServerEndPoint2 + "api/notoken/pic/" + id, {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json',
-                        'x-access-token': token
                     },
                 }
             );

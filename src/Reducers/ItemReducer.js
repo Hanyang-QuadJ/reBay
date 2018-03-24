@@ -17,6 +17,7 @@ const initialState = {
     brand_name:null,
     picture:null,
     items:null,
+    tags:[]
 };
 
 const ItemReducer  = (state = initialState, action) => {
@@ -24,7 +25,8 @@ const ItemReducer  = (state = initialState, action) => {
         case SUCCEED_TO_GET_ITEM:
             return Object.assign({}, state, {
                 item:action.payload,
-                brand_name:action.brand_name
+                brand_name:action.brand_name,
+                tags:action.tags
             });
         case FAILED_TO_GET_ITEM:
 

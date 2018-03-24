@@ -46,7 +46,7 @@ class BuyScreen2_1 extends Component {
 
         this.props.navigator.push({
                 screen: 'Buy3',
-                title: '상품정보',
+                title: '검색결과',
                 passProps: {
                     category:this.props.category,
                     detailCategory:this.props.detailCategory,
@@ -70,7 +70,6 @@ class BuyScreen2_1 extends Component {
     };
 
     render() {
-        console.log(this.state.multiSliderValue);
         return (
             <Container style={{backgroundColor: 'white'}}>
                 <Content scrollEnabled={false} contentContainerStyle={{flex: 1}}>

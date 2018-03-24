@@ -143,6 +143,8 @@ class DetailScreen extends Component {
                                         onChangeText={(tag) => this.setState({tag})}
                                         marginTop={20}
                                         style={{borderColor:commonStyle.BORDER_COLOR}}
+                                        textColor={commonStyle.TEXT_COLOR}
+
                         />
 
 

@@ -7,7 +7,7 @@ const style = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         marginHorizontal:30,
-        marginBottom:20,
+        marginBottom:15,
     },
     title:{
 
@@ -33,7 +33,9 @@ const style = StyleSheet.create({
 
     brandList:{
         borderColor:commonStyle.BORDER_COLOR,
-        marginLeft:30
+        marginLeft:30,
+        marginRight:30,
+
     },
     brand:{
         color:commonStyle.TEXT_COLOR

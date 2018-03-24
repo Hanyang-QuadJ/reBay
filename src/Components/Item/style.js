@@ -106,13 +106,17 @@ const style = StyleSheet.create({
         fontSize:16,
     },
     content:{
-        flex:5
+        flex:5,
+        flexDirection:"row"
     },
     contentText:{
         color:commonStyle.TEXT_COLOR,
         fontSize:16,
-
-
+    },
+    tag:{
+        color:commonStyle.SUB_COLOR,
+        fontSize:16,
+        marginRight:5
     }
 
 

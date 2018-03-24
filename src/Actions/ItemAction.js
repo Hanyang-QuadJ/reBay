@@ -35,8 +35,7 @@ export const getItem = (token, id) => {
                 }
             );
             let responseJson = await response.json();
-            console.log(responseJson);
-            dispatch({type: SUCCEED_TO_GET_ITEM, payload: responseJson.item, brand_name:responseJson.brand_name});
+            dispatch({type: SUCCEED_TO_GET_ITEM, payload: responseJson.item, brand_name:responseJson.brand_name, tags:responseJson.tags});
             return responseJson;
         } catch (error) {
             dispatch({type: FAILED_TO_GET_ITEM, payload: {data: "NETWORK_ERROR"}});

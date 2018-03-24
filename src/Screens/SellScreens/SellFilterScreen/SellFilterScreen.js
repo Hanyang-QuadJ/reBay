@@ -69,18 +69,21 @@ class SellFilterScreen extends Component {
                         <View style={styles.inputArea}>
                             <InputComponent image={require("../../../Assets/dress.png")}
                                             placeholder="상품명"
+                                            textColor={commonStyle.TEXT_COLOR}
                                             style={{borderColor:commonStyle.BORDER_COLOR}}
                                             onChangeText={(item_name) => this.setState({item_name})}
                             />
 
                             <InputComponent image={require("../../../Assets/dress.png")}
                                             placeholder="가격"
+                                            textColor={commonStyle.TEXT_COLOR}
                                             marginTop={20}
                                             style={{borderColor:commonStyle.BORDER_COLOR}}
                                             onChangeText={(item_price) => this.setState({item_price})}
                             />
                             <InputComponent image={require("../../../Assets/dress.png")}
                                             placeholder="사이즈"
+                                            textColor={commonStyle.TEXT_COLOR}
                                             marginTop={20}
                                             style={{borderColor:commonStyle.BORDER_COLOR}}
                                             onChangeText={(item_size) => this.setState({item_size})}

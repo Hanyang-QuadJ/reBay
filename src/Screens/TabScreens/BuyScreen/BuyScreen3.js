@@ -8,6 +8,7 @@ import * as ItemActionCreator from "../../../Actions/ItemAction";
 import * as BrandActionCreator from "../../../Actions/BrandAction";
 import LoadingActivity from '../../../Components/LoadingActivity/LoadingActivity'
 import FastImage from "react-native-fast-image";
+import * as commonStyle from "../../../Constants/commonStyle";
 
 const mapStateToProps = state => {
     return {
@@ -16,6 +17,8 @@ const mapStateToProps = state => {
 };
 
 class BuyScreen3 extends Component {
+    static navigatorStyle = commonStyle.TabBarHidden;
+
     constructor(props) {
         super(props);
         this.state = {
@@ -91,6 +94,12 @@ class BuyScreen3 extends Component {
         </TouchableWithoutFeedback>
 
     );
+    goToItem = () => {
+        this.props.navigator.push({
+            screen:'Buy4'
+        })
+
+    };
     _keyExtractor = (item, index) => item.id.toString();
     _handleEnd = async () => {
         if(!this.onEndReachedCalledDuringMomentum) {
@@ -135,7 +144,7 @@ class BuyScreen3 extends Component {
                             ListFooterComponent={this.renderFooter}
                             onEndReached={this._handleEnd}
                             onMomentumScrollBegin={() => { this.onEndReachedCalledDuringMomentum = false }}
-                            onEndReachedThreshold={0}
+                            onEndReachedThreshold={0.1}
                         />
                 }
             </View>

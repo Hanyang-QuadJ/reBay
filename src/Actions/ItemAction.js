@@ -20,7 +20,7 @@ export const SUCCEED_TO_POST_ITEMS = "SUCCEED_TO_POST_ITEMS";
 const ACCESS_TOKEN = "ACCESS_TOKEN";
 
 
-export const getItem = (token, id) => {
+export const getItem = (id) => {
 
     return async (dispatch) => {
         try {
@@ -30,7 +30,6 @@ export const getItem = (token, id) => {
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json',
-                        'x-access-token': token
                     },
                 }
             );
@@ -45,7 +44,7 @@ export const getItem = (token, id) => {
     }
 };
 
-export const getItemPicture = (token, id) => {
+export const getItemPicture = (id) => {
 
     return async (dispatch) => {
         try {
@@ -55,7 +54,6 @@ export const getItemPicture = (token, id) => {
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json',
-                        'x-access-token': token
                     },
                 }
             );

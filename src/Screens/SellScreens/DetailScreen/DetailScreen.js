@@ -94,7 +94,8 @@ class DetailScreen extends Component {
                                 title: item_name,
                                 passProps: {
                                     item: item,
-                                    picture: picture
+                                    picture: picture,
+                                    tags:item.tags[0]
                                 }
                             })
                         })

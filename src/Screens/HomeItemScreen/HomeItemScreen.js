@@ -16,7 +16,7 @@ import * as commonStyle from '../../Constants/commonStyle';
 import {GoToHome} from "../index";
 import Item from '../../Components/Item/Item';
 import * as ItemAction from '../../Actions/ItemAction';
-import FooterButtonComponent from '../../Components/FooterButtonComponent/FooterButtonComponent';
+import FooterCart from '../../Components/FooterCart/FooterCart';
 import {DotIndicator} from 'react-native-indicators';
 
 const mapStateToProps = state => {
@@ -67,7 +67,7 @@ class HomeItemScreen extends Component {
                               grade={4}
                         />
                     </Content>
-                    <FooterButtonComponent leftText="장바구니" rightText="구매하기"/>
+                    <FooterCart firstText="장바구니" secondText="댓글" thridText="구매하기"/>
                 </Container>
             )
         }
@@ -88,7 +88,7 @@ class HomeItemScreen extends Component {
                               tags={this.state.item.tags[0]}
                         />
                     </Content>
-                    <FooterButtonComponent leftText="장바구니" rightText="구매하기"/>
+                    <FooterCart firstText="장바구니" secondText="댓글" thridText="구매하기"/>
                 </Container>
             )
         }

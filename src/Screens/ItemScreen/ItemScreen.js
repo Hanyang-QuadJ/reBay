@@ -74,6 +74,7 @@ class ItemScreen extends Component {
                     <Container style={{backgroundColor: 'white'}}>
                         <Content>
                             <Item brand={brand.brand_name}
+                                  tags={this.props.tags}
                                   size={item.size}
                                   season={item.season}
                                   content={item.content}

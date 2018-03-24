@@ -162,12 +162,12 @@ class BuyScreen3 extends Component {
                     this.props.minPrice,
                     this.state.nextIndex,
                     this.state.condition,
-                )).then(async value => {
-                    await this.setState({items: [...this.state.items, ...value.result]}, () => {
-                        console.log(this.state.items);
-                    });
-                    await this.setState({nextIndex: value.nextIndex});
-                    await this.setState({loading: false});
+                )).then(value => {
+                    this.setState((state) => ({
+                        items: [...state.items, ...value.result],
+                        nextIndex: value.nextIndex,
+                        loading: false
+                    }));
                 });
             });
             this.onEndReachedCalledDuringMomentum = true;

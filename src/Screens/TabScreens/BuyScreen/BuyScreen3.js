@@ -10,18 +10,20 @@ import {
     TouchableOpacity,
     ActivityIndicator,
     InteractionManager,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    Picker
 } from 'react-native';
 import * as ItemActionCreator from "../../../Actions/ItemAction";
 import * as BrandActionCreator from "../../../Actions/BrandAction";
 import LoadingActivity from '../../../Components/LoadingActivity/LoadingActivity'
 import FastImage from "react-native-fast-image";
+import ModalDropdown from 'react-native-modal-dropdown';
 
 import {GoToHome} from "../../index";
 
 import * as commonStyle from "../../../Constants/commonStyle";
 
-
+const DEMO_OPTIONS_1 = ['싼순', '비싼순', '오래된순', '최신순'];
 const mapStateToProps = state => {
     return {
         items: state.ItemReducer.items
@@ -43,6 +45,7 @@ class BuyScreen3 extends Component {
             nextIndex: 0,
             reachEnd: 0,
             noItems: false,
+            condition: 0,
         }
 
     }
@@ -75,7 +78,8 @@ class BuyScreen3 extends Component {
                 this.props.year + " " + this.props.season,
                 this.props.maxPrice,
                 this.props.minPrice,
-                this.state.nextIndex
+                this.state.nextIndex,
+                this.state.condition,
             )).then(
                 async value => {
                     console.log("@@@@@@@@");
@@ -137,7 +141,7 @@ class BuyScreen3 extends Component {
     );
     goToItem = () => {
         this.props.navigator.push({
-            screen:'Buy4'
+            screen: 'Buy4'
         })
 
     };
@@ -157,6 +161,7 @@ class BuyScreen3 extends Component {
                     this.props.maxPrice,
                     this.props.minPrice,
                     this.state.nextIndex,
+                    this.state.condition,
                 )).then(async value => {
                     await this.setState({items: [...this.state.items, ...value.result]}, () => {
                         console.log(this.state.items);
@@ -170,6 +175,49 @@ class BuyScreen3 extends Component {
 
     };
 
+    async _dropdown_onSelect(idx, value) {
+        await this.setState({
+            condition: idx,
+            nextIndex: 0
+        })
+        await AsyncStorage.getItem("ACCESS_TOKEN").then(token => {
+            this.props.dispatch(ItemActionCreator.postItems(
+                token,
+                this.props.brand_id,
+                this.props.category,
+                this.props.detailCategory,
+                this.props.status,
+                this.props.year + " " + this.props.season,
+                this.props.maxPrice,
+                this.props.minPrice,
+                this.state.nextIndex,
+                this.state.condition,
+            )).then(
+                async value => {
+                    console.log("@@@@@@@@");
+                    console.log(value);
+                    console.log("@@@@@@@@@");
+                    const imageArray = [];
+                    if (value.result.length === 0) {
+                        this.setState({noItems: true});
+                    }
+                    else {
+                        for (let i = 0; i < value.result.length; i++) {
+                            console.log(value.result[i].image_url);
+                            imageArray.push({uri: value.result[i].image_url});
+                        }
+                        await FastImage.preload(imageArray);
+                        await this.setState({
+                            nextIndex: value.nextIndex,
+                            items: value.result
+                        });
+                    }
+
+
+                });
+        });
+
+    }
 
     render() {
         return (
@@ -182,20 +230,30 @@ class BuyScreen3 extends Component {
                         this.state.noItems == true ?
                             <Text>No Items</Text>
                             :
-                            <FlatList
-                                contentContainerStyle={styles.container}
-                                horizontal={false}
-                                numColumns={2}
-                                keyExtractor={this._keyExtractor}
-                                data={this.state.items}
-                                renderItem={this._renderItem}
-                                ListFooterComponent={this.renderFooter}
-                                onEndReached={this._handleEnd}
-                                onMomentumScrollBegin={() => {
-                                    this.onEndReachedCalledDuringMomentum = false
-                                }}
-                                onEndReachedThreshold={0}
-                            />
+                            <View>
+                                <ModalDropdown style={styles.dropdown_6}
+                                               options={DEMO_OPTIONS_1}
+                                               onSelect={(idx, value) => this._dropdown_onSelect(idx, value)}
+                                               defaultIndex={0}
+                                               defaultValue={"싼순"}>
+
+                                </ModalDropdown>
+
+                                <FlatList
+                                    contentContainerStyle={styles.container}
+                                    horizontal={false}
+                                    numColumns={2}
+                                    keyExtractor={this._keyExtractor}
+                                    data={this.state.items}
+                                    renderItem={this._renderItem}
+                                    ListFooterComponent={this.renderFooter}
+                                    onEndReached={this._handleEnd}
+                                    onMomentumScrollBegin={() => {
+                                        this.onEndReachedCalledDuringMomentum = false
+                                    }}
+                                    onEndReachedThreshold={0}
+                                />
+                            </View>
 
 
                 }

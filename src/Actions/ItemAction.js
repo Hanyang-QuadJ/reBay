@@ -132,7 +132,7 @@ export const postItem = (token,
 
 };
 
-export const postItems = (token, brand, category_1, category_2, item_status, season, max_price, min_price, index) => {
+export const postItems = (token, brand, category_1, category_2, item_status, season, max_price, min_price, index,condition) => {
 
     return async (dispatch) => {
         try {
@@ -153,6 +153,7 @@ export const postItems = (token, brand, category_1, category_2, item_status, sea
                         max_price: max_price,
                         min_price: min_price,
                         index: index,
+                        condition: condition,
                     })
                 }
             );

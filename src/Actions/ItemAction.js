@@ -25,7 +25,7 @@ export const getItem = (token, id) => {
     return async (dispatch) => {
         try {
             let response = await fetch(
-                ServerEndPoint2 + "api/item/one/" + id, {
+                ServerEndPoint2 + "api/notoken/one/" + id, {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',
@@ -50,7 +50,7 @@ export const getItemPicture = (token, id) => {
     return async (dispatch) => {
         try {
             let response = await fetch(
-                ServerEndPoint2 + "api/item/pic/" + id, {
+                ServerEndPoint2 + "api/notoken/pic/" + id, {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json',

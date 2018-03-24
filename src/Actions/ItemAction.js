@@ -147,7 +147,7 @@ export const postItems = (token, brand, category_1, category_2, item_status, sea
                         'x-access-token': token
                     },
                     body: JSON.stringify({
-                        brand: brand,
+                        brand_id: brand,
                         category_1: category_1,
                         category_2: category_2,
                         item_status: item_status,

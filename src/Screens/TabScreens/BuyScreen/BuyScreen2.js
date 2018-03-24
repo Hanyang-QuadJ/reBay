@@ -57,6 +57,7 @@ class BuyScreen2 extends Component {
                 screen: 'Buy2_1',
                 title: '가격',
                 passProps: {
+                    brand_id : this.props.selectedBrandID,
                     brand: this.state.selectedBrand,
                     category:this.state.category[this.state.selectedCategory].name,
                     detailCategory:this.state.category[this.state.selectedCategory].detailCategory[this.state.selectedDetailCategory].name,
@@ -70,6 +71,9 @@ class BuyScreen2 extends Component {
     };
 
     render() {
+        console.log("@@@@@@@@@@@@");
+
+        console.log("@@@@@@@@@@@@");
         return (
             <Container style={{backgroundColor: 'white'}}>
 

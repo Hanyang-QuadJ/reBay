@@ -61,11 +61,14 @@ class BuyScreen3 extends Component {
     };
 
     componentWillMount() {
+        console.log("########");
+        console.log(this.props.brand_id);
+        console.log("########");
 
         AsyncStorage.getItem("ACCESS_TOKEN").then(token => {
             this.props.dispatch(ItemActionCreator.postItems(
                 token,
-                this.props.brand,
+                this.props.brand_id,
                 this.props.category,
                 this.props.detailCategory,
                 this.props.status,
@@ -75,6 +78,9 @@ class BuyScreen3 extends Component {
                 this.state.nextIndex
             )).then(
                 async value => {
+                    console.log("@@@@@@@@");
+                    console.log(value);
+                    console.log("@@@@@@@@@");
                     const imageArray = [];
                     if (value.result.length === 0) {
                         this.setState({noItems: true});
@@ -120,6 +126,7 @@ class BuyScreen3 extends Component {
                         resizeMode={FastImage.resizeMode.cover}
                         source={{uri: item.image_url}}/>
                 </View>
+                <Text>{this.props.brand}</Text>
                 <Text
                     style={item.item_status === "새상품" ? styles.item_status_new : styles.item_status_old}>{item.item_status}</Text>
                 <Text style={styles.item_name}>{item.item_name}</Text>
@@ -142,6 +149,7 @@ class BuyScreen3 extends Component {
             await AsyncStorage.getItem("ACCESS_TOKEN").then(token => {
                 this.props.dispatch(ItemActionCreator.postItems(
                     token,
+                    this.props.brand_id,
                     this.props.category,
                     this.props.detailCategory,
                     this.props.status,

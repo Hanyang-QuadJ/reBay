@@ -57,16 +57,26 @@ const styles = StyleSheet.create({
     itemStyle:{
         borderColor:commonStyle.BORDER_COLOR,
         borderBottomWidth:1,
-        marginHorizontal:10,
 
     },
 
     brandList:{
-        borderColor:"transparent",
+        borderColor:commonStyle.BORDER_COLOR,
+        marginLeft:30,
+        marginRight:30,
     },
-    listArea:{
-
-    }
+    brand:{
+        color:commonStyle.TEXT_COLOR
+    },
+    choice:{
+        borderRadius:50,
+        height:30,
+        borderColor:commonStyle.PRIMARY_COLOR
+    },
+    choiceText:{
+        fontSize:13,
+        color:commonStyle.PRIMARY_COLOR
+    },
 
 
 

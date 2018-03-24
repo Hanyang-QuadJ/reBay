@@ -73,7 +73,7 @@ class BuyScreen2 extends Component {
         return (
             <Container style={{backgroundColor: 'white'}}>
 
-                <Content contentContainerStyle={{flex: 1}}>
+                <Content scrollEnabled={false} contentContainerStyle={{flex: 1}}>
                     <StepHeader text1="찾으시는" text2="카테고리는" text3="무엇인가요?"
                                 color={commonStyle.PRIMARY_COLOR}
                                 stepColor={commonStyle.TEXT_COLOR}

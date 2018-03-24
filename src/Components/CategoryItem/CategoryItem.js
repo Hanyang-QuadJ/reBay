@@ -18,7 +18,6 @@ class CategoryItem extends Component {
     }
 
     goToItem = (item_id, brand_name, item_name, price) => {
-        console.log(this.props);
         this.props.navigator.push({
             screen: this.props.screen,
             title:item_name,

@@ -11,7 +11,7 @@ import {
     KeyboardAvoidingView,
     RefreshControl,
 } from 'react-native';
-import {Container, Text, Content, Button, Item, Input, ListItem, List, Icon} from 'native-base';
+import {Container, Text, Content, Button, Item, Input, ListItem, List, Icon, Body, Right} from 'native-base';
 import StepHeader from '../../Components/StepHeader/StepHeader';
 
 const HEADER_HEIGHT = 200;
@@ -86,7 +86,23 @@ class BrandScreen extends Component {
                 }
             )
         }}>
-            <Text>{item.brand_name}</Text>
+            <Body>
+                <Text style={styles.brand}>{item.brand_name}</Text>
+            </Body>
+            <Right>
+                <Button onPress={() => {
+                    this.props.navigator.push({
+                        screen: 'SellFilter',
+                        title: '상품정보',
+                        passProps: {
+                            brandName: item.brand_name,
+                            brandID: item.id,
+                            pic_list: this.props.base64
+                        }
+                    })
+                }} bordered style={styles.choice}><Text style={styles.choiceText}>선택</Text></Button>
+
+            </Right>
         </ListItem>
     );
     _renderHeader = () => {
@@ -105,7 +121,6 @@ class BrandScreen extends Component {
         return (
             <Container style={{backgroundColor: 'white'}}>
                 <View style={{flex: 1, flexDirection: 'column'}}>
-
                     <Animated.View style={{
                         position: 'absolute',
                         top: 0,
@@ -128,8 +143,8 @@ class BrandScreen extends Component {
                                    onChangeText={(text) => this.filterBySearchBar(text)}/>
                         </View>
                     </Animated.View>
-                    <AnimatedFlatList contentContainerStyle={{paddingTop: 240}}
-                                      keyboardShouldPersistTaps={'handled'}
+                    <AnimatedFlatList contentContainerStyle={{paddingTop: 245}}
+                                      keyboardShouldPersistTaps={'always'}
                                       keyboardDismissMode="on-drag"
                                       scrollEventThrottle={1}
                                       keyExtractor={this._keyExtractor}

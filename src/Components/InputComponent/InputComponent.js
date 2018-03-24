@@ -24,7 +24,7 @@ class InputComponent extends Component {
                     <View style={[styles.input, this.props.style]}>
                         <Input placeholder={this.props.placeholder}
                                onChangeText={this.props.onChangeText}
-                               style={{color:this.props.textColor}}
+                               style={{color:this.props.textColor && this.props.textColor}}
                                placeholderTextColor={this.props.placeholderTextColor}
                                autoCapitalize="none"
                                autoCorrect={false}

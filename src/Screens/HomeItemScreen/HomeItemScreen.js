@@ -61,6 +61,7 @@ class HomeItemScreen extends Component {
                 <Container style={{backgroundColor: 'white'}}>
                     <Content>
                         <Item brand={this.props.brand_name}
+                              tags={null}
                               username={null}
                               season={null}
                               size={null}
@@ -76,7 +77,6 @@ class HomeItemScreen extends Component {
             )
         }
         else{
-            console.log(this.state.item.item);
 
             return (
                 <Container>
@@ -90,6 +90,7 @@ class HomeItemScreen extends Component {
                               price={this.props.price}
                               picture={this.state.picture}
                               grade={4}
+                              tags={this.state.item.tags[0]}
                         />
                     </Content>
                     <FooterButtonComponent leftText="장바구니" rightText="구매하기"/>

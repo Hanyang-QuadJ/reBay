@@ -20,6 +20,7 @@ class Item extends Component {
     }
 
     render() {
+        console.log(this.props.tags);
         const stars = [];
         const emptyStars = [];
         const starLength = 5;
@@ -53,10 +54,19 @@ class Item extends Component {
                     </View>
                 </View>
                 <View style={styles.pictureArea}>
-                    {this.props.picture === undefined || this.props.picture === null ? <View style={styles.slide2}><LoadingActivity/></View>:
-                        <Swiper style={styles.wrapper} showsButtons={false} activeDot={<View style={{backgroundColor: commonStyle.PRIMARY_COLOR ,
-                            width: 8, height: 8, borderRadius: 4, marginLeft: 3, marginRight: 3, marginTop: 3, marginBottom: 3,}}/>}>
-                            {this.props.picture.map((picture,index)=> {
+                    {this.props.picture === undefined || this.props.picture === null ?
+                        <View style={styles.slide2}><LoadingActivity/></View> :
+                        <Swiper style={styles.wrapper} showsButtons={false} activeDot={<View style={{
+                            backgroundColor: commonStyle.PRIMARY_COLOR,
+                            width: 8,
+                            height: 8,
+                            borderRadius: 4,
+                            marginLeft: 3,
+                            marginRight: 3,
+                            marginTop: 3,
+                            marginBottom: 3,
+                        }}/>}>
+                            {this.props.picture.map((picture, index) => {
                                 return (
                                     <View key={picture.id} style={styles.slide1}>
                                         <FastImage style={styles.image}
@@ -130,9 +140,14 @@ class Item extends Component {
                                 <Text style={styles.labelText}>연관 태그</Text>
                             </View>
                             <View style={styles.content}>
-                                <Text style={styles.contentText}>캐쉬미어 가디건</Text>
+                                {this.props.tags === null ? null : this.props.tags.map((tags, index) => {
+                                    return (
+                                        <Text key={index} style={styles.tag}>{tags.title}</Text>
+                                    )
+                                })}
                             </View>
                         </View>
+
                     </View>
                 </View>
             </View>

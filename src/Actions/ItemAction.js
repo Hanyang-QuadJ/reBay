@@ -135,7 +135,7 @@ export const postItem = (token,
 
 };
 
-export const postItems = (token, category_1, category_2, item_status, season, max_price, min_price, index) => {
+export const postItems = (token, brand, category_1, category_2, item_status, season, max_price, min_price, index) => {
 
     return async (dispatch) => {
         try {
@@ -148,6 +148,7 @@ export const postItems = (token, category_1, category_2, item_status, season, ma
                         'x-access-token': token
                     },
                     body: JSON.stringify({
+                        brand: brand,
                         category_1: category_1,
                         category_2: category_2,
                         item_status: item_status,

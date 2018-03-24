@@ -36,9 +36,9 @@ class BuyScreen2_1 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            multiSliderValue: [10000, 100000],
+            multiSliderValue: [0, 1000000],
             minPrice: 0,
-            maxPrice: 100000
+            maxPrice: 1000000
         };
     }
 
@@ -48,6 +48,7 @@ class BuyScreen2_1 extends Component {
                 screen: 'Buy3',
                 title: '상품정보',
                 passProps: {
+                    brand: this.props.brand,
                     category:this.props.category,
                     detailCategory:this.props.detailCategory,
                     status:this.props.status,
@@ -99,7 +100,7 @@ class BuyScreen2_1 extends Component {
                             onValuesChange={this.multiSliderValuesChange}
                             min={0}
                             max={1000000}
-                            step={1}
+                            step={100000}
                             allowOverlap
                             snapped
                         />

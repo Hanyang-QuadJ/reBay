@@ -21,7 +21,11 @@ const styles = StyleSheet.create({
         height: 88,
         borderRadius:2
     },
-
+    itemImages:{
+        width: null,
+        height: 88,
+        borderRadius:2
+    },
     item_brand:{
         marginTop:5,
         color:commonStyle.TEXT_COLOR,

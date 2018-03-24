@@ -57,6 +57,7 @@ class BuyScreen2 extends Component {
                 screen: 'Buy2_1',
                 title: '가격',
                 passProps: {
+                    brand: this.state.selectedBrand,
                     category:this.state.category[this.state.selectedCategory].name,
                     detailCategory:this.state.category[this.state.selectedCategory].detailCategory[this.state.selectedDetailCategory].name,
                     status:this.state.item_status[this.state.selectedItemStatus].name,

@@ -29,6 +29,16 @@ import NoticeScreen from "./src/Screens/TabScreens/NoticeScreen/NoticeScreen";
 import ProfileScreen from './src/Screens/TabScreens/ProfileScreen/ProfileScreen';
 import HomeItemScreen from './src/Screens/HomeItemScreen/HomeItemScreen';
 
+import OptionScreen1 from './src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen1';
+import OptionScreen2 from './src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen2';
+import OptionScreen3 from './src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen3';
+import OptionScreen4 from './src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen4';
+import OptionScreen5 from './src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen5';
+import OptionScreen6 from './src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen6';
+import OptionScreen7 from './src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen7';
+import OptionScreen8 from './src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen8';
+import OptionScreen9 from './src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen9';
+import OptionScreen10 from './src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen10';
 export default function registerScreens(){
 
     //AuthScreens
@@ -108,7 +118,37 @@ export default function registerScreens(){
     Navigation.registerComponent('Buy4', () => BuyScreen4,
         store,
         Provider);
-
+    //ProfileOptionScreens
+    Navigation.registerComponent('Opt1', () => OptionScreen1,
+        store,
+        Provider);
+    Navigation.registerComponent('Opt2', () => OptionScreen2,
+        store,
+        Provider);
+    Navigation.registerComponent('Opt3', () => OptionScreen3,
+        store,
+        Provider);
+    Navigation.registerComponent('Opt4', () => OptionScreen4,
+        store,
+        Provider);
+    Navigation.registerComponent('Opt5', () => OptionScreen5,
+        store,
+        Provider);
+    Navigation.registerComponent('Opt6', () => OptionScreen6,
+        store,
+        Provider);
+    Navigation.registerComponent('Opt7', () => OptionScreen7,
+        store,
+        Provider);
+    Navigation.registerComponent('Opt8', () => OptionScreen8,
+        store,
+        Provider);
+    Navigation.registerComponent('Opt9', () => OptionScreen9,
+        store,
+        Provider);
+    Navigation.registerComponent('Opt10', () => OptionScreen10,
+        store,
+        Provider);
     Navigation.registerComponent('HomeItem', () => HomeItemScreen,
         store,
         Provider);

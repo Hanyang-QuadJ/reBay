@@ -43,13 +43,122 @@ class ProfileScreen extends Component {
             }
         )
     };
+    opt1 = () => {
+        this.props.navigator.push({
+                screen: 'Opt1',
+                title: '등록정보',
+                passProps: {
 
+                }
+            }
+        )
+    }
+    opt2 = () => {
+        this.props.navigator.push({
+                screen: 'Opt2',
+                title: '구매내역',
+                passProps: {
+
+                }
+            }
+        )
+    }
+    opt3 = () => {
+        this.props.navigator.push({
+                screen: 'Opt3',
+                title: '판매내역',
+                passProps: {
+
+                }
+            }
+        )
+    }
+    opt4 = () => {
+        this.props.navigator.push({
+                screen: 'Opt4',
+                title: '문의내역',
+                passProps: {
+
+                }
+            }
+        )
+    }
+    opt5 = () => {
+        this.props.navigator.push({
+                screen: 'Opt5',
+                title: '임시저장내역',
+                passProps: {
+
+                }
+            }
+        )
+    }
+    opt6 = () => {
+        this.props.navigator.push({
+                screen: 'Opt6',
+                title: '리베이 프로모션',
+                passProps: {
+
+                }
+            }
+        )
+    }
+    opt7 = () => {
+        this.props.navigator.push({
+                screen: 'Opt7',
+                title: '리베이에 문의하기',
+                passProps: {
+
+                }
+            }
+        )
+    }
+    opt8 = () => {
+        this.props.navigator.push({
+                screen: 'Opt8',
+                title: '푸쉬알림',
+                passProps: {
+
+                }
+            }
+        )
+    }
+    opt9 = () => {
+        this.props.navigator.push({
+                screen: 'Opt9',
+                title: '이용약관',
+                passProps: {
+
+                }
+            }
+        )
+    }
+    opt10 = () => {
+        this.props.navigator.push({
+                screen: 'Opt10',
+                title: '업데이트 정보',
+                passProps: {
+
+                }
+            }
+        )
+    }
     render() {
         console.log("rendered!");
 
         return (
             <View>
                 <Button onPress={this.signOut} full><Text>로그아웃</Text></Button>
+                <Button onPress={this.opt1} full><Text>등록정보</Text></Button>
+                <Button onPress={this.opt2} full><Text>구매내역</Text></Button>
+                <Button onPress={this.opt3} full><Text>판매내역</Text></Button>
+                <Button onPress={this.opt4} full><Text>문의내역</Text></Button>
+                <Button onPress={this.opt5} full><Text>임시저장내역</Text></Button>
+                <Button onPress={this.opt6} full><Text>리베이 프로모션</Text></Button>
+                <Button onPress={this.opt7} full><Text>리베이에 문의하기</Text></Button>
+                <Button onPress={this.opt8} full><Text>푸쉬알림</Text></Button>
+                <Button onPress={this.opt9} full><Text>이용약관</Text></Button>
+                <Button onPress={this.opt10} full><Text>업데이트 정보</Text></Button>
             </View>
 
 

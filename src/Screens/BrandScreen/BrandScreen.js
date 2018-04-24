@@ -37,7 +37,7 @@ class BrandScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentBrand: [],
+            currentBrand: this.props.brand.brands,
             scroll: new Animated.Value(0),
         };
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
@@ -46,6 +46,7 @@ class BrandScreen extends Component {
     onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
 
     }
+
 
     filterBySearchBar(text) {
         const brands = [];

@@ -34,10 +34,10 @@ class BuyScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentBrand: [],
+            currentBrand: this.props.brand.brands,
             inputStatus: false,
             refreshing:false,
-            scroll: new Animated.Value(0) ,
+            scroll: new Animated.Value(0),
         };
         this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
     }

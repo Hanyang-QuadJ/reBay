@@ -7,11 +7,12 @@ export const postBasket = (params) => {
     return async (dispatch) => {
         try {
             let response = await fetch(
-                ServerEndPoint2 + 'api/temp/'+params.id, {
+                ServerEndPoint2 + 'api/item/temp/'+params.item_id, {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
                         'Content-Type': 'application/json',
+                        'x-access-token': params.token
                     },
                 }
             );

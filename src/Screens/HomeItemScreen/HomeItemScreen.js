@@ -20,7 +20,10 @@ import FooterCart from '../../Components/FooterCart/FooterCart';
 import {DotIndicator} from 'react-native-indicators';
 
 const mapStateToProps = state => {
-    return {};
+    return {
+        isLogin: state.LoginReducer.isLogin,
+        token: state.LoginReducer.token
+    };
 };
 
 class HomeItemScreen extends Component {
@@ -88,10 +91,16 @@ class HomeItemScreen extends Component {
                               tags={this.state.item.tags[0]}
                         />
                     </Content>
-                    <FooterCart firstText="장바구니" secondText="댓글" thridText="구매하기"/>
+                    <FooterCart onPressFirst={this.handleBasket} firstText="장바구니" secondText="댓글" thridText="구매하기"/>
                 </Container>
             )
         }
+    }
+
+    handleBasket = () =>  {
+        console.log(this.props.isLogin);
+        console.log(this.props.token);
+
     }
 }
 

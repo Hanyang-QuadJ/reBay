@@ -26,21 +26,18 @@ class InitScreen extends Component {
     }
 
     componentDidMount() {
-        this.props.navigator.push({
-            screen: "Tutorial"
+        AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
+
+            if (value === null || value === undefined || value === "") {
+                this.props.navigator.push({
+                    screen: 'Tutorial',
+                    animated: false
+                });
+            }
+            else {
+                this.goToTab();
+            }
         })
-        // AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
-        //
-        //     if (value === null || value === undefined || value === "") {
-        //         this.props.navigator.push({
-        //             screen: 'Tutorial',
-        //             animated: false
-        //         });
-        //     }
-        //     else {
-        //         this.goToTab();
-        //     }
-        // })
     }
 
 

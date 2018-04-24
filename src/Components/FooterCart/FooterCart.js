@@ -13,11 +13,12 @@ class FooterCart extends Component {
         super(props);
     }
     render() {
+        const { onPressFirst, onPressSecond, onPress } = this.props;
         return (
             <Footer style={styles.footer}>
-                <Button style={styles.button1}><Text style={styles.button1Text}>{this.props.firstText}</Text></Button>
-                <Button style={styles.button2}><Text style={styles.button2Text}>{this.props.secondText}</Text></Button>
-                <Button onPress={this.props.onPress} style={styles.button3} ><Text style={styles.button3Text}>{this.props.thridText}</Text></Button>
+                <Button onPress={onPressFirst} style={styles.button1}><Text style={styles.button1Text}>{this.props.firstText}</Text></Button>
+                <Button onPress={onPressSecond} style={styles.button2}><Text style={styles.button2Text}>{this.props.secondText}</Text></Button>
+                <Button onPress={ onPress} style={styles.button3} ><Text style={styles.button3Text}>{this.props.thridText}</Text></Button>
             </Footer>
 
 

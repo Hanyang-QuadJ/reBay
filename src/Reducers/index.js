@@ -8,7 +8,6 @@ import RecommendReducer from './RecommendReducer';
 
 
 const Reducer = combineReducers({
-
     DefaultReducer,
     LoginReducer,
     BrandReducer,

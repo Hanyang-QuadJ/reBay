@@ -98,9 +98,12 @@ export const getMe = params => {
         }
       });
       let responseJson = await response.json();
-      await dispatch({ type: SUCCEED_TO_GET_ME, payload: responseJson });
+      await dispatch({
+        type: SUCCEED_TO_GET_ME,
+        payload: responseJson.result[0]
+      });
       storeToken(responseJson.token);
-      return responseJson;
+      return responseJson.result[0];
     } catch (error) {
       dispatch({ type: FAILED_TO_GET_ME, payload: { data: "NETWORK_ERROR" } });
       console.error(error);

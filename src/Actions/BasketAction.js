@@ -5,7 +5,8 @@ export const FAILED_TO_POST_BASKET = "FAILED_TO_POST_BASKET";
 
 import { ServerEndPoint2 } from "../Constants/server";
 
-export const getBaskets = token => {
+export const getBaskets = params => {
+  console.log(params.token);
   return async dispatch => {
     try {
       let response = await fetch(ServerEndPoint2 + "api/item/temp", {
@@ -13,16 +14,16 @@ export const getBaskets = token => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          "x-access-token": token
+          "x-access-token": params.token
         }
       });
       let responseJson = await response.json();
       console.log(responseJson);
       await dispatch({
         type: SUCCEED_TO_GET_BASKET,
-        payload: responseJson.temps
+        payload: responseJson.result
       });
-      return responseJson.temps;
+      return responseJson.result;
     } catch (error) {
       dispatch({
         type: FAILED_TO_GET_BASKET,

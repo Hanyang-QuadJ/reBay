@@ -35,12 +35,7 @@ class BasketScreen extends Component {
     // this is the onPress handler for the two buttons together
   }
 
-  componentDidMount() {
-    const { token } = this.props;
-    this.props
-      .dispatch(BasketAction.getBaskets(token))
-      .then(value => this.setState({ baskets: value }));
-  }
+  componentDidMount() {}
 
   render() {
     return <View />;

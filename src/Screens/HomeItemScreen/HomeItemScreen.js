@@ -17,6 +17,7 @@ import { GoToHome } from "../index";
 import Item from "../../Components/Item/Item";
 import * as ItemAction from "../../Actions/ItemAction";
 import * as BasketAction from "../../Actions/BasketAction";
+import * as LoginAction from "../../Actions/LoginAction";
 import FooterCart from "../../Components/FooterCart/FooterCart";
 import { DotIndicator } from "react-native-indicators";
 
@@ -110,7 +111,7 @@ class HomeItemScreen extends Component {
 
   handleBasket = () => {
     const { isLogin, token, item_id } = this.props;
-    if (isLogin === false) {
+    if (!isLogin) {
       Alert.alert(
         "로그인 필요합니다!",
         "장바구니 이용을 위해서 로그인을 해주세요",
@@ -141,10 +142,17 @@ class HomeItemScreen extends Component {
             { text: "계속 쇼핑하기", onPress: () => null, style: "cancel" },
             {
               text: "확인",
-              onPress: () =>
-                this.props.navigator.push({
-                  screen: "Basket" // unique ID registered with Navigation.registerScreen
-                })
+              onPress: () => {
+                const params = { token };
+                this.props
+                  .dispatch(BasketAction.getBaskets(params))
+                  .then(baskets => {
+                    this.props.navigator.push({
+                      screen: "Basket", // unique ID registered with Navigation.registerScreen
+                      passProps: baskets
+                    });
+                  });
+              }
             }
           ],
           { cancelable: false }

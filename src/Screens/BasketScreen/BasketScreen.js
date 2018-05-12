@@ -17,7 +17,8 @@ import { GoToHome } from "../index";
 
 const mapStateToProps = state => {
   return {
-    token: state.LoginReducer.token
+    token: state.LoginReducer.token,
+    isLogin: state.LoginReducer.isLogin
   };
 };
 

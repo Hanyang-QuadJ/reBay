@@ -47,7 +47,6 @@ class BuyScreen extends Component {
     }
 
     filterBySearchBar(text) {
-        console.log(text);
         const brands = [];
         if (text.length > 0) {
             this.setState({inputStatus: true})

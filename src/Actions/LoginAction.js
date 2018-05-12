@@ -45,7 +45,7 @@ export const postLogin = (email, password) => {
         token: responseJson.token
       });
       storeToken(responseJson.token);
-      return responseJson;
+      return responseJson.token;
     } catch (error) {
       dispatch({ type: FAILED_TO_LOGIN, payload: { data: "NETWORK_ERROR" } });
       console.error(error);
@@ -78,7 +78,7 @@ export const postSignUp = (username, email, phone, password) => {
         token: responseJson.token
       });
       storeToken(responseJson.token);
-      return responseJson;
+      return responseJson.token;
     } catch (error) {
       dispatch({ type: FAILED_TO_SIGN_UP, payload: { data: "NETWORK_ERROR" } });
       console.error(error);

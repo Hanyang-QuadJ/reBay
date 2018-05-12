@@ -16,7 +16,7 @@ const initialState = {
 
 AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
   return Object.assign(initialState, {
-    token: value,
+    token: JSON.parse(value),
     isLogin: !!value
   });
 });

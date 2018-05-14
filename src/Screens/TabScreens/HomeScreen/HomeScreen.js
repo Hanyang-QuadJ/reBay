@@ -96,6 +96,7 @@ class HomeScreen extends Component {
       // this is the event type for button presses
       if (event.id == "cart") {
         this.props.navigator.push({
+          title: "장바구니",
           screen: "Basket"
         });
       }

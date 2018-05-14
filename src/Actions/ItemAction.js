@@ -93,9 +93,6 @@ export const postItem = (
 ) => {
   return async dispatch => {
     try {
-      // console.log("^^^^^");
-      // console.log(token);
-      // console.log(price);
       let response = await fetch(ServerEndPoint2 + "api/item/sell", {
         method: "POST",
         headers: {

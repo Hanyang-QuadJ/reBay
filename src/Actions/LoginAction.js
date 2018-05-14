@@ -102,7 +102,6 @@ export const getMe = params => {
         type: SUCCEED_TO_GET_ME,
         payload: responseJson.result[0]
       });
-      storeToken(responseJson.token);
       return responseJson.result[0];
     } catch (error) {
       dispatch({ type: FAILED_TO_GET_ME, payload: { data: "NETWORK_ERROR" } });

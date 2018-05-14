@@ -7,8 +7,11 @@ import {
   FlatList,
   TouchableOpacity,
   ActivityIndicator,
-  InteractionManager
+  InteractionManager,
+  ScrollView
 } from "react-native";
+import CategoryItem from "../../Components/CategoryItem/CategoryItem";
+
 import { Container, Content, Icon } from "native-base";
 import styles from "./style";
 import * as commonStyle from "../../Constants/commonStyle";
@@ -35,10 +38,24 @@ class BasketScreen extends Component {
     // this is the onPress handler for the two buttons together
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const { token } = this.props;
+    const params = { token };
+    this.props
+      .dispatch(BasketAction.getBaskets(params))
+      .then(baskets => this.setState({ baskets }));
+  }
 
   render() {
-    return <View />;
+    return (
+      <ScrollView>
+        <CategoryItem
+          item={this.state.baskets}
+          screen="HomeItem"
+          navigator={this.props.navigator}
+        />
+      </ScrollView>
+    );
   }
 }
 

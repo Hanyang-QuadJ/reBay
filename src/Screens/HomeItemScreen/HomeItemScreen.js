@@ -143,15 +143,10 @@ class HomeItemScreen extends Component {
             {
               text: "확인",
               onPress: () => {
-                const params = { token };
-                this.props
-                  .dispatch(BasketAction.getBaskets(params))
-                  .then(baskets => {
-                    this.props.navigator.push({
-                      screen: "Basket", // unique ID registered with Navigation.registerScreen
-                      passProps: baskets
-                    });
-                  });
+                this.props.navigator.push({
+                  title: "장바구니",
+                  screen: "Basket" // unique ID registered with Navigation.registerScreen
+                });
               }
             }
           ],

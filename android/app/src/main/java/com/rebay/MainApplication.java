@@ -3,6 +3,7 @@ package com.rebay;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
 
@@ -27,7 +28,8 @@ public class MainApplication extends NavigationApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
+            new ReactNativePushNotificationPackage()
 
       );
     }

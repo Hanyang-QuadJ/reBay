@@ -12,7 +12,8 @@ import * as commonStyle from "../../../Constants/commonStyle";
 
 const mapStateToProps = state => {
   return {
-    item_id: state.ItemReducer.item_id
+    item_id: state.ItemReducer.item_id,
+    token: state.LoginReducer.token
   };
 };
 
@@ -46,7 +47,7 @@ class DetailScreen extends Component {
 
   postItem = async () => {
     this.setState({ posting: true });
-    let token = await AsyncStorage.getItem("ACCESS_TOKEN");
+    let token = this.props.token;
     let pic_list = this.props.pic_list;
     let price = this.props.price;
     let item_name = this.props.item_name;

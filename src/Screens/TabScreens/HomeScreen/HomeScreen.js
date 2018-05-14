@@ -11,6 +11,7 @@ import {
   Platform,
   TouchableOpacity,
   findNodeHandle,
+  PushNotificationIOS,
   UIManager
 } from "react-native";
 import { Icon, Button, Text } from "native-base";
@@ -18,6 +19,7 @@ import photo from "../../../Constants/photo";
 import SwiperComponent from "../../../Components/SwiperComponent/SwiperComponent";
 import CategoryItem from "../../../Components/CategoryItem/CategoryItem";
 import { connect } from "react-redux";
+// import PushNotification from "react-native-push-notification";
 import {
   TabViewAnimated,
   TabBar,
@@ -103,7 +105,17 @@ class HomeScreen extends Component {
     }
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    let date = new Date(Date.now() + 60 * 1000);
+
+    // if (Platform.OS === "ios") {
+    //   date = date.toISOString();
+    // }
+    // PushNotification.localNotificationSchedule({
+    //   message: "안녕하세요 리베이입니다",
+    //   date
+    // });
+  }
   pullToRefresh = () => {
     this.setState({ refreshing: true });
     this.props.dispatch(RecommendAction.refreshRecommend()).then(value => {
@@ -285,7 +297,6 @@ class HomeScreen extends Component {
             ref={c => (this.scrollView = c)}
           >
             <SwiperComponent />
-
             <ScrollView
               horizontal={true}
               ref={d => (this.h_scrollView = d)}

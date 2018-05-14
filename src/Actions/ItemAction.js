@@ -57,6 +57,7 @@ export const getItemPicture = id => {
         }
       });
       let responseJson = await response.json();
+      console.log(responseJson);
       dispatch({
         type: SUCCEED_TO_GET_ITEM_PICTURE,
         payload: responseJson.result
@@ -67,7 +68,7 @@ export const getItemPicture = id => {
         type: FAILED_TO_GET_ITEM_PICTURE,
         payload: { data: "NETWORK_ERROR" }
       });
-      console.error(error);
+      console.log(error);
     }
   };
 };

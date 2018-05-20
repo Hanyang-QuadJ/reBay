@@ -50,6 +50,7 @@
 		970E3057707641E88E88F512 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 438CAF751E0E4F358F890FF0 /* Zocial.ttf */; };
 		9FAFD8AEE2B54D37874872EF /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D631CE23B5E4FAEB30F73C0 /* libRNImagePicker.a */; };
 		A558A7607C59484793BF4B7B /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 398331F3AA0E419EB3159B90 /* rubicon-icon-font.ttf */; };
+		AB66801EB2714C2BBEFAF964 /* libIAmPort.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FC0A400795546A7B3B714DB /* libIAmPort.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		ED2BDF2E20A96BE500DB165C /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2BDECF20A95BFB00DB165C /* libRCTPushNotification.a */; };
 		EDA9414B205272BD00009A34 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA9414A2052729800009A34 /* libReactNativeNavigation.a */; };
@@ -280,12 +281,19 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTPushNotification;
 		};
-		ED2BDED020A95BFB00DB165C /* PBXContainerItemProxy */ = {
+		ED2BDF8920A9D4CB00DB165C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ED2BDEBC20A95BFB00DB165C /* RCTPushNotification.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 3D05745F1DE6004600184BB4;
+			remoteGlobalIDString = ED2BDF7920A9D4C900DB165C;
 			remoteInfo = "RCTPushNotification-tvOS";
+		};
+		ED2BDFA920A9D4CC00DB165C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC6D8C45BD0B4EB7B4A8E9E1 /* IAmPort.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 536ED6441ED6BF04002700B9;
+			remoteInfo = IAmPort;
 		};
 		EDA941382052729800009A34 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -377,6 +385,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* reBayTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = reBayTests.m; sourceTree = "<group>"; };
 		0DD8F04A354D4F9DAB1EFAE3 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/native-base/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		0FC0A400795546A7B3B714DB /* libIAmPort.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libIAmPort.a; sourceTree = "<group>"; };
 		11ABC8F9A0E34FA18BC6C565 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/native-base/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
@@ -404,6 +413,7 @@
 		8A8C7B8AE5EA4A5D8BE7E42F /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		8D631CE23B5E4FAEB30F73C0 /* libRNImagePicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNImagePicker.a; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		BC6D8C45BD0B4EB7B4A8E9E1 /* IAmPort.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = IAmPort.xcodeproj; path = "../node_modules/react-native-iamport/ios/IAmPort.xcodeproj"; sourceTree = "<group>"; };
 		D0E4B0CC0F33468D80F2579F /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		E85F233DC574449AB48F935D /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		E8E7CFFC233F45D08F56AD32 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
@@ -444,6 +454,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				9FAFD8AEE2B54D37874872EF /* libRNImagePicker.a in Frameworks */,
 				03743AAF6D224315B9CE37AF /* libFastImage.a in Frameworks */,
+				AB66801EB2714C2BBEFAF964 /* libIAmPort.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +645,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				8A8C7B8AE5EA4A5D8BE7E42F /* RNImagePicker.xcodeproj */,
 				41167E80DB5F470B983F2C75 /* FastImage.xcodeproj */,
+				BC6D8C45BD0B4EB7B4A8E9E1 /* IAmPort.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -706,7 +718,15 @@
 			isa = PBXGroup;
 			children = (
 				ED2BDECF20A95BFB00DB165C /* libRCTPushNotification.a */,
-				ED2BDED120A95BFB00DB165C /* libRCTPushNotification-tvOS.a */,
+				ED2BDF8A20A9D4CB00DB165C /* libRCTPushNotification-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ED2BDFA620A9D4CC00DB165C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ED2BDFAA20A9D4CC00DB165C /* libIAmPort.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -724,6 +744,7 @@
 			children = (
 				8D631CE23B5E4FAEB30F73C0 /* libRNImagePicker.a */,
 				5A41C4B31A7A4C5DADB56EAE /* libFastImage.a */,
+				0FC0A400795546A7B3B714DB /* libIAmPort.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -835,6 +856,7 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = MWK75V89CA;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -867,6 +889,10 @@
 				{
 					ProductGroup = EDA9421620557AD900009A34 /* Products */;
 					ProjectRef = 41167E80DB5F470B983F2C75 /* FastImage.xcodeproj */;
+				},
+				{
+					ProductGroup = ED2BDFA620A9D4CC00DB165C /* Products */;
+					ProjectRef = BC6D8C45BD0B4EB7B4A8E9E1 /* IAmPort.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -1150,11 +1176,18 @@
 			remoteRef = ED2BDECE20A95BFB00DB165C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		ED2BDED120A95BFB00DB165C /* libRCTPushNotification-tvOS.a */ = {
+		ED2BDF8A20A9D4CB00DB165C /* libRCTPushNotification-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libRCTPushNotification-tvOS.a";
-			remoteRef = ED2BDED020A95BFB00DB165C /* PBXContainerItemProxy */;
+			remoteRef = ED2BDF8920A9D4CB00DB165C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		ED2BDFAA20A9D4CC00DB165C /* libIAmPort.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libIAmPort.a;
+			remoteRef = ED2BDFA920A9D4CC00DB165C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		EDA941392052729800009A34 /* libjsinspector.a */ = {
@@ -1389,12 +1422,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
+					"$(SRCROOT)/../node_modules/react-native-iamport/ios/IAmPort",
 				);
 				INFOPLIST_FILE = reBayTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1417,12 +1452,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
+					"$(SRCROOT)/../node_modules/react-native-iamport/ios/IAmPort",
 				);
 				INFOPLIST_FILE = reBayTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1440,6 +1477,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = reBay/reBay.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = MWK75V89CA;
@@ -1448,6 +1487,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS",
+					"$(SRCROOT)/../node_modules/react-native-iamport/ios/IAmPort",
 				);
 				INFOPLIST_FILE = reBay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1457,6 +1497,8 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = reBay;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1466,6 +1508,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = reBay/reBay.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MWK75V89CA;
 				HEADER_SEARCH_PATHS = (
@@ -1473,6 +1517,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
 					"$(SRCROOT)/../node_modules/react-native/Libraries/PushNotificationIOS/**",
+					"$(SRCROOT)/../node_modules/react-native-iamport/ios/IAmPort",
 				);
 				INFOPLIST_FILE = reBay/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1482,6 +1527,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = reBay;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1502,11 +1548,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
+					"$(SRCROOT)/../node_modules/react-native-iamport/ios/IAmPort",
 				);
 				INFOPLIST_FILE = "reBay-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1538,11 +1586,13 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
 					"$(SRCROOT)/../node_modules/react-native-fast-image/ios/FastImage/**",
+					"$(SRCROOT)/../node_modules/react-native-iamport/ios/IAmPort",
 				);
 				INFOPLIST_FILE = "reBay-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1575,6 +1625,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.reBay-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1599,6 +1650,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);

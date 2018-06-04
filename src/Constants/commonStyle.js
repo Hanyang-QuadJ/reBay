@@ -6,32 +6,28 @@ export const SECONDARY_COLOR = "#ffffff";
 export const BORDER_COLOR = "#cecece";
 
 export const NavigationStyle = {
-    navBarTextColor: PRIMARY_COLOR,
-    navBarBackgroundColor: SECONDARY_COLOR,
-    navBarButtonColor: PRIMARY_COLOR,
+  navBarTextColor: PRIMARY_COLOR,
+  navBarBackgroundColor: SECONDARY_COLOR,
+  navBarButtonColor: PRIMARY_COLOR
 };
 
 export const CannotGoBack = {
-    navBarTextColor: SECONDARY_COLOR,
-    navBarBackgroundColor: PRIMARY_COLOR,
-    navBarButtonColor: SECONDARY_COLOR,
-    disabledBackGesture: true,
-
+  navBarTextColor: SECONDARY_COLOR,
+  navBarBackgroundColor: PRIMARY_COLOR,
+  navBarButtonColor: SECONDARY_COLOR,
+  disabledBackGesture: true
 };
 
 export const NavigationStyleReverse = {
-    navBarTextColor: SECONDARY_COLOR,
-    navBarBackgroundColor: PRIMARY_COLOR,
-    navBarButtonColor: SECONDARY_COLOR,
-    statusBarTextColorScheme:'light'
+  navBarTextColor: PRIMARY_COLOR,
+  navBarBackgroundColor: SECONDARY_COLOR,
+  navBarButtonColor: PRIMARY_COLOR,
+  statusBarTextColorScheme: "dark"
 };
-
-
 
 export const TabBarHidden = {
-    navBarTextColor: SECONDARY_COLOR,
-    navBarBackgroundColor: PRIMARY_COLOR,
-    navBarButtonColor: SECONDARY_COLOR,
-    tabBarHidden:true
+  navBarTextColor: PRIMARY_COLOR,
+  navBarBackgroundColor: SECONDARY_COLOR,
+  navBarButtonColor: PRIMARY_COLOR,
+  tabBarHidden: true
 };
-

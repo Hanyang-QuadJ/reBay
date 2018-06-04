@@ -28,6 +28,7 @@ class Item extends Component {
   }
 
   render() {
+    const { me } = this.props;
     const stars = [];
     const emptyStars = [];
     const starLength = 5;

@@ -167,7 +167,7 @@ class ProfileScreen extends Component {
               />
             </View>
           </View>
-          <TouchableOpacity onPress={this.testNotify}>
+          <TouchableOpacity onPress={this.opt1}>
             <View style={styles.option}>
               <View>
                 <Icon style={styles.option__icon} name="ios-settings" />

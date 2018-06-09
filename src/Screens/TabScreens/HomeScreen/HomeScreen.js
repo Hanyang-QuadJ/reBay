@@ -101,6 +101,11 @@ class HomeScreen extends Component {
           title: "장바구니",
           screen: "Basket"
         });
+      } else if (event.id == "search") {
+        this.props.navigator.showModal({
+          title: "검색",
+          screen: "Search"
+        });
       }
     }
   }

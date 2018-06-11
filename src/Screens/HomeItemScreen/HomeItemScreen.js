@@ -100,6 +100,7 @@ class HomeItemScreen extends Component {
           </Content>
           <FooterCart
             onPressFirst={this.handleBasket}
+            onPressThird={this.handleBuy}
             firstText="장바구니"
             secondText="댓글"
             thridText="구매하기"
@@ -133,7 +134,7 @@ class HomeItemScreen extends Component {
         { cancelable: false }
       );
     } else {
-      const params = { token, item_id };
+      const params = { token, item_id, props: this.props };
       this.props.dispatch(BasketAction.postBasket(params)).then(
         Alert.alert(
           "상품이 장바구니에 담겼습니다!",
@@ -154,6 +155,12 @@ class HomeItemScreen extends Component {
         )
       );
     }
+  };
+
+  handleBuy = () => {
+    this.props.navigator.push({
+      screen: "PaymentDone"
+    });
   };
 }
 

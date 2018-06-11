@@ -32,6 +32,7 @@ import * as commonStyle from "../../../Constants/commonStyle";
 import FastImage from "react-native-fast-image";
 import * as RecommendAction from "../../../Actions/RecommendAction";
 import { Tab } from "../../index";
+import DeviceInfo from "react-native-device-info";
 
 const initialLayout = {
   height: 0,
@@ -84,6 +85,7 @@ class HomeScreen extends Component {
       cosmetic: 0,
       glasses: 0,
       watch: 0,
+      deviceId: "",
       routes: [
         { key: "first", title: "카테고리 추천" },
         { key: "second", title: "신규 상품" }
@@ -108,6 +110,12 @@ class HomeScreen extends Component {
         });
       }
     }
+  }
+  componentWillMount() {
+    let result = DeviceInfo.getUniqueID();
+    let number = DeviceInfo.getPhoneNumber();
+    console.log(result);
+    this.setState({ deviceId: result });
   }
 
   componentDidMount() {
@@ -333,7 +341,6 @@ class HomeScreen extends Component {
                 );
               })}
             </ScrollView>
-
             <View
               ref={view => {
                 this.man = view;

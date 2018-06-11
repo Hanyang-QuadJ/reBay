@@ -2,11 +2,11 @@ export const SUCCEED_TO_GET_BASKET = "SUCCEED_TO_GET_BASKET";
 export const FAILED_TO_GET_BASKET = "FAILED_TO_GET_BASKET";
 export const SUCCEED_TO_POST_BASKET = "SUCCEED_TO_POST_BASKET";
 export const FAILED_TO_POST_BASKET = "FAILED_TO_POST_BASKET";
+export const TOKEN_EXPIRED = "TOKEN_EXPIRED";
 
 import { ServerEndPoint2 } from "../Constants/server";
 
 export const getBaskets = params => {
-  console.log(params.token);
   return async dispatch => {
     try {
       let response = await fetch(ServerEndPoint2 + "api/item/temp", {
@@ -18,12 +18,21 @@ export const getBaskets = params => {
         }
       });
       let responseJson = await response.json();
-      console.log(responseJson);
-      await dispatch({
-        type: SUCCEED_TO_GET_BASKET,
-        payload: responseJson.result
-      });
-      return responseJson.result;
+      if (response.status === 496) {
+        await dispatch({
+          type: TOKEN_EXPIRED,
+          payload: responseJson.result
+        });
+        parmas.props.navigator.reset({
+          screen: "Tutorial"
+        });
+      } else {
+        await dispatch({
+          type: SUCCEED_TO_GET_BASKET,
+          payload: responseJson.result
+        });
+        return responseJson.result;
+      }
     } catch (error) {
       dispatch({
         type: FAILED_TO_GET_BASKET,
@@ -49,9 +58,18 @@ export const postBasket = params => {
         }
       );
       let responseJson = await response.json();
-      // console.log(responseJson);
-      await dispatch({ type: SUCCEED_TO_POST_BASKET, payload: responseJson });
-      return responseJson;
+      if (response.status === 496) {
+        dispatch({
+          type: TOKEN_EXPIRED,
+          payload: { data: "NETWORK_ERROR" }
+        });
+        params.props.navigator.reset({
+          screen: "Tutorial"
+        });
+      } else {
+        await dispatch({ type: SUCCEED_TO_POST_BASKET, payload: responseJson });
+        return responseJson;
+      }
     } catch (error) {
       dispatch({
         type: FAILED_TO_POST_BASKET,

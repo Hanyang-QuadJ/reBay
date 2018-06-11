@@ -30,6 +30,8 @@ import HomeItemScreen from "./src/Screens/HomeItemScreen/HomeItemScreen";
 import BasketScreen from "./src/Screens/BasketScreen/BasketScreen";
 import SearchScreen from "./src/Screens/SearchScreen/SearchScreen";
 
+import PaymentDoneScreen from "./src/Screens/PaymentDoneScreen/PaymentDoneScreen";
+
 import OptionScreen1 from "./src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen1";
 import OptionScreen2 from "./src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen2";
 import OptionScreen3 from "./src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen3";
@@ -97,6 +99,14 @@ export default function registerScreens() {
 
   //BasketScreens
   Navigation.registerComponent("Basket", () => BasketScreen, store, Provider);
+
+  //PaymentDoneScreens
+  Navigation.registerComponent(
+    "PaymentDone",
+    () => PaymentDoneScreen,
+    store,
+    Provider
+  );
 
   //ProfileOptionScreens
   Navigation.registerComponent("Opt1", () => OptionScreen1, store, Provider);

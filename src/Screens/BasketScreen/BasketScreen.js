@@ -40,7 +40,7 @@ class BasketScreen extends Component {
 
   componentDidMount() {
     const { token } = this.props;
-    const params = { token };
+    const params = { token, props: this.props };
     this.props
       .dispatch(BasketAction.getBaskets(params))
       .then(baskets => this.setState({ baskets }));

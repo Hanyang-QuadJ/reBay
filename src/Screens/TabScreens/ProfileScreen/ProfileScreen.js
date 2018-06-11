@@ -13,6 +13,7 @@ import { Container, Content, Icon, Button, Text } from "native-base";
 import styles from "./style";
 import * as commonStyle from "../../../Constants/commonStyle";
 import * as LoginAction from "../../../Actions/LoginAction";
+import * as ItemAction from "../../../Actions/ItemAction";
 import { GoToHome } from "../../index";
 
 const mapStateToProps = state => {
@@ -80,12 +81,10 @@ class ProfileScreen extends Component {
   //     });
   //   };
   opt1 = () => {
-    this.props.navigator.push({
-      screen: "Opt1",
-      title: "등록정보",
-      passProps: {}
-    });
+    const params = { props: this.props };
+    this.props.dispatch(ItemAction.buyItem(params));
   };
+
   opt2 = () => {
     this.props.navigator.push({
       screen: "Opt2",
@@ -167,94 +166,89 @@ class ProfileScreen extends Component {
               />
             </View>
           </View>
-          <TouchableOpacity onPress={this.opt1}>
-            <View style={styles.option}>
+          <View style={styles.option}>
+            <TouchableOpacity style={styles.option_wrapper} onPress={this.opt1}>
               <View>
                 <Icon style={styles.option__icon} name="ios-settings" />
               </View>
               <Text style={styles.option__text}>등록정보</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.opt2}>
-            <View style={styles.option}>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.option}>
+            <TouchableOpacity style={styles.option_wrapper} onPress={this.opt2}>
               <View>
-                <Icon style={styles.option__icon} name="home" />
+                <Icon style={styles.option__icon} name="ios-settings" />
               </View>
               <Text style={styles.option__text}>구매내역</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.opt3}>
-            <View style={styles.option}>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.option}>
+            <TouchableOpacity style={styles.option_wrapper} onPress={this.opt3}>
               <View>
-                <Icon style={styles.option__icon} name="home" />
+                <Icon style={styles.option__icon} name="ios-settings" />
               </View>
               <Text style={styles.option__text}>판매내역</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.opt4}>
-            <View style={styles.option}>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.option}>
+            <TouchableOpacity style={styles.option_wrapper} onPress={this.opt4}>
               <View>
-                <Icon style={styles.option__icon} name="home" />
+                <Icon style={styles.option__icon} name="ios-settings" />
               </View>
               <Text style={styles.option__text}>문의내역</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.opt5}>
-            <View style={styles.option}>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.option}>
+            <TouchableOpacity style={styles.option_wrapper} onPress={this.opt5}>
               <View>
-                <Icon style={styles.option__icon} name="home" />
+                <Icon style={styles.option__icon} name="ios-settings" />
               </View>
               <Text style={styles.option__text}>임시저장내역</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.opt6}>
-            <View style={styles.option}>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.option}>
+            <TouchableOpacity style={styles.option_wrapper} onPress={this.opt6}>
               <View>
-                <Icon style={styles.option__icon} name="home" />
+                <Icon style={styles.option__icon} name="ios-settings" />
               </View>
               <Text style={styles.option__text}>리베이 프로모션</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.opt7}>
-            <View style={styles.option}>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.option}>
+            <TouchableOpacity style={styles.option_wrapper} onPress={this.opt7}>
               <View>
-                <Icon style={styles.option__icon} name="home" />
+                <Icon style={styles.option__icon} name="ios-settings" />
               </View>
               <Text style={styles.option__text}>리베이에 문의하기</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.opt8}>
-            <View style={styles.option}>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.option}>
+            <TouchableOpacity style={styles.option_wrapper} onPress={this.opt8}>
               <View>
-                <Icon style={styles.option__icon} name="home" />
+                <Icon style={styles.option__icon} name="ios-settings" />
               </View>
               <Text style={styles.option__text}>푸쉬알림</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.opt9}>
-            <View style={styles.option}>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.option}>
+            <TouchableOpacity style={styles.option_wrapper} onPress={this.opt9}>
               <View>
-                <Icon style={styles.option__icon} name="home" />
+                <Icon style={styles.option__icon} name="ios-settings" />
               </View>
               <Text style={styles.option__text}>이용약관</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.opt10}>
-            <View style={styles.option}>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.option}>
+            <TouchableOpacity
+              style={styles.option_wrapper}
+              onPress={this.opt10}
+            >
               <View>
-                <Icon style={styles.option__icon} name="home" />
+                <Icon style={styles.option__icon} name="ios-settings" />
               </View>
               <Text style={styles.option__text}>업데이트 정보</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.signOut}>
-            <View style={styles.option}>
-              <View>
-                <Icon style={styles.option__icon} name="home" />
-              </View>
-              <Text style={styles.option__text}>로그아웃</Text>
-            </View>
-          </TouchableOpacity>
+            </TouchableOpacity>
+          </View>
         </Content>
       </Container>
     );

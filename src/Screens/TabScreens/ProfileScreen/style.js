@@ -25,12 +25,14 @@ const style = StyleSheet.create({
     fontSize: 13
   },
   option: {
+    borderTopWidth: 1,
+    borderColor: commonStyle.BORDER_COLOR
+  },
+  option_wrapper: {
     flexDirection: "row",
     paddingHorizontal: 30,
     paddingVertical: 10,
-    alignItems: "center",
-    borderTopWidth: 1,
-    borderColor: commonStyle.BORDER_COLOR
+    alignItems: "center"
   },
   option__icon: {
     paddingHorizontal: 15,

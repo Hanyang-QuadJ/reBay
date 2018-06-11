@@ -16,6 +16,10 @@ export const SUCCEED_TO_POST_ITEM = "SUCCEED_TO_POST_ITEM";
 export const FAILED_TO_POST_ITEMS = "FAILED_TO_POST_ITEMS";
 export const SUCCEED_TO_POST_ITEMS = "SUCCEED_TO_POST_ITEMS";
 
+//아이템 구매 완료
+export const FAILED_TO_BUY_ITEM = "FAILED_TO_BUY_ITEM";
+export const SUCCEED_TO_BUY_ITEM = "SUCCEED_TO_BUY_ITEM";
+
 const ACCESS_TOKEN = "ACCESS_TOKEN";
 
 export const getItem = id => {
@@ -176,6 +180,22 @@ export const postItems = (
     } catch (error) {
       dispatch({
         type: FAILED_TO_POST_ITEMS,
+        payload: { data: "NETWORK_ERROR" }
+      });
+      console.error(error);
+    }
+  };
+};
+
+export const buyItem = params => {
+  return async dispatch => {
+    try {
+      params.props.navigator.push({
+        screen: "Basket"
+      });
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_GET_ITEM,
         payload: { data: "NETWORK_ERROR" }
       });
       console.error(error);

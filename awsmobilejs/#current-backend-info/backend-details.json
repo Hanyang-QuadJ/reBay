@@ -1,0 +1,106 @@
+{
+	"name": "reBay",
+	"projectId": "a4cd9996-2a77-4a33-a016-f9e78c193c0b",
+	"region": "ap-northeast-2",
+	"state": "NORMAL",
+	"createdDate": "2018-06-10T07:38:49.651Z",
+	"lastUpdatedDate": "2018-06-10T07:39:09.488Z",
+	"consoleUrl": "https://console.aws.amazon.com/mobilehub/home#/a4cd9996-2a77-4a33-a016-f9e78c193c0b/build",
+	"resources": [
+		{
+			"type": "AWS::Pinpoint::AnalyticsApplication",
+			"name": "rebay_MobileHub",
+			"arn": "2eb1f16afb4a4a5ab6c2396450fe07ac",
+			"feature": "analytics",
+			"attributes": {
+				"lastUpdateRequestID": "0c9b9644-0033-4941-941f-3d7f5f9b3f64"
+			}
+		},
+		{
+			"type": "AWS::IAM::Policy",
+			"name": "rebay_mobileanalytics_MOBILEHUB_1061034507",
+			"arn": null,
+			"feature": "analytics",
+			"attributes": {
+				"authType": "unauthenticated",
+				"lastUpdateRequestID": "0c9b9644-0033-4941-941f-3d7f5f9b3f64",
+				"role": "rebay_unauth_MOBILEHUB_1061034507"
+			}
+		},
+		{
+			"type": "AWS::Cognito::IdentityPool",
+			"name": "rebay_MOBILEHUB_1061034507",
+			"arn": "ap-northeast-2:8f7eae1a-9c8a-48a6-9740-c04c742fd66c",
+			"feature": "user-signin",
+			"attributes": {
+				"lastUpdateRequestID": "0c9b9644-0033-4941-941f-3d7f5f9b3f64",
+				"poolid": "ap-northeast-2:8f7eae1a-9c8a-48a6-9740-c04c742fd66c",
+				"roleARNs": "arn:aws:iam::710114312208:role/rebay_unauth_MOBILEHUB_1061034507"
+			}
+		},
+		{
+			"type": "AWS::IAM::Role",
+			"name": "rebay_unauth_MOBILEHUB_1061034507",
+			"arn": "arn:aws:iam::710114312208:role/rebay_unauth_MOBILEHUB_1061034507",
+			"feature": "user-signin",
+			"attributes": {
+				"authType": "unauthenticated",
+				"lastUpdateRequestID": "0c9b9644-0033-4941-941f-3d7f5f9b3f64"
+			}
+		},
+		{
+			"type": "AWS::S3::Bucket",
+			"name": "rebay-hosting-mobilehub-1061034507",
+			"arn": null,
+			"feature": "hosting",
+			"attributes": {
+				"lastUpdateRequestID": "0c9b9644-0033-4941-941f-3d7f5f9b3f64",
+				"region": "ap-northeast-2",
+				"s3-bucket-console-url": "https://s3.console.aws.amazon.com/s3/buckets/rebay-hosting-mobilehub-1061034507",
+				"s3-bucket-website-url": "https://s3.amazonaws.com/rebay-hosting-mobilehub-1061034507"
+			}
+		},
+		{
+			"type": "AWS::CloudFront::Distribution",
+			"name": "d1y19jd9oj1dwe.cloudfront.net",
+			"arn": null,
+			"feature": "hosting",
+			"attributes": {
+				"id": "E16I8YPB354KO8",
+				"lastUpdateRequestID": "0c9b9644-0033-4941-941f-3d7f5f9b3f64"
+			}
+		},
+		{
+			"type": "AWS::IAM::Policy",
+			"name": "rebay_hosting_MOBILEHUB_1061034507",
+			"arn": null,
+			"feature": "hosting",
+			"attributes": {
+				"authType": "unauthenticated",
+				"lastUpdateRequestID": "0c9b9644-0033-4941-941f-3d7f5f9b3f64",
+				"role": "rebay_unauth_MOBILEHUB_1061034507"
+			}
+		},
+		{
+			"type": "AWS::S3::Bucket",
+			"name": "rebay-deployments-mobilehub-1061034507",
+			"arn": null,
+			"feature": "common",
+			"attributes": {
+				"region": "ap-northeast-2",
+				"s3-bucket-console-url": "https://s3.console.aws.amazon.com/s3/buckets/rebay-deployments-mobilehub-1061034507"
+			}
+		},
+		{
+			"type": "AWS::CloudFormation::Stack",
+			"name": "Development",
+			"arn": null,
+			"feature": "cloud-api",
+			"attributes": {
+				"primary": "true",
+				"region": "ap-northeast-2",
+				"stateSummary": "NOT_YET_DEPLOYED"
+			}
+		}
+	]
+}

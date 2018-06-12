@@ -2,6 +2,7 @@ import { Navigation } from "react-native-navigation";
 import { Platform } from "react-native";
 import * as commonStyle from "../Constants/commonStyle";
 export default commonStyle;
+
 // import PushNotification from "react-native-push-notification";
 
 // PushNotification.configure({

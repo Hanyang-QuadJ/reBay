@@ -19,7 +19,6 @@ import photo from "../../../Constants/photo";
 import SwiperComponent from "../../../Components/SwiperComponent/SwiperComponent";
 import CategoryItem from "../../../Components/CategoryItem/CategoryItem";
 import { connect } from "react-redux";
-// import PushNotification from "react-native-push-notification";
 import {
   TabViewAnimated,
   TabBar,
@@ -33,6 +32,7 @@ import FastImage from "react-native-fast-image";
 import * as RecommendAction from "../../../Actions/RecommendAction";
 import { Tab } from "../../index";
 import DeviceInfo from "react-native-device-info";
+// import PushNotification from "react-native-push-notification";
 
 const initialLayout = {
   height: 0,

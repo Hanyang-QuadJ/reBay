@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "864043914989",
+    "firebase_url": "https://rebay-82212.firebaseio.com",
+    "project_id": "rebay-82212",
+    "storage_bucket": "rebay-82212.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864043914989:android:5b563ed19be9a440",
+        "android_client_info": {
+          "package_name": "com.rebay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864043914989-am0g2hip48m8pafkkvl44ua9nh8e9sku.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "864043914989-am0g2hip48m8pafkkvl44ua9nh8e9sku.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyQ4z72sj2xOQFjGwU-FUl7vgj9KZ9AHY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

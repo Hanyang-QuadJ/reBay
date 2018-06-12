@@ -5,7 +5,6 @@ import android.app.Application;
 import com.facebook.react.ReactApplication;
 import io.invertase.firebase.RNFirebasePackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
-import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
 
@@ -17,6 +16,8 @@ import com.facebook.soloader.SoLoader;
 import java.util.Arrays;
 import java.util.List;
 import com.reactnativenavigation.NavigationApplication;
+import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
+import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 
 
 
@@ -33,7 +34,8 @@ public class MainApplication extends NavigationApplication {
           new MainReactPackage(),
             new RNFirebasePackage(),
             new RNDeviceInfo(),
-            new ReactNativePushNotificationPackage()
+              new RNFirebaseNotificationsPackage(),
+              new RNFirebaseMessagingPackage()
 
       );
     }
@@ -64,7 +66,11 @@ public class MainApplication extends NavigationApplication {
 
     return Arrays.<ReactPackage>asList(
             new ImagePickerPackage(),
-            new FastImageViewPackage()
+            new FastImageViewPackage(),
+            new RNFirebasePackage(),
+            new RNDeviceInfo(),
+            new RNFirebaseNotificationsPackage(),
+            new RNFirebaseMessagingPackage()
 
     );
   }

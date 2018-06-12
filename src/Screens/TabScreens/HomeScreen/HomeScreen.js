@@ -33,6 +33,8 @@ import * as RecommendAction from "../../../Actions/RecommendAction";
 import { Tab } from "../../index";
 import DeviceInfo from "react-native-device-info";
 // import PushNotification from "react-native-push-notification";
+import firebase from "react-native-firebase";
+import { Notification, NotificationOpen } from "react-native-firebase";
 
 const initialLayout = {
   height: 0,
@@ -44,6 +46,16 @@ const mapStateToProps = state => {
     recommend: state.RecommendReducer.recommend
   };
 };
+
+function showObj(obj) {
+  var str = "";
+  for (key in obj) {
+    str += key + "=" + obj[key] + "\n";
+  }
+
+  alert(str);
+  return;
+}
 
 class HomeScreen extends Component {
   static navigatorStyle = commonStyle.NavigationStyleReverse;
@@ -118,23 +130,125 @@ class HomeScreen extends Component {
     this.setState({ deviceId: result });
   }
 
-  componentDidMount() {
-    let date = new Date(Date.now() + 60 * 1000);
+  requestPermission = () => {
+    firebase
+      .messaging()
+      .requestPermission()
+      .then(() => {
+        // User has authorised
+        console.log("승인");
+      })
+      .catch(error => {
+        // User has rejected permissions
+        console.log("비 승인");
+      });
+  };
 
-    // if (Platform.OS === "ios") {
-    //   date = date.toISOString();
-    // }
-    // PushNotification.localNotificationSchedule({
-    //   message: "안녕하세요 리베이입니다",
-    //   date
-    // });
+  hasPermission = () => {
+    firebase
+      .messaging()
+      .hasPermission()
+      .then(enabled => {
+        if (enabled) {
+          // user has permissions
+          console.log("승인했었음!");
+        } else {
+          // user doesn't have permission
+          console.log("승인안함!");
+        }
+      });
+  };
+
+  getToken = () => {
+    firebase
+      .messaging()
+      .getToken()
+      .then(fcmToken => {
+        if (fcmToken) {
+          // user has a device token
+          console.log(fcmToken);
+        } else {
+          // user doesn't have a device token yet
+          console.log(fcmToken);
+        }
+      });
+  };
+
+  displayNotification = () => {
+    const notification = new firebase.notifications.Notification()
+      .setNotificationId("notificationId")
+      .setTitle("My notification title")
+      .setBody("My notification body")
+      .setData({
+        key1: "value1",
+        key2: "value2"
+      });
+    firebase.notifications().displayNotification(notification);
+  };
+
+  componentDidMount() {
+    this.displayNotification();
+    this.hasPermission();
+    this.requestPermission();
+    this.getToken();
+    this.notificationDisplayedListener = firebase
+      .notifications()
+      .onNotificationDisplayed(notification => {
+        console.log(notification._title);
+        console.log(notification._body);
+        console.log(notification);
+
+        // Process your notification as required
+        // ANDROID: Remote notifications do not contain the channel ID. You will have to specify this manually if you'd like to re-display the notification.
+      });
+    this.notificationListener = firebase
+      .notifications()
+      .onNotification(notification => {
+        // Process your notification as required
+        alert(notification._title);
+      });
+
+    //When foreground, background
+
+    this.notificationOpenedListener = firebase
+      .notifications()
+      .onNotificationOpened(notificationOpen => {
+        // Get the action triggered by the notification being opened
+        const action = notificationOpen.action;
+        // Get information about the notification that was opened
+        const notification = notificationOpen.notification;
+        alert(notification._title);
+      });
+
+    //When Shutdown
+
+    firebase
+      .notifications()
+      .getInitialNotification()
+      .then(notificationOpen => {
+        if (notificationOpen) {
+          // App was opened by a notification
+          // Get the action triggered by the notification being opened
+          const action = notificationOpen.action;
+          // Get information about the notification that was opened
+          const notification = notificationOpen.notification;
+          alert(showObj(notification));
+        }
+      });
   }
+
   pullToRefresh = () => {
     this.setState({ refreshing: true });
     this.props.dispatch(RecommendAction.refreshRecommend()).then(value => {
       this.setState({ refreshing: false });
     });
   };
+
+  componentWillUnmount() {
+    this.notificationDisplayedListener();
+    this.notificationListener();
+    this.notificationOpenedListener();
+  }
 
   //TabView Functions
   _handleIndexChange = index => {

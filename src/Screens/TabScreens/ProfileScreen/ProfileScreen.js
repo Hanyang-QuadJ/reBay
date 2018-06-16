@@ -92,6 +92,7 @@ class ProfileScreen extends Component {
       passProps: {}
     });
   };
+
   opt3 = () => {
     this.props.navigator.push({
       screen: "Opt3",

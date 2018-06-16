@@ -43,7 +43,8 @@ const initialLayout = {
 
 const mapStateToProps = state => {
   return {
-    recommend: state.RecommendReducer.recommend
+    recommend: state.RecommendReducer.recommend,
+    isLogin: state.LoginReducer.isLogin
   };
 };
 
@@ -97,6 +98,7 @@ class HomeScreen extends Component {
       cosmetic: 0,
       glasses: 0,
       watch: 0,
+      isApproved: false,
       deviceId: "",
       routes: [
         { key: "first", title: "카테고리 추천" },
@@ -130,111 +132,21 @@ class HomeScreen extends Component {
     this.setState({ deviceId: result });
   }
 
-  requestPermission = () => {
-    firebase
-      .messaging()
-      .requestPermission()
-      .then(() => {
-        // User has authorised
-        console.log("승인");
-      })
-      .catch(error => {
-        // User has rejected permissions
-        console.log("비 승인");
-      });
-  };
-
-  hasPermission = () => {
-    firebase
-      .messaging()
-      .hasPermission()
-      .then(enabled => {
-        if (enabled) {
-          // user has permissions
-          console.log("승인했었음!");
-        } else {
-          // user doesn't have permission
-          console.log("승인안함!");
-        }
-      });
-  };
-
-  getToken = () => {
-    firebase
-      .messaging()
-      .getToken()
-      .then(fcmToken => {
-        if (fcmToken) {
-          // user has a device token
-          console.log(fcmToken);
-        } else {
-          // user doesn't have a device token yet
-          console.log(fcmToken);
-        }
-      });
-  };
-
-  displayNotification = () => {
-    const notification = new firebase.notifications.Notification()
-      .setNotificationId("notificationId")
-      .setTitle("My notification title")
-      .setBody("My notification body")
-      .setData({
-        key1: "value1",
-        key2: "value2"
-      });
-    firebase.notifications().displayNotification(notification);
-  };
-
   componentDidMount() {
-    this.displayNotification();
-    this.hasPermission();
-    this.requestPermission();
-    this.getToken();
-    this.notificationDisplayedListener = firebase
-      .notifications()
-      .onNotificationDisplayed(notification => {
-        console.log(notification._title);
-        console.log(notification._body);
-        console.log(notification);
-
-        // Process your notification as required
-        // ANDROID: Remote notifications do not contain the channel ID. You will have to specify this manually if you'd like to re-display the notification.
-      });
-    this.notificationListener = firebase
-      .notifications()
-      .onNotification(notification => {
-        // Process your notification as required
-        alert(notification._title);
-      });
-
-    //When foreground, background
-
-    this.notificationOpenedListener = firebase
-      .notifications()
-      .onNotificationOpened(notificationOpen => {
-        // Get the action triggered by the notification being opened
-        const action = notificationOpen.action;
-        // Get information about the notification that was opened
-        const notification = notificationOpen.notification;
-        alert(notification._title);
-      });
-
-    //When Shutdown
-
-    firebase
-      .notifications()
-      .getInitialNotification()
-      .then(notificationOpen => {
-        if (notificationOpen) {
-          // App was opened by a notification
-          // Get the action triggered by the notification being opened
-          const action = notificationOpen.action;
-          // Get information about the notification that was opened
-          const notification = notificationOpen.notification;
-          alert(showObj(notification));
-        }
-      });
+    const { isLogin } = this.props;
+    const { isApproved } = this.state;
+    if (isLogin) {
+      let result = this.hasPermission();
+      if (result === true) {
+        this.displayNotification();
+        console.log("listening");
+        this.listeningNotification();
+      } else {
+        this.requestPermission();
+      }
+    } else {
+      return null;
+    }
   }
 
   pullToRefresh = () => {
@@ -625,6 +537,118 @@ class HomeScreen extends Component {
       />
     );
   }
+
+  requestPermission = () => {
+    firebase
+      .messaging()
+      .requestPermission()
+      .then(() => {
+        // User has authorised
+        this.setState({ isApproved: true });
+        this.displayNotification();
+        this.listeningNotification();
+      })
+      .catch(error => {
+        // User has rejected permissions
+        this.setState({ isApproved: false });
+      });
+  };
+
+  hasPermission = () => {
+    firebase
+      .messaging()
+      .hasPermission()
+      .then(enabled => {
+        if (enabled) {
+          // user has permissions
+          return true;
+        } else {
+          // user doesn't have permission
+          return false;
+        }
+      });
+  };
+
+  getToken = () => {
+    firebase
+      .messaging()
+      .getToken()
+      .then(fcmToken => {
+        if (fcmToken) {
+          // user has a device token
+          console.log(fcmToken);
+        } else {
+          // user doesn't have a device token yet
+          console.log(fcmToken);
+        }
+      });
+  };
+
+  displayNotification = () => {
+    const notification = new firebase.notifications.Notification()
+      .setNotificationId("notificationId")
+      .setTitle("My notification title")
+      .setBody("My notification body")
+      .android.setChannelId("fcm-default-channel")
+      .setData({
+        key1: "value1",
+        key2: "value2"
+      });
+    firebase.notifications().displayNotification(notification);
+  };
+
+  listeningNotification = () => {
+    if (Platform.OS === "android") {
+      const channel = new firebase.notifications.Android.Channel(
+        "fcm-default-channel",
+        "Test Channel",
+        firebase.notifications.Android.Importance.Max
+      ).setDescription("My apps test channel");
+      firebase.notifications().android.createChannel(channel);
+    }
+
+    this.notificationDisplayedListener = firebase
+      .notifications()
+      .onNotificationDisplayed(notification => {
+        console.log(notification);
+        // Process your notification as required
+        // ANDROID: Remote notifications do not contain the channel ID. You will have to specify this manually if you'd like to re-display the notification.
+      });
+    this.notificationListener = firebase
+      .notifications()
+      .onNotification(notification => {
+        // Process your notification as required
+        alert(notification._title);
+      });
+
+    //When foreground, background
+
+    this.notificationOpenedListener = firebase
+      .notifications()
+      .onNotificationOpened(notificationOpen => {
+        // Get the action triggered by the notification being opened
+        const action = notificationOpen.action;
+        // Get information about the notification that was opened
+        const notification = notificationOpen.notification;
+        alert(notification._title);
+      });
+
+    //When Shutdown
+
+    firebase
+      .notifications()
+      .getInitialNotification()
+      .then(notificationOpen => {
+        if (notificationOpen) {
+          // App was opened by a notification
+          // Get the action triggered by the notification being opened
+          const action = notificationOpen.action;
+          // Get information about the notification that was opened
+          const notification = notificationOpen.notification;
+          alert(showObj(notification));
+        }
+      });
+  };
 }
 
 export default (HomeScreen = connect(mapStateToProps)(HomeScreen));

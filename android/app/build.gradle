@@ -100,7 +100,7 @@ android {
     defaultConfig {
         applicationId "com.rebay"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         ndk {
@@ -155,7 +155,7 @@ dependencies {
     implementation project(':react-native-fast-image')
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "com.android.support:appcompat-v7:26.1.0"
+    implementation "com.android.support:appcompat-v7:27.0.2"
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-navigation')
     implementation "com.google.android.gms:play-services-base:15.0.0"

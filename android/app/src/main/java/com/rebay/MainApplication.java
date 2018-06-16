@@ -31,7 +31,11 @@ public class MainApplication extends NavigationApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
+          new MainReactPackage(),
+              new RNFirebasePackage(),
+              new RNDeviceInfo(),
+              new RNFirebaseNotificationsPackage(),
+              new RNFirebaseMessagingPackage()
 
 
       );

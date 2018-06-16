@@ -4,6 +4,7 @@ import { View, TextInput, KeyboardAvoidingView } from "react-native";
 import { GoToHome } from "../../index";
 import { Navigation } from "react-native-navigation";
 import * as LoginAction from "../../../Actions/LoginAction";
+import * as UserAction from "../../../Actions/UserAction";
 import commonStyle from "../../index";
 import InputComponent from "../../../Components/InputComponent/InputComponent";
 import {
@@ -48,8 +49,9 @@ class SignInScreen extends Component {
       .dispatch(LoginAction.postLogin(this.state.email, this.state.password))
       .then(token => {
         const params = { token };
-        this.props.dispatch(LoginAction.getMe(params)).then(me => {
-          this.props.dispatch(BrandAction.getBrand()).then(brand => {
+        this.props.dispatch(UserAction.getMe(params)).then(me => {
+          const params = { props: this.props };
+          this.props.dispatch(BrandAction.getBrand(params)).then(brand => {
             this.props
               .dispatch(RecommendAction.getRecommend())
               .then(async value3 => {

@@ -8,6 +8,7 @@ import * as BrandAction from "../../Actions/BrandAction";
 import * as DefaultAction from "../../Actions/DefaultAction";
 import * as RecommendAction from "../../Actions/RecommendAction";
 import * as LoginAction from "../../Actions/LoginAction";
+import * as UserAction from "../../Actions/UserAction";
 import styles from "./style";
 import * as commonStyle from "../../Constants/commonStyle";
 import FastImage from "react-native-fast-image";
@@ -30,7 +31,7 @@ class InitScreen extends Component {
     const { isLogin } = this.props;
     if (isLogin) {
       const params = { token: this.props.token };
-      this.props.dispatch(LoginAction.getMe(params)).then(me => {
+      this.props.dispatch(UserAction.getMe(params)).then(me => {
         this.goToTab();
       });
     } else {
@@ -42,7 +43,8 @@ class InitScreen extends Component {
   }
 
   goToTab = async () => {
-    await this.props.dispatch(BrandAction.getBrand());
+    const params = { props: this.props };
+    await this.props.dispatch(BrandAction.getBrand(params));
     await this.props
       .dispatch(RecommendAction.getRecommend())
       .then(async value2 => {

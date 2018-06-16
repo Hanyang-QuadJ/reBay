@@ -4,9 +4,10 @@ import {
   FAILED_TO_SIGN_UP,
   SUCCEED_TO_LOGIN,
   SUCCEED_TO_SIGN_UP,
-  SUCCEED_TO_SIGN_OUT,
-  SUCCEED_TO_GET_ME
+  SUCCEED_TO_SIGN_OUT
 } from "../Actions/LoginAction";
+
+import { SUCCEED_TO_GET_ME } from "../Actions/UserAction";
 
 const initialState = {
   token: null,

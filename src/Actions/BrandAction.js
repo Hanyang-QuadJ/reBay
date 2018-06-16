@@ -1,40 +1,33 @@
-import {ServerEndPoint, ServerEndPoint2} from "../Constants/server";
-import {AsyncStorage} from 'react-native';
+import { AsyncStorage } from "react-native";
+import * as Request from "../Utils/WebRequest";
 
 //Define Type
 
-export const START_TO_GET_BRAND = "START_TO_GET_BRAND";
 export const FAILED_TO_GET_BRAND = "FAILED_TO_GET_BRAND";
 export const SUCCEED_TO_GET_BRAND = "SUCCEED_TO_GET_BRAND";
+export const TOKEN_EXPIRED = "TOKEN_EXPIRED";
 
-
-export const getBrand = (token) => {
-    return async (dispatch) => {
-        try {
-            dispatch({type: START_TO_GET_BRAND});
-            let response = await fetch(
-                ServerEndPoint2 + "api/brand", {
-                    method: 'GET',
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                }
-            );
-            let responseJson = await response.json();
-            // console.log(responseJson);
-            await dispatch({type: SUCCEED_TO_GET_BRAND, payload: responseJson});
-        } catch (error) {
-            dispatch({type: FAILED_TO_GET_BRAND, payload: {data: "NETWORK_ERROR"}});
-            console.error(error);
+export const getBrand = params => {
+  return async dispatch => {
+    try {
+      let response = await Request.getData("api/brand", params).then(result => {
+        switch (result) {
+          case "token_expired":
+            return dispatch({
+              type: TOKEN_EXPIRED,
+              payload: { data: "NETWORK_ERROR" }
+            });
+          default:
+            dispatch({ type: SUCCEED_TO_GET_BRAND, payload: result });
         }
-
+      });
+      return response;
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_GET_BRAND,
+        payload: { data: "NETWORK_ERROR" }
+      });
+      console.error(error);
     }
-
+  };
 };
-
-
-
-
-
-

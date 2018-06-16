@@ -1,4 +1,7 @@
+import * as Request from "../Utils/WebRequest";
 import { ServerEndPoint, ServerEndPoint2 } from "../Constants/server";
+
+export const TOKEN_EXPIRED = "TOKEN_EXPIRED";
 
 //아이템 하나 가져오기
 export const FAILED_TO_GET_ITEM = "FAILED_TO_GET_ITEM";
@@ -77,60 +80,25 @@ export const getItemPicture = id => {
   };
 };
 
-export const postItem = (
-  token,
-  pic_list,
-  item_name,
-  price,
-  brand_id,
-  size,
-  season,
-  category_1,
-  category_2,
-  item_status,
-  fullbox,
-  warantee,
-  domestic,
-  refund,
-  content,
-  sub_content,
-  tags
-) => {
+export const postItem = params => {
   return async dispatch => {
     try {
-      let response = await fetch(ServerEndPoint2 + "api/item/sell", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "x-access-token": token
-        },
-        body: JSON.stringify({
-          pic_list: pic_list,
-          item_name: item_name,
-          price: price,
-          brand_id: brand_id,
-          size: size,
-          season: season,
-          category_1: category_1,
-          category_2: category_2,
-          item_status: item_status,
-          fullbox: fullbox,
-          warantee: warantee,
-          domestic: domestic,
-          refund: refund,
-          content: content,
-          sub_content: sub_content,
-          tags: tags
-        })
-      });
-      let responseJson = await response.json();
-      // console.log(responseJson);
-      await dispatch({
-        type: SUCCEED_TO_POST_ITEM,
-        payload: responseJson.item_id
-      });
-      return responseJson.item_id;
+      let response = await Request.postData("api/item/sell", params).then(
+        result => {
+          switch (result) {
+            case "token_expired":
+              return dispatch({ type: TOKEN_EXPIRED });
+            default:
+              console.log(result.item_id);
+              dispatch({
+                type: SUCCEED_TO_POST_ITEM,
+                payload: result.item_id
+              });
+              return result.item_id;
+          }
+        }
+      );
+      return response;
     } catch (error) {
       dispatch({
         type: FAILED_TO_POST_ITEM,
@@ -187,15 +155,22 @@ export const postItems = (
   };
 };
 
-export const buyItem = params => {
+export const payItem = params => {
   return async dispatch => {
     try {
-      params.props.navigator.push({
-        screen: "Basket"
+      let response = Request.postData("api/pay", params.body).then(result => {
+        switch (result) {
+          case "token_expired":
+            dispatch({ type: TOKEN_EXPIRED });
+          default:
+            dispatch({ type: SUCCEED_TO_BUY_ITEM, payload: responseJson });
+            return result;
+        }
       });
+      return response;
     } catch (error) {
       dispatch({
-        type: FAILED_TO_GET_ITEM,
+        type: FAILED_TO_BUY_ITEM,
         payload: { data: "NETWORK_ERROR" }
       });
       console.error(error);

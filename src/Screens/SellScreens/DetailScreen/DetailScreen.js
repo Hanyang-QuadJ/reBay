@@ -63,64 +63,61 @@ class DetailScreen extends Component {
     let refund = this.props.refund;
     let content = this.state.content;
     let sub_content = this.state.sub_content;
-
     let tags = await this.parseTag();
-    console.log(token);
-    console.log(pic_list);
-    console.log(price);
-    console.log(item_name);
-    console.log(brand_id);
-    console.log(size);
-    console.log(season);
-    console.log(category_1);
-    console.log(category_2);
-    console.log(item_status);
-    console.log(fullbox);
-    console.log(warantee);
-    console.log(domestic);
-    console.log(refund);
-    console.log(content);
-    console.log(sub_content);
-    await this.props
-      .dispatch(
-        ItemAction.postItem(
-          token,
-          pic_list,
-          item_name,
-          price,
-          brand_id,
-          size,
-          season,
-          category_1,
-          category_2,
-          item_status,
-          fullbox,
-          warantee,
-          domestic,
-          refund,
-          content,
-          sub_content,
-          tags
-        )
-      )
-      .then(item_id => {
-        this.props.dispatch(ItemAction.getItem(item_id)).then(item => {
-          this.props
-            .dispatch(ItemAction.getItemPicture(item_id))
-            .then(picture => {
-              this.setState({ posting: false });
-              this.props.navigator.push({
-                screen: "Item",
-                title: item_name,
-                passProps: {
-                  item: item,
-                  picture: picture,
-                  tags: item.tags[0]
-                }
-              });
+    // console.log(pic_list);
+    // console.log(price);
+    // console.log(item_name);
+    // console.log(brand_id);
+    // console.log(size);
+    // console.log(season);
+    // console.log(category_1);
+    // console.log(category_2);
+    // console.log(item_status);
+    // console.log(fullbox);
+    // console.log(warantee);
+    // console.log(domestic);
+    // console.log(refund);
+    // console.log(content);
+    // console.log(sub_content);
+    const params = {
+      props: this.props,
+      body: {
+        pic_list,
+        price,
+        item_name,
+        brand_id,
+        size,
+        season,
+        category_1,
+        category_2,
+        item_status,
+        fullbox,
+        warantee,
+        domestic,
+        refund,
+        content,
+        sub_content,
+        tags
+      }
+    };
+    await this.props.dispatch(ItemAction.postItem(params)).then(item_id => {
+      this.props.dispatch(ItemAction.getItem(item_id)).then(item => {
+        this.props
+          .dispatch(ItemAction.getItemPicture(item_id))
+          .then(picture => {
+            this.setState({ posting: false });
+            this.props.navigator.push({
+              screen: "Item",
+              title: item_name,
+              passProps: {
+                item: item,
+                picture: picture,
+                tags: item.tags[0]
+              }
             });
-        });
+          });
       });
+    });
   };
 
   componentDidUpdate() {}

@@ -12,6 +12,7 @@ import {
 import { Container, Content, Icon } from "native-base";
 import styles from "./style";
 import * as commonStyle from "../../Constants/commonStyle";
+import * as ItemAction from "../../Actions/ItemAction";
 import { GoToHome } from "../index";
 import StepHeader from "../../Components/StepHeader/StepHeader";
 
@@ -29,6 +30,8 @@ class PaymentDoneScreen extends Component {
   onNavigatorEvent(event) {
     // this is the onPress handler for the two buttons together
   }
+
+  componentWillMount() {}
 
   render() {
     return (

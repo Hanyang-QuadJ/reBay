@@ -23,7 +23,7 @@ export const getBaskets = params => {
           type: TOKEN_EXPIRED,
           payload: responseJson.result
         });
-        parmas.props.navigator.reset({
+        parmas.props.navigator.resetTo({
           screen: "Tutorial"
         });
       } else {
@@ -63,7 +63,7 @@ export const postBasket = params => {
           type: TOKEN_EXPIRED,
           payload: { data: "NETWORK_ERROR" }
         });
-        params.props.navigator.reset({
+        params.props.navigator.resetTo({
           screen: "Tutorial"
         });
       } else {

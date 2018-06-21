@@ -6,6 +6,7 @@ import BrandReducer from "./BrandReducer";
 import BaseketReducer from "./BasketReducer";
 import ItemReducer from "./ItemReducer";
 import RecommendReducer from "./RecommendReducer";
+import SearchReducer from "./SearchReducer";
 
 const Reducer = combineReducers({
   DefaultReducer,
@@ -13,6 +14,7 @@ const Reducer = combineReducers({
   BrandReducer,
   BaseketReducer,
   ItemReducer,
-  RecommendReducer
+  RecommendReducer,
+  SearchReducer
 });
 export default Reducer;

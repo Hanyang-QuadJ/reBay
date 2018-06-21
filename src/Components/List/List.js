@@ -27,7 +27,7 @@ class List extends PureComponent {
       <View style={styles.option}>
         <TouchableOpacity style={styles.option_wrapper} onPress={onPress}>
           <View>
-            {isPic ? (
+            {isPic && image != null ? (
               <FastImage
                 style={styles.image}
                 source={{ uri: image }}

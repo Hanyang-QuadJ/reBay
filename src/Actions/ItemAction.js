@@ -88,6 +88,8 @@ export const postItem = params => {
           switch (result) {
             case "token_expired":
               return dispatch({ type: TOKEN_EXPIRED });
+              break;
+
             default:
               console.log(result.item_id);
               dispatch({
@@ -95,6 +97,7 @@ export const postItem = params => {
                 payload: result.item_id
               });
               return result.item_id;
+              break;
           }
         }
       );
@@ -162,9 +165,12 @@ export const payItem = params => {
         switch (result) {
           case "token_expired":
             dispatch({ type: TOKEN_EXPIRED });
+            break;
+
           default:
             dispatch({ type: SUCCEED_TO_BUY_ITEM, payload: responseJson });
             return result;
+            break;
         }
       });
       return response;

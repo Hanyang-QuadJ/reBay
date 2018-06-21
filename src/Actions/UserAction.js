@@ -46,15 +46,18 @@ export const getUnSelledList = params => {
       let response = Request.getData("api/item/all", params).then(result => {
         switch (result) {
           case "token_expired":
-            dispatch({ type: TOKEN_EXPIRED });
+            return dispatch({ type: TOKEN_EXPIRED });
+            break;
+
           default:
             dispatch({ type: SUCCEED_TO_GET_UNSELLED_LIST, payload: result });
             return result;
+            break;
         }
       });
       return response;
     } catch (error) {
-      dispatch({
+      return dispatch({
         type: FAILED_TO_GET_UNSELLED_LIST,
         payload: { data: "NETWORK_ERROR" }
       });
@@ -70,10 +73,13 @@ export const getSellList = params => {
         result => {
           switch (result) {
             case "token_expired":
-              dispatch({ type: TOKEN_EXPIRED });
+              return dispatch({ type: TOKEN_EXPIRED });
+              break;
+
             default:
               dispatch({ type: SUCCEED_TO_GET_SELLLIST, payload: result });
               return result;
+              break;
           }
         }
       );

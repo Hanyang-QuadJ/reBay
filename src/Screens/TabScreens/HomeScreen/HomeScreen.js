@@ -137,9 +137,9 @@ class HomeScreen extends Component {
     const { isApproved } = this.state;
     if (isLogin) {
       let result = this.hasPermission();
+      console.log(result);
       if (result === true) {
-        this.displayNotification();
-        console.log("listening");
+        // this.displayNotification();
         this.listeningNotification();
       } else {
         this.requestPermission();
@@ -166,6 +166,7 @@ class HomeScreen extends Component {
   _handleIndexChange = index => {
     this.setState({ index });
   };
+
   _renderPager = props => {
     return Platform.OS === "ios" ? (
       <TabViewPagerScroll {...props} />
@@ -173,6 +174,7 @@ class HomeScreen extends Component {
       <TabViewPagerPan swipeEnabled={false} {...props} />
     );
   };
+
   _renderLabel = props => ({ route, index }) => {
     const inputRange = props.navigationState.routes.map((x, i) => i);
     const outputRange = inputRange.map(
@@ -192,6 +194,7 @@ class HomeScreen extends Component {
       </Animated.Text>
     );
   };
+
   _renderHeader = props => {
     return (
       <View>
@@ -545,7 +548,7 @@ class HomeScreen extends Component {
       .then(() => {
         // User has authorised
         this.setState({ isApproved: true });
-        this.displayNotification();
+        // this.displayNotification();
         this.listeningNotification();
       })
       .catch(error => {
@@ -560,7 +563,7 @@ class HomeScreen extends Component {
       .hasPermission()
       .then(enabled => {
         if (enabled) {
-          // user has permissions
+          this.displayNotification();
           return true;
         } else {
           // user doesn't have permission

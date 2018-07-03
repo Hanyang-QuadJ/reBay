@@ -29,8 +29,8 @@ import ProfileScreen from "./src/Screens/TabScreens/ProfileScreen/ProfileScreen"
 import HomeItemScreen from "./src/Screens/HomeItemScreen/HomeItemScreen";
 import BasketScreen from "./src/Screens/BasketScreen/BasketScreen";
 import SearchScreen from "./src/Screens/SearchScreen/SearchScreen";
-
 import PaymentDoneScreen from "./src/Screens/PaymentDoneScreen/PaymentDoneScreen";
+import HelpScreen from "./src/Screens/HelpScreen/HelpScreen";
 
 import OptionScreen1 from "./src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen1";
 import OptionScreen2 from "./src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen2";
@@ -63,6 +63,16 @@ export default function registerScreens() {
   Navigation.registerComponent("Sell", () => SellScreen, store, Provider);
   Navigation.registerComponent("Notice", () => NoticeScreen, store, Provider);
   Navigation.registerComponent("Profile", () => ProfileScreen, store, Provider);
+
+  //HomeScreens
+  Navigation.registerComponent(
+    "HomeItem",
+    () => HomeItemScreen,
+    store,
+    Provider
+  );
+
+  Navigation.registerComponent("Help", () => HelpScreen, store, Provider);
 
   //SellScreens
   Navigation.registerComponent("Picture", () => PictureScreen, store, Provider);
@@ -119,10 +129,4 @@ export default function registerScreens() {
   Navigation.registerComponent("Opt8", () => OptionScreen8, store, Provider);
   Navigation.registerComponent("Opt9", () => OptionScreen9, store, Provider);
   Navigation.registerComponent("Opt10", () => OptionScreen10, store, Provider);
-  Navigation.registerComponent(
-    "HomeItem",
-    () => HomeItemScreen,
-    store,
-    Provider
-  );
 }

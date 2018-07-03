@@ -200,9 +200,6 @@ class BuyScreen3 extends Component {
           )
         )
         .then(async value => {
-          console.log("@@@@@@@@");
-          console.log(value);
-          console.log("@@@@@@@@@");
           const imageArray = [];
           if (value.result.length === 0) {
             this.setState({ noItems: true });

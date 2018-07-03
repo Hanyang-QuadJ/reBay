@@ -563,7 +563,7 @@ class HomeScreen extends Component {
       .hasPermission()
       .then(enabled => {
         if (enabled) {
-          this.displayNotification();
+          // this.displayNotification();
           return true;
         } else {
           // user doesn't have permission

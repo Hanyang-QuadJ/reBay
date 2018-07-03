@@ -100,6 +100,7 @@ class HomeItemScreen extends Component {
           </Content>
           <FooterCart
             onPressFirst={this.handleBasket}
+            onPressSecond={this.handleHelp}
             onPressThird={this.handleBuy}
             firstText="장바구니"
             secondText="댓글"
@@ -160,6 +161,12 @@ class HomeItemScreen extends Component {
   handleBuy = () => {
     this.props.navigator.push({
       screen: "PaymentDone"
+    });
+  };
+
+  handleHelp = () => {
+    this.props.navigator.push({
+      screen: "Help"
     });
   };
 }

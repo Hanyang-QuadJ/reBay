@@ -52,7 +52,6 @@ class OptionScreen3 extends Component {
 
   render() {
     const { selled, unSelled } = this.state;
-    console.log(unSelled);
     return (
       <View>
         <FlatList

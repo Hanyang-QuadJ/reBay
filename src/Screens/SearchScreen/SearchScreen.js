@@ -187,7 +187,6 @@ class SearchScreen extends Component {
   };
 
   _handleIndexChange = async index => {
-    console.log(index);
     const { search } = this.state;
     const params = {
       props: this.props,

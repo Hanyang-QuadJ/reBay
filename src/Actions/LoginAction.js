@@ -50,7 +50,7 @@ export const postLogin = (email, password) => {
   };
 };
 
-export const postSignUp = (username, email, phone, password) => {
+export const postSignUp = (username, email, phone, password, fcm_token) => {
   return async dispatch => {
     try {
       dispatch({ type: START_TO_SIGN_UP });
@@ -64,7 +64,8 @@ export const postSignUp = (username, email, phone, password) => {
           username: username,
           email: email,
           phone: phone,
-          password: password
+          password: password,
+          fcm_token
         })
       });
       let responseJson = await response.json();

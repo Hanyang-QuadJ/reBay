@@ -50,7 +50,8 @@ class ProfileScreen extends Component {
 
   opt1 = () => {
     const params = { props: this.props };
-    this.props.dispatch(ItemAction.buyItem(params));
+    // this.props.dispatch(ItemAction.buyItem(params));
+    this.signOut();
   };
 
   opt2 = () => {

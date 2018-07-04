@@ -20,6 +20,7 @@ import * as LoginAction from "../../../Actions/LoginAction";
 import * as RecommendAction from "../../../Actions/RecommendAction";
 import * as BrandAction from "../../../Actions/BrandAction";
 import FastImage from "react-native-fast-image";
+import firebase from "react-native-firebase";
 
 const mapStateToProps = state => {
   return {};
@@ -44,9 +45,16 @@ class SignUpScreen4 extends Component {
 
   signUp = async () => {
     const { username, email, phone } = this.props;
+    const fcm_token = await this.getToken();
     this.props
       .dispatch(
-        LoginAction.postSignUp(username, email, phone, this.state.password)
+        LoginAction.postSignUp(
+          username,
+          email,
+          phone,
+          this.state.password,
+          fcm_token
+        )
       )
       .then(token => {
         const params = { token };
@@ -68,8 +76,6 @@ class SignUpScreen4 extends Component {
   };
 
   render() {
-    console.log(this.props);
-
     return (
       <View style={{ flex: 1, backgroundColor: commonStyle.PRIMARY_COLOR }}>
         <View style={styles.header}>
@@ -119,6 +125,22 @@ class SignUpScreen4 extends Component {
       </View>
     );
   }
+
+  getToken = () => {
+    firebase
+      .messaging()
+      .getToken()
+      .then(fcmToken => {
+        if (fcmToken) {
+          // user has a device token
+          console.log(fcmToken);
+          return fcmToken;
+        } else {
+          // user doesn't have a device token yet
+          console.log(fcmToken);
+        }
+      });
+  };
 }
 
 export default (SignUpScreen4 = connect(mapStateToProps)(SignUpScreen4));

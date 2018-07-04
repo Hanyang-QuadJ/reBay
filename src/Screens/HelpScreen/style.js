@@ -4,7 +4,7 @@ import commonStyle from "../index";
 const style = StyleSheet.create({
   inputArea: {
     justifyContent: "center",
-    height: 60,
+    height: 50,
     width: "100%",
     flexDirection: "row",
     alignItems: "center"

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Image } from "react-native";
+import { View, Image, TouchableOpacity } from "react-native";
 import {
   Container,
   Input,
@@ -19,16 +19,22 @@ import * as commonStyle from "../../Constants/commonStyle";
 import FastImage from "react-native-fast-image";
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    me: state.LoginReducer.me
+  };
 };
 
 class Item extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isLiked: false
+    };
   }
 
   render() {
     const { me } = this.props;
+    const { isLiked } = this.state;
     const stars = [];
     const emptyStars = [];
     const starLength = 5;
@@ -115,6 +121,27 @@ class Item extends Component {
               })}
             </Swiper>
           )}
+          {!isLiked ? (
+            <TouchableOpacity style={styles.heart} onPress={this.handleLike}>
+              <View>
+                <Icon
+                  name="ios-heart-outline"
+                  size={20}
+                  style={{ color: commonStyle.PRIMARY_COLOR }}
+                />
+              </View>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity style={styles.heart} onPress={this.handleLike}>
+              <View>
+                <Icon
+                  name="ios-heart"
+                  size={20}
+                  style={{ color: commonStyle.PRIMARY_COLOR }}
+                />
+              </View>
+            </TouchableOpacity>
+          )}
         </View>
         <View style={styles.itemInfo}>
           <View style={styles.itemInfoContainer}>
@@ -198,6 +225,13 @@ class Item extends Component {
       </View>
     );
   }
+
+  handleLike = () => {
+    const { isLiked } = this.state;
+    isLiked
+      ? this.setState({ isLiked: false })
+      : this.setState({ isLiked: true });
+  };
 }
 
 export default (Item = connect(mapStateToProps)(Item));

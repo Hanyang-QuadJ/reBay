@@ -24,7 +24,7 @@ import LoadingActivity from "../../Components/LoadingActivity/LoadingActivity";
 import styles from "./style";
 import * as commonStyle from "../../Constants/commonStyle";
 import { GoToHome } from "../index";
-const keyboardVerticalOffset = Platform.OS === "ios" ? 85 : 0;
+const keyboardVerticalOffset = Platform.OS === "ios" ? 80 : 0;
 const mapStateToProps = state => {
   return {
     token: state.LoginReducer.token
@@ -130,6 +130,7 @@ class HelpScreen extends Component {
     };
     newComments.push(params);
     this.setState({ unSelled: newComments });
+    this.flatList.scrollToEnd();
   };
 }
 

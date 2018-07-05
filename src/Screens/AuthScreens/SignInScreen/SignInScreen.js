@@ -27,6 +27,7 @@ import * as RecommendAction from "../../../Actions/RecommendAction";
 import * as BrandAction from "../../../Actions/BrandAction";
 import { DotIndicator } from "react-native-indicators";
 import FastImage from "react-native-fast-image";
+import firebase from "react-native-firebase";
 
 const mapStateToProps = state => {
   return {};
@@ -148,6 +149,23 @@ class SignInScreen extends Component {
       </Container>
     );
   }
+
+  getToken = async () => {
+    const token = await firebase
+      .messaging()
+      .getToken()
+      .then(fcmToken => {
+        if (fcmToken) {
+          // user has a device token
+          console.log(fcmToken);
+          return fcmToken;
+        } else {
+          // user doesn't have a device token yet
+          console.log(fcmToken);
+        }
+      });
+    return token;
+  };
 }
 
 export default (SignInScreen = connect(mapStateToProps)(SignInScreen));

@@ -36,15 +36,18 @@ class ProfileScreen extends Component {
   }
 
   signOut = () => {
-    this.props.dispatch(LoginAction.signOut()).then(value => {
-      this.props.navigator.resetTo({
-        screen: "Init", // unique ID registered with Navigation.registerScreen
-        animated: false, // does the resetTo have transition animation or does it happen immediately (optional)
-        animationType: "fade", // 'fade' (for both) / 'slide-horizontal' (for android) does the resetTo have different transition animation (optional)
-        navigatorStyle: {
-          tabBarHidden: true
-        } // override the navigator style for the pushed screen (optional)
-      });
+    this.props.dispatch(LoginAction.signOut()).then(async value => {
+      if (value === "signOut") {
+        await AsyncStorage.removeItem("ACCESS_TOKEN");
+        await this.props.navigator.resetTo({
+          screen: "Init", // unique ID registered with Navigation.registerScreen
+          animated: false, // does the resetTo have transition animation or does it happen immediately (optional)
+          animationType: "fade", // 'fade' (for both) / 'slide-horizontal' (for android) does the resetTo have different transition animation (optional)
+          navigatorStyle: {
+            tabBarHidden: true
+          } // override the navigator style for the pushed screen (optional)
+        });
+      }
     });
   };
 

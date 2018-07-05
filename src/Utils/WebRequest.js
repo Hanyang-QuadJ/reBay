@@ -33,7 +33,7 @@ export const postData = async (url, params) => {
         "Content-Type": "application/json",
         "x-access-token": params.props.token
       },
-      body: JSON.stringify(params.body)
+      body: JSON.stringify(params.body && params.body)
     });
     let responseJson = await response.json();
     if (response.status === 496) {

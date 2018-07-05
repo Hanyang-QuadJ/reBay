@@ -16,11 +16,13 @@ import { connect } from "react-redux";
 import Swiper from "react-native-swiper";
 import LoadingActivity from "../../Components/LoadingActivity/LoadingActivity";
 import * as commonStyle from "../../Constants/commonStyle";
+import * as ItemAction from "../../Actions/ItemAction";
 import FastImage from "react-native-fast-image";
 
 const mapStateToProps = state => {
   return {
-    me: state.LoginReducer.me
+    me: state.LoginReducer.me,
+    token: state.LoginReducer.token
   };
 };
 
@@ -31,6 +33,8 @@ class Item extends Component {
       isLiked: false
     };
   }
+
+  componentWillMount() {}
 
   render() {
     const { me } = this.props;
@@ -228,9 +232,11 @@ class Item extends Component {
 
   handleLike = () => {
     const { isLiked } = this.state;
+    const params = { props: this.props };
     isLiked
       ? this.setState({ isLiked: false })
       : this.setState({ isLiked: true });
+    this.props.dispatch(ItemAction.likeItem(params));
   };
 }
 

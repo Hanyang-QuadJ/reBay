@@ -87,8 +87,8 @@ export const postSignUp = (username, email, phone, password, fcm_token) => {
 export const signOut = () => {
   return async dispatch => {
     try {
-      await dispatch({ type: SUCCEED_TO_SIGN_OUT });
-      await AsyncStorage.removeItem("ACCESS_TOKEN");
+      dispatch({ type: SUCCEED_TO_SIGN_OUT });
+      // await AsyncStorage.removeItem("ACCESS_TOKEN");
       return "signOut";
     } catch (error) {
       console.log(error);

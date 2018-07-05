@@ -23,6 +23,14 @@ export const SUCCEED_TO_POST_ITEMS = "SUCCEED_TO_POST_ITEMS";
 export const FAILED_TO_BUY_ITEM = "FAILED_TO_BUY_ITEM";
 export const SUCCEED_TO_BUY_ITEM = "SUCCEED_TO_BUY_ITEM";
 
+//아이템 문의
+export const FAILED_TO_ASK_ITEM = "FAILED_TO_ASK_ITEM";
+export const SUCCEED_TO_ASK_ITEM = "SUCCEED_TO_ASK_ITEM";
+
+//아이템 좋아요
+export const FAILED_TO_LIKE_ITEM = "FAILED_TO_LIKE_ITEM";
+export const SUCCEED_TO_LIKE_ITEM = "SUCCEED_TO_LIKE_ITEM";
+
 const ACCESS_TOKEN = "ACCESS_TOKEN";
 
 export const getItem = id => {
@@ -158,17 +166,17 @@ export const postItems = (
   };
 };
 
-export const payItem = params => {
+export const askItem = params => {
   return async dispatch => {
     try {
-      let response = Request.postData("api/pay", params.body).then(result => {
+      let response = Request.postData("api/help", params).then(result => {
         switch (result) {
           case "token_expired":
             dispatch({ type: TOKEN_EXPIRED });
             break;
 
           default:
-            dispatch({ type: SUCCEED_TO_BUY_ITEM, payload: responseJson });
+            dispatch({ type: SUCCEED_TO_ASK_ITEM, payload: result });
             return result;
             break;
         }
@@ -176,7 +184,36 @@ export const payItem = params => {
       return response;
     } catch (error) {
       dispatch({
-        type: FAILED_TO_BUY_ITEM,
+        type: FAILED_TO_ASK_ITEM,
+        payload: { data: "NETWORK_ERROR" }
+      });
+      console.error(error);
+    }
+  };
+};
+
+export const likeItem = params => {
+  return async dispatch => {
+    try {
+      let response = Request.postData(
+        "api/item/like/" + params.props.item_id,
+        params
+      ).then(result => {
+        switch (result) {
+          case "token_expired":
+            dispatch({ type: TOKEN_EXPIRED });
+            break;
+
+          default:
+            dispatch({ type: SUCCEED_TO_LIKE_ITEM, payload: result });
+            return result;
+            break;
+        }
+      });
+      return response;
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_LIKE_ITEM,
         payload: { data: "NETWORK_ERROR" }
       });
       console.error(error);

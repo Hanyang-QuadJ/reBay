@@ -17,6 +17,7 @@ import StepHeader from "../../../Components/StepHeader/StepHeader";
 import InputComponent from "../../../Components/InputComponent/InputComponent";
 import RoundButton from "../../../Components/RoundButton/RoundButton";
 import * as LoginAction from "../../../Actions/LoginAction";
+import * as UserAction from "../../../Actions/UserAction";
 import * as RecommendAction from "../../../Actions/RecommendAction";
 import * as BrandAction from "../../../Actions/BrandAction";
 import FastImage from "react-native-fast-image";
@@ -57,11 +58,11 @@ class SignUpScreen4 extends Component {
         )
       )
       .then(token => {
-        const params = { token };
-        this.props.dispatch(LoginAction.getMe(params)).then(me => {
-          this.props.dispatch(BrandAction.getBrand()).then(brands => {
+        const params = { token, props: this.props };
+        this.props.dispatch(UserAction.getMe(params)).then(me => {
+          this.props.dispatch(BrandAction.getBrand(params)).then(brands => {
             this.props
-              .dispatch(RecommendAction.getRecommend())
+              .dispatch(RecommendAction.getRecommend(params))
               .then(async value2 => {
                 let imageArray = [];
                 for (let i = 0; i < value2.length; i++) {
@@ -126,8 +127,8 @@ class SignUpScreen4 extends Component {
     );
   }
 
-  getToken = () => {
-    firebase
+  getToken = async () => {
+    const token = await firebase
       .messaging()
       .getToken()
       .then(fcmToken => {
@@ -140,6 +141,7 @@ class SignUpScreen4 extends Component {
           console.log(fcmToken);
         }
       });
+    return token;
   };
 }
 

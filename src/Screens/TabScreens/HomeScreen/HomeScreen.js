@@ -125,19 +125,18 @@ class HomeScreen extends Component {
       }
     }
   }
-  componentWillMount() {
+  async componentWillMount() {
     let result = DeviceInfo.getUniqueID();
     let number = DeviceInfo.getPhoneNumber();
-    console.log(result);
     this.setState({ deviceId: result });
+    const token = await this.getToken();
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { isLogin } = this.props;
     const { isApproved } = this.state;
     if (isLogin) {
-      let result = this.hasPermission();
-      console.log(result);
+      let result = await this.hasPermission();
       if (result === true) {
         // this.displayNotification();
         this.listeningNotification();
@@ -557,8 +556,8 @@ class HomeScreen extends Component {
       });
   };
 
-  hasPermission = () => {
-    firebase
+  hasPermission = async () => {
+    const permission = await firebase
       .messaging()
       .hasPermission()
       .then(enabled => {
@@ -570,21 +569,24 @@ class HomeScreen extends Component {
           return false;
         }
       });
+    return permission;
   };
 
-  getToken = () => {
-    firebase
+  getToken = async () => {
+    const token = await firebase
       .messaging()
       .getToken()
       .then(fcmToken => {
         if (fcmToken) {
           // user has a device token
           console.log(fcmToken);
+          return fcmToken;
         } else {
           // user doesn't have a device token yet
           console.log(fcmToken);
         }
       });
+    return token;
   };
 
   displayNotification = () => {

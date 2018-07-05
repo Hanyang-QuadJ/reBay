@@ -47,7 +47,8 @@ const LoginReducer = (state = initialState, action) => {
     case SUCCEED_TO_SIGN_OUT:
       return Object.assign({}, state, {
         token: null,
-        isLogin: false
+        isLogin: false,
+        me: []
       });
 
     case SUCCEED_TO_GET_ME:

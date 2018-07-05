@@ -19,6 +19,7 @@ import {
 import { Container, Content, Icon, Input, Item } from "native-base";
 import Thumb from "../../Components/Thumb/Thumb";
 import * as UserAction from "../../Actions/UserAction";
+import * as ItemAction from "../../Actions/ItemAction";
 import CommentList from "../../Components/CommentList/CommentList";
 import LoadingActivity from "../../Components/LoadingActivity/LoadingActivity";
 import styles from "./style";
@@ -123,14 +124,25 @@ class HelpScreen extends Component {
 
   handleSubmit = () => {
     const newComments = this.state.unSelled.slice();
-    const params = {
+    const frontParams = {
       id: newComments[newComments.length - 1].id + 1,
       item_name: this.state.comment,
       time: new Date()
     };
-    newComments.push(params);
-    this.setState({ unSelled: newComments });
+    newComments.push(frontParams);
+    const params = {
+      props: this.props,
+      body: {
+        ask: this.state.comment,
+        seller_id: this.props.user_id,
+        item_id: this.props.item_id
+      }
+    };
     this.flatList.scrollToEnd();
+    console.log(params);
+    this.props.dispatch(ItemAction.askItem(params)).then(value => {
+      this.setState({ unSelled: newComments });
+    });
   };
 }
 

@@ -19,7 +19,10 @@ import * as ItemAction from "../../Actions/ItemAction";
 import * as BasketAction from "../../Actions/BasketAction";
 import * as LoginAction from "../../Actions/LoginAction";
 import FooterCart from "../../Components/FooterCart/FooterCart";
+import LoadingActivity from "../../Components/LoadingActivity/LoadingActivity";
 import { DotIndicator } from "react-native-indicators";
+import ContentLoader from "react-native-content-loader";
+import { Circle, Rect } from "react-native-svg";
 
 const mapStateToProps = state => {
   return {
@@ -34,9 +37,9 @@ class HomeItemScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isReady: false,
-      item: null,
-      picture: null
+      isLoading: true,
+      item: [],
+      picture: []
     };
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
@@ -44,71 +47,58 @@ class HomeItemScreen extends Component {
   onNavigatorEvent(event) {
     // this is the onPress handler for the two buttons together
   }
-
   componentDidMount() {
     this.props.dispatch(ItemAction.getItem(this.props.item_id)).then(item => {
-      this.setState({ item: item });
       this.props
         .dispatch(ItemAction.getItemPicture(this.props.item_id))
         .then(picture => {
-          this.setState({ picture: picture });
+          this.setState({ item, picture, isLoading: false });
         });
     });
   }
 
   render() {
-    if (this.state.item == null || this.state.picture == null) {
-      return (
-        <Container style={{ backgroundColor: "white" }}>
-          <Content>
+    const { item, picture, isLoading } = this.state;
+    return (
+      <Container>
+        <Content>
+          {isLoading ? (
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+            >
+              <LoadingActivity />
+            </View>
+          ) : (
             <Item
               brand={this.props.brand_name}
-              tags={null}
-              username={null}
-              season={null}
-              size={null}
-              content={null}
-              item_name={this.props.item_name}
-              price={this.props.price}
-              picture={null}
-              grade={4}
-            />
-          </Content>
-          <FooterCart
-            firstText="장바구니"
-            secondText="댓글"
-            thridText="구매하기"
-          />
-        </Container>
-      );
-    } else {
-      return (
-        <Container>
-          <Content>
-            <Item
-              brand={this.props.brand_name}
+              item_id={this.props.item_id}
               username={this.state.item.item.username}
               item_name={this.props.item_name}
               size={this.state.item.item.size}
               content={this.state.item.item.content}
+              user_id={this.state.user_id}
               season={this.state.item.item.season}
               price={this.props.price}
               picture={this.state.picture}
               grade={4}
               tags={this.state.item.tags[0]}
             />
-          </Content>
-          <FooterCart
-            onPressFirst={this.handleBasket}
-            onPressSecond={this.handleHelp}
-            onPressThird={this.handleBuy}
-            firstText="장바구니"
-            secondText="댓글"
-            thridText="구매하기"
-          />
-        </Container>
-      );
-    }
+          )}
+        </Content>
+        <FooterCart
+          onPressFirst={this.handleBasket}
+          onPressSecond={this.handleHelp}
+          onPressThird={this.handleBuy}
+          firstText="장바구니"
+          secondText="댓글"
+          thridText="구매하기"
+        />
+      </Container>
+    );
   }
 
   handleBasket = () => {
@@ -166,7 +156,11 @@ class HomeItemScreen extends Component {
 
   handleHelp = () => {
     this.props.navigator.push({
-      screen: "Help"
+      screen: "Help",
+      passProps: {
+        user_id: this.props.user_id,
+        item_id: this.props.item_id
+      }
     });
   };
 }

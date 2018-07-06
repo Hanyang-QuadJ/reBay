@@ -129,13 +129,13 @@ class ProfileScreen extends Component {
         <Content>
           <View style={styles.header}>
             <View style={styles.userInfo}>
-              <Text style={styles.userName}>{me.username}</Text>
+              <Text style={styles.userName}>{me && me.username}</Text>
               <Text style={styles.userGrade}>실버회원</Text>
             </View>
             <View style={styles.picArea}>
               <Image
                 style={styles.thumbnail}
-                source={{ url: me.profile_img }}
+                source={{ url: me && me.profile_img }}
               />
             </View>
           </View>

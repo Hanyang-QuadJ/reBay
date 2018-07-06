@@ -35,14 +35,17 @@ class TutorialScreen extends Component {
       screen: "SignIn"
     });
   };
+
   goToSignUp = () => {
     this.props.navigator.push({
       screen: "SignUp",
       backButtonTitle: "뒤로"
     });
   };
+
   goToHome = async () => {
-    await this.props.dispatch(BrandAction.getBrand());
+    const params = { props: this.props };
+    await this.props.dispatch(BrandAction.getBrand(params));
     await this.props
       .dispatch(RecommendAction.getRecommend())
       .then(async value2 => {
@@ -155,7 +158,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     zIndex: 100,
     right: 10,
-    top: 30
+    top: 35
   },
   staticJumpText: {
     fontSize: 16

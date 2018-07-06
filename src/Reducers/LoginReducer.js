@@ -12,7 +12,7 @@ import { SUCCEED_TO_GET_ME } from "../Actions/UserAction";
 const initialState = {
   token: null,
   isLogin: null,
-  me: null
+  me: []
 };
 
 AsyncStorage.getItem("ACCESS_TOKEN").then(value => {
@@ -50,7 +50,6 @@ const LoginReducer = (state = initialState, action) => {
         isLogin: false,
         me: []
       });
-
     case SUCCEED_TO_GET_ME:
       return Object.assign({}, state, {
         me: action.payload

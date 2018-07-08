@@ -308,14 +308,36 @@ class SearchScreen extends Component {
     } = this.state;
     switch (route.key) {
       case "item":
-        return <SearchList item={itemByName} isLoading={isNameLoading} />;
+        return (
+          <SearchList
+            item={itemByName}
+            isLoading={isNameLoading}
+            navigator={this.props.navigator}
+          />
+        );
       case "brand":
-        return <SearchList item={itemByBrand} isLoading={isBrandLoading} />;
+        return (
+          <SearchList
+            item={itemByBrand}
+            isLoading={isBrandLoading}
+            navigator={this.props.navigator}
+          />
+        );
       case "tag":
-        return <SearchList item={itemByTag} isLoading={isTagLoading} />;
+        return (
+          <SearchList
+            item={itemByTag}
+            isLoading={isTagLoading}
+            navigator={this.props.navigator}
+          />
+        );
       case "category":
         return (
-          <SearchList item={itemByCategory} isLoading={isCategoryLoading} />
+          <SearchList
+            item={itemByCategory}
+            isLoading={isCategoryLoading}
+            navigator={this.props.navigator}
+          />
         );
       default:
         return <View />;

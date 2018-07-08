@@ -23,7 +23,7 @@ class SearchList extends Component {
     super(props);
   }
   render() {
-    const { item, isLoading } = this.props;
+    const { item, isLoading, onPress } = this.props;
     return (
       <View>
         {isLoading ? (
@@ -65,10 +65,25 @@ class SearchList extends Component {
   _renderItem = ({ item }) => (
     <List
       isPic
+      onPress={() => this._goToItem(item)}
       content={item.item_name}
       image={item.images.length === 0 ? null : item.images[0].image_url}
     />
   );
+
+  _goToItem = item => {
+    console.log(item);
+    this.props.navigator.push({
+      screen: "HomeItem",
+      title: item.item_name,
+      passProps: {
+        item_id: item.id,
+        brand_name: item.brand_name,
+        item_name: item.item_name,
+        price: item.price
+      }
+    });
+  };
 }
 
 export default (SearchList = connect(mapStateToProps)(SearchList));

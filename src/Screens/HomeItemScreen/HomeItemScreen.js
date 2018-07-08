@@ -66,6 +66,7 @@ class HomeItemScreen extends Component {
             <View
               style={{
                 flex: 1,
+                marginTop: 300,
                 alignItems: "center",
                 justifyContent: "center"
               }}

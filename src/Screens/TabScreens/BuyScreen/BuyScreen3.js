@@ -71,39 +71,36 @@ class BuyScreen3 extends Component {
   }
 
   componentWillMount() {
-    AsyncStorage.getItem("ACCESS_TOKEN").then(token => {
-      this.props
-        .dispatch(
-          ItemActionCreator.postItems(
-            token,
-            this.props.brand_id,
-            this.props.category,
-            this.props.detailCategory,
-            this.props.status,
-            this.props.year + " " + this.props.season,
-            this.props.maxPrice,
-            this.props.minPrice,
-            this.state.nextIndex,
-            this.state.condition
-          )
+    this.props
+      .dispatch(
+        ItemActionCreator.postItems(
+          this.props.brand_id,
+          this.props.category,
+          this.props.detailCategory,
+          this.props.status,
+          this.props.year + " " + this.props.season,
+          this.props.maxPrice,
+          this.props.minPrice,
+          this.state.nextIndex,
+          this.state.condition
         )
-        .then(async value => {
-          const imageArray = [];
-          if (value.result.length === 0) {
-            this.setState({ noItems: true });
-          } else {
-            for (let i = 0; i < value.result.length; i++) {
-              console.log(value.result[i].image_url);
-              imageArray.push({ uri: value.result[i].image_url });
-            }
-            await FastImage.preload(imageArray);
-            await this.setState({
-              nextIndex: value.nextIndex,
-              items: value.result
-            });
+      )
+      .then(async value => {
+        const imageArray = [];
+        if (value.result.length === 0) {
+          this.setState({ noItems: true });
+        } else {
+          for (let i = 0; i < value.result.length; i++) {
+            console.log(value.result[i].image_url);
+            imageArray.push({ uri: value.result[i].image_url });
           }
-        });
-    });
+          await FastImage.preload(imageArray);
+          await this.setState({
+            nextIndex: value.nextIndex,
+            items: value.result
+          });
+        }
+      });
   }
 
   renderFooter = () => {
@@ -147,35 +144,33 @@ class BuyScreen3 extends Component {
   );
 
   _keyExtractor = (item, index) => item.id.toString();
+
   _handleEnd = async () => {
     if (!this.onEndReachedCalledDuringMomentum) {
       await this.setState({ loading: true });
-      await AsyncStorage.getItem("ACCESS_TOKEN").then(token => {
-        this.props
-          .dispatch(
-            ItemActionCreator.postItems(
-              token,
-              this.props.brand_id,
-              this.props.category,
-              this.props.detailCategory,
-              this.props.status,
-              this.props.year + " " + this.props.season,
-              this.props.maxPrice,
-              this.props.minPrice,
-              this.state.nextIndex,
-              this.state.condition
-            )
+      await this.props
+        .dispatch(
+          ItemActionCreator.postItems(
+            this.props.brand_id,
+            this.props.category,
+            this.props.detailCategory,
+            this.props.status,
+            this.props.year + " " + this.props.season,
+            this.props.maxPrice,
+            this.props.minPrice,
+            this.state.nextIndex,
+            this.state.condition
           )
-          .then(value => {
-            this.setState(state => ({
-              items: [...state.items, ...value.result],
-              nextIndex: value.nextIndex,
-              loading: false
-            }));
-          });
-      });
-      this.onEndReachedCalledDuringMomentum = true;
+        )
+        .then(value => {
+          this.setState(state => ({
+            items: [...state.items, ...value.result],
+            nextIndex: value.nextIndex,
+            loading: false
+          }));
+        });
     }
+    this.onEndReachedCalledDuringMomentum = true;
   };
 
   async _dropdown_onSelect(idx, value) {

@@ -21,7 +21,7 @@ export const getBaskets = params => {
       if (response.status === 496) {
         await dispatch({
           type: TOKEN_EXPIRED,
-          payload: responseJson.result
+          payload: responseJson.temps
         });
         parmas.props.navigator.resetTo({
           screen: "Tutorial"
@@ -29,9 +29,10 @@ export const getBaskets = params => {
       } else {
         await dispatch({
           type: SUCCEED_TO_GET_BASKET,
-          payload: responseJson.result
+          payload: responseJson.temps
         });
-        return responseJson.result;
+
+        return responseJson.temps;
       }
     } catch (error) {
       dispatch({

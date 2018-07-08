@@ -104,7 +104,8 @@ class BuyScreen extends Component {
               screen: "Buy2",
               title: "카테고리",
               passProps: {
-                selectedBrand: item.brand_name
+                selectedBrand: item.brand_name,
+                brand_id: item.id
               }
             });
           }}

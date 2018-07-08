@@ -47,10 +47,12 @@ class BasketScreen extends Component {
   }
 
   render() {
+    const { baskets } = this.state;
+    console.log(baskets);
     return (
       <ScrollView>
         <CategoryItem
-          item={this.state.baskets}
+          item={baskets}
           screen="HomeItem"
           navigator={this.props.navigator}
         />

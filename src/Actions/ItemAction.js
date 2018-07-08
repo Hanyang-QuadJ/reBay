@@ -121,7 +121,6 @@ export const postItem = params => {
 };
 
 export const postItems = (
-  token,
   brand,
   category_1,
   category_2,
@@ -138,8 +137,7 @@ export const postItems = (
         method: "POST",
         headers: {
           Accept: "application/json",
-          "Content-Type": "application/json",
-          "x-access-token": token
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
           brand_id: brand,

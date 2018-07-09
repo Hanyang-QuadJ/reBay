@@ -13,6 +13,14 @@ export const SUCCEED_TO_GET_UNSELLED_LIST = "SUCCEED_TO_GET_UNSELLED_LIST";
 export const FAILED_TO_GET_SELLLIST = "FAILED_TO_GET_SELLLIST";
 export const SUCCEED_TO_GET_SELLLIST = "SUCCEED_TO_GET_SELLLIST";
 
+//문의 받은 내역 가져오기
+export const FAILED_TO_GET_ANSWER = "FAILED_TO_GET_ANSWER";
+export const SUCCEED_TO_GET_ANSWER = "SUCCEED_TO_GET_ANSWER";
+
+//문의 한 내역 가져오기
+export const FAILED_TO_GET_QUESTION = "FAILED_TO_GET_QUESTION";
+export const SUCCEED_TO_GET_QUESTION = "SUCCEED_TO_GET_QUESTION";
+
 //토큰 만료
 export const TOKEN_EXPIRED = "TOKEN_EXPIRED";
 
@@ -87,6 +95,35 @@ export const getSellList = params => {
     } catch (error) {
       dispatch({
         type: FAILED_TO_GET_SELLLIST,
+        payload: { data: "NETWORK_ERROR" }
+      });
+      console.error(error);
+    }
+  };
+};
+
+export const getAnswer = params => {
+  return async dispatch => {
+    try {
+      let response = Request.getData(
+        "api/help/sell/" + params.seller_id,
+        params
+      ).then(result => {
+        switch (result) {
+          case "token_expired":
+            return dispatch({ type: TOKEN_EXPIRED });
+            break;
+
+          default:
+            dispatch({ type: SUCCEED_TO_GET_QUESTION, payload: result });
+            return result;
+            break;
+        }
+      });
+      return response;
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_GET_QUESTION,
         payload: { data: "NETWORK_ERROR" }
       });
       console.error(error);

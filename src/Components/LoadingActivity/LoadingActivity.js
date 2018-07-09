@@ -24,7 +24,7 @@ class LoadingActivity extends Component {
   render() {
     return (
       <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
-        <DotIndicator color={commonStyle.PRIMARY_COLOR} count={3} size={15} />
+        <DotIndicator color={commonStyle.PRIMARY_COLOR} count={3} size={12} />
       </View>
     );
   }

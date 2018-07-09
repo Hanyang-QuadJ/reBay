@@ -72,7 +72,6 @@ class SearchList extends Component {
   );
 
   _goToItem = item => {
-    console.log(item);
     this.props.navigator.push({
       screen: "HomeItem",
       title: item.item_name,

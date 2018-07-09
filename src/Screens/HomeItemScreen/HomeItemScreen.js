@@ -61,18 +61,9 @@ class HomeItemScreen extends Component {
     const { item, picture, isLoading } = this.state;
     return (
       <Container>
-        <Content>
+        <Content contentContainerStyle={isLoading ? { flex: 1 } : null}>
           {isLoading ? (
-            <View
-              style={{
-                flex: 1,
-                marginTop: 300,
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-            >
-              <LoadingActivity />
-            </View>
+            <LoadingActivity />
           ) : (
             <Item
               brand={this.props.brand_name}

@@ -15,6 +15,7 @@ import CategoryItem from "../../Components/CategoryItem/CategoryItem";
 import { Container, Content, Icon } from "native-base";
 import styles from "./style";
 import * as commonStyle from "../../Constants/commonStyle";
+import LoadingActivity from "../../Components/LoadingActivity/LoadingActivity";
 import * as BasketAction from "../../Actions/BasketAction";
 import { GoToHome } from "../index";
 
@@ -29,7 +30,8 @@ class BasketScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      baskets: []
+      baskets: [],
+      isLoading: true
     };
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
@@ -38,24 +40,28 @@ class BasketScreen extends Component {
     // this is the onPress handler for the two buttons together
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { token } = this.props;
     const params = { token, props: this.props };
     this.props
       .dispatch(BasketAction.getBaskets(params))
-      .then(baskets => this.setState({ baskets }));
+      .then(baskets => this.setState({ baskets, isLoading: false }));
   }
 
   render() {
-    const { baskets } = this.state;
-    console.log(baskets);
+    const { baskets, isLoading } = this.state;
     return (
-      <ScrollView>
-        <CategoryItem
-          item={baskets}
-          screen="HomeItem"
-          navigator={this.props.navigator}
-        />
+      <ScrollView contentContainerStyle={isLoading ? { flex: 1 } : null}>
+        {isLoading ? (
+          <LoadingActivity />
+        ) : (
+          <CategoryItem
+            isInner
+            item={baskets}
+            screen="HomeItem"
+            navigator={this.props.navigator}
+          />
+        )}
       </ScrollView>
     );
   }

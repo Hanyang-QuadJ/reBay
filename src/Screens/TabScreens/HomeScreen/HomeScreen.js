@@ -12,7 +12,8 @@ import {
   TouchableOpacity,
   findNodeHandle,
   PushNotificationIOS,
-  UIManager
+  UIManager,
+  AppState
 } from "react-native";
 import { Icon, Button, Text } from "native-base";
 import photo from "../../../Constants/photo";

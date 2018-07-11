@@ -68,6 +68,7 @@ class HomeItemScreen extends Component {
             <Item
               brand={this.props.brand_name}
               item_id={this.props.item_id}
+              profile_img={this.state.item.item.profile_img}
               username={this.state.item.item.username}
               item_name={this.props.item_name}
               size={this.state.item.item.size}
@@ -150,6 +151,7 @@ class HomeItemScreen extends Component {
     this.props.navigator.push({
       screen: "Help",
       passProps: {
+        isMe: true,
         user_id: this.props.user_id,
         item_id: this.props.item_id
       }

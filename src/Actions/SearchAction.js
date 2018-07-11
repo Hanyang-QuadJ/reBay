@@ -8,7 +8,7 @@ export const searchItemByName = params => {
   return async dispatch => {
     try {
       let response = Request.getData(
-        `api/search/name?index=${params.index}&name=${params.query}`,
+        `api/search/name?name=${params.query}`,
         params
       ).then(result => {
         switch (result) {
@@ -37,7 +37,7 @@ export const searchItemByBrand = params => {
   return async dispatch => {
     try {
       let response = Request.getData(
-        `api/search/brand?index=${params.index}&name=${params.query}`,
+        `api/search/brand?&name=${params.query}`,
         params
       ).then(result => {
         switch (result) {
@@ -66,7 +66,7 @@ export const searchItemByTag = params => {
   return async dispatch => {
     try {
       let response = Request.getData(
-        `api/search/tag?index=${params.index}&name=${params.query}`,
+        `api/search/tag?&name=${params.query}`,
         params
       ).then(result => {
         switch (result) {
@@ -95,7 +95,7 @@ export const searchItemByCategory = params => {
   return async dispatch => {
     try {
       let response = Request.getData(
-        `api/search/category?index=${params.index}&category=${params.query}`,
+        `api/search/category?category=${params.query}`,
         params
       ).then(result => {
         switch (result) {

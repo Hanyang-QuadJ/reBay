@@ -101,14 +101,10 @@ export const getSellList = params => {
     }
   };
 };
-
-export const getAnswer = params => {
+export const getQuestion = params => {
   return async dispatch => {
     try {
-      let response = Request.getData(
-        "api/help/sell/" + params.seller_id,
-        params
-      ).then(result => {
+      let response = Request.getData("api/item/ask", params).then(result => {
         switch (result) {
           case "token_expired":
             return dispatch({ type: TOKEN_EXPIRED });
@@ -124,6 +120,32 @@ export const getAnswer = params => {
     } catch (error) {
       dispatch({
         type: FAILED_TO_GET_QUESTION,
+        payload: { data: "NETWORK_ERROR" }
+      });
+      console.error(error);
+    }
+  };
+};
+
+export const getAnswer = params => {
+  return async dispatch => {
+    try {
+      let response = Request.getData("api/item/asked", params).then(result => {
+        switch (result) {
+          case "token_expired":
+            return dispatch({ type: TOKEN_EXPIRED });
+            break;
+
+          default:
+            dispatch({ type: SUCCEED_TO_GET_ANSWER, payload: result });
+            return result;
+            break;
+        }
+      });
+      return response;
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_GET_ANSWER,
         payload: { data: "NETWORK_ERROR" }
       });
       console.error(error);

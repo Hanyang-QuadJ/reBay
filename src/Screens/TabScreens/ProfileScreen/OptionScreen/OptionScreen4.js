@@ -43,7 +43,7 @@ class OptionScreen4 extends Component {
     super(props);
     this.state = {
       question: [],
-      ask: [],
+      ans: [],
       index: 0,
       isLoading: true,
       routes: [
@@ -60,9 +60,10 @@ class OptionScreen4 extends Component {
 
   componentWillMount() {
     const params = { props: this.props, seller_id: this.props.me.id };
-    this.props.dispatch(UserAction.getAnswer(params)).then(list => {
-      console.log(list);
-      this.setState({ question: list.items, isLoading: false });
+    this.props.dispatch(UserAction.getQuestion(params)).then(question => {
+      this.props.dispatch(UserAction.getAnswer(params)).then(ans => {
+        this.setState({ question, ans, isLoading: false });
+      });
     });
 
     // this.props.dispatch(UserAction.getUnSelledList(params)).then(list => {
@@ -125,7 +126,7 @@ class OptionScreen4 extends Component {
   };
 
   _renderScene = ({ route }) => {
-    const { question, ask, isLoading } = this.state;
+    const { question, ans, isLoading } = this.state;
     switch (route.key) {
       case "question":
         return isLoading ? (
@@ -139,14 +140,23 @@ class OptionScreen4 extends Component {
           />
         );
       case "answer":
-        return <View />;
+        return isLoading ? (
+          <LoadingActivity />
+        ) : (
+          <FlatList
+            scrollEventThrottle={1}
+            keyExtractor={this._keyExtractor}
+            data={ans}
+            renderItem={this._renderItemAns}
+          />
+        );
       default:
         return <View />;
     }
   };
 
   render() {
-    const { question, ask } = this.state;
+    const { question, ans } = this.state;
     return (
       <TabViewAnimated
         style={styles.container}
@@ -163,8 +173,44 @@ class OptionScreen4 extends Component {
   _keyExtractor = (item, index) => item.id.toString();
 
   _renderItem = ({ item }) => (
-    <List isPic content={item.item_name} image={item.image.image_url} />
+    <List
+      isPic
+      content={item.item_name}
+      onPress={() => this.handleHelp(item)}
+      image={item.image && item.image.image_url}
+      item_status={item.status}
+    />
   );
+
+  _renderItemAns = ({ item }) => (
+    <List
+      isPic
+      content={item.item_name}
+      onPress={() => this.handleHelpAns(item)}
+      image={item.image && item.image.image_url}
+      item_status={item.status}
+    />
+  );
+
+  handleHelp = item => {
+    this.props.navigator.push({
+      screen: "Help",
+      passProps: {
+        isMe: true,
+        item_id: item.id
+      }
+    });
+  };
+
+  handleHelpAns = item => {
+    this.props.navigator.push({
+      screen: "Help",
+      passProps: {
+        isMe: false,
+        item_id: item.id
+      }
+    });
+  };
 }
 
 export default (OptionScreen3 = connect(mapStateToProps)(OptionScreen4));

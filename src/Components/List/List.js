@@ -22,11 +22,11 @@ class List extends PureComponent {
     super(props);
   }
   render() {
-    const { onPress, isPic, content, image } = this.props;
+    const { onPress, isPic, content, image, item_status } = this.props;
     return (
       <View style={styles.option}>
         <TouchableOpacity style={styles.option_wrapper} onPress={onPress}>
-          <View>
+          <View style={{ justifyContent: "center", alignItems: "center" }}>
             {isPic && image != null ? (
               <FastImage
                 style={styles.image}
@@ -36,6 +36,12 @@ class List extends PureComponent {
             ) : (
               <Icon style={styles.option__icon} name="ios-settings" />
             )}
+            {isPic && item_status === 0 ? (
+              <View style={styles.overlay} />
+            ) : null}
+            {isPic && item_status === 0 ? (
+              <Text style={styles.soldText}>판매됨</Text>
+            ) : null}
           </View>
           <Text style={styles.option__text}>{content}</Text>
         </TouchableOpacity>

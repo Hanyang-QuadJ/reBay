@@ -11,6 +11,22 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     alignItems: "center"
   },
+  option_imageOverLay: {
+    backgroundColor: commonStyle.PRIMARY_OVERLAY_COLOR,
+    position: "relative",
+    zIndex: 2
+  },
+  overlay: {
+    flex: 1,
+    position: "absolute",
+    left: 0,
+    top: 0,
+    opacity: 0.5,
+    backgroundColor: commonStyle.PRIMARY_COLOR,
+    width: 60,
+    height: 60,
+    borderRadius: 10
+  },
   option__icon: {
     paddingHorizontal: 15,
     paddingVertical: 10,
@@ -28,7 +44,16 @@ const styles = StyleSheet.create({
     height: 60,
     borderWidth: 1,
     borderColor: commonStyle.PRIMARY_COLOR,
-    borderRadius: 10
+    borderRadius: 10,
+    zIndex: 0
+  },
+  soldText: {
+    position: "absolute",
+    flex: 1,
+    color: "white",
+    fontSize: 14,
+    textAlign: "center",
+    fontWeight: "900"
   }
 });
 

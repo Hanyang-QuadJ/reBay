@@ -70,7 +70,7 @@ class Item extends Component {
             <View style={styles.thumbnailArea}>
               <Image
                 style={styles.thumbnail}
-                source={require("../../Assets/yoon.png")}
+                source={{ uri: this.props.profile_img }}
               />
             </View>
             <View style={styles.userInfoArea}>

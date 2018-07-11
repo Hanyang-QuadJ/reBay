@@ -163,7 +163,11 @@ class OptionScreen3 extends Component {
   _keyExtractor = (item, index) => item.id.toString();
 
   _renderItem = ({ item }) => (
-    <List isPic content={item.item_name} image={item.image.image_url} />
+    <List
+      isPic
+      content={item.item_name}
+      image={item.image && item.image.image_url}
+    />
   );
 }
 

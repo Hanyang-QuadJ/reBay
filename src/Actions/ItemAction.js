@@ -23,6 +23,10 @@ export const SUCCEED_TO_POST_ITEMS = "SUCCEED_TO_POST_ITEMS";
 export const FAILED_TO_BUY_ITEM = "FAILED_TO_BUY_ITEM";
 export const SUCCEED_TO_BUY_ITEM = "SUCCEED_TO_BUY_ITEM";
 
+//아이템 아이디로 문의 가져오기
+export const FAILED_TO_GET_HELP_BY_ITEM_ID = "FAILED_TO_GET_HELP_BY_ITEM_ID";
+export const SUCCEED_TO_GET_HELP_BY_ITEM_ID = "SUCCEED_TO_GET_HELP_BY_ITEM_ID";
+
 //아이템 문의
 export const FAILED_TO_ASK_ITEM = "FAILED_TO_ASK_ITEM";
 export const SUCCEED_TO_ASK_ITEM = "SUCCEED_TO_ASK_ITEM";
@@ -72,7 +76,6 @@ export const getItemPicture = id => {
         }
       });
       let responseJson = await response.json();
-      console.log(responseJson);
       dispatch({
         type: SUCCEED_TO_GET_ITEM_PICTURE,
         payload: responseJson.result
@@ -212,6 +215,64 @@ export const likeItem = params => {
     } catch (error) {
       dispatch({
         type: FAILED_TO_LIKE_ITEM,
+        payload: { data: "NETWORK_ERROR" }
+      });
+      console.error(error);
+    }
+  };
+};
+
+export const getMyHelpByItemId = params => {
+  return async dispatch => {
+    try {
+      let response = Request.getData(
+        "api/help/item/me/" + params.props.item_id,
+        params
+      ).then(result => {
+        switch (result) {
+          case "token_expired":
+            dispatch({ type: TOKEN_EXPIRED });
+            break;
+
+          default:
+            dispatch({ type: SUCCEED_TO_GET_HELP_BY_ITEM_ID, payload: result });
+            return result;
+            break;
+        }
+      });
+      return response;
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_GET_HELP_BY_ITEM_ID,
+        payload: { data: "NETWORK_ERROR" }
+      });
+      console.error(error);
+    }
+  };
+};
+
+export const getHelpByItemId = params => {
+  return async dispatch => {
+    try {
+      let response = Request.getData(
+        "api/help/item/" + params.props.item_id,
+        params
+      ).then(result => {
+        switch (result) {
+          case "token_expired":
+            dispatch({ type: TOKEN_EXPIRED });
+            break;
+
+          default:
+            dispatch({ type: SUCCEED_TO_GET_HELP_BY_ITEM_ID, payload: result });
+            return result;
+            break;
+        }
+      });
+      return response;
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_GET_HELP_BY_ITEM_ID,
         payload: { data: "NETWORK_ERROR" }
       });
       console.error(error);

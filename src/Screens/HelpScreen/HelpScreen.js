@@ -28,6 +28,7 @@ import { GoToHome } from "../index";
 const keyboardVerticalOffset = Platform.OS === "ios" ? 80 : 0;
 const mapStateToProps = state => {
   return {
+    me: state.LoginReducer.me,
     token: state.LoginReducer.token
   };
 };
@@ -36,8 +37,8 @@ class HelpScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false,
-      unSelled: [],
+      isLoading: true,
+      help: [],
       comment: ""
     };
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
@@ -48,11 +49,23 @@ class HelpScreen extends Component {
   }
 
   componentWillMount() {
+    const { isMe } = this.props;
     const params = { props: this.props };
-    this.setState({ isLoading: true });
-    this.props.dispatch(UserAction.getUnSelledList(params)).then(list => {
-      this.setState({ unSelled: list.items, isLoading: false });
-    });
+    if (isMe) {
+      this.props.dispatch(ItemAction.getMyHelpByItemId(params)).then(help => {
+        //add loading state to each help
+        let result = help.map(function(el) {
+          let o = Object.assign({}, el);
+          o.loading = false;
+          return o;
+        });
+        this.setState({ help: result, isLoading: false });
+      });
+    } else {
+      this.props.dispatch(ItemAction.getHelpByItemId(params)).then(help => {
+        this.setState({ help, isLoading: false });
+      });
+    }
   }
 
   componentDidMount() {
@@ -60,7 +73,9 @@ class HelpScreen extends Component {
   }
 
   render() {
-    const { unSelled, isLoading } = this.state;
+    const { help, isLoading } = this.state;
+    const { me } = this.props;
+    console.log(help);
     return (
       <KeyboardAvoidingView
         style={{
@@ -80,6 +95,7 @@ class HelpScreen extends Component {
           </View>
         ) : (
           <FlatList
+            contentContainerStyle={{ marginTop: 10 }}
             scrollEventThrottle={1}
             ref={ref => (this.flatList = ref)}
             onContentSizeChange={() =>
@@ -87,15 +103,16 @@ class HelpScreen extends Component {
             }
             onLayout={() => this.flatList.scrollToEnd({ animated: false })}
             keyExtractor={this._keyExtractor}
-            data={unSelled}
+            data={help}
             renderItem={this._renderItem}
           />
         )}
 
         <View style={styles.inputArea}>
-          <Thumb size={40} />
+          <Thumb size={40} src={me.profile_img} />
           <TextInput
             autoFocus
+            multiline
             placeholder="문의 사항을 입력하세요"
             ref={ref => {
               this.myTextInput = ref;
@@ -115,7 +132,12 @@ class HelpScreen extends Component {
   _keyExtractor = (item, index) => item.id.toString();
 
   _renderItem = ({ item }) => (
-    <CommentList content={item.item_name} createdAt={item.time} />
+    <CommentList
+      isCommentLoading={item.loading}
+      content={item.ask}
+      createdAt={item.time}
+      src={item.user.profile_img}
+    />
   );
 
   handleInput = text => {
@@ -123,11 +145,17 @@ class HelpScreen extends Component {
   };
 
   handleSubmit = () => {
-    const newComments = this.state.unSelled.slice();
+    const { me } = this.props;
+    const newComments = this.state.help.slice();
     const frontParams = {
-      id: newComments[newComments.length - 1].id + 1,
-      item_name: this.state.comment,
-      time: new Date()
+      id:
+        newComments.length === 0
+          ? 0
+          : newComments[newComments.length - 1].id + 1,
+      ask: this.state.comment,
+      time: new Date(),
+      user: { profile_img: me.profile_img },
+      loading: true
     };
     newComments.push(frontParams);
     const params = {
@@ -139,9 +167,10 @@ class HelpScreen extends Component {
       }
     };
     this.flatList.scrollToEnd();
-    console.log(params);
+    this.setState({ help: newComments });
     this.props.dispatch(ItemAction.askItem(params)).then(value => {
-      this.setState({ unSelled: newComments });
+      newComments[newComments.length - 1].loading = false;
+      this.setState({ help: newComments });
     });
   };
 }

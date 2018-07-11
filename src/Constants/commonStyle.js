@@ -1,4 +1,5 @@
 export const PRIMARY_COLOR = "#EC744E";
+export const PRIMARY_OVERLAY_COLOR = "rgba(236,116,78,0.5)";
 export const SUB_COLOR = "#9B735F";
 export const TEXT_COLOR = "#575858";
 export const THIRD_COLOR = "#838383";

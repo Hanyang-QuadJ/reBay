@@ -26,16 +26,37 @@ const mapStateToProps = state => {
 
 class PictureScreen extends Component {
   static navigatorStyle = commonStyle.NavigationStyleReverse;
+
+  // static navigatorStyle = commonStyle.TabBarHidden;
+
   static navigatorButtons = {
     leftButtons: [
       {
-        title: "Back",
-        id: "back"
+        title: "뒤로", // for a textual button, provide the button title (label)
+        id: "back" // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+        // testID: 'e2e_rules', // optional, used to locate this view in end-to-end tests
+        // disabled: true, // optional, used to disable the button (appears faded and doesn't interact)
+        // disableIconTint: true, // optional, by default the image colors are overridden and tinted to navBarButtonColor, set to true to keep the original image colors
+        // showAsAction: 'ifRoom', // optional, Android only. Control how the button is displayed in the Toolbar. Accepted valued: 'ifRoom' (default) - Show this item as a button in an Action Bar if the system decides there is room for it. 'always' - Always show this item as a button in an Action Bar. 'withText' - When this item is in the action bar, always show it with a text label even if it also has an icon specified. 'never' - Never show this item as a button in an Action Bar.
+        // buttonColor: 'blue', // Optional, iOS only. Set color for the button (can also be used in setButtons function to set different button style programatically)
+        // buttonFontSize: 14, // Set font size for the button (can also be used in setButtons function to set different button style programatically)
+        // buttonFontWeight: '600', // Set font weight for the button (can also be used in setButtons function to set different button style programatically)
+      }
+    ],
+    rightButtons: [
+      {
+        title: "다음", // for a textual button, provide the button title (label)
+        id: "next" // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+        // testID: 'e2e_rules', // optional, used to locate this view in end-to-end tests
+        // disabled: true, // optional, used to disable the button (appears faded and doesn't interact)
+        // disableIconTint: true, // optional, by default the image colors are overridden and tinted to navBarButtonColor, set to true to keep the original image colors
+        // showAsAction: 'ifRoom', // optional, Android only. Control how the button is displayed in the Toolbar. Accepted valued: 'ifRoom' (default) - Show this item as a button in an Action Bar if the system decides there is room for it. 'always' - Always show this item as a button in an Action Bar. 'withText' - When this item is in the action bar, always show it with a text label even if it also has an icon specified. 'never' - Never show this item as a button in an Action Bar.
+        // buttonColor: 'blue', // Optional, iOS only. Set color for the button (can also be used in setButtons function to set different button style programatically)
+        // buttonFontSize: 14, // Set font size for the button (can also be used in setButtons function to set different button style programatically)
+        // buttonFontWeight: '600', // Set font weight for the button (can also be used in setButtons function to set different button style programatically)
       }
     ]
   };
-
-  // static navigatorStyle = commonStyle.TabBarHidden;
 
   constructor(props) {
     super(props);
@@ -63,41 +84,17 @@ class PictureScreen extends Component {
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
-  static navigatorButtons = {
-    rightButtons: [
-      {
-        title: "다음", // for a textual button, provide the button title (label)
-        id: "next" // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
-        // testID: 'e2e_rules', // optional, used to locate this view in end-to-end tests
-        // disabled: true, // optional, used to disable the button (appears faded and doesn't interact)
-        // disableIconTint: true, // optional, by default the image colors are overridden and tinted to navBarButtonColor, set to true to keep the original image colors
-        // showAsAction: 'ifRoom', // optional, Android only. Control how the button is displayed in the Toolbar. Accepted valued: 'ifRoom' (default) - Show this item as a button in an Action Bar if the system decides there is room for it. 'always' - Always show this item as a button in an Action Bar. 'withText' - When this item is in the action bar, always show it with a text label even if it also has an icon specified. 'never' - Never show this item as a button in an Action Bar.
-        // buttonColor: 'blue', // Optional, iOS only. Set color for the button (can also be used in setButtons function to set different button style programatically)
-        // buttonFontSize: 14, // Set font size for the button (can also be used in setButtons function to set different button style programatically)
-        // buttonFontWeight: '600', // Set font weight for the button (can also be used in setButtons function to set different button style programatically)
-      }
-    ]
-  };
-
   onNavigatorEvent(event) {
     // this is the onPress handler for the two buttons together
 
-    if (event.id === "modalTabSelected") {
-      this.props.navigator.showModal({
-        screen: "Picture",
-        title: "사진선택"
-      });
-    } else if (event.type === "NavBarButtonPress") {
+    if (event.type == "NavBarButtonPress") {
       // this is the event type for button presses
-
-      if (event.id === "back") {
-        if (Platform.OS === "ios") {
-          this.props.navigator.dismissModal({
-            animationType: "slide-down" // 'none' / 'slide-down' , dismiss animation for the modal (optional, default 'slide-down')
-          });
-        }
-      } else if (event.id === "next") {
-        this.goToBrand.bind(this);
+      if (event.id == "next") {
+        this.goToBrand();
+      } else if (event.id == "back") {
+        this.props.navigator.dismissModal({
+          animationType: "slide-down" // 'none' / 'slide-down' , dismiss animation for the modal (optional, default 'slide-down')
+        });
       }
     }
   }
@@ -178,7 +175,7 @@ class PictureScreen extends Component {
     return filter_array(baseArray);
   }
 
-  async goToBrand() {
+  goToBrand = async () => {
     const baseArray = await this.parseBase();
 
     this.props.navigator.push({
@@ -200,7 +197,7 @@ class PictureScreen extends Component {
     // else{
     //     this.props.navigation.navigate('Brand',{base64:baseArray});
     // }
-  }
+  };
 
   render() {
     let {

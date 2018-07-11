@@ -27,15 +27,21 @@ class CommentList extends Component {
     moment.locale("ko");
   }
   render() {
-    const { content, size, createdAt } = this.props;
+    const { content, size, createdAt, src, isCommentLoading } = this.props;
     return (
       <View style={styles.comment}>
-        <Thumb size={30} />
+        <Thumb size={30} src={src} />
         <View style={styles.content}>
-          <Text>{content}</Text>
+          {isCommentLoading ? (
+            <Text style={styles.comment__loadingText}>게시중...</Text>
+          ) : (
+            <Text style={styles.comment__text}>{content}</Text>
+          )}
         </View>
         <View style={styles.createdAt}>
-          <Text>{moment(createdAt).fromNow()}</Text>
+          <Text style={styles.comment__createdAt}>
+            {moment(createdAt).fromNow()}
+          </Text>
         </View>
       </View>
     );

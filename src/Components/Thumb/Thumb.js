@@ -20,12 +20,12 @@ class Thumb extends Component {
     super(props);
   }
   render() {
-    const { size } = this.props;
+    const { size, src } = this.props;
     return (
       <View style={styles.thumb}>
         <Image
           style={{ width: size, height: size, borderRadius: size / 2 }}
-          source={require("../../Assets/yoon.png")}
+          source={{ uri: src }}
         />
       </View>
     );

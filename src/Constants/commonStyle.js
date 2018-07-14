@@ -21,14 +21,17 @@ export const CannotGoBack = {
 
 export const NavigationStyleReverse = {
   navBarTextColor: PRIMARY_COLOR,
+  enabledBackGestureFullScreen: true,
   navBarBackgroundColor: SECONDARY_COLOR,
   navBarButtonColor: PRIMARY_COLOR,
-  statusBarTextColorScheme: "dark"
+  statusBarTextColorScheme: "dark",
+  enabledBackGestureFullScreen: true
 };
 
 export const TabBarHidden = {
   navBarTextColor: PRIMARY_COLOR,
   navBarBackgroundColor: SECONDARY_COLOR,
   navBarButtonColor: PRIMARY_COLOR,
-  tabBarHidden: true
+  tabBarHidden: true,
+  enabledBackGestureFullScreen: true
 };

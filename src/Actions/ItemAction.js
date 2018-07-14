@@ -35,6 +35,10 @@ export const SUCCEED_TO_ASK_ITEM = "SUCCEED_TO_ASK_ITEM";
 export const FAILED_TO_LIKE_ITEM = "FAILED_TO_LIKE_ITEM";
 export const SUCCEED_TO_LIKE_ITEM = "SUCCEED_TO_LIKE_ITEM";
 
+//아이템 답변하기
+export const FAILED_TO_ANSWER_ITEM = "FAILED_TO_ANSWER_ITEM";
+export const SUCCEED_TO_ANSWER_ITEM = "SUCCEED_TO_ANSWER_ITEM";
+
 const ACCESS_TOKEN = "ACCESS_TOKEN";
 
 export const getItem = id => {
@@ -273,6 +277,34 @@ export const getHelpByItemId = params => {
     } catch (error) {
       dispatch({
         type: FAILED_TO_GET_HELP_BY_ITEM_ID,
+        payload: { data: "NETWORK_ERROR" }
+      });
+      console.error(error);
+    }
+  };
+};
+
+export const postAnswer = params => {
+  return async dispatch => {
+    try {
+      let response = Request.patchData("api/help/answer", params).then(
+        result => {
+          switch (result) {
+            case "token_expired":
+              dispatch({ type: TOKEN_EXPIRED });
+              break;
+
+            default:
+              dispatch({ type: SUCCEED_TO_ANSWER_ITEM, payload: result });
+              return result;
+              break;
+          }
+        }
+      );
+      return response;
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_ANSWER_ITEM,
         payload: { data: "NETWORK_ERROR" }
       });
       console.error(error);

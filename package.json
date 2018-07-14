@@ -15,6 +15,7 @@
     "native-base": "^2.3.10",
     "react": "^16.3.0-alpha.1",
     "react-native": "^0.53.0",
+    "react-native-autogrow-textinput": "^5.1.1",
     "react-native-content-loader": "^0.1.6",
     "react-native-device-info": "^0.21.5",
     "react-native-fast-image": "^3.0.2",

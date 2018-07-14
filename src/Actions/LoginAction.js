@@ -19,7 +19,7 @@ async function storeToken(accessToken) {
   else console.log("not set, stringify failed:");
 }
 
-export const postLogin = (email, password) => {
+export const postLogin = (email, password, fcm_token) => {
   return async dispatch => {
     try {
       await dispatch({ type: START_TO_LOGIN });
@@ -31,7 +31,8 @@ export const postLogin = (email, password) => {
         },
         body: JSON.stringify({
           email: email,
-          password: password
+          password: password,
+          fcm_token
         })
       });
       let responseJson = await response.json();

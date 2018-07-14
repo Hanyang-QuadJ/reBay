@@ -46,8 +46,11 @@ class SignInScreen extends Component {
   sendToAction = async () => {
     // await this.props.dispatch(BrandAction.getBrand());
     this.setState({ isSignIn: true });
+    const fcm_token = await this.getToken();
     this.props
-      .dispatch(LoginAction.postLogin(this.state.email, this.state.password))
+      .dispatch(
+        LoginAction.postLogin(this.state.email, this.state.password, fcm_token)
+      )
       .then(token => {
         const params = { token };
         this.props.dispatch(UserAction.getMe(params)).then(me => {

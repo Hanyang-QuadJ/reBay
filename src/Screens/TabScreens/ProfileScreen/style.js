@@ -29,10 +29,7 @@ const style = StyleSheet.create({
     borderColor: commonStyle.BORDER_COLOR
   },
   option_wrapper: {
-    flexDirection: "row",
-    paddingHorizontal: 30,
-    paddingVertical: 10,
-    alignItems: "center"
+    paddingHorizontal: 20
   },
   option__icon: {
     paddingHorizontal: 15,

@@ -590,11 +590,11 @@ class HomeScreen extends Component {
     return token;
   };
 
-  displayNotification = () => {
+  displayNotification = params => {
     const notification = new firebase.notifications.Notification()
       .setNotificationId("notificationId")
-      .setTitle("My notification title")
-      .setBody("My notification body")
+      .setTitle(params._title)
+      .setBody(params._body)
       .android.setChannelId("fcm-default-channel")
       .setData({
         key1: "value1",
@@ -624,7 +624,7 @@ class HomeScreen extends Component {
       .notifications()
       .onNotification(notification => {
         // Process your notification as required
-        alert(notification._title);
+        this.displayNotification(notification);
       });
 
     //When foreground, background

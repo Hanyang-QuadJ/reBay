@@ -9,7 +9,18 @@ import {
   InteractionManager,
   Image
 } from "react-native";
-import { Container, Content, Icon, Button, Text } from "native-base";
+import {
+  Container,
+  Content,
+  Icon,
+  Button,
+  List,
+  ListItem,
+  Body,
+  Left,
+  Right,
+  Text
+} from "native-base";
 import styles from "./style";
 import * as commonStyle from "../../../Constants/commonStyle";
 import * as LoginAction from "../../../Actions/LoginAction";
@@ -139,39 +150,85 @@ class ProfileScreen extends Component {
               />
             </View>
           </View>
-          <View style={styles.option}>
-            <TouchableOpacity style={styles.option_wrapper} onPress={this.opt1}>
-              <View>
-                <Icon style={styles.option__icon} name="ios-settings" />
-              </View>
-              <Text style={styles.option__text}>등록정보</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.option}>
-            <TouchableOpacity style={styles.option_wrapper} onPress={this.opt2}>
-              <View>
-                <Icon style={styles.option__icon} name="ios-settings" />
-              </View>
-              <Text style={styles.option__text}>구매내역</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.option}>
-            <TouchableOpacity style={styles.option_wrapper} onPress={this.opt3}>
-              <View>
-                <Icon style={styles.option__icon} name="ios-settings" />
-              </View>
-              <Text style={styles.option__text}>판매내역</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.option}>
-            <TouchableOpacity style={styles.option_wrapper} onPress={this.opt4}>
-              <View>
-                <Icon style={styles.option__icon} name="ios-settings" />
-              </View>
-              <Text style={styles.option__text}>문의내역</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.option}>
+          <List>
+            <ListItem
+              icon
+              button={true}
+              onPress={this.opt1}
+              style={styles.option_wrapper}
+            >
+              <Left>
+                <Button style={{ backgroundColor: "#FF9501" }}>
+                  <Icon active name="settings" />
+                </Button>
+              </Left>
+              <Body>
+                <Text style={styles.option__text}>회원정보</Text>
+              </Body>
+            </ListItem>
+            <ListItem
+              icon
+              button={true}
+              onPress={this.opt2}
+              style={styles.option_wrapper}
+            >
+              <Left>
+                <Button style={{ backgroundColor: "#FF9501" }}>
+                  <Icon active name="plane" />
+                </Button>
+              </Left>
+              <Body>
+                <Text style={styles.option__text}>구매내역</Text>
+              </Body>
+            </ListItem>
+            <ListItem
+              icon
+              button={true}
+              onPress={this.opt3}
+              style={styles.option_wrapper}
+            >
+              <Left>
+                <Button style={{ backgroundColor: "#FF9501" }}>
+                  <Icon active name="plane" />
+                </Button>
+              </Left>
+              <Body>
+                <Text style={styles.option__text}>판매내역</Text>
+              </Body>
+            </ListItem>
+            <ListItem
+              icon
+              button={true}
+              onPress={this.opt4}
+              style={styles.option_wrapper}
+            >
+              <Left>
+                <Button style={{ backgroundColor: "#FF9501" }}>
+                  <Icon active name="plane" />
+                </Button>
+              </Left>
+              <Body>
+                <Text style={styles.option__text}>문의내역</Text>
+              </Body>
+            </ListItem>
+            <ListItem
+              icon
+              button={true}
+              onPress={this.signOut}
+              style={styles.option_wrapper}
+            >
+              <Left>
+                <Button style={{ backgroundColor: "#FF9501" }}>
+                  <Icon active name="log-out" />
+                </Button>
+              </Left>
+              <Body>
+                <Text style={styles.option__text}>로그아웃</Text>
+              </Body>
+            </ListItem>
+          </List>
+
+          {/* <View style={styles.option}>
             <TouchableOpacity style={styles.option_wrapper} onPress={this.opt5}>
               <View>
                 <Icon style={styles.option__icon} name="ios-settings" />
@@ -221,7 +278,7 @@ class ProfileScreen extends Component {
               </View>
               <Text style={styles.option__text}>업데이트 정보</Text>
             </TouchableOpacity>
-          </View>
+          </View> */}
         </Content>
       </Container>
     );

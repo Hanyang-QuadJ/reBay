@@ -241,7 +241,6 @@ export const getMyHelpByItemId = params => {
           default:
             dispatch({ type: SUCCEED_TO_GET_HELP_BY_ITEM_ID, payload: result });
             return result;
-            break;
         }
       });
       return response;

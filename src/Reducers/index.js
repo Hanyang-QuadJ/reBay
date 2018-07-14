@@ -7,6 +7,7 @@ import BaseketReducer from "./BasketReducer";
 import ItemReducer from "./ItemReducer";
 import RecommendReducer from "./RecommendReducer";
 import SearchReducer from "./SearchReducer";
+import LogReducer from "./LogReducer";
 
 const Reducer = combineReducers({
   DefaultReducer,
@@ -15,6 +16,7 @@ const Reducer = combineReducers({
   BaseketReducer,
   ItemReducer,
   RecommendReducer,
-  SearchReducer
+  SearchReducer,
+  LogReducer
 });
 export default Reducer;

@@ -39,13 +39,12 @@
 		970E3057707641E88E88F512 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 438CAF751E0E4F358F890FF0 /* Zocial.ttf */; };
 		A558A7607C59484793BF4B7B /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 398331F3AA0E419EB3159B90 /* rubicon-icon-font.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		B720042E20F9DC8A00D45F29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B720042D20F9DC8A00D45F29 /* GoogleService-Info.plist */; };
 		ED1A5CDB20ECD62400171B25 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED1A5CD820ECD60D00171B25 /* libRNSVG.a */; };
-		ED5DCF0120B6850900AB2F72 /* libRCTPushNotification.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5DCEE320B684BF00AB2F72 /* libRCTPushNotification.a */; };
 		EDA9414B205272BD00009A34 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA9414A2052729800009A34 /* libReactNativeNavigation.a */; };
 		EDF6AEAF20CE4B5D00B9A09C /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF6AEAC20CE489B00B9A09C /* libRNDeviceInfo.a */; };
 		EDF6AEB020CE50AF00B9A09C /* libFastImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA9421A20557AD900009A34 /* libFastImage.a */; };
 		EDF6AEB120CE50BA00B9A09C /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA941DE2053F60300009A34 /* libRNImagePicker.a */; };
-		EDF6AF0820CF71A200B9A09C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDF6AEDB20CF71A200B9A09C /* GoogleService-Info.plist */; };
 		EDF6AF9E20CF7AD900B9A09C /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF6AF9D20CF76E100B9A09C /* libRNFirebase.a */; };
 /* End PBXBuildFile section */
 
@@ -274,20 +273,6 @@
 			remoteGlobalIDString = 94DDAC5C1F3D024300EED511;
 			remoteInfo = "RNSVG-tvOS";
 		};
-		ED5DCEE220B684BF00AB2F72 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ED5DCECF20B684BF00AB2F72 /* RCTPushNotification.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RCTPushNotification;
-		};
-		ED5DCEE420B684BF00AB2F72 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = ED5DCECF20B684BF00AB2F72 /* RCTPushNotification.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = ED5DCED220B684BF00AB2F72;
-			remoteInfo = "RCTPushNotification-tvOS";
-		};
 		EDA941382052729800009A34 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
@@ -434,6 +419,7 @@
 		8D631CE23B5E4FAEB30F73C0 /* libRNImagePicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNImagePicker.a; sourceTree = "<group>"; };
 		9C8544A166A15577D31EE45D /* Pods-reBay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reBay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-reBay/Pods-reBay.debug.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		B720042D20F9DC8A00D45F29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF56B26DAD4C3B544EF63ABC /* Pods-reBayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reBayTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-reBayTests/Pods-reBayTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D0E4B0CC0F33468D80F2579F /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		E85F233DC574449AB48F935D /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
@@ -442,9 +428,7 @@
 		EC122BAACBDD4BA3A47D5C72 /* Roboto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Roboto.ttf; path = "../node_modules/native-base/Fonts/Roboto.ttf"; sourceTree = "<group>"; };
 		ED1A5CA520ECD60D00171B25 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
 		ED2BDEEE20A95D5600DB165C /* reBay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = reBay.entitlements; path = reBay/reBay.entitlements; sourceTree = "<group>"; };
-		ED5DCECF20B684BF00AB2F72 /* RCTPushNotification.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTPushNotification.xcodeproj; path = "../../../../reBay-Front/node_modules/react-native/Libraries/PushNotificationIOS/RCTPushNotification.xcodeproj"; sourceTree = "<group>"; };
 		EDA941102052729800009A34 /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
-		EDF6AEDB20CF71A200B9A09C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -461,7 +445,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED5DCF0120B6850900AB2F72 /* libRCTPushNotification.a in Frameworks */,
 				EDA9414B205272BD00009A34 /* libReactNativeNavigation.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
@@ -571,7 +554,7 @@
 			isa = PBXGroup;
 			children = (
 				ED2BDEEE20A95D5600DB165C /* reBay.entitlements */,
-				EDF6AEDB20CF71A200B9A09C /* GoogleService-Info.plist */,
+				B720042D20F9DC8A00D45F29 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -649,7 +632,6 @@
 			isa = PBXGroup;
 			children = (
 				ED1A5CA520ECD60D00171B25 /* RNSVG.xcodeproj */,
-				ED5DCECF20B684BF00AB2F72 /* RCTPushNotification.xcodeproj */,
 				EDA941102052729800009A34 /* ReactNativeNavigation.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -739,15 +721,6 @@
 			children = (
 				ED1A5CD820ECD60D00171B25 /* libRNSVG.a */,
 				ED1A5CDA20ECD60D00171B25 /* libRNSVG-tvOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		ED5DCED020B684BF00AB2F72 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				ED5DCEE320B684BF00AB2F72 /* libRCTPushNotification.a */,
-				ED5DCEE520B684BF00AB2F72 /* libRCTPushNotification-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -862,12 +835,12 @@
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = 6KC965LW46;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = 6KC965LW46;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -922,10 +895,6 @@
 				{
 					ProductGroup = 00C302D41ABCB9D200DB3ED1 /* Products */;
 					ProjectRef = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
-				},
-				{
-					ProductGroup = ED5DCED020B684BF00AB2F72 /* Products */;
-					ProjectRef = ED5DCECF20B684BF00AB2F72 /* RCTPushNotification.xcodeproj */;
 				},
 				{
 					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
@@ -1194,20 +1163,6 @@
 			remoteRef = ED1A5CD920ECD60D00171B25 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		ED5DCEE320B684BF00AB2F72 /* libRCTPushNotification.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRCTPushNotification.a;
-			remoteRef = ED5DCEE220B684BF00AB2F72 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		ED5DCEE520B684BF00AB2F72 /* libRCTPushNotification-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libRCTPushNotification-tvOS.a";
-			remoteRef = ED5DCEE420B684BF00AB2F72 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		EDA941392052729800009A34 /* libjsinspector.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1322,7 +1277,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				EDF6AF0820CF71A200B9A09C /* GoogleService-Info.plist in Resources */,
+				B720042E20F9DC8A00D45F29 /* GoogleService-Info.plist in Resources */,
 				28553440261344DC9A533670 /* Entypo.ttf in Resources */,
 				6088DF73F94746B7B626C36B /* EvilIcons.ttf in Resources */,
 				7E298C80D6544AF29DD4CB3F /* FontAwesome.ttf in Resources */,
@@ -1500,8 +1455,9 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 6KC965LW46;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1538,9 +1494,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 6KC965LW46;
+				DEVELOPMENT_TEAM = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
@@ -1574,10 +1531,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = reBay/reBay.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 6KC965LW46;
+				DEVELOPMENT_TEAM = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
@@ -1595,8 +1553,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rebay;
 				PRODUCT_NAME = reBay;
-				PROVISIONING_PROFILE = "be993146-0883-4697-820b-e2922a4517dd";
-				PROVISIONING_PROFILE_SPECIFIER = reBayProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1608,9 +1566,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = reBay/reBay.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Donggeun Jung (6KC965LW46)";
-				CODE_SIGN_STYLE = Manual;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6KC965LW46;
+				DEVELOPMENT_TEAM = "";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-image-picker/ios",
@@ -1628,8 +1587,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rebay;
 				PRODUCT_NAME = reBay;
-				PROVISIONING_PROFILE = "be993146-0883-4697-820b-e2922a4517dd";
-				PROVISIONING_PROFILE_SPECIFIER = reBayProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

@@ -39,9 +39,9 @@
 		970E3057707641E88E88F512 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 438CAF751E0E4F358F890FF0 /* Zocial.ttf */; };
 		A558A7607C59484793BF4B7B /* rubicon-icon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 398331F3AA0E419EB3159B90 /* rubicon-icon-font.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		B720042E20F9DC8A00D45F29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B720042D20F9DC8A00D45F29 /* GoogleService-Info.plist */; };
 		ED1A5CDB20ECD62400171B25 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED1A5CD820ECD60D00171B25 /* libRNSVG.a */; };
 		EDA9414B205272BD00009A34 /* libReactNativeNavigation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA9414A2052729800009A34 /* libReactNativeNavigation.a */; };
+		EDEBFF5220FB77C30050A50C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EDEBFF5120FB77C30050A50C /* GoogleService-Info.plist */; };
 		EDF6AEAF20CE4B5D00B9A09C /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDF6AEAC20CE489B00B9A09C /* libRNDeviceInfo.a */; };
 		EDF6AEB020CE50AF00B9A09C /* libFastImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA9421A20557AD900009A34 /* libFastImage.a */; };
 		EDF6AEB120CE50BA00B9A09C /* libRNImagePicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA941DE2053F60300009A34 /* libRNImagePicker.a */; };
@@ -419,7 +419,6 @@
 		8D631CE23B5E4FAEB30F73C0 /* libRNImagePicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNImagePicker.a; sourceTree = "<group>"; };
 		9C8544A166A15577D31EE45D /* Pods-reBay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reBay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-reBay/Pods-reBay.debug.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		B720042D20F9DC8A00D45F29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF56B26DAD4C3B544EF63ABC /* Pods-reBayTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reBayTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-reBayTests/Pods-reBayTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D0E4B0CC0F33468D80F2579F /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		E85F233DC574449AB48F935D /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
@@ -429,6 +428,7 @@
 		ED1A5CA520ECD60D00171B25 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
 		ED2BDEEE20A95D5600DB165C /* reBay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = reBay.entitlements; path = reBay/reBay.entitlements; sourceTree = "<group>"; };
 		EDA941102052729800009A34 /* ReactNativeNavigation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeNavigation.xcodeproj; path = "../node_modules/react-native-navigation/ios/ReactNativeNavigation.xcodeproj"; sourceTree = "<group>"; };
+		EDEBFF5120FB77C30050A50C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -554,8 +554,8 @@
 			isa = PBXGroup;
 			children = (
 				ED2BDEEE20A95D5600DB165C /* reBay.entitlements */,
-				B720042D20F9DC8A00D45F29 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				EDEBFF5120FB77C30050A50C /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -1277,7 +1277,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				B720042E20F9DC8A00D45F29 /* GoogleService-Info.plist in Resources */,
+				EDEBFF5220FB77C30050A50C /* GoogleService-Info.plist in Resources */,
 				28553440261344DC9A533670 /* Entypo.ttf in Resources */,
 				6088DF73F94746B7B626C36B /* EvilIcons.ttf in Resources */,
 				7E298C80D6544AF29DD4CB3F /* FontAwesome.ttf in Resources */,

@@ -1,5 +1,6 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import commonStyle from "../index";
+const window = Dimensions.get("window");
 const styles = StyleSheet.create({
   comment: {
     flexDirection: "column"
@@ -8,7 +9,24 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     marginTop: 10,
-    paddingVertical: 5,
+    paddingVertical: 10,
+    alignItems: "center",
+    height: 50,
+    backgroundColor: "white"
+  },
+
+  commentNestedBack: {
+    alignItems: "center",
+    backgroundColor: "#D73A31",
+    marginTop: 10,
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "flex-end"
+  },
+
+  commentDeleteIcon: {
+    width: 70,
+    justifyContent: "center",
     alignItems: "center"
   },
 
@@ -44,13 +62,17 @@ const styles = StyleSheet.create({
     color: commonStyle.BORDER_COLOR
   },
   commentReply: {
-    paddingLeft: 65,
-    paddingRight: 20,
+    // paddingLeft: 65,
+    // paddingRight: 20,
     paddingBottom: 15
   },
   commentReply__text: {
     color: commonStyle.SUB_COLOR,
-    fontSize: 14
+    fontSize: 14,
+    marginLeft: 65
+  },
+  createdAtNested: {
+    marginRight: 20
   }
 });
 

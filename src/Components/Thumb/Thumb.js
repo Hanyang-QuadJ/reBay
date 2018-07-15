@@ -20,9 +20,9 @@ class Thumb extends Component {
     super(props);
   }
   render() {
-    const { size, src } = this.props;
+    const { size, src, style } = this.props;
     return (
-      <View style={styles.thumb}>
+      <View style={[styles.thumb, style]}>
         <Image
           style={{ width: size, height: size, borderRadius: size / 2 }}
           source={{ uri: src }}

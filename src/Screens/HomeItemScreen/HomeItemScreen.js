@@ -143,7 +143,7 @@ class HomeItemScreen extends Component {
 
   handleBuy = () => {
     this.props.navigator.push({
-      screen: "PaymentDone"
+      screen: "Payment1"
     });
   };
 

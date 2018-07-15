@@ -32,6 +32,8 @@ import SearchScreen from "./src/Screens/SearchScreen/SearchScreen";
 import PaymentDoneScreen from "./src/Screens/PaymentDoneScreen/PaymentDoneScreen";
 import HelpScreen from "./src/Screens/HelpScreen/HelpScreen";
 
+import PaymentScreen1 from "./src/Screens/PaymentScreen1/PaymentScreen1";
+
 import OptionScreen1 from "./src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen1";
 import OptionScreen2 from "./src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen2";
 import OptionScreen3 from "./src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen3";
@@ -110,7 +112,14 @@ export default function registerScreens() {
   //BasketScreens
   Navigation.registerComponent("Basket", () => BasketScreen, store, Provider);
 
-  //PaymentDoneScreens
+  //PaymentScreens
+  Navigation.registerComponent(
+    "Payment1",
+    () => PaymentScreen1,
+    store,
+    Provider
+  );
+
   Navigation.registerComponent(
     "PaymentDone",
     () => PaymentDoneScreen,

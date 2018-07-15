@@ -17,7 +17,7 @@ const mapStateToProps = state => {
   return {};
 };
 
-class SampleScreen extends Component {
+class PaymentScreen1 extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -33,10 +33,10 @@ class SampleScreen extends Component {
 
     return (
       <View>
-        <Text>Sample Screen</Text>
+        <Text>Payment Screen1</Text>
       </View>
     );
   }
 }
 
-export default (SampleScreen = connect(mapStateToProps)(SampleScreen));
+export default (PaymentScreen1 = connect(mapStateToProps)(PaymentScreen1));

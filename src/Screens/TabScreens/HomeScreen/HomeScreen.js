@@ -31,6 +31,7 @@ import styles from "./style";
 import * as commonStyle from "../../../Constants/commonStyle";
 import FastImage from "react-native-fast-image";
 import * as RecommendAction from "../../../Actions/RecommendAction";
+import * as LogAction from "../../../Actions/LogAction";
 import { Tab } from "../../index";
 import DeviceInfo from "react-native-device-info";
 // import PushNotification from "react-native-push-notification";
@@ -45,7 +46,9 @@ const initialLayout = {
 const mapStateToProps = state => {
   return {
     recommend: state.RecommendReducer.recommend,
-    isLogin: state.LoginReducer.isLogin
+    isLogin: state.LoginReducer.isLogin,
+    token: state.LoginReducer.token,
+    notice_count: state.LogReducer.notice_count
   };
 };
 
@@ -147,6 +150,7 @@ class HomeScreen extends Component {
     } else {
       return null;
     }
+    this.handleNoticeCount();
   }
 
   pullToRefresh = () => {
@@ -616,7 +620,7 @@ class HomeScreen extends Component {
     this.notificationDisplayedListener = firebase
       .notifications()
       .onNotificationDisplayed(notification => {
-        console.log(notification);
+        // console.log(notification);
         // Process your notification as required
         // ANDROID: Remote notifications do not contain the channel ID. You will have to specify this manually if you'd like to re-display the notification.
       });
@@ -625,6 +629,7 @@ class HomeScreen extends Component {
       .onNotification(notification => {
         // Process your notification as required
         this.displayNotification(notification);
+        this.handleNoticeCount();
       });
 
     //When foreground, background
@@ -636,7 +641,7 @@ class HomeScreen extends Component {
         const action = notificationOpen.action;
         // Get information about the notification that was opened
         const notification = notificationOpen.notification;
-        alert(notification._title);
+        this.handleNoticeCount();
       });
 
     //When Shutdown
@@ -651,9 +656,24 @@ class HomeScreen extends Component {
           const action = notificationOpen.action;
           // Get information about the notification that was opened
           const notification = notificationOpen.notification;
-          alert(showObj(notification));
+          this.handleNoticeCount();
         }
       });
+  };
+
+  handleNoticeCount = () => {
+    const params = { props: this.props };
+    const { notice_count } = this.props;
+    this.props.dispatch(LogAction.getNoticeCounts(params)).then(count => {
+      console.log(count);
+      if (count !== 0) {
+        this.props.navigator.setTabBadge({
+          tabIndex: 3, // (optional) if missing, the badge will be added to this screen's tab
+          badge: count, // badge value, null to remove badge
+          badgeColor: "#006400" // (optional) if missing, the badge will use the default color
+        });
+      }
+    });
   };
 }
 

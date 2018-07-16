@@ -97,14 +97,14 @@ export function GoToHome() {
       {
         label: "홈",
         screen: "Home", // this is a registered name for a screen
-        icon: require("../Assets/sample.png"),
+        icon: require("../Assets/Icons/tabs/tab_1.png"),
         // selectedIcon: require('../img/one_selected.png'), // iOS only
         title: "reBay"
       },
       {
         label: "구매하기",
         screen: "Buy",
-        icon: require("../Assets/dress.png"),
+        icon: require("../Assets/Icons/tabs/tab_2.png"),
         // selectedIcon: require('../img/two_selected.png'), // iOS only
         title: "구매하기"
       },
@@ -112,7 +112,7 @@ export function GoToHome() {
         label: "판매하기",
         screen: "Sell",
         title: "판매하기",
-        icon: require("../Assets/dress.png"),
+        icon: require("../Assets/Icons/tabs/tab_3.png"),
 
         modal: true
       },
@@ -120,20 +120,22 @@ export function GoToHome() {
         label: "내 소식",
         screen: "Notice",
         title: "알림",
-        icon: require("../Assets/dress.png")
+        icon: require("../Assets/Icons/tabs/tab_4.png")
       },
       {
         label: "마이페이지",
         screen: "Profile",
         title: "마이페이지",
-        icon: require("../Assets/dress.png")
+        icon: require("../Assets/Icons/tabs/tab_5.png")
       }
     ],
     tabsStyle: {
-      tabBarSelectedButtonColor: commonStyle.PRIMARY_COLOR
+      tabBarSelectedButtonColor: commonStyle.PRIMARY_COLOR,
+      tabBarHideShadow: false
     },
     appStyle: {
       tabBarSelectedButtonColor: commonStyle.PRIMARY_COLOR,
+      tabBarHideShadow: false,
       forceTitlesDisplay: true
     }
   });

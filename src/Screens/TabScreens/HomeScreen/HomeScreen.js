@@ -665,12 +665,11 @@ class HomeScreen extends Component {
     const params = { props: this.props };
     const { notice_count } = this.props;
     this.props.dispatch(LogAction.getNoticeCounts(params)).then(count => {
-      console.log(count);
       if (count !== 0) {
         this.props.navigator.setTabBadge({
           tabIndex: 3, // (optional) if missing, the badge will be added to this screen's tab
           badge: count, // badge value, null to remove badge
-          badgeColor: "#006400" // (optional) if missing, the badge will use the default color
+          badgeColor: commonStyle.PRIMARY_COLOR // (optional) if missing, the badge will use the default color
         });
       }
     });

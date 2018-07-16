@@ -34,15 +34,26 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     paddingHorizontal: 20,
-    marginBottom: 10,
-    paddingVertical: 5,
+    paddingVertical: 10,
+    // marginBottom: 10,
+    backgroundColor: "white",
     alignItems: "center"
+  },
+
+  commentMainBack: {
+    alignItems: "center",
+    backgroundColor: "#D73A31",
+    // marginBottom: 10,
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "flex-end"
   },
 
   content: {
     flex: 3,
     marginLeft: 15,
-    marginRight: 15
+    marginRight: 15,
+    justifyContent: "center"
   },
 
   contentNested: {

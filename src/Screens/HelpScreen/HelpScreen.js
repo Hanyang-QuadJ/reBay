@@ -209,6 +209,7 @@ class HelpScreen extends Component {
       createdAtAns={item.time_ans}
       src={item.user.profile_img}
       onPressReply={() => this.handleReply(item.user.username, index)}
+      onPressDeleteMain={() => this.handleDeleteMain(item, index)}
     />
   );
 
@@ -232,6 +233,21 @@ class HelpScreen extends Component {
         index,
         viewPosition: 1
       });
+    });
+  };
+
+  handleDeleteMain = (item, index) => {
+    const newHelp = this.state.help.slice();
+    const removeIndex = newHelp
+      .map((data, index) => {
+        return data.id;
+      })
+      .indexOf(item.id);
+    newHelp.splice(removeIndex, 1);
+    this.setState({ help: newHelp });
+    const params = { props: this.props, help_id: item.id };
+    this.props.dispatch(ItemAction.deleteItem(params)).then(value => {
+      console.log(value);
     });
   };
 

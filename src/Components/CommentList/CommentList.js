@@ -28,6 +28,74 @@ class CommentList extends Component {
     moment.locale("ko");
   }
 
+  renderHelp = () => {
+    const {
+      content,
+      size,
+      createdAt,
+      createdAtAns,
+      src,
+      seller,
+      answer,
+      isAnswer,
+      isCommentLoading,
+      isReplyLoading,
+      onPressReply,
+      onPressDeleteMain
+    } = this.props;
+    if (!isAnswer) {
+      return (
+        <SwipeRow rightOpenValue={-70} disableRightSwipe>
+          <View style={styles.commentMainBack}>
+            <TouchableOpacity
+              style={styles.commentDeleteIcon}
+              onPress={onPressDeleteMain}
+            >
+              <Icon
+                name="ios-trash-outline"
+                size={20}
+                style={{ color: "white" }}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.commentMain}>
+            <Thumb size={30} src={src} />
+            <View style={styles.content}>
+              {isCommentLoading ? (
+                <Text style={styles.comment__loadingText}>게시중...</Text>
+              ) : (
+                <Text style={styles.comment__text}>{content}</Text>
+              )}
+            </View>
+            <View style={styles.createdAt}>
+              <Text style={styles.comment__createdAt}>
+                {moment(createdAt).fromNow()}
+              </Text>
+            </View>
+          </View>
+        </SwipeRow>
+      );
+    } else {
+      return (
+        <View style={styles.commentMain}>
+          <Thumb size={30} src={src} />
+          <View style={styles.content}>
+            {isCommentLoading ? (
+              <Text style={styles.comment__loadingText}>게시중...</Text>
+            ) : (
+              <Text style={styles.comment__text}>{content}</Text>
+            )}
+          </View>
+          <View style={styles.createdAt}>
+            <Text style={styles.comment__createdAt}>
+              {moment(createdAt).fromNow()}
+            </Text>
+          </View>
+        </View>
+      );
+    }
+  };
+
   renderReply = () => {
     const {
       content,
@@ -116,21 +184,7 @@ class CommentList extends Component {
     } = this.props;
     return (
       <View style={styles.comment}>
-        <View style={styles.commentMain}>
-          <Thumb size={30} src={src} />
-          <View style={styles.content}>
-            {isCommentLoading ? (
-              <Text style={styles.comment__loadingText}>게시중...</Text>
-            ) : (
-              <Text style={styles.comment__text}>{content}</Text>
-            )}
-          </View>
-          <View style={styles.createdAt}>
-            <Text style={styles.comment__createdAt}>
-              {moment(createdAt).fromNow()}
-            </Text>
-          </View>
-        </View>
+        {this.renderHelp()}
         <View style={styles.commentReply}>
           <TouchableOpacity onPress={onPressReply}>
             {answer === null && isAnswer ? (

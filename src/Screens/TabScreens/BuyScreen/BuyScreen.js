@@ -163,7 +163,7 @@ class BuyScreen extends Component {
             </View>
           </Animated.View>
           <AnimatedFlatList
-            contentContainerStyle={{ paddingTop: 240 }}
+            contentContainerStyle={{ paddingTop: 245 }}
             keyboardShouldPersistTaps={"always"}
             keyboardDismissMode="on-drag"
             scrollEventThrottle={1}

@@ -73,3 +73,27 @@ export const patchData = async (url, params) => {
     console.error(error);
   }
 };
+
+export const deleteData = async (url, params) => {
+  try {
+    let response = await fetch(ServerEndPoint2 + url, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "x-access-token": params.props.token
+      }
+    });
+    let responseJson = await response.json();
+    if (response.status === 496) {
+      params.props.navigator.resetTo({
+        screen: "Tutorial"
+      });
+      return "token_expired";
+    } else {
+      return responseJson;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};

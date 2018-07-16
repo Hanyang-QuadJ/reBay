@@ -31,6 +31,10 @@ export const SUCCEED_TO_GET_HELP_BY_ITEM_ID = "SUCCEED_TO_GET_HELP_BY_ITEM_ID";
 export const FAILED_TO_ASK_ITEM = "FAILED_TO_ASK_ITEM";
 export const SUCCEED_TO_ASK_ITEM = "SUCCEED_TO_ASK_ITEM";
 
+//아이템 삭제
+export const FAILED_TO_DELETE_ITEM = "FAILED_TO_DELETE_ITEM";
+export const SUCCEED_TO_DELETE_ITEM = "SUCCEED_TO_DELETE_ITEM";
+
 //아이템 좋아요
 export const FAILED_TO_LIKE_ITEM = "FAILED_TO_LIKE_ITEM";
 export const SUCCEED_TO_LIKE_ITEM = "SUCCEED_TO_LIKE_ITEM";
@@ -190,6 +194,34 @@ export const askItem = params => {
     } catch (error) {
       dispatch({
         type: FAILED_TO_ASK_ITEM,
+        payload: { data: "NETWORK_ERROR" }
+      });
+      console.error(error);
+    }
+  };
+};
+
+export const deleteItem = params => {
+  return async dispatch => {
+    try {
+      let response = Request.deleteData(
+        "api/help/" + params.help_id,
+        params
+      ).then(result => {
+        switch (result) {
+          case "token_expired":
+            dispatch({ type: TOKEN_EXPIRED });
+            break;
+
+          default:
+            dispatch({ type: SUCCEED_TO_DELETE_ITEM, payload: result });
+            return result;
+        }
+      });
+      return response;
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_DELETE_ITEM,
         payload: { data: "NETWORK_ERROR" }
       });
       console.error(error);

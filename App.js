@@ -31,6 +31,7 @@ import BasketScreen from "./src/Screens/BasketScreen/BasketScreen";
 import SearchScreen from "./src/Screens/SearchScreen/SearchScreen";
 import PaymentDoneScreen from "./src/Screens/PaymentDoneScreen/PaymentDoneScreen";
 import HelpScreen from "./src/Screens/HelpScreen/HelpScreen";
+import HelpOneScreen from "./src/Screens/HelpOneScreen/HelpOneScreen";
 
 import PaymentScreen1 from "./src/Screens/PaymentScreen1/PaymentScreen1";
 
@@ -74,7 +75,9 @@ export default function registerScreens() {
     Provider
   );
 
+  //HelpScreens
   Navigation.registerComponent("Help", () => HelpScreen, store, Provider);
+  Navigation.registerComponent("HelpOne", () => HelpOneScreen, store, Provider);
 
   //SellScreens
   Navigation.registerComponent("Picture", () => PictureScreen, store, Provider);

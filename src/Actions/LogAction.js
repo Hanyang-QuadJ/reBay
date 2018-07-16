@@ -4,6 +4,9 @@ export const FAILED_TO_GET_LOG = "FAILED_TO_GET_LOG";
 export const SUCCEED_TO_POST_LOG = "SUCCEED_TO_POST_LOG";
 export const FAILED_TO_POST_LOG = "FAILED_TO_POST_LOG";
 
+export const SUCCEED_TO_PATCH_LOG = "SUCCEED_TO_PATCH_LOG";
+export const FAILED_TO_PATCH_LOG = "FAILED_TO_PATCH_LOG";
+
 export const SUCCEED_TO_GET_NOTICE_COUNT = "SUCCEED_TO_GET_NOTICE_COUNT";
 export const FAILED_TO_GET_NOTICE_COUNT = "FAILED_TO_GET_NOTICE_COUNT";
 
@@ -35,6 +38,35 @@ export const getLogs = params => {
     }
   };
 };
+
+export const readLog = params => {
+  return async dispatch => {
+    console.log(params.props.item.id)
+    try {
+      let response = Request.patchData(`api/notify/${params.props.item.id}`, params).then(
+        result => {
+          switch (result) {
+            case "token_expired":
+              dispatch({ type: TOKEN_EXPIRED });
+              break;
+
+            default:
+              dispatch({ type: SUCCEED_TO_PATCH_LOG, payload: result });
+              return result;
+              break;
+          }
+        }
+      );
+      return response;
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_PATCH_LOG,
+        payload: { data: "NETWORK_ERROR" }
+      });
+      console.error(error);
+    }
+  };
+}
 
 export const getNoticeCounts = params => {
   return async dispatch => {

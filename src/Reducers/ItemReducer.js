@@ -8,6 +8,8 @@ import {
     SUCCEED_TO_GET_ITEM_PICTURE,
     FAILED_TO_POST_ITEMS,
     SUCCEED_TO_POST_ITEMS,
+    FAILED_TO_GET_HELP_BY_HELP_ID,
+    SUCCEED_TO_GET_HELP_BY_HELP_ID
 
 } from "../Actions/ItemAction";
 
@@ -47,6 +49,13 @@ const ItemReducer  = (state = initialState, action) => {
                 items:action.payload
             });
         case FAILED_TO_POST_ITEMS:
+
+        case SUCCEED_TO_GET_HELP_BY_HELP_ID:
+            return Object.assign({}, state, {
+                help: action.payload
+            });
+        
+        case FAILED_TO_GET_HELP_BY_HELP_ID:
 
         default:
             return state;

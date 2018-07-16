@@ -27,6 +27,10 @@ export const SUCCEED_TO_BUY_ITEM = "SUCCEED_TO_BUY_ITEM";
 export const FAILED_TO_GET_HELP_BY_ITEM_ID = "FAILED_TO_GET_HELP_BY_ITEM_ID";
 export const SUCCEED_TO_GET_HELP_BY_ITEM_ID = "SUCCEED_TO_GET_HELP_BY_ITEM_ID";
 
+// 문의 아이디로 문의 가져오기
+export const FAILED_TO_GET_HELP_BY_HELP_ID = "FAILED_TO_GET_HELP_BY_HELP_ID";
+export const SUCCEED_TO_GET_HELP_BY_HELP_ID = "SUCCEED_TO_GET_HELP_BY_HELP_ID";
+
 //아이템 문의
 export const FAILED_TO_ASK_ITEM = "FAILED_TO_ASK_ITEM";
 export const SUCCEED_TO_ASK_ITEM = "SUCCEED_TO_ASK_ITEM";
@@ -314,6 +318,36 @@ export const getHelpByItemId = params => {
     }
   };
 };
+
+export const getHelpByHelpId = params => {
+  console.log(params.props);
+  return async dispatch => {
+    try {
+      let response = Request.getData(
+        "api/help/" + params.props.item.help_id,
+        params
+      ).then(result => {
+        switch (result) {
+          case "token_expired":
+            dispatch({ type: TOKEN_EXPIRED });
+            break;
+
+          default:
+            dispatch({ type: SUCCEED_TO_GET_HELP_BY_HELP_ID, payload: result });
+            return result;
+            break;
+        }
+      });
+      return response;
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_GET_HELP_BY_HELP_ID,
+        payload: { data: "NETWORK_ERROR" }
+      });
+      console.error(error);
+    }
+  }
+}
 
 export const postAnswer = params => {
   return async dispatch => {

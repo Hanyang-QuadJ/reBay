@@ -1,7 +1,7 @@
 import {
   FAILED_TO_GET_LOG,
   SUCCEED_TO_GET_LOG,
-  SUCCEED_TO_GET_NOTICE_COUNT
+  SUCCEED_TO_GET_NOTICE_COUNT,
 } from "../Actions/LogAction";
 
 const initialState = {

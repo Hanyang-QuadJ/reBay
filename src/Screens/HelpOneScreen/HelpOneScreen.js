@@ -28,12 +28,16 @@ class HelpOneScreen extends Component {
     // this is the onPress handler for the two buttons together
   }
 
+  componentWillMount() {
+    console.log(this.props.item.help_id);
+  }
+
   render() {
     console.log("rendered!");
 
     return (
       <View>
-        <Text>Sample Screen</Text>
+        <Text>HelpOneScreen</Text>
       </View>
     );
   }

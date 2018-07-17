@@ -84,17 +84,7 @@ class BrandScreen extends Component {
     <ListItem
       style={styles.brandList}
       button={true}
-      onPress={() => {
-        this.props.navigator.push({
-          screen: "SellFilter",
-          title: "상품정보",
-          passProps: {
-            brandName: item.brand_name,
-            brandID: item.id,
-            pic_list: this.props.base64
-          }
-        });
-      }}
+      onPress={() => this.handleBrand(item)}
     >
       <Body>
         <Text style={styles.brand}>{item.brand_name}</Text>
@@ -129,6 +119,8 @@ class BrandScreen extends Component {
       extrapolate: "clamp"
     });
 
+    const { isEdit } = this.props;
+
     return (
       <Container style={{ backgroundColor: "white" }}>
         <View style={{ flex: 1, flexDirection: "column" }}>
@@ -150,8 +142,8 @@ class BrandScreen extends Component {
               color={commonStyle.PRIMARY_COLOR}
               stepColor={commonStyle.TEXT_COLOR}
               paddingBottom={30}
-              currentStep={2}
-              finalStep={6}
+              currentStep={isEdit ? 1 : 2}
+              finalStep={isEdit ? 1 : 6}
             />
 
             <View style={styles.searchBar}>
@@ -183,6 +175,23 @@ class BrandScreen extends Component {
       </Container>
     );
   }
+
+  handleBrand = item => {
+    const { isEdit } = this.props;
+    if (isEdit) {
+      // this.props.dispatch()
+    } else {
+      this.props.navigator.push({
+        screen: "SellFilter",
+        title: "상품정보",
+        passProps: {
+          brandName: item.brand_name,
+          brandID: item.id,
+          pic_list: this.props.base64
+        }
+      });
+    }
+  };
 }
 
 export default (BrandScreen = connect(mapStateToProps)(BrandScreen));

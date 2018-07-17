@@ -23,7 +23,9 @@ import SellFilterScreen from "./src/Screens/SellScreens/SellFilterScreen/SellFil
 import SellFilterScreen2 from "./src/Screens/SellScreens/SellFilterScreen2/SellFilterScreen2";
 import SellFilterScreen3 from "./src/Screens/SellScreens/SellFilterScreen3/SellFilterScreen3";
 import DetailScreen from "./src/Screens/SellScreens/DetailScreen/DetailScreen";
+
 import ItemScreen from "./src/Screens/ItemScreen/ItemScreen";
+import ItemEditScreen from "./src/Screens/ItemEditScreen/ItemEditScreen";
 import NoticeScreen from "./src/Screens/TabScreens/NoticeScreen/NoticeScreen";
 import ProfileScreen from "./src/Screens/TabScreens/ProfileScreen/ProfileScreen";
 import HomeItemScreen from "./src/Screens/HomeItemScreen/HomeItemScreen";
@@ -101,7 +103,15 @@ export default function registerScreens() {
     Provider
   );
   Navigation.registerComponent("Detail", () => DetailScreen, store, Provider);
+
+  //ItemScreens
   Navigation.registerComponent("Item", () => ItemScreen, store, Provider);
+  Navigation.registerComponent(
+    "ItemEdit",
+    () => ItemEditScreen,
+    store,
+    Provider
+  );
 
   //BuyScreens
   Navigation.registerComponent("Buy2", () => BuyScreen2, store, Provider);

@@ -22,14 +22,36 @@ const style = StyleSheet.create({
   wrapper: {
     height: 375
   },
+
+  itemRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+
   itemInfo: {
     paddingVertical: 20,
     justifyContent: "center"
   },
 
   itemInfoContainer: {
-    marginLeft: 20
+    paddingHorizontal: 20
   },
+
+  editButton: {
+    borderRadius: 50,
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginBottom: 5,
+    borderColor: commonStyle.BORDER_COLOR
+  },
+
+  editButtonText: {
+    fontSize: 12,
+    color: commonStyle.TEXT_COLOR
+  },
+
   userInfoArea: {
     marginLeft: 13
   },
@@ -38,7 +60,6 @@ const style = StyleSheet.create({
     fontWeight: "600",
     color: commonStyle.TEXT_COLOR
   },
-
   slide1: {
     backgroundColor: "white",
     justifyContent: "center",

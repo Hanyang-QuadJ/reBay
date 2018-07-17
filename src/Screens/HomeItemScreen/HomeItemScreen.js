@@ -22,12 +22,15 @@ import FooterCart from "../../Components/FooterCart/FooterCart";
 import LoadingActivity from "../../Components/LoadingActivity/LoadingActivity";
 import { DotIndicator } from "react-native-indicators";
 import ContentLoader from "react-native-content-loader";
-import { Circle, Rect } from "react-native-svg";
 
 const mapStateToProps = state => {
   return {
     isLogin: state.LoginReducer.isLogin,
-    token: state.LoginReducer.token
+    token: state.LoginReducer.token,
+    item: state.ItemReducer.item,
+    picture: state.ItemReducer.picture,
+    // brand_name: state.ItemReducer.brand_name,
+    tags: state.ItemReducer.tags
   };
 };
 
@@ -47,6 +50,7 @@ class HomeItemScreen extends Component {
   onNavigatorEvent(event) {
     // this is the onPress handler for the two buttons together
   }
+
   componentDidMount() {
     this.props.dispatch(ItemAction.getItem(this.props.item_id)).then(item => {
       this.props
@@ -58,7 +62,8 @@ class HomeItemScreen extends Component {
   }
 
   render() {
-    const { item, picture, isLoading } = this.state;
+    const { isLoading } = this.state;
+    const { item, picture, tags, brand_name } = this.props;
     return (
       <Container>
         <Content contentContainerStyle={isLoading ? { flex: 1 } : null}>
@@ -66,19 +71,12 @@ class HomeItemScreen extends Component {
             <LoadingActivity />
           ) : (
             <Item
-              brand={this.props.brand_name}
-              item_id={this.props.item_id}
-              profile_img={this.state.item.item.profile_img}
-              username={this.state.item.item.username}
-              item_name={this.props.item_name}
-              size={this.state.item.item.size}
-              content={this.state.item.item.content}
-              user_id={this.state.user_id}
-              season={this.state.item.item.season}
-              price={this.props.price}
-              picture={this.state.picture}
+              brand={brand_name}
+              item={item}
+              picture={picture}
               grade={4}
-              tags={this.state.item.tags[0]}
+              tags={tags[0]}
+              onPressEditBrand={this.handleEditBrand}
             />
           )}
         </Content>
@@ -155,6 +153,13 @@ class HomeItemScreen extends Component {
         user_id: this.props.user_id,
         item_id: this.props.item_id
       }
+    });
+  };
+
+  handleEditBrand = () => {
+    this.props.navigator.push({
+      screen: "Brand",
+      passProps: { isEdit: true }
     });
   };
 }

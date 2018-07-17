@@ -37,7 +37,7 @@ class Item extends Component {
   componentWillMount() {}
 
   render() {
-    const { me } = this.props;
+    const { me, user_id, item, onPressEditBrand } = this.props;
     const { isLiked } = this.state;
     const stars = [];
     const emptyStars = [];
@@ -70,16 +70,12 @@ class Item extends Component {
             <View style={styles.thumbnailArea}>
               <Image
                 style={styles.thumbnail}
-                source={{ uri: this.props.profile_img }}
+                source={{ uri: item.profile_img }}
               />
             </View>
             <View style={styles.userInfoArea}>
               <Text style={styles.userInfoText}>
-                {this.props.username === null ? (
-                  <Text>******</Text>
-                ) : (
-                  this.props.username
-                )}
+                {item.username === null ? <Text>******</Text> : item.username}
               </Text>
               <View style={{ flexDirection: "row" }}>
                 {stars}
@@ -149,9 +145,26 @@ class Item extends Component {
         </View>
         <View style={styles.itemInfo}>
           <View style={styles.itemInfoContainer}>
-            <Text style={styles.brand_name}>{this.props.brand}</Text>
-            <Text style={styles.item_name}>{this.props.item_name}</Text>
-            <Text style={styles.item_price}>￦{this.props.price}</Text>
+            <View style={styles.itemRow}>
+              <Text style={styles.brand_name}>{this.props.brand}</Text>
+              {me.id === item.user_id ? (
+                <TouchableOpacity
+                  style={styles.editButton}
+                  onPress={onPressEditBrand}
+                >
+                  <Text style={styles.editButtonText}>수정</Text>
+                </TouchableOpacity>
+              ) : null}
+            </View>
+            <View style={styles.itemRow}>
+              <Text style={styles.item_name}>{item.item_name}</Text>
+              {me.id === item.user_id ? (
+                <TouchableOpacity style={styles.editButton}>
+                  <Text style={styles.editButtonText}>수정</Text>
+                </TouchableOpacity>
+              ) : null}
+            </View>
+            <Text style={styles.item_price}>￦{item.price}</Text>
           </View>
         </View>
 
@@ -162,7 +175,7 @@ class Item extends Component {
                 <Text style={styles.labelText}>제품명</Text>
               </View>
               <View style={styles.content}>
-                <Text style={styles.contentText}>{this.props.item_name}</Text>
+                <Text style={styles.contentText}>{item.item_name}</Text>
               </View>
             </View>
 
@@ -180,9 +193,7 @@ class Item extends Component {
                 <Text style={styles.labelText}>사이즈</Text>
               </View>
               <View style={styles.content}>
-                <Text style={styles.contentText}>
-                  {this.props.size && this.props.size}
-                </Text>
+                <Text style={styles.contentText}>{item.size && item.size}</Text>
               </View>
             </View>
 
@@ -192,7 +203,7 @@ class Item extends Component {
               </View>
               <View style={styles.content}>
                 <Text style={styles.contentText}>
-                  {this.props.season && this.props.season}
+                  {item.season && item.season}
                 </Text>
               </View>
             </View>
@@ -203,7 +214,7 @@ class Item extends Component {
               </View>
               <View style={styles.content}>
                 <Text style={styles.contentText}>
-                  {this.props.content && this.props.content}
+                  {item.content && item.content}
                 </Text>
               </View>
             </View>

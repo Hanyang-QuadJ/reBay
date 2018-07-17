@@ -20,7 +20,7 @@ import {
 import { Container, Content, Icon, Input, Item } from "native-base";
 import Thumb from "../../Components/Thumb/Thumb";
 import * as UserAction from "../../Actions/UserAction";
-import * as ItemAction from "../../Actions/ItemAction";
+import * as HelpAction from "../../Actions/HelpAction";
 import CommentList from "../../Components/CommentList/CommentList";
 import LoadingActivity from "../../Components/LoadingActivity/LoadingActivity";
 import styles from "./style";
@@ -59,7 +59,7 @@ class HelpScreen extends Component {
     const { isMe } = this.props;
     const params = { props: this.props };
     if (isMe) {
-      this.props.dispatch(ItemAction.getMyHelpByItemId(params)).then(help => {
+      this.props.dispatch(HelpAction.getMyHelpByItemId(params)).then(help => {
         //add loading state to each help
         let result = help.map(function(el) {
           let o = Object.assign({}, el);
@@ -70,7 +70,7 @@ class HelpScreen extends Component {
         this.setState({ help: result, isLoading: false });
       });
     } else {
-      this.props.dispatch(ItemAction.getHelpByItemId(params)).then(help => {
+      this.props.dispatch(HelpAction.getHelpByItemId(params)).then(help => {
         this.setState({ help, isLoading: false });
       });
     }
@@ -246,7 +246,7 @@ class HelpScreen extends Component {
     newHelp.splice(removeIndex, 1);
     this.setState({ help: newHelp });
     const params = { props: this.props, help_id: item.id };
-    this.props.dispatch(ItemAction.deleteItem(params)).then(value => {
+    this.props.dispatch(HelpAction.deleteHelp(params)).then(value => {
       console.log(value);
     });
   };
@@ -272,7 +272,7 @@ class HelpScreen extends Component {
           index: replyIndex,
           viewPosition: 1
         });
-        this.props.dispatch(ItemAction.postAnswer(params)).then(value => {
+        this.props.dispatch(HelpAction.postAnswer(params)).then(value => {
           newComments[replyIndex].replayLoading = false;
           this.setState({ help: newComments, comment: "" });
         });
@@ -309,7 +309,7 @@ class HelpScreen extends Component {
           viewPosition: 1
         });
       });
-      this.props.dispatch(ItemAction.askItem(params)).then(value => {
+      this.props.dispatch(HelpAction.askItem(params)).then(value => {
         newComments[newComments.length - 1].loading = false;
         this.setState({ help: newComments, comment: "" });
       });

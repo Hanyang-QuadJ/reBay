@@ -10,8 +10,10 @@ import {
 } from "react-native";
 import { Container, Content, Icon, Text } from "native-base";
 import styles from "./style";
+import CommentList from "../../Components/CommentList/CommentList";
 import * as LogAction from "../../Actions/LogAction";
 import * as ItemAction from "../../Actions/ItemAction";
+import * as HelpAction from "../../Actions/HelpAction";
 import * as commonStyle from "../../Constants/commonStyle";
 import { GoToHome } from "../index";
 
@@ -21,7 +23,7 @@ const mapStateToProps = state => {
   };
 };
 
-class HelpOneScreen extends Component { 
+class HelpOneScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,25 +38,29 @@ class HelpOneScreen extends Component {
 
   componentWillMount() {
     // console.log(this.props.item);
-  }
-  
-  async componentDidMount() {
     const params = { props: this.props };
-    console.log(params.props);
     // this.props.dispatch(LogAction.readLog(params));
-    this.props.dispatch(ItemAction.getHelpByHelpId(params)).then(result => {
+    this.props.dispatch(HelpAction.getHelpByHelpId(params)).then(result => {
       this.setState({
-        help: result
+        help: result.help
       });
     });
   }
 
-  render() {
+  async componentDidMount() {}
 
+  render() {
     const { help } = this.state;
-    console.log(help.time);
     return (
       <View>
+        {/* <CommentList
+          answer={help && help.answer}
+          seller={help && help.seller}
+          content={help && help.ask}
+          createdAt={help && help.time}
+          createdAtAns={help && help.time_ans}
+          src={help && help.user.profile_img}
+        /> */}
         <Text>제목 : {help && help.ask}</Text>
         <Text>답변 : {help && help.answer}</Text>
         <Text>질문시간 : {help && help.time}</Text>

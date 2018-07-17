@@ -167,8 +167,21 @@ class OptionScreen3 extends Component {
       isPic
       content={item.item_name}
       image={item.image && item.image.image_url}
+      onPress={() => this.handleItem(item)}
     />
   );
+
+  handleItem = item => {
+    this.props.navigator.push({
+      screen: "HomeItem",
+      title: item.item_name,
+      passProps: {
+        item_id: item.id,
+        item_name: item.item_name,
+        price: item.price
+      }
+    });
+  };
 }
 
 export default (OptionScreen3 = connect(mapStateToProps)(OptionScreen3));

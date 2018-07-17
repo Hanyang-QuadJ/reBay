@@ -77,7 +77,6 @@ class SearchList extends Component {
       title: item.item_name,
       passProps: {
         item_id: item.id,
-        brand_name: item.brand_name,
         item_name: item.item_name,
         price: item.price
       }

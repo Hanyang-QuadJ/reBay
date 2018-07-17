@@ -43,7 +43,6 @@ class SellFilterScreen extends Component {
 
   onNavigatorEvent(event) {
     // this is the onPress handler for the two buttons together
-
     if (event.type == "NavBarButtonPress") {
       // this is the event type for button presses
       if (event.id == "next") {

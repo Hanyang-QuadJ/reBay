@@ -69,7 +69,8 @@ class HomeScreen extends Component {
     rightButtons: [
       {
         title: "Cart", // for a textual button, provide the button title (label)
-        id: "cart" // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+        id: "cart",
+        icon: require("../../../Assets/Icons/cart.png") // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
         // testID: 'e2e_rules', // optional, used to locate this view in end-to-end tests
         // disabled: true, // optional, used to disable the button (appears faded and doesn't interact)
         // disableIconTint: true, // optional, by default the image colors are overridden and tinted to navBarButtonColor, set to true to keep the original image colors

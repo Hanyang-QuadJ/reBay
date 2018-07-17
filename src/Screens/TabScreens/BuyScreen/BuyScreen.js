@@ -34,8 +34,6 @@ const mapStateToProps = state => {
 class BuyScreen extends Component {
   static navigatorStyle = commonStyle.NavigationStyleReverse;
 
-  // static navigatorStyle = commonStyle.TabBarHidden;
-
   constructor(props) {
     super(props);
     this.state = {

@@ -3,40 +3,6 @@ import { Platform } from "react-native";
 import * as commonStyle from "../Constants/commonStyle";
 export default commonStyle;
 
-// import PushNotification from "react-native-push-notification";
-
-// PushNotification.configure({
-//   // (required) Called when a remote or local notification is opened or received
-//   onNotification: function(notification) {
-//     console.log("NOTIFICATION:", notification);
-
-//     // process the notification
-
-//     // required on iOS only (see fetchCompletionHandler docs: https://facebook.github.io/react-native/docs/pushnotificationios.html)
-//     notification.finish(PushNotificationIOS.FetchResult.NoData);
-//   },
-
-//   // ANDROID ONLY: GCM Sender ID (optional - not required for local notifications, but is need to receive remote push notifications)
-
-//   // IOS ONLY (optional): default: all - Permissions to register.
-//   permissions: {
-//     alert: true,
-//     badge: true,
-//     sound: true
-//   },
-
-//   // Should the initial notification be popped automatically
-//   // default: true
-//   popInitialNotification: true,
-
-//   /**
-//    * (optional) default: true
-//    * - Specified if permissions (ios) and token (android and ios) will requested or not,
-//    * - if not, you must call PushNotificationsHandler.requestPermissions() later
-//    */
-//   requestPermissions: true
-// });
-
 const icons = Platform.select({
   ios: require("../Assets/dress.png"),
   android: require("../Assets/dress.png")
@@ -46,47 +12,47 @@ export const Tab = {
   route: [
     {
       name: "남성의류",
-      icon: require("../Assets/dress.png")
+      icon: require("../Assets/Icons/category/category_1.png")
     },
     {
       name: "여성의류",
-      icon: require("../Assets/dress.png")
+      icon: require("../Assets/Icons/category/category_2.png")
     },
     {
       name: "남성슈즈",
-      icon: require("../Assets/dress.png")
+      icon: require("../Assets/Icons/category/category_3.png")
     },
     {
       name: "여성슈즈",
-      icon: require("../Assets/dress.png")
+      icon: require("../Assets/Icons/category/category_4.png")
     },
     {
       name: "가방",
-      icon: require("../Assets/dress.png")
+      icon: require("../Assets/Icons/category/category_5.png")
     },
     {
       name: "패션잡화",
-      icon: require("../Assets/dress.png")
+      icon: require("../Assets/Icons/category/category_6.png")
     },
     {
       name: "지갑/벨트",
-      icon: require("../Assets/dress.png")
+      icon: require("../Assets/Icons/category/category_7.png")
     },
     {
       name: "악세사리",
-      icon: require("../Assets/dress.png")
+      icon: require("../Assets/Icons/category/category_8.png")
     },
     {
       name: "화장품/향수",
-      icon: require("../Assets/dress.png")
+      icon: require("../Assets/Icons/category/category_9.png")
     },
     {
       name: "선글라스/안경",
-      icon: require("../Assets/dress.png")
+      icon: require("../Assets/Icons/category/category_10.png")
     },
     {
       name: "시계",
-      icon: require("../Assets/dress.png")
+      icon: require("../Assets/Icons/category/category_11.png")
     }
   ]
 };
@@ -100,6 +66,7 @@ export function GoToHome() {
         icon: require("../Assets/Icons/tabs/tab_1.png"),
         // selectedIcon: require('../img/one_selected.png'), // iOS only
         title: "reBay"
+        // titleImage: require("../Assets/Logos/rebay_logo.png")
       },
       {
         label: "구매하기",

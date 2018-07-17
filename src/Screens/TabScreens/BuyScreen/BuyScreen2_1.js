@@ -31,6 +31,7 @@ const mapStateToProps = state => {
 
 class BuyScreen2_1 extends Component {
   static navigatorStyle = commonStyle.TabBarHidden;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -38,7 +39,10 @@ class BuyScreen2_1 extends Component {
       minPrice: 0,
       maxPrice: 1000000
     };
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
+
+  onNavigatorEvent(event) {}
 
   goToBuyScreen3 = () => {
     this.props.navigator.push({

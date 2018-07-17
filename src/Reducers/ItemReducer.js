@@ -8,7 +8,8 @@ import {
   FAILED_TO_POST_ITEMS,
   SUCCEED_TO_POST_ITEMS,
   FAILED_TO_GET_HELP_BY_HELP_ID,
-  SUCCEED_TO_GET_HELP_BY_HELP_ID
+  SUCCEED_TO_GET_HELP_BY_HELP_ID,
+  SUCCEED_TO_EDIT_BRAND
 } from "../Actions/ItemAction";
 
 const initialState = {
@@ -54,6 +55,10 @@ const ItemReducer = (state = initialState, action) => {
       });
 
     case FAILED_TO_GET_HELP_BY_HELP_ID:
+    case SUCCEED_TO_EDIT_BRAND:
+      return Object.assign({}, state, {
+        brand_name: action.payload
+      });
 
     default:
       return state;

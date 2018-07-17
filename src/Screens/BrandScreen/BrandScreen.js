@@ -33,6 +33,7 @@ const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 
 import styles from "./style";
 import * as commonStyle from "../../Constants/commonStyle";
+import * as ItemAction from "../../Actions/ItemAction";
 
 const mapStateToProps = state => {
   return {
@@ -91,17 +92,7 @@ class BrandScreen extends Component {
       </Body>
       <Right>
         <Button
-          onPress={() => {
-            this.props.navigator.push({
-              screen: "SellFilter",
-              title: "상품정보",
-              passProps: {
-                brandName: item.brand_name,
-                brandID: item.id,
-                pic_list: this.props.base64
-              }
-            });
-          }}
+          onPress={() => this.handleBrand(item)}
           bordered
           style={styles.choice}
         >
@@ -178,8 +169,13 @@ class BrandScreen extends Component {
 
   handleBrand = item => {
     const { isEdit } = this.props;
+    console.log(isEdit);
+
+    const params = { props: this.props, brand_name: item.brand_name };
     if (isEdit) {
-      // this.props.dispatch()
+      this.props.dispatch(ItemAction.editBrand(params)).then(value => {
+        this.props.navigator.pop();
+      });
     } else {
       this.props.navigator.push({
         screen: "SellFilter",

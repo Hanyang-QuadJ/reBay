@@ -192,31 +192,32 @@ export const likeItem = params => {
   };
 };
 
-// export const editBrand = params => {
-//   return async dispatch => {
-//     try {
-//       let response = Request.postData(
-//         "api/item/like/" + params.props.item_id,
-//         params
-//       ).then(result => {
-//         switch (result) {
-//           case "token_expired":
-//             dispatch({ type: TOKEN_EXPIRED });
-//             break;
+export const editBrand = params => {
+  return async dispatch => {
+    try {
+      // let response = Request.postData(
+      //   "api/item/like/" + params.props.item_id,
+      //   params
+      // ).then(result => {
+      //   switch (result) {
+      //     case "token_expired":
+      //       dispatch({ type: TOKEN_EXPIRED });
+      //       break;
 
-//           default:
-//             dispatch({ type: SUCCEED_TO_LIKE_ITEM, payload: result });
-//             return result;
-//             break;
-//         }
-//       });
-//       return response;
-//     } catch (error) {
-//       dispatch({
-//         type: FAILED_TO_LIKE_ITEM,
-//         payload: { data: "NETWORK_ERROR" }
-//       });
-//       console.error(error);
-//     }
-//   };
-// };
+      //     default:
+      dispatch({ type: SUCCEED_TO_EDIT_BRAND, payload: params.brand_name });
+      //       return result;
+      //       break;
+      //   }
+      // });
+      // return response;
+      return "succeed";
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_EDITSUCCEED_TO_EDIT_BRAND,
+        payload: { data: "NETWORK_ERROR" }
+      });
+      console.error(error);
+    }
+  };
+};

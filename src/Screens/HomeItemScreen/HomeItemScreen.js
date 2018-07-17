@@ -29,7 +29,7 @@ const mapStateToProps = state => {
     token: state.LoginReducer.token,
     item: state.ItemReducer.item,
     picture: state.ItemReducer.picture,
-    // brand_name: state.ItemReducer.brand_name,
+    brand_name: state.ItemReducer.brand_name,
     tags: state.ItemReducer.tags
   };
 };

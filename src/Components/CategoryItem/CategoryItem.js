@@ -31,7 +31,7 @@ class CategoryItem extends Component {
       passProps: {
         user_id,
         item_id: item_id,
-        brand_name: brand_name,
+        brandName: brand_name,
         item_name: item_name,
         price: price
       }

@@ -30,19 +30,15 @@ class CommentList extends Component {
 
   renderHelp = () => {
     const {
-      content,
-      size,
-      createdAt,
-      createdAtAns,
-      src,
-      seller,
-      answer,
+      help,
+      type,
       isAnswer,
       isCommentLoading,
       isReplyLoading,
       onPressReply,
       onPressDeleteMain
     } = this.props;
+    console.log(this.props);
     if (!isAnswer) {
       return (
         <SwipeRow rightOpenValue={-70} disableRightSwipe>
@@ -59,17 +55,17 @@ class CommentList extends Component {
             </TouchableOpacity>
           </View>
           <View style={styles.commentMain}>
-            <Thumb size={30} src={src} />
+            <Thumb size={30} src={help.user.profile_img} />
             <View style={styles.content}>
               {isCommentLoading ? (
                 <Text style={styles.comment__loadingText}>게시중...</Text>
               ) : (
-                <Text style={styles.comment__text}>{content}</Text>
+                <Text style={styles.comment__text}>{help.ask}</Text>
               )}
             </View>
             <View style={styles.createdAt}>
               <Text style={styles.comment__createdAt}>
-                {moment(createdAt).fromNow()}
+                {moment(help.time).fromNow()}
               </Text>
             </View>
           </View>
@@ -78,17 +74,17 @@ class CommentList extends Component {
     } else {
       return (
         <View style={styles.commentMain}>
-          <Thumb size={30} src={src} />
+          <Thumb size={30} src={help.user.profile_img} />
           <View style={styles.content}>
             {isCommentLoading ? (
               <Text style={styles.comment__loadingText}>게시중...</Text>
             ) : (
-              <Text style={styles.comment__text}>{content}</Text>
+              <Text style={styles.comment__text}>{help.ask}</Text>
             )}
           </View>
           <View style={styles.createdAt}>
             <Text style={styles.comment__createdAt}>
-              {moment(createdAt).fromNow()}
+              {moment(help.time).fromNow()}
             </Text>
           </View>
         </View>
@@ -98,13 +94,8 @@ class CommentList extends Component {
 
   renderReply = () => {
     const {
-      content,
-      size,
-      createdAt,
-      createdAtAns,
-      src,
-      seller,
-      answer,
+      help,
+      type,
       isAnswer,
       isCommentLoading,
       isReplyLoading,
@@ -125,19 +116,19 @@ class CommentList extends Component {
           <View style={styles.commentNested}>
             <Thumb
               size={30}
-              src={seller && seller.profile_img}
+              src={help.seller.profile_img}
               style={{ marginLeft: 65 }}
             />
             <View style={styles.contentNested}>
               {isReplyLoading ? (
                 <Text style={styles.comment__loadingText}>게시중...</Text>
               ) : (
-                <Text style={styles.comment__text}>{answer}</Text>
+                <Text style={styles.comment__text}>{help.answer}</Text>
               )}
             </View>
             <View style={styles.createdAtNested}>
               <Text style={styles.comment__createdAt}>
-                {moment(createdAtAns).fromNow()}
+                {moment(help.time_ans).fromNow()}
               </Text>
             </View>
           </View>
@@ -148,19 +139,19 @@ class CommentList extends Component {
         <View style={styles.commentNested}>
           <Thumb
             size={30}
-            src={seller && seller.profile_img}
+            src={help.seller.profile_img}
             style={{ marginLeft: 65 }}
           />
           <View style={styles.contentNested}>
             {isReplyLoading ? (
               <Text style={styles.comment__loadingText}>게시중...</Text>
             ) : (
-              <Text style={styles.comment__text}>{answer}</Text>
+              <Text style={styles.comment__text}>{help.answer}</Text>
             )}
           </View>
           <View style={styles.createdAtNested}>
             <Text style={styles.comment__createdAt}>
-              {moment(createdAtAns).fromNow()}
+              {moment(help.time_ans).fromNow()}
             </Text>
           </View>
         </View>
@@ -170,28 +161,23 @@ class CommentList extends Component {
 
   render() {
     const {
-      content,
-      size,
-      createdAt,
-      createdAtAns,
-      src,
-      seller,
-      answer,
       isAnswer,
       isCommentLoading,
       isReplyLoading,
-      onPressReply
+      onPressReply,
+      help,
+      type
     } = this.props;
     return (
       <View style={styles.comment}>
         {this.renderHelp()}
         <View style={styles.commentReply}>
           <TouchableOpacity onPress={onPressReply}>
-            {answer === null && isAnswer ? (
+            {(help.answer === null && isAnswer) || type === 1 ? (
               <Text style={styles.commentReply__text}>답변하기</Text>
             ) : null}
           </TouchableOpacity>
-          {answer === null ? null : this.renderReply()}
+          {help.answer === null ? null : this.renderReply()}
         </View>
       </View>
     );

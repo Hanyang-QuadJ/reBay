@@ -29,6 +29,7 @@ class CategoryItem extends Component {
       screen: this.props.screen,
       title: item_name,
       passProps: {
+        isBasket: this.props.isBasket,
         user_id,
         item_id: item_id,
         brandName: brand_name,

@@ -57,6 +57,7 @@ class BasketScreen extends Component {
         ) : (
           <CategoryItem
             isInner
+            isBasket
             item={baskets}
             screen="HomeItem"
             navigator={this.props.navigator}

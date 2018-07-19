@@ -63,7 +63,7 @@ class HomeItemScreen extends Component {
 
   render() {
     const { isLoading } = this.state;
-    const { item, picture, tags, brand_name } = this.props;
+    const { item, picture, tags, brand_name, isBasket } = this.props;
     return (
       <Container>
         <Content contentContainerStyle={isLoading ? { flex: 1 } : null}>
@@ -84,7 +84,7 @@ class HomeItemScreen extends Component {
           onPressFirst={this.handleBasket}
           onPressSecond={this.handleHelp}
           onPressThird={this.handleBuy}
-          firstText="장바구니"
+          firstText={isBasket ? "삭제" : "장바구니"}
           secondText="댓글"
           thridText="구매하기"
         />

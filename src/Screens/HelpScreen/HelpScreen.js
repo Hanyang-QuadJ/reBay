@@ -199,15 +199,10 @@ class HelpScreen extends Component {
 
   _renderItem = ({ item, index }) => (
     <CommentList
+      help={item}
       isAnswer={!this.props.isMe}
       isCommentLoading={item.loading}
       isReplyLoading={item.replayLoading}
-      answer={item.answer}
-      seller={item.seller}
-      content={item.ask}
-      createdAt={item.time}
-      createdAtAns={item.time_ans}
-      src={item.user.profile_img}
       onPressReply={() => this.handleReply(item.user.username, index)}
       onPressDeleteMain={() => this.handleDeleteMain(item, index)}
     />

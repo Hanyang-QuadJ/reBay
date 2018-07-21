@@ -195,26 +195,28 @@ export const likeItem = params => {
 export const editBrand = params => {
   return async dispatch => {
     try {
-      // let response = Request.postData(
-      //   "api/item/like/" + params.props.item_id,
-      //   params
-      // ).then(result => {
-      //   switch (result) {
-      //     case "token_expired":
-      //       dispatch({ type: TOKEN_EXPIRED });
-      //       break;
+      let response = Request.patchData(
+        "api/item/" + params.props.item_id,
+        params
+      ).then(result => {
+        switch (result) {
+          case "token_expired":
+            dispatch({ type: TOKEN_EXPIRED });
+            break;
 
-      //     default:
-      dispatch({ type: SUCCEED_TO_EDIT_BRAND, payload: params.brand_name });
-      //       return result;
-      //       break;
-      //   }
-      // });
-      // return response;
-      return "succeed";
+          default:
+            dispatch({
+              type: SUCCEED_TO_EDIT_BRAND,
+              payload: params.brand_name
+            });
+            console.log(result);
+            return result;
+        }
+      });
+      return response;
     } catch (error) {
       dispatch({
-        type: FAILED_TO_EDITSUCCEED_TO_EDIT_BRAND,
+        type: FAILED_TO_EDIT_BRAND,
         payload: { data: "NETWORK_ERROR" }
       });
       console.error(error);

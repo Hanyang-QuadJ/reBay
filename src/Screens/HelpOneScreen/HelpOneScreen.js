@@ -58,7 +58,13 @@ class HelpOneScreen extends Component {
     const { help, isLoading } = this.state;
     return (
       <Container>
-        <Content>
+        <Content
+          contentContainerStyle={
+            isLoading
+              ? { flex: 1, backgroundColor: "white" }
+              : { backgroundColor: "white" }
+          }
+        >
           {isLoading ? (
             <LoadingActivity />
           ) : (

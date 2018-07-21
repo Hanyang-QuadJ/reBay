@@ -38,7 +38,6 @@ class CommentList extends Component {
       onPressReply,
       onPressDeleteMain
     } = this.props;
-    console.log(this.props);
     if (!isAnswer) {
       return (
         <SwipeRow rightOpenValue={-70} disableRightSwipe>

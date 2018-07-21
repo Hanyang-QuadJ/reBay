@@ -36,6 +36,7 @@ export const postData = async (url, params) => {
       body: JSON.stringify(params.body && params.body)
     });
     let responseJson = await response.json();
+    console.log(responseJson);
     if (response.status === 496) {
       params.props.navigator.resetTo({
         screen: "Tutorial"

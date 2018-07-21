@@ -29,7 +29,7 @@ const style = StyleSheet.create({
     borderColor: commonStyle.BORDER_COLOR
   },
   option_wrapper: {
-    paddingHorizontal: 20
+    paddingHorizontal: 10
   },
   option__icon: {
     paddingHorizontal: 15,

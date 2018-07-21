@@ -37,7 +37,8 @@ import * as ItemAction from "../../Actions/ItemAction";
 
 const mapStateToProps = state => {
   return {
-    brand: state.BrandReducer.brand
+    brand: state.BrandReducer.brand,
+    token: state.LoginReducer.token
   };
 };
 
@@ -169,9 +170,12 @@ class BrandScreen extends Component {
 
   handleBrand = item => {
     const { isEdit } = this.props;
-    console.log(isEdit);
 
-    const params = { props: this.props, brand_name: item.brand_name };
+    const params = {
+      props: this.props,
+      brand_name: item.brand_name,
+      body: { brand_id: item.id }
+    };
     if (isEdit) {
       this.props.dispatch(ItemAction.editBrand(params)).then(value => {
         this.props.navigator.pop();

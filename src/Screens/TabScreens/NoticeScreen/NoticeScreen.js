@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import * as commonStyle from "../../../Constants/commonStyle";
 import styles from "./style";
+import Thumb from "../../../Components/Thumb/Thumb";
 import * as LogAction from "../../../Actions/LogAction";
 import {
   Container,
@@ -57,7 +58,8 @@ class NoticeScreen extends Component {
     const { logsById, isRefreshing } = this.state;
 
     return (
-      <View style={{ flex: 1, justifyContent: "center" }}>
+      <Container>
+        {/* <List> */}
         <FlatList
           refreshing={isRefreshing}
           scrollEventThrottle={1}
@@ -66,7 +68,8 @@ class NoticeScreen extends Component {
           data={logsById}
           renderItem={this._renderItem}
         />
-      </View>
+        {/* </List> */}
+      </Container>
     );
   }
 
@@ -74,11 +77,20 @@ class NoticeScreen extends Component {
 
   _renderItem = ({ item }) => (
     <ListItem
+      avatar
       button={true}
       onPress={() => this.handleHelpOne(item)}
       style={styles.option_wrapper}
     >
-      <Text>{item.message}</Text>
+      <Left>
+        <Thumb src={item.user.profile_img} size={35} />
+      </Left>
+      <Body>
+        <Text>{item.message}</Text>
+      </Body>
+      <Right>
+        <Text note>3:43 pm</Text>
+      </Right>
     </ListItem>
   );
 

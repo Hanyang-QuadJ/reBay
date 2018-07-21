@@ -66,7 +66,13 @@ class HomeItemScreen extends Component {
     const { item, picture, tags, brand_name, isBasket } = this.props;
     return (
       <Container>
-        <Content contentContainerStyle={isLoading ? { flex: 1 } : null}>
+        <Content
+          contentContainerStyle={
+            isLoading
+              ? { flex: 1, backgroundColor: "white" }
+              : { backgroundColor: "white" }
+          }
+        >
           {isLoading ? (
             <LoadingActivity />
           ) : (
@@ -159,7 +165,7 @@ class HomeItemScreen extends Component {
   handleEditBrand = () => {
     this.props.navigator.push({
       screen: "Brand",
-      passProps: { isEdit: true }
+      passProps: { isEdit: true, item_id: this.props.item_id }
     });
   };
 }

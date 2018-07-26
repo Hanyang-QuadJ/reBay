@@ -62,7 +62,7 @@ class CategoryItem extends Component {
                   <View style={styles.itemLeft}>
                     <FastImage
                       style={styles.itemImage}
-                      resizeMode={FastImage.resizeMode.cover}
+                      resizeMode={FastImage.resizeMode.contain}
                       source={{
                         uri: data.image.image_url
                       }}
@@ -101,7 +101,7 @@ class CategoryItem extends Component {
                   <View style={styles.itemRight}>
                     <FastImage
                       style={styles.itemImage}
-                      resizeMode={FastImage.resizeMode.cover}
+                      resizeMode={FastImage.resizeMode.contain}
                       source={{ uri: data.image.image_url }}
                     />
                     <Text

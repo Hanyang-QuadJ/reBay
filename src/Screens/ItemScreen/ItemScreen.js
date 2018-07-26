@@ -25,9 +25,11 @@ import { GoToHome } from "../index";
 
 const mapStateToProps = state => {
   return {
-    brand: state.ItemReducer.brand_name,
+    brand_name: state.ItemReducer.brand_name,
     item: state.ItemReducer.item,
-    item_id: state.ItemReducer.item_id
+    item_id: state.ItemReducer.item_id,
+    tags: state.ItemReducer.tags,
+    picture: state.ItemReducer.picture
   };
 };
 
@@ -63,7 +65,7 @@ class ItemScreen extends Component {
   }
 
   render() {
-    const { brand, item, picture } = this.props;
+    const { brand_name, item, picture } = this.props;
     switch (this.state.homeLoading) {
       case true:
         return <LoadingIndicator />;
@@ -72,14 +74,9 @@ class ItemScreen extends Component {
           <Container style={{ backgroundColor: "white" }}>
             <Content contentContainerStyle={{ backgroundColor: "white" }}>
               <Item
-                brand={brand.brand_name}
-                tags={this.props.tags}
-                size={item.size}
-                season={item.season}
-                content={item.content}
-                username={item.username}
-                item_name={item.item_name}
-                price={item.price}
+                brand={brand_name}
+                tags={this.props.tags[0]}
+                item={item}
                 picture={picture}
                 grade={3}
               />

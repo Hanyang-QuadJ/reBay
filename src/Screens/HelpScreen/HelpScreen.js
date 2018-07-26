@@ -117,7 +117,7 @@ class HelpScreen extends Component {
           </View>
         ) : (
           <FlatList
-            inverted
+            // inverted
             contentContainerStyle={{ marginVertical: 10 }}
             scrollEventThrottle={1}
             ref={ref => (this.flatList = ref)}
@@ -299,15 +299,15 @@ class HelpScreen extends Component {
         }
       };
       this.setState({ help: newComments });
-      // let wait = new Promise(resolve => setTimeout(resolve, 200));
-      // wait.then(() => {
-      //   this.flatList.scrollToEnd({ animated: true });
-      //   // this.flatList.scrollToIndex({
-      //   //   animated: true,
-      //   //   index: newComments.length - 1,
-      //   //   viewPosition: 1
-      //   // });
-      // });
+      let wait = new Promise(resolve => setTimeout(resolve, 200));
+      wait.then(() => {
+        this.flatList.scrollToEnd({ animated: true });
+        // this.flatList.scrollToIndex({
+        //   animated: true,
+        //   index: newComments.length - 1,
+        //   viewPosition: 1
+        // });
+      });
       this.props.dispatch(HelpAction.askItem(params)).then(value => {
         newComments[newComments.length - 1].loading = false;
         this.setState({ help: newComments, comment: "" });

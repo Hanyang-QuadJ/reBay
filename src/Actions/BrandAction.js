@@ -17,10 +17,8 @@ export const getBrand = params => {
               type: TOKEN_EXPIRED,
               payload: { data: "NETWORK_ERROR" }
             });
-            break;
           default:
             return dispatch({ type: SUCCEED_TO_GET_BRAND, payload: result });
-            break;
         }
       });
       return response;

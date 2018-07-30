@@ -82,6 +82,7 @@ class HomeItemScreen extends Component {
               picture={picture}
               grade={4}
               tags={tags[0]}
+              onPressUser={this.handleUser}
               onPressEditBrand={this.handleEditBrand}
             />
           )}
@@ -158,6 +159,15 @@ class HomeItemScreen extends Component {
         isMe: true,
         user_id: this.props.user_id,
         item_id: this.props.item_id
+      }
+    });
+  };
+
+  handleUser = user_id => {
+    this.props.navigator.push({
+      screen: "User",
+      passProps: {
+        user_id
       }
     });
   };

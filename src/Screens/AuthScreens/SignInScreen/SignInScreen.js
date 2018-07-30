@@ -30,7 +30,9 @@ import FastImage from "react-native-fast-image";
 import firebase from "react-native-firebase";
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    token: state.LoginReducer.token
+  };
 };
 
 class SignInScreen extends Component {
@@ -52,9 +54,8 @@ class SignInScreen extends Component {
         LoginAction.postLogin(this.state.email, this.state.password, fcm_token)
       )
       .then(token => {
-        const params = { token };
+        const params = { props: this.props };
         this.props.dispatch(UserAction.getMe(params)).then(me => {
-          const params = { props: this.props };
           this.props.dispatch(BrandAction.getBrand(params)).then(brand => {
             this.props
               .dispatch(RecommendAction.getRecommend())

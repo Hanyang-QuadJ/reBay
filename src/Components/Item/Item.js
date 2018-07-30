@@ -37,7 +37,7 @@ class Item extends Component {
   componentWillMount() {}
 
   render() {
-    const { me, user_id, item, onPressEditBrand } = this.props;
+    const { me, user_id, item, onPressEditBrand, onPressUser } = this.props;
     const { isLiked } = this.state;
     const stars = [];
     const emptyStars = [];
@@ -68,10 +68,12 @@ class Item extends Component {
         <View style={styles.userInfo}>
           <View style={styles.userInfoContainer}>
             <View style={styles.thumbnailArea}>
-              <Image
-                style={styles.thumbnail}
-                source={{ uri: item.profile_img }}
-              />
+              <TouchableOpacity onPress={() => onPressUser(item.user_id)}>
+                <Image
+                  style={styles.thumbnail}
+                  source={{ uri: item.profile_img }}
+                />
+              </TouchableOpacity>
             </View>
             <View style={styles.userInfoArea}>
               <Text style={styles.userInfoText}>

@@ -299,7 +299,7 @@ class HelpScreen extends Component {
         }
       };
       this.setState({ help: newComments });
-      let wait = new Promise(resolve => setTimeout(resolve, 200));
+      let wait = new Promise(resolve => setTimeout(resolve, 300));
       wait.then(() => {
         this.flatList.scrollToEnd({ animated: true });
         // this.flatList.scrollToIndex({

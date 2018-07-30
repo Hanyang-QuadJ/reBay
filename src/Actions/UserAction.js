@@ -27,22 +27,29 @@ export const TOKEN_EXPIRED = "TOKEN_EXPIRED";
 export const getMe = params => {
   return async dispatch => {
     try {
-      let response = await fetch(ServerEndPoint2 + "api/user/me", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "x-access-token": params.token
+      let response = await Request.getData("api/user/me", params).then(
+        result => {
+          switch (result) {
+            case "token_expired":
+              return dispatch({
+                type: TOKEN_EXPIRED,
+                payload: { data: "NETWORK_ERROR" }
+              });
+            default:
+              dispatch({
+                type: SUCCEED_TO_GET_ME,
+                payload: result.result[0]
+              });
+              return result.result[0];
+          }
         }
-      });
-      let responseJson = await response.json();
-      await dispatch({
-        type: SUCCEED_TO_GET_ME,
-        payload: responseJson.result[0]
-      });
-      return responseJson.result[0];
+      );
+      return response;
     } catch (error) {
-      dispatch({ type: FAILED_TO_GET_ME, payload: { data: "NETWORK_ERROR" } });
+      dispatch({
+        type: FAILED_TO_GET_ME,
+        payload: { data: "NETWORK_ERROR" }
+      });
       console.error(error);
     }
   };
@@ -55,12 +62,10 @@ export const getUnSelledList = params => {
         switch (result) {
           case "token_expired":
             return dispatch({ type: TOKEN_EXPIRED });
-            break;
 
           default:
             dispatch({ type: SUCCEED_TO_GET_UNSELLED_LIST, payload: result });
             return result;
-            break;
         }
       });
       return response;
@@ -82,12 +87,10 @@ export const getSellList = params => {
           switch (result) {
             case "token_expired":
               return dispatch({ type: TOKEN_EXPIRED });
-              break;
 
             default:
               dispatch({ type: SUCCEED_TO_GET_SELLLIST, payload: result });
               return result;
-              break;
           }
         }
       );

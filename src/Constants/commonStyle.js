@@ -4,6 +4,7 @@ export const SUB_COLOR = "#9B735F";
 export const TEXT_COLOR = "#575858";
 export const THIRD_COLOR = "#838383";
 export const SECONDARY_COLOR = "#ffffff";
+export const LIGHT_TEXT = "#878787";
 export const BORDER_COLOR = "#cecece";
 
 export const NavigationStyle = {

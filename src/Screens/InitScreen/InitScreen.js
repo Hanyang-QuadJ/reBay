@@ -30,8 +30,9 @@ class InitScreen extends Component {
   componentDidMount() {
     const { isLogin } = this.props;
     if (isLogin) {
-      const params = { token: this.props.token };
+      const params = { props: this.props };
       this.props.dispatch(UserAction.getMe(params)).then(me => {
+        console.log(me);
         this.goToTab();
       });
     } else {

@@ -22,15 +22,34 @@ const styles = StyleSheet.create({
     marginTop: 25
   },
   itemImage: {
-    width: null,
+    width: "100%",
     height: 140
   },
-
+  itemOverlay: {
+    flex: 1,
+    position: "absolute",
+    left: 0,
+    top: 0,
+    opacity: 0.6,
+    backgroundColor: commonStyle.PRIMARY_COLOR,
+    width: 45,
+    height: 25
+  },
+  itemOverlayText: {
+    position: "absolute",
+    flex: 1,
+    left: 0,
+    top: 0,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 45,
+    height: 25
+  },
   item_brand: {
-    marginTop: 5,
+    marginTop: 7,
     color: commonStyle.TEXT_COLOR,
     fontSize: 19,
-    fontWeight: "400"
+    fontWeight: "600"
   },
   item_name: {
     marginTop: 3,
@@ -39,20 +58,20 @@ const styles = StyleSheet.create({
     fontWeight: "500"
   },
   item_status_new: {
-    marginTop: 7,
-    fontSize: 13,
-    color: commonStyle.SUB_COLOR
+    fontSize: 15,
+    color: "white",
+    fontWeight: "800"
   },
   item_status_old: {
     marginTop: 7,
+    fontWeight: "600",
     fontSize: 13,
     color: commonStyle.TEXT_COLOR
   },
   item_price: {
     color: commonStyle.TEXT_COLOR,
     fontSize: 17,
-    marginTop: 2,
-    fontWeight: "400"
+    marginTop: 2
   }
 });
 

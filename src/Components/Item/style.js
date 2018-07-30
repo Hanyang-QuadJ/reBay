@@ -88,6 +88,7 @@ const style = StyleSheet.create({
   heart: {
     position: "absolute",
     right: 10,
+    flex: 1,
     top: 20
   },
   item_price: {

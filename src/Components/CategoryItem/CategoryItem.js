@@ -62,20 +62,19 @@ class CategoryItem extends Component {
                   <View style={styles.itemLeft}>
                     <FastImage
                       style={styles.itemImage}
-                      resizeMode={FastImage.resizeMode.contain}
+                      resizeMode={FastImage.resizeMode.cover}
                       source={{
                         uri: data.image.image_url
                       }}
                     />
-                    <Text
-                      style={
-                        data.item.item_status === "새상품"
-                          ? styles.item_status_new
-                          : styles.item_status_old
-                      }
-                    >
-                      {data.item.item_status}
-                    </Text>
+                    {data.item.item_status === "새상품" ? (
+                      <View style={styles.itemOverlay} />
+                    ) : null}
+                    {data.item.item_status === "새상품" ? (
+                      <View style={styles.itemOverlayText}>
+                        <Text style={styles.item_status_new}>새상품</Text>
+                      </View>
+                    ) : null}
                     <Text style={styles.item_brand}>
                       {data.brand.brand_name}
                     </Text>
@@ -101,18 +100,17 @@ class CategoryItem extends Component {
                   <View style={styles.itemRight}>
                     <FastImage
                       style={styles.itemImage}
-                      resizeMode={FastImage.resizeMode.contain}
+                      resizeMode={FastImage.resizeMode.cover}
                       source={{ uri: data.image.image_url }}
                     />
-                    <Text
-                      style={
-                        data.item.item_status === "새상품"
-                          ? styles.item_status_new
-                          : styles.item_status_old
-                      }
-                    >
-                      {data.item.item_status}
-                    </Text>
+                    {data.item.item_status === "새상품" ? (
+                      <View style={styles.itemOverlay} />
+                    ) : null}
+                    {data.item.item_status === "새상품" ? (
+                      <View style={styles.itemOverlayText}>
+                        <Text style={styles.item_status_new}>새상품</Text>
+                      </View>
+                    ) : null}
                     <Text style={styles.item_brand}>
                       {data.brand.brand_name}
                     </Text>
@@ -151,15 +149,15 @@ class CategoryItem extends Component {
                         uri: data.image_url
                       }}
                     />
-                    <Text
-                      style={
-                        data.item_status === "새상품"
-                          ? styles.item_status_new
-                          : styles.item_status_old
-                      }
-                    >
-                      {data.item_status}
-                    </Text>
+                    {data.item_status === "새상품" ? (
+                      <View style={styles.itemOverlay} />
+                    ) : null}
+                    {data.item_status === "새상품" ? (
+                      <View style={styles.itemOverlayText}>
+                        <Text style={styles.item_status_new}>새상품</Text>
+                      </View>
+                    ) : null}
+
                     <Text style={styles.item_brand}>{data.brand_name}</Text>
                     <Text style={styles.item_name}>{data.item_name}</Text>
                     <Text style={styles.item_price}>￦{data.price}</Text>
@@ -186,15 +184,15 @@ class CategoryItem extends Component {
                       resizeMode={FastImage.resizeMode.cover}
                       source={{ uri: data.image_url }}
                     />
-                    <Text
-                      style={
-                        data.item_status === "새상품"
-                          ? styles.item_status_new
-                          : styles.item_status_old
-                      }
-                    >
-                      {data.item_status}
-                    </Text>
+                    {data.item_status === "새상품" ? (
+                      <View style={styles.itemOverlay} />
+                    ) : null}
+                    {data.item_status === "새상품" ? (
+                      <View style={styles.itemOverlayText}>
+                        <Text style={styles.item_status_new}>새상품</Text>
+                      </View>
+                    ) : null}
+
                     <Text style={styles.item_brand}>{data.brand_name}</Text>
                     <Text style={styles.item_name}>{data.item_name}</Text>
                     <Text style={styles.item_price}>￦{data.price}</Text>

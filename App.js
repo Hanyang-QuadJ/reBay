@@ -37,6 +37,8 @@ import HelpOneScreen from "./src/Screens/HelpOneScreen/HelpOneScreen";
 
 import PaymentScreen1 from "./src/Screens/PaymentScreen1/PaymentScreen1";
 
+import UserScreen from "./src/Screens/UserScreen/UserScreen";
+
 import OptionScreen1 from "./src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen1";
 import OptionScreen2 from "./src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen2";
 import OptionScreen3 from "./src/Screens/TabScreens/ProfileScreen/OptionScreen/OptionScreen3";
@@ -139,6 +141,8 @@ export default function registerScreens() {
     store,
     Provider
   );
+
+  Navigation.registerComponent("User", () => UserScreen, store, Provider);
 
   //ProfileOptionScreens
   Navigation.registerComponent("Opt1", () => OptionScreen1, store, Provider);

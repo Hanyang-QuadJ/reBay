@@ -163,11 +163,12 @@ class HomeItemScreen extends Component {
     });
   };
 
-  handleUser = user_id => {
+  handleUser = item => {
     this.props.navigator.push({
       screen: "User",
+      title: `${item.username}의 상점`,
       passProps: {
-        user_id
+        item
       }
     });
   };

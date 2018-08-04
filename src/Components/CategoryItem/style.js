@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 0,
     top: 0,
-    opacity: 0.6,
+    opacity: 0.7,
     backgroundColor: commonStyle.PRIMARY_COLOR,
     width: 45,
     height: 25

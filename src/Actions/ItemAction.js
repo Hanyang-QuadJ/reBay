@@ -11,6 +11,10 @@ export const SUCCEED_TO_GET_ITEM = "SUCCEED_TO_GET_ITEM";
 export const FAILED_TO_GET_ITEM_PICTURE = "FAILED_TO_GET_ITEM_PICTURE";
 export const SUCCEED_TO_GET_ITEM_PICTURE = "SUCCEED_TO_GET_ITEM_PICTURE";
 
+//아이템 사진 가져오기
+export const FAILED_TO_GET_ITEM_BY_USER_ID = "FAILED_TO_GET_ITEM_BY_USER_ID";
+export const SUCCEED_TO_GET_ITEM_BY_USER_ID = "SUCCEED_TO_GET_ITEM_BY_USER_ID";
+
 //아이템 등록하기
 export const FAILED_TO_POST_ITEM = "FAILED_TO_POST_ITEM";
 export const SUCCEED_TO_POST_ITEM = "SUCCEED_TO_POST_ITEM";
@@ -192,6 +196,37 @@ export const likeItem = params => {
   };
 };
 
+export const getItemsByUserId = params => {
+  return async dispatch => {
+    try {
+      let response = Request.getData(
+        "api/item/" + params.props.item.user_id,
+        params
+      ).then(result => {
+        switch (result) {
+          case "token_expired":
+            dispatch({ type: TOKEN_EXPIRED });
+            break;
+
+          default:
+            dispatch({
+              type: SUCCEED_TO_GET_ITEM_BY_USER_ID,
+              payload: result.items
+            });
+            return result.items.reverse();
+        }
+      });
+      return response;
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_GET_ITEM_BY_USER_ID,
+        payload: error
+      });
+      console.error(error);
+    }
+  };
+};
+
 export const editBrand = params => {
   return async dispatch => {
     try {
@@ -209,7 +244,6 @@ export const editBrand = params => {
               type: SUCCEED_TO_EDIT_BRAND,
               payload: params.brand_name
             });
-            console.log(result);
             return result;
         }
       });

@@ -49,6 +49,7 @@ class NoticeScreen extends Component {
     const params = { props: this.props /*body: {asdf: asdf}*/ };
 
     this.props.dispatch(LogAction.getLogs(params)).then(log => {
+      console.log(log);
       this.setState({
         logsById: log
       });

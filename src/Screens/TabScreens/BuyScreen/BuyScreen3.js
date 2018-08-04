@@ -23,6 +23,7 @@ import {
 } from "react-native";
 import * as ItemActionCreator from "../../../Actions/ItemAction";
 import * as BrandActionCreator from "../../../Actions/BrandAction";
+import ItemFlatList from "../../../Components/ItemFlatList/ItemFlatList";
 import LoadingActivity from "../../../Components/LoadingActivity/LoadingActivity";
 import FastImage from "react-native-fast-image";
 import ModalDropdown from "react-native-modal-dropdown";
@@ -57,7 +58,7 @@ class BuyScreen3 extends Component {
     };
   }
 
-  _goToItem(item) {
+  _goToItem = item => {
     this.props.navigator.push({
       screen: "HomeItem",
       title: item.item_name,
@@ -68,7 +69,7 @@ class BuyScreen3 extends Component {
         price: item.price
       }
     });
-  }
+  };
 
   componentWillMount() {
     this.props
@@ -102,48 +103,6 @@ class BuyScreen3 extends Component {
         }
       });
   }
-
-  renderFooter = () => {
-    if (!this.state.loading) return null;
-    return (
-      <View
-        style={{
-          paddingVertical: 20,
-          borderTopWidth: 1,
-          borderColor: "#CED0CE"
-        }}
-      >
-        <ActivityIndicator animating size="large" />
-      </View>
-    );
-  };
-  _renderItem = ({ item }) => (
-    <TouchableWithoutFeedback onPress={() => this._goToItem(item)}>
-      <View style={styles.items}>
-        <View style={styles.itemImage}>
-          <FastImage
-            style={styles.itemImages}
-            resizeMode={FastImage.resizeMode.cover}
-            source={{ uri: item.image_url }}
-          />
-        </View>
-        <Text>{this.props.brand}</Text>
-        <Text
-          style={
-            item.item_status === "새상품"
-              ? styles.item_status_new
-              : styles.item_status_old
-          }
-        >
-          {item.item_status}
-        </Text>
-        <Text style={styles.item_name}>{item.item_name}</Text>
-        <Text style={styles.item_price}>￦{item.price}</Text>
-      </View>
-    </TouchableWithoutFeedback>
-  );
-
-  _keyExtractor = (item, index) => item.id.toString();
 
   _handleEnd = async () => {
     if (!this.onEndReachedCalledDuringMomentum) {
@@ -214,6 +173,7 @@ class BuyScreen3 extends Component {
   }
 
   render() {
+    const { brand } = this.props;
     return (
       <View style={{ backgroundColor: "white" }}>
         {this.state.items == null ? (
@@ -229,8 +189,18 @@ class BuyScreen3 extends Component {
               defaultIndex={0}
               defaultValue={"싼순"}
             />
+            <ItemFlatList
+              brand={brand}
+              items={this.state.items}
+              loading={this.state.loading}
+              onPress={this._goToItem}
+              onEndReached={this._handleEnd}
+              onMomentumScrollBegin={() => {
+                this.onEndReachedCalledDuringMomentum = false;
+              }}
+            />
 
-            <FlatList
+            {/* <FlatList
               contentContainerStyle={styles.container}
               horizontal={false}
               numColumns={2}
@@ -243,7 +213,7 @@ class BuyScreen3 extends Component {
                 this.onEndReachedCalledDuringMomentum = false;
               }}
               onEndReachedThreshold={0}
-            />
+            /> */}
           </View>
         )}
       </View>

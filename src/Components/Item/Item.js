@@ -68,7 +68,7 @@ class Item extends Component {
         <View style={styles.userInfo}>
           <View style={styles.userInfoContainer}>
             <View style={styles.thumbnailArea}>
-              <TouchableOpacity onPress={() => onPressUser(item.user_id)}>
+              <TouchableOpacity onPress={() => onPressUser(item)}>
                 <Image
                   style={styles.thumbnail}
                   source={{ uri: item.profile_img }}

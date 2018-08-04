@@ -7,24 +7,50 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Image,
-  InteractionManager
+  InteractionManager,
+  Dimensions,
+  Platform,
+  Animated
 } from "react-native";
 import { Container, Content, Icon, Text } from "native-base";
+import {
+  TabViewAnimated,
+  TabBar,
+  TabViewPagerPan,
+  TabViewPagerScroll
+} from "react-native-tab-view";
 import styles from "./style";
 import * as commonStyle from "../../Constants/commonStyle";
+import * as ItemAction from "../../Actions/ItemAction";
 import Thumb from "../../Components/Thumb/Thumb";
+import ItemFlatList from "../../Components/ItemFlatList/ItemFlatList";
+import LoadingActivity from "../../Components/LoadingActivity/LoadingActivity";
 import { GoToHome } from "../index";
+
+const initialLayout = {
+  height: 0,
+  width: Dimensions.get("window").width
+};
 
 const mapStateToProps = state => {
   return {
-    me: state.LoginReducer.me
+    me: state.LoginReducer.me,
+    token: state.LoginReducer.token
   };
 };
 
 class UserScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      index: 0,
+      routes: [
+        { key: "item", title: "판매 상품" },
+        { key: "rating", title: "판매자 평가" }
+      ],
+      item: [],
+      isLoading: true
+    };
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
@@ -32,8 +58,65 @@ class UserScreen extends Component {
     // this is the onPress handler for the two buttons together
   }
 
+  componentWillMount() {
+    const { dispatch, item } = this.props;
+    const params = { props: this.props, user_id: item.user_id };
+    dispatch(ItemAction.getItemsByUserId(params)).then(item => {
+      this.setState({ item, isLoading: false });
+    });
+  }
+
   render() {
-    const { me } = this.props;
+    const { me, item } = this.props;
+    return (
+      <Container style={{ backgroundColor: "white" }}>
+        <TabViewAnimated
+          style={styles.container}
+          navigationState={this.state}
+          renderScene={this._renderScene}
+          renderHeader={this._renderHeader}
+          onIndexChange={this._handleIndexChange}
+          initialLayout={initialLayout}
+          renderPager={this._renderPager}
+        />
+      </Container>
+    );
+  }
+
+  _handleIndexChange = index => {
+    this.setState({ index });
+  };
+
+  _renderPager = props => {
+    return Platform.OS === "ios" ? (
+      <TabViewPagerScroll {...props} />
+    ) : (
+      <TabViewPagerPan swipeEnabled={false} {...props} />
+    );
+  };
+
+  _renderLabel = props => ({ route, index }) => {
+    const inputRange = props.navigationState.routes.map((x, i) => i);
+    const outputRange = inputRange.map(
+      inputIndex =>
+        inputIndex === index
+          ? commonStyle.PRIMARY_COLOR
+          : commonStyle.TEXT_COLOR
+    );
+    const color = props.position.interpolate({
+      inputRange,
+      outputRange
+    });
+
+    return (
+      <Animated.Text style={[styles.label, { color }]}>
+        {route.title}
+      </Animated.Text>
+    );
+  };
+
+  _renderHeader = props => {
+    const { me, item } = this.props;
     const stars = [];
     const emptyStars = [];
     const starLength = 5;
@@ -67,12 +150,12 @@ class UserScreen extends Component {
       );
     }
     return (
-      <Container style={{ backgroundColor: "white" }}>
+      <View>
         <View style={styles.userInfo}>
           <View style={styles.userInfo__thumbName}>
-            <Thumb src={me.profile_img} size={45} />
+            <Thumb src={item.profile_img} size={45} />
             <View style={styles.userInfo__nameRate}>
-              <Text style={styles.userInfo__name}>강진주</Text>
+              <Text style={styles.userInfo__name}>{item.username}</Text>
               <View style={{ flexDirection: "row", marginTop: 3 }}>
                 {stars}
                 {emptyStars}
@@ -88,16 +171,67 @@ class UserScreen extends Component {
               <Text style={styles.userInfo__followingText}>팔로워</Text>
               <Text style={styles.userInfo__followingNumber}>10명</Text>
             </View>
-            <View>
+            <View style={styles.userInfo__followButton}>
               <Image
+                style={{ width: 30, height: 30 }}
                 source={require("../../Assets/Icons/shop/follow_icon.png")}
               />
+              <Text style={styles.userInfo__followButtonText}>+팔로우</Text>
             </View>
           </View>
         </View>
-      </Container>
+        <TabBar
+          {...props}
+          indicatorStyle={{ backgroundColor: commonStyle.PRIMARY_COLOR }}
+          renderLabel={this._renderLabel(props)}
+          labelStyle={{
+            color: commonStyle.TEXT_COLOR,
+            fontSize: 13,
+            marginVertical: 1
+          }}
+          tabStyle={{
+            height: 40
+          }}
+          style={{ backgroundColor: "white" }}
+        />
+      </View>
     );
-  }
+  };
+
+  _renderScene = ({ route }) => {
+    const { item, isLoading } = this.state;
+    switch (route.key) {
+      case "item":
+        return isLoading ? (
+          <LoadingActivity />
+        ) : (
+          <ItemFlatList
+            isInner
+            items={item}
+            onPress={this._goToItem}
+            loading={false}
+          />
+        );
+      case "rating":
+        return <View />;
+      default:
+        return <View />;
+    }
+  };
+
+  _goToItem = item => {
+    console.log(item);
+    this.props.navigator.push({
+      screen: "HomeItem",
+      title: item.item_name,
+      passProps: {
+        item_id: item.id,
+        brand_name: item.brand.brand_name,
+        item_name: item.item_name,
+        price: item.price
+      }
+    });
+  };
 }
 
 export default (UserScreen = connect(mapStateToProps)(UserScreen));

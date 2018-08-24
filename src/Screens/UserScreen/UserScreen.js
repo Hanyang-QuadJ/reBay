@@ -22,6 +22,7 @@ import {
 import styles from "./style";
 import * as commonStyle from "../../Constants/commonStyle";
 import * as ItemAction from "../../Actions/ItemAction";
+import * as UserAction from "../../Actions/UserAction";
 import Thumb from "../../Components/Thumb/Thumb";
 import ItemFlatList from "../../Components/ItemFlatList/ItemFlatList";
 import LoadingActivity from "../../Components/LoadingActivity/LoadingActivity";
@@ -49,7 +50,8 @@ class UserScreen extends Component {
         { key: "rating", title: "판매자 평가" }
       ],
       item: [],
-      isLoading: true
+      isLoading: true,
+      isFollowed: false
     };
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
@@ -117,6 +119,7 @@ class UserScreen extends Component {
 
   _renderHeader = props => {
     const { me, item } = this.props;
+    const { isFollowed } = this.state;
     const stars = [];
     const emptyStars = [];
     const starLength = 5;
@@ -171,13 +174,28 @@ class UserScreen extends Component {
               <Text style={styles.userInfo__followingText}>팔로워</Text>
               <Text style={styles.userInfo__followingNumber}>10명</Text>
             </View>
-            <View style={styles.userInfo__followButton}>
-              <Image
-                style={{ width: 30, height: 30 }}
-                source={require("../../Assets/Icons/shop/follow_icon.png")}
-              />
-              <Text style={styles.userInfo__followButtonText}>+팔로우</Text>
-            </View>
+            {!isFollowed ? (
+              <TouchableOpacity onPress={this.handleFollow}>
+                <View style={styles.userInfo__followButton}>
+                  <Image
+                    style={{ width: 30, height: 30 }}
+                    source={require("../../Assets/Icons/shop/follow_icon.png")}
+                  />
+                  <Text style={styles.userInfo__followButtonText}>+팔로우</Text>
+                </View>
+              </TouchableOpacity>
+            ) : (
+              <TouchableOpacity onPress={this.handleUnFollow}>
+                <View style={styles.userInfo__followButton__cancel}>
+                  <Text style={styles.userInfo__followButtonTextFollowed}>
+                    -팔로우
+                  </Text>
+                  <Text style={styles.userInfo__followButtonTextFollowed}>
+                    취소
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
         <TabBar
@@ -220,7 +238,6 @@ class UserScreen extends Component {
   };
 
   _goToItem = item => {
-    console.log(item);
     this.props.navigator.push({
       screen: "HomeItem",
       title: item.item_name,
@@ -231,6 +248,23 @@ class UserScreen extends Component {
         price: item.price
       }
     });
+  };
+
+  handleFollow = () => {
+    const { dispatch } = this.props;
+    const params = { props: this.props };
+    this.setState(state => ({
+      isFollowed: true
+    }));
+    dispatch(UserAction.postFollow(params)).then(value => {
+      console.log(value);
+    });
+  };
+
+  handleUnFollow = () => {
+    this.setState(state => ({
+      isFollowed: false
+    }));
   };
 }
 

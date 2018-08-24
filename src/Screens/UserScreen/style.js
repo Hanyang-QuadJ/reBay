@@ -46,6 +46,17 @@ const style = StyleSheet.create({
     alignItems: "center",
     borderColor: commonStyle.PRIMARY_COLOR
   },
+  userInfo__followButton__cancel: {
+    borderRadius: 5,
+    paddingVertical: 11,
+    paddingHorizontal: 10,
+    alignItems: "center",
+    backgroundColor: commonStyle.PRIMARY_COLOR
+  },
+  userInfo__followButtonTextFollowed: {
+    color: "white",
+    fontSize: 13
+  },
   userInfo__followButtonText: {
     color: commonStyle.PRIMARY_COLOR,
     fontSize: 13

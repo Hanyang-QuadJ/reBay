@@ -21,6 +21,14 @@ export const SUCCEED_TO_GET_ANSWER = "SUCCEED_TO_GET_ANSWER";
 export const FAILED_TO_GET_QUESTION = "FAILED_TO_GET_QUESTION";
 export const SUCCEED_TO_GET_QUESTION = "SUCCEED_TO_GET_QUESTION";
 
+//팔로우
+export const FAILED_TO_FOLLOW_USER = "FAILED_TO_FOLLOW_USER";
+export const SUCCEED_TO_FOLLOW_USER = "SUCCEED_TO_FOLLOW_USER";
+
+//인증
+export const FAILED_TO_VERIFY_NUMBER = "FAILED_TO_VERIFY_NUMBER";
+export const SUCCEED_TO_VERIFY_NUMBER = "SUCCEED_TO_VERIFY_NUMBER";
+
 //토큰 만료
 export const TOKEN_EXPIRED = "TOKEN_EXPIRED";
 
@@ -48,6 +56,34 @@ export const getMe = params => {
     } catch (error) {
       dispatch({
         type: FAILED_TO_GET_ME,
+        payload: { data: "NETWORK_ERROR" }
+      });
+      console.error(error);
+    }
+  };
+};
+
+export const verifyNumber = params => {
+  return async dispatch => {
+    try {
+      let response = Request.getData(
+        `api/auth/phone?phone_number=${params.phone_number}`,
+        params
+      ).then(result => {
+        switch (result) {
+          case "token_expired":
+            return dispatch({ type: TOKEN_EXPIRED });
+
+          default:
+            dispatch({ type: SUCCEED_TO_VERIFY_NUMBER, payload: result });
+            return result;
+            break;
+        }
+      });
+      return response;
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_VERIFY_NUMBER,
         payload: { data: "NETWORK_ERROR" }
       });
       console.error(error);
@@ -137,7 +173,6 @@ export const getAnswer = params => {
         switch (result) {
           case "token_expired":
             return dispatch({ type: TOKEN_EXPIRED });
-            break;
 
           default:
             dispatch({ type: SUCCEED_TO_GET_ANSWER, payload: result });
@@ -149,6 +184,34 @@ export const getAnswer = params => {
     } catch (error) {
       dispatch({
         type: FAILED_TO_GET_ANSWER,
+        payload: { data: "NETWORK_ERROR" }
+      });
+      console.error(error);
+    }
+  };
+};
+
+export const postFollow = params => {
+  return async dispatch => {
+    try {
+      let response = Request.postData(
+        "api/user/follow/" + params.props.item.user_id,
+        params
+      ).then(result => {
+        switch (result) {
+          case "token_expired":
+            return dispatch({ type: TOKEN_EXPIRED });
+
+          default:
+            dispatch({ type: SUCCEED_TO_FOLLOW_USER, payload: result });
+            return result;
+            break;
+        }
+      });
+      return response;
+    } catch (error) {
+      dispatch({
+        type: FAILED_TO_FOLLOW_USER,
         payload: { data: "NETWORK_ERROR" }
       });
       console.error(error);
